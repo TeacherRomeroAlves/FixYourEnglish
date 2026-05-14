@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Practice | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="improve-your-reading.html">Back to Levels</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Reading Task</p>
+      <h1>READ AND ANSWER</h1>
+      <p class="hero-copy">
+        Read the text carefully and answer all 10 questions. Some questions have one correct answer,
+        and some have more than one.
+      </p>
+      <div class="routine-row" aria-label="Reading task icons">
+        <span class="routine-chip">🧩 Main idea</span>
+        <span class="routine-chip">💬 Vocabulary</span>
+        <span class="routine-chip">📝 Details</span>
+        <span class="routine-chip">🎯 Check</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card reading-shell" data-reading-practice>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Reading Text</p>
+          <h2 data-reading-title>Random Text</h2>
+        </div>
+        <p class="panel-note" data-reading-level-label>Level</p>
+      </div>
+
+      <div class="reading-top-actions">
+        <button class="activity-button reading-primary-button" type="button" data-new-reading>Get a New Text</button>
+      </div>
+
+      <div class="reading-instructions-card">
+        <p class="reading-instructions-title">How to do this activity</p>
+        <ol class="reading-instructions-list">
+          <li>Click <strong>Get a New Text</strong> to open a passage.</li>
+          <li>Click <strong>Read Aloud</strong> if you want to listen.</li>
+          <li>Click <strong>Omit Text</strong> if you want to transform it into a listening activity.</li>
+          <li>Answer the questions and click <strong>Check Answers</strong>.</li>
+        </ol>
+        <p class="reading-instructions-note">
+          <strong>PS:</strong> Make sure your browser is in English for a better listening experience.
+        </p>
+      </div>
+
+      <div class="activity-actions reading-audio-actions">
+        <button class="activity-button" type="button" data-read-aloud>Read Aloud</button>
+        <button class="activity-button secondary-button" type="button" data-toggle-reading-text>Omit Text</button>
+        <button class="activity-button secondary-button" type="button" data-pause-reading-audio>Pause</button>
+        <button class="activity-button secondary-button" type="button" data-resume-reading-audio>Resume</button>
+        <button class="activity-button secondary-button" type="button" data-stop-reading-audio>Stop</button>
+      </div>
+
+      <p class="activity-feedback" data-reading-audio-feedback aria-live="polite">
+        Use the audio buttons to listen to the reading passage out loud.
+      </p>
+
+      <div class="paragraph-card reading-text-card" data-reading-text-card>
+        <div class="reading-text" data-reading-text></div>
+      </div>
+
+      <div class="reading-questions" data-reading-questions></div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-reset-reading>Reset Answers</button>
+        <button class="activity-button" type="button" data-check-reading>Check Answers</button>
+      </div>
+
+      <p class="activity-feedback" data-reading-feedback aria-live="polite">
+        Answer all 10 questions and then check your answers.
+      </p>
+
+      <div class="activity-actions">
+        <button class="activity-button" type="button" data-share-reading>Share My Result</button>
+        <button class="activity-button secondary-button" type="button" data-save-reading-pdf>Save as PDF</button>
+      </div>
+
+      <p class="activity-feedback" data-reading-share-feedback aria-live="polite">
+        Use the buttons above to share the student's result or save it as a PDF.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Future | Fix Your English</title>
+  <title>Future | Improve Your English</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,22 +14,32 @@
     <a class="back-link" href="index.html">Back to Menu</a>
 
     <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
       <p class="eyebrow">Verb Tense Lesson</p>
       <h1>FUTURE</h1>
       <p class="hero-copy">
         We use <strong>will</strong> and <strong>going to</strong> to talk about future plans, predictions, promises, and spontaneous decisions.
       </p>
-      <p class="credit-line">
-        Created by Teacher Romero Alves
-        <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Instagram</a>
-        and Teacher Lais Queiroz
-        <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Instagram</a>
-      </p>
       <div class="routine-row" aria-label="Future icons">
-        <span class="routine-chip">Tomorrow</span>
-        <span class="routine-chip">Next week</span>
-        <span class="routine-chip">Plans</span>
-        <span class="routine-chip">Predictions</span>
+        <span class="routine-chip">🌅 Tomorrow</span>
+        <span class="routine-chip">📆 Next week</span>
+        <span class="routine-chip">📝 Plans</span>
+        <span class="routine-chip">🔮 Predictions</span>
       </div>
     </section>
 
@@ -149,6 +159,58 @@
       </p>
     </section>
 
+    <section class="lesson-card activity-card" aria-labelledby="conversation-activity-title">
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Practice Activity</p>
+          <h2 id="conversation-activity-title">Reorder the Conversation</h2>
+        </div>
+      </div>
+      <p class="activity-copy">
+        Drag and drop the lines to put the conversation in the correct order. Pay attention to the
+        questions, answers, and negative sentences.
+      </p>
+
+      <div class="conversation-activity" data-conversation-activity="future-conversation">
+        <div class="conversation-guide">
+          <p><strong>Speakers:</strong> Emma and Leo</p>
+        </div>
+        <div class="conversation-bank" data-conversation-bank>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Leo: I am going to visit my grandmother.">Leo: I am going to visit my grandmother.</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Emma: Hi, Leo. What are you going to do tomorrow?">Emma: Hi, Leo. What are you going to do tomorrow?</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Emma: Will your sister go with you?">Emma: Will your sister go with you?</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Leo: No, she won't. She will study at home.">Leo: No, she won't. She will study at home.</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Emma: That sounds nice. Will you go in the morning?">Emma: That sounds nice. Will you go in the morning?</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Leo: Hi, Emma. I will be busy tomorrow.">Leo: Hi, Emma. I will be busy tomorrow.</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Leo: No, I won't. I will go after lunch.">Leo: No, I won't. I will go after lunch.</button>
+          <button class="conversation-line" type="button" draggable="true" data-line-text="Emma: Really? What are your plans?">Emma: Really? What are your plans?</button>
+        </div>
+
+        <div class="conversation-board" data-conversation-board>
+          <h3>Put the dialogue in order</h3>
+          <div class="conversation-slots">
+            <div class="conversation-slot" data-conversation-slot="1"></div>
+            <div class="conversation-slot" data-conversation-slot="2"></div>
+            <div class="conversation-slot" data-conversation-slot="3"></div>
+            <div class="conversation-slot" data-conversation-slot="4"></div>
+            <div class="conversation-slot" data-conversation-slot="5"></div>
+            <div class="conversation-slot" data-conversation-slot="6"></div>
+            <div class="conversation-slot" data-conversation-slot="7"></div>
+            <div class="conversation-slot" data-conversation-slot="8"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-reset-conversation-activity>Reset Activity</button>
+        <button class="activity-button" type="button" data-check-conversation-activity>Check Answers</button>
+      </div>
+
+      <p class="activity-feedback" data-conversation-activity-feedback aria-live="polite">
+        Put all eight lines in order and then check your answers.
+      </p>
+    </section>
+
     <section class="lesson-card activity-card" aria-labelledby="order-activity-title">
       <div class="panel-heading lesson-heading">
         <div>
@@ -172,7 +234,7 @@
             <button class="word-token" type="button" draggable="true" data-word="friend">friend</button>
             <button class="word-token" type="button" draggable="true" data-word="will">will</button>
           </div>
-          <div class="sentence-slots" data-sentence-slots>
+          <div class="sentence-slots" data-sentence-slots">
             <span class="word-slot" data-word-slot="1"></span>
             <span class="word-slot" data-word-slot="2"></span>
             <span class="word-slot" data-word-slot="3"></span>
@@ -194,7 +256,7 @@
             <button class="word-token" type="button" draggable="true" data-word="to">to</button>
             <button class="word-token" type="button" draggable="true" data-word="not">not</button>
           </div>
-          <div class="sentence-slots" data-sentence-slots>
+          <div class="sentence-slots" data-sentence-slots">
             <span class="word-slot" data-word-slot="1"></span>
             <span class="word-slot" data-word-slot="2"></span>
             <span class="word-slot" data-word-slot="3"></span>
@@ -217,7 +279,7 @@
             <button class="word-token" type="button" draggable="true" data-word="tonight">tonight</button>
             <button class="word-token" type="button" draggable="true" data-word="they">they</button>
           </div>
-          <div class="sentence-slots" data-sentence-slots>
+          <div class="sentence-slots" data-sentence-slots">
             <span class="word-slot" data-word-slot="1"></span>
             <span class="word-slot" data-word-slot="2"></span>
             <span class="word-slot" data-word-slot="3"></span>
@@ -241,7 +303,7 @@
             <button class="word-token" type="button" draggable="true" data-word="brother">brother</button>
             <button class="word-token" type="button" draggable="true" data-word="is">is</button>
           </div>
-          <div class="sentence-slots" data-sentence-slots>
+          <div class="sentence-slots" data-sentence-slots">
             <span class="word-slot" data-word-slot="1"></span>
             <span class="word-slot" data-word-slot="2"></span>
             <span class="word-slot" data-word-slot="3"></span>

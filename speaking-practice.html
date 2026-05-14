@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Practice | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="improve-your-speaking.html">Back to Levels</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Speaking Prompt</p>
+      <h1>SPEAK AND RECORD</h1>
+      <p class="hero-copy">
+        Read the prompt, organize your ideas, and record your answer. You can generate
+        another prompt from the same level whenever you want.
+      </p>
+      <div class="routine-row" aria-label="Speaking icons">
+        <span class="routine-chip">🎯 Prompt</span>
+        <span class="routine-chip">🧠 Think</span>
+        <span class="routine-chip">🎙️ Speak</span>
+        <span class="routine-chip">💾 Save</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card speaking-shell" data-speaking-practice>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Speaking Task</p>
+          <h2>Random Prompt</h2>
+        </div>
+        <p class="panel-note" data-speaking-level-label>Level</p>
+      </div>
+
+      <div class="prompt-card">
+        <p class="prompt-label">Your prompt</p>
+        <p class="prompt-text" data-speaking-prompt>
+          Your speaking prompt will appear here.
+        </p>
+      </div>
+
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to do this activity</p>
+        <ol class="reading-instructions-list">
+          <li>Read the prompt and think about your answer.</li>
+          <li>Click <strong>Start Recording</strong> and speak clearly.</li>
+          <li>Click <strong>Stop Recording</strong> when you finish.</li>
+          <li>Listen to your audio, then share it or download it.</li>
+        </ol>
+        <p class="reading-instructions-note">
+          <strong>PS:</strong> Microphone access works better on a deployed website than on a local file.
+        </p>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-new-speaking-prompt>New Prompt</button>
+      </div>
+
+      <div class="recorder-card">
+        <p class="recorder-status" data-speaking-status>
+          Click Start Recording when you are ready.
+        </p>
+        <p class="recorder-timer" data-speaking-timer>
+          00:00
+        </p>
+
+        <div class="activity-actions recorder-actions">
+          <button class="activity-button" type="button" data-start-recording>Start Recording</button>
+          <button class="activity-button secondary-button" type="button" data-stop-recording>Stop Recording</button>
+          <button class="activity-button secondary-button" type="button" data-delete-recording>Delete Recording</button>
+        </div>
+
+        <audio class="speaking-audio-player" controls data-speaking-audio></audio>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button" type="button" data-share-audio>Share Audio</button>
+        <a class="activity-button secondary-button speaking-download-link" href="#" download="fix-your-english-speaking.webm" data-download-audio>Download Audio</a>
+      </div>
+
+      <p class="activity-feedback" data-speaking-share-feedback aria-live="polite">
+        Record your answer first, then share it or download it.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

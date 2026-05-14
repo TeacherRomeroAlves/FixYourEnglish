@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing Prompt | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="improve-your-writing.html">Back to Levels</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Writing Prompt</p>
+      <h1>WRITE YOUR TEXT</h1>
+      <p class="hero-copy">
+        Read the prompt, organize your ideas, and write your answer. You can generate another
+        prompt from the same level anytime.
+      </p>
+      <div class="routine-row" aria-label="Writing icons">
+        <span class="routine-chip">🎯 Prompt</span>
+        <span class="routine-chip">🧠 Plan</span>
+        <span class="routine-chip">✍️ Write</span>
+        <span class="routine-chip">📄 Export</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card writing-prompt-shell" data-writing-practice>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Writing Task</p>
+          <h2 id="writing-prompt-title">Random Prompt</h2>
+        </div>
+        <p class="panel-note" data-writing-level-label>Level</p>
+      </div>
+
+      <div class="prompt-card">
+        <p class="prompt-label">Your prompt</p>
+        <p class="prompt-text" data-random-prompt>
+          Your writing prompt will appear here.
+        </p>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-new-prompt>New Prompt</button>
+      </div>
+
+      <div class="writing-card">
+        <label class="writing-label" for="writing-practice-text">
+          Your text
+        </label>
+        <textarea
+          id="writing-practice-text"
+          class="writing-textarea"
+          rows="10"
+          placeholder="Write your text here..."
+        ></textarea>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button" type="button" data-share-writing>Share My Text</button>
+        <button class="activity-button secondary-button" type="button" data-save-writing-pdf>Save as PDF</button>
+      </div>
+
+      <p class="activity-feedback" data-writing-share-feedback aria-live="polite">
+        Use the buttons above to share the student's text or save it as a PDF.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
