@@ -48,9 +48,13 @@
       <div class="panel-heading lesson-heading">
         <div>
           <p class="panel-kicker">Speaking Task</p>
-          <h2>Random Prompt</h2>
+          <h2>Let's talk!</h2>
         </div>
         <p class="panel-note" data-speaking-level-label>Level</p>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button" type="button" data-new-speaking-prompt>New Prompt</button>
       </div>
 
       <div class="prompt-card">
@@ -66,15 +70,8 @@
           <li>Read the prompt and think about your answer.</li>
           <li>Click <strong>Start Recording</strong> and speak clearly.</li>
           <li>Click <strong>Stop Recording</strong> when you finish.</li>
-          <li>Listen to your audio, then download it if you want to keep it.</li>
+          <li>Listen to your audio, then share it or download it.</li>
         </ol>
-        <p class="reading-instructions-note">
-          <strong>PS:</strong> Microphone access works better on a deployed website than on a local file.
-        </p>
-      </div>
-
-      <div class="activity-actions">
-        <button class="activity-button secondary-button" type="button" data-new-speaking-prompt>New Prompt</button>
       </div>
 
       <div class="recorder-card">
@@ -95,11 +92,12 @@
       </div>
 
       <div class="activity-actions">
-        <a class="activity-button secondary-button speaking-download-link" href="#" download="fix-your-english-speaking.webm" data-download-audio>Download Audio</a>
+        <button class="activity-button" type="button" data-share-audio hidden>Share Audio</button>
+        <a class="activity-button speaking-download-link" href="#" download="fix-your-english-speaking.webm" data-download-audio>Download Audio</a>
       </div>
 
       <p class="activity-feedback" data-speaking-share-feedback aria-live="polite">
-        Record your answer first, then download it if you want to save it.
+        Record your answer first, then share it or download it.
       </p>
     </section>
   </main>

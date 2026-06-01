@@ -1334,6 +1334,7 @@ if (speakingPractice) {
   const startRecordingButton = speakingPractice.querySelector("[data-start-recording]");
   const stopRecordingButton = speakingPractice.querySelector("[data-stop-recording]");
   const deleteRecordingButton = speakingPractice.querySelector("[data-delete-recording]");
+  const shareAudioButton = speakingPractice.querySelector("[data-share-audio]");
   const downloadAudioLink = speakingPractice.querySelector("[data-download-audio]");
   const statusText = speakingPractice.querySelector("[data-speaking-status]");
   const timerText = speakingPractice.querySelector("[data-speaking-timer]");
@@ -1525,7 +1526,7 @@ if (speakingPractice) {
           setTimerDisplay(Date.now() - recordingStartTime);
 
           if (statusText) {
-            statusText.innerHTML = "<strong>Recording complete.</strong> Listen to your answer or download it.";
+            statusText.innerHTML = "<strong>Recording complete.</strong> Listen to your answer or share it.";
           }
         });
 
@@ -1537,7 +1538,7 @@ if (speakingPractice) {
         }
 
         if (speakingShareFeedback) {
-          speakingShareFeedback.textContent = "Record your answer first, then download it if you want to save it.";
+          speakingShareFeedback.textContent = "Record your answer first, then share it or download it.";
         }
       } catch (error) {
         stopMediaTracks();
@@ -1571,7 +1572,69 @@ if (speakingPractice) {
       }
 
       if (speakingShareFeedback) {
-        speakingShareFeedback.textContent = "Record your answer first, then download it if you want to save it.";
+        speakingShareFeedback.textContent = "Record your answer first, then share it or download it.";
+      }
+    });
+  }
+
+  if (shareAudioButton) {
+    shareAudioButton.addEventListener("click", async () => {
+      if (!audioBlob) {
+        if (speakingShareFeedback) {
+          speakingShareFeedback.innerHTML = "<strong>Record your answer first</strong>, then try sharing it.";
+        }
+        return;
+      }
+
+      const extension = audioBlob.type.includes("mp4") ? "m4a" : audioBlob.type.includes("ogg") ? "ogg" : "webm";
+      const file = new File([audioBlob], `fix-your-english-speaking.${extension}`, { type: audioBlob.type || "audio/webm" });
+
+      try {
+        if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+          await navigator.share({
+            title: "Improve Your English - Speaking Practice",
+            text: `${levelTitles[activeLevel]} speaking prompt: ${currentPrompt}`,
+            files: [file]
+          });
+
+          if (speakingShareFeedback) {
+            speakingShareFeedback.innerHTML = "<strong>Audio shared successfully.</strong>";
+          }
+        } else if (navigator.share) {
+          await navigator.share({
+            title: "Improve Your English - Speaking Practice",
+            text: [
+              `Level: ${levelTitles[activeLevel]}`,
+              "Prompt:",
+              currentPrompt,
+              "",
+              "Audio recorded. Use the Download Audio button if your device cannot share the audio file directly."
+            ].join("\n")
+          });
+
+          if (speakingShareFeedback) {
+            speakingShareFeedback.innerHTML = "<strong>Prompt shared successfully.</strong> If needed, use Download Audio to save the recording file.";
+          }
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText([
+            "Improve Your English - Speaking Practice",
+            `Level: ${levelTitles[activeLevel]}`,
+            "Prompt:",
+            currentPrompt,
+            "",
+            "Audio recorded. Use the download button if file sharing is not supported on this device."
+          ].join("\n"));
+
+          if (speakingShareFeedback) {
+            speakingShareFeedback.innerHTML = "<strong>Prompt copied to the clipboard.</strong> Use the download button to save the audio file.";
+          }
+        } else if (speakingShareFeedback) {
+          speakingShareFeedback.innerHTML = "<strong>Direct audio sharing is not available here.</strong> Use the download button instead.";
+        }
+      } catch (error) {
+        if (speakingShareFeedback) {
+          speakingShareFeedback.innerHTML = "<strong>Sharing was canceled or unavailable.</strong> Use the download button if needed.";
+        }
       }
     });
   }
