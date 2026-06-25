@@ -3030,7 +3030,7 @@ if (toForGame) {
         "Mr. Costa started going ",
         " the park early in the morning ",
         " walk before work. He says it is good ",
-        " his energy and helps him prepare ",
+        " improving his energy levels and helps him prepare ",
         " long meetings at the office. On weekends, he takes his daughter there ",
         " ride her bike and ",
         " enjoy some fresh air together."
@@ -3251,39 +3251,39 @@ if (toForGame) {
       parts: [
         "According to a local report, residents gathered in the main square ",
         " watch the mayor open a new cultural center. Several artists were invited ",
-        " perform during the ceremony, and food trucks stayed nearby ",
-        " the crowd. One journalist remained on site ",
-        " interview visitors and ",
+        " perform during the ceremony, and volunteers stayed nearby ",
+        " guiding the crowd. One journalist remained on site ",
+        " collecting reactions and ",
         " find out whether the project had lived up ",
         " expectations."
       ],
-      answers: ["to", "to", "for", "to", "to", "to"]
+      answers: ["to", "to", "for", "for", "to", "to"]
     },
     {
       topic: "Science news article",
       parts: [
         "A recent science article explained that researchers are developing tiny robots ",
         " deliver medicine more precisely inside the body. The team built special models ",
-        " test the machines under controlled conditions and used computer simulations ",
-        " predict possible problems. One expert said the technology still has a long way ",
+        " testing the machines under controlled conditions and used computer simulations ",
+        " predicting possible problems. One expert said the technology still has a long way ",
         " go, but the early results are promising enough ",
         " justify more funding and ",
         " spark wider public interest."
       ],
-      answers: ["to", "to", "to", "to", "to", "to"]
+      answers: ["to", "for", "for", "to", "to", "to"]
     },
     {
       topic: "Fun facts about animals",
       parts: [
         "Many people are surprised ",
-        " learn that octopuses have three hearts. Two of them work mainly ",
-        " move blood to the gills, while the third helps ",
+        " learn that octopuses have three hearts. Two of them are used mainly ",
+        " moving blood to the gills, while the third helps ",
         " send blood through the rest of the body. Scientists continue ",
         " study these animals closely ",
-        " understand their behavior better and ",
+        " understanding their behavior better and ",
         " explain how they solve complex problems."
       ],
-      answers: ["to", "to", "to", "to", "for", "to"]
+      answers: ["to", "for", "to", "to", "for", "to"]
     },
     {
       topic: "Fun facts about space",
@@ -3294,9 +3294,9 @@ if (toForGame) {
         " make space science more engaging. Some teachers even ask learners ",
         " come up with their own examples ",
         " class discussions and ",
-        " connect the information to everyday ideas."
+        " connecting the information to everyday ideas."
       ],
-      answers: ["to", "to", "to", "to", "for", "to"]
+      answers: ["to", "to", "to", "to", "for", "for"]
     }
   ];
 
