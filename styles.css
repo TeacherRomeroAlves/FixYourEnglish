@@ -1079,6 +1079,122 @@ a {
   gap: 18px;
 }
 
+.puzzle-shell {
+  display: grid;
+  gap: 18px;
+}
+
+.puzzle-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.puzzle-overview {
+  display: grid;
+  gap: 14px;
+}
+
+.puzzle-progress-note {
+  margin: 0;
+}
+
+.puzzle-stat-card,
+.puzzle-bank-card,
+.puzzle-board-card,
+.puzzle-finish-card {
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(55, 34, 76, 0.08);
+}
+
+.puzzle-stat-label {
+  display: block;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-soft);
+}
+
+.puzzle-stat-value {
+  font-size: 1.6rem;
+  color: var(--purple);
+}
+
+.puzzle-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.puzzle-bank-card h3,
+.puzzle-board-card h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.puzzle-word-bank,
+.puzzle-sentence-slots {
+  min-height: 76px;
+}
+
+.puzzle-shell.is-waiting .puzzle-stage,
+.puzzle-shell.is-waiting .puzzle-play-actions {
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+.puzzle-shell.is-waiting .puzzle-board-card,
+.puzzle-shell.is-waiting .puzzle-bank-card {
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.puzzle-sentence-slots {
+  align-items: stretch;
+}
+
+.puzzle-finish-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(239, 231, 255, 0.78));
+}
+
+.to-for-token-bank {
+  min-height: 88px;
+}
+
+.to-for-paragraph-card {
+  line-height: 2.1;
+}
+
+.to-for-inline-slot {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  min-height: 52px;
+  margin: 0 6px;
+  padding: 4px;
+  border: 2px dashed rgba(109, 59, 189, 0.34);
+  border-radius: 16px;
+  background: rgba(239, 231, 255, 0.42);
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.to-for-inline-slot.is-active {
+  background: rgba(29, 143, 139, 0.14);
+  border-color: rgba(29, 143, 139, 0.48);
+  transform: translateY(-1px);
+}
+
+.to-for-inline-slot.has-token {
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.92);
+}
+
 .reading-top-actions {
   display: flex;
   justify-content: flex-start;
@@ -1297,7 +1413,8 @@ a {
   }
 
   .level-grid,
-  .irregular-grid {
+  .irregular-grid,
+  .puzzle-stats {
     grid-template-columns: 1fr;
   }
 
@@ -1319,6 +1436,10 @@ a {
   }
 
   .emoji-activity {
+    grid-template-columns: 1fr;
+  }
+
+  .puzzle-stage {
     grid-template-columns: 1fr;
   }
 

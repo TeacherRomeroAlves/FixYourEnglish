@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 in 3 | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html">Back to Menu</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Puzzle Challenge</p>
+      <h1>7 IN 3</h1>
+      <p class="hero-copy">
+        Click or drag the words into the correct order. Solve 7 sentences before the 3-minute countdown
+        ends, and remember: the next sentence only appears after a correct answer.
+      </p>
+      <div class="routine-row" aria-label="Puzzle icons">
+        <span class="routine-chip">Fast thinking</span>
+        <span class="routine-chip">Word order</span>
+        <span class="routine-chip">7 rounds</span>
+        <span class="routine-chip">3-minute timer</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card puzzle-shell" data-unscramble-game>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Game On</p>
+          <h2>Put the sentence in the right order</h2>
+        </div>
+      </div>
+
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Click <strong>Start Game</strong> to begin the 3-minute challenge.</li>
+          <li>Click a word to send it to the next space, or drag it if you prefer.</li>
+          <li>Click <strong>Check Answer</strong> to see if the order is correct.</li>
+          <li>You can only move to the next sentence after a correct answer.</li>
+          <li>Try to finish all 7 sentences before the timer reaches zero.</li>
+        </ol>
+      </div>
+
+      <div class="reading-top-actions">
+        <button class="activity-button reading-primary-button" type="button" data-unscramble-start>Start Game</button>
+      </div>
+
+      <div class="puzzle-overview">
+        <p class="panel-note puzzle-progress-note" data-unscramble-progress>Sentence 1 of 7</p>
+        <div class="puzzle-stats">
+          <div class="puzzle-stat-card">
+            <span class="puzzle-stat-label">Timer</span>
+            <strong class="puzzle-stat-value" data-unscramble-timer>03:00</strong>
+          </div>
+          <div class="puzzle-stat-card">
+            <span class="puzzle-stat-label">Level</span>
+            <strong class="puzzle-stat-value" data-unscramble-level>Ready</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="puzzle-stage">
+        <div class="puzzle-bank-card">
+          <h3>Word Bank</h3>
+          <div class="reorder-bank puzzle-word-bank" data-unscramble-bank></div>
+        </div>
+
+        <div class="puzzle-board-card">
+          <h3>Your Sentence</h3>
+          <div class="sentence-slots puzzle-sentence-slots" data-unscramble-slots></div>
+        </div>
+      </div>
+
+      <div class="activity-actions puzzle-play-actions">
+        <button class="activity-button secondary-button" type="button" data-unscramble-reset>Reset Sentence</button>
+        <button class="activity-button" type="button" data-unscramble-check>Check Answer</button>
+      </div>
+
+      <p class="activity-feedback" data-unscramble-feedback aria-live="polite">
+        Click Start Game when you are ready.
+      </p>
+
+      <div class="puzzle-finish-card" data-unscramble-finish hidden>
+        <p class="prompt-label">Challenge complete</p>
+        <p class="prompt-text" data-unscramble-finish-text>
+          You finished the challenge.
+        </p>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-unscramble-share>Share Result</button>
+          <button class="activity-button" type="button" data-unscramble-restart>Play Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

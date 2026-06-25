@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4 To's and 2 For's | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html">Back to Menu</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Puzzle Challenge</p>
+      <h1>4 TO'S AND 2 FOR'S</h1>
+      <p class="hero-copy">
+        Practice the difference between <strong>to</strong> and <strong>for</strong> with short paragraphs.
+        In each round, use exactly 4 <strong>TO</strong> blocks and 2 <strong>FOR</strong> blocks.
+      </p>
+      <div class="routine-row" aria-label="Grammar icons">
+        <span class="routine-chip">Pre-intermediate</span>
+        <span class="routine-chip">Intermediate</span>
+        <span class="routine-chip">6 gaps</span>
+        <span class="routine-chip">3 checks only</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card puzzle-shell" data-to-for-game>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Grammar Game</p>
+          <h2>Choose TO or FOR in context</h2>
+        </div>
+        <p class="panel-note" data-to-for-topic>Topic: Everyday life</p>
+      </div>
+
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Read the paragraph and complete all 6 gaps.</li>
+          <li>Click or drag the blocks into the spaces.</li>
+          <li>Use exactly 4 <strong>TO</strong> blocks and 2 <strong>FOR</strong> blocks.</li>
+          <li>You can click <strong>Check</strong> only 3 times for each paragraph.</li>
+        </ol>
+      </div>
+
+      <div class="puzzle-overview">
+        <div class="puzzle-stats">
+          <div class="puzzle-stat-card">
+            <span class="puzzle-stat-label">Checks Left</span>
+            <strong class="puzzle-stat-value" data-to-for-checks>3</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="puzzle-bank-card">
+        <h3>Word Blocks</h3>
+        <div class="reorder-bank puzzle-word-bank to-for-token-bank" data-to-for-bank></div>
+      </div>
+
+      <div class="paragraph-card to-for-paragraph-card">
+        <p class="prompt-label">Paragraph</p>
+        <p class="paragraph-text" data-to-for-paragraph></p>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-to-for-reset>Reset Answers</button>
+        <button class="activity-button" type="button" data-to-for-check>Check</button>
+        <button class="activity-button reading-primary-button" type="button" data-to-for-next>New Paragraph</button>
+      </div>
+
+      <p class="activity-feedback" data-to-for-feedback aria-live="polite">
+        Complete all 6 gaps before checking your answers.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

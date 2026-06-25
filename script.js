@@ -2445,3 +2445,1108 @@ if (irregularActivity) {
     });
   }
 }
+
+const unscrambleGame = document.querySelector("[data-unscramble-game]");
+
+if (unscrambleGame) {
+  const sentencePool = [
+    { level: "Starter", words: ["My", "friends", "walk", "to", "school", "every", "morning"], punctuation: "." },
+    { level: "Starter", words: ["The", "baby", "is", "sleeping", "in", "the", "bedroom"], punctuation: "." },
+    { level: "Starter", words: ["My", "mother", "reads", "the", "news", "after", "breakfast"], punctuation: "." },
+    { level: "Starter", words: ["The", "boys", "are", "playing", "in", "the", "garden"], punctuation: "." },
+    { level: "Easy", words: ["Our", "teacher", "gives", "us", "homework", "on", "Fridays"], punctuation: "." },
+    { level: "Easy", words: ["The", "cat", "does", "not", "drink", "cold", "milk"], punctuation: "." },
+    { level: "Easy", words: ["Are", "your", "cousins", "waiting", "outside", "the", "cinema"], punctuation: "?" },
+    { level: "Easy", words: ["My", "grandparents", "visit", "us", "every", "summer"], punctuation: "." },
+    { level: "Easy", words: ["Is", "your", "sister", "cleaning", "her", "room", "now"], punctuation: "?" },
+    { level: "Medium", words: ["Why", "does", "Marina", "study", "English", "after", "dinner"], punctuation: "?" },
+    { level: "Medium", words: ["My", "uncle", "fixed", "the", "kitchen", "door", "last", "night"], punctuation: "." },
+    { level: "Medium", words: ["The", "children", "do", "not", "watch", "television", "before", "homework"], punctuation: "." },
+    { level: "Medium", words: ["Where", "did", "your", "neighbors", "park", "their", "car", "yesterday"], punctuation: "?" },
+    { level: "Challenging", words: ["The", "students", "are", "preparing", "a", "science", "project", "this", "week"], punctuation: "." },
+    { level: "Challenging", words: ["Did", "your", "brother", "bring", "his", "lunch", "to", "work", "today"], punctuation: "?" },
+    { level: "Challenging", words: ["My", "best", "friend", "has", "already", "finished", "the", "book", "report"], punctuation: "." },
+    { level: "Challenging", words: ["When", "are", "the", "players", "arriving", "at", "the", "sports", "center"], punctuation: "?" },
+    { level: "Advanced", words: ["My", "neighbors", "are", "going", "to", "paint", "their", "house", "next", "month"], punctuation: "." },
+    { level: "Advanced", words: ["The", "tourists", "took", "many", "photos", "near", "the", "old", "bridge"], punctuation: "." },
+    { level: "Advanced", words: ["The", "new", "manager", "will", "introduce", "the", "full", "schedule", "tomorrow"], punctuation: "." },
+    { level: "Advanced", words: ["Why", "are", "the", "workers", "carrying", "those", "heavy", "boxes", "upstairs"], punctuation: "?" },
+    { level: "Expert", words: ["Will", "the", "new", "students", "join", "the", "music", "club", "next", "semester"], punctuation: "?" },
+    { level: "Expert", words: ["My", "sister", "usually", "buys", "fresh", "fruit", "at", "the", "street", "market"], punctuation: "." },
+    { level: "Expert", words: ["The", "children", "were", "playing", "quietly", "in", "the", "backyard", "all", "afternoon"], punctuation: "." },
+    { level: "Expert", words: ["How", "will", "the", "researchers", "present", "their", "final", "results", "next", "week"], punctuation: "?" },
+    { level: "Expert", words: ["The", "visitors", "had", "already", "left", "the", "museum", "before", "the", "storm", "started"], punctuation: "." }
+  ];
+  const totalRounds = 7;
+  const countdownSeconds = 180;
+  const levelOrder = ["Starter", "Easy", "Medium", "Challenging", "Advanced", "Expert"];
+
+  const progressText = unscrambleGame.querySelector("[data-unscramble-progress]");
+  const timerText = unscrambleGame.querySelector("[data-unscramble-timer]");
+  const levelText = unscrambleGame.querySelector("[data-unscramble-level]");
+  const bank = unscrambleGame.querySelector("[data-unscramble-bank]");
+  const slots = unscrambleGame.querySelector("[data-unscramble-slots]");
+  const feedback = unscrambleGame.querySelector("[data-unscramble-feedback]");
+  const resetButton = unscrambleGame.querySelector("[data-unscramble-reset]");
+  const checkButton = unscrambleGame.querySelector("[data-unscramble-check]");
+  const startButton = unscrambleGame.querySelector("[data-unscramble-start]");
+  const finishCard = unscrambleGame.querySelector("[data-unscramble-finish]");
+  const finishText = unscrambleGame.querySelector("[data-unscramble-finish-text]");
+  const shareButton = unscrambleGame.querySelector("[data-unscramble-share]");
+  const restartButton = unscrambleGame.querySelector("[data-unscramble-restart]");
+  const dragState = { token: null };
+  let currentIndex = 0;
+  let timerId = null;
+  let remainingSeconds = countdownSeconds;
+  let isGameActive = false;
+  let currentSentenceSet = [];
+  let roundsCompleted = 0;
+  let lastGameSummary = "";
+
+  const formatPuzzleTime = (totalSeconds) => {
+    const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+    const seconds = String(totalSeconds % 60).padStart(2, "0");
+    return `${minutes}:${seconds}`;
+  };
+
+  const setPuzzleTime = (totalSeconds) => {
+    if (timerText) {
+      timerText.textContent = formatPuzzleTime(totalSeconds);
+    }
+  };
+
+  const updateWaitingState = (waiting) => {
+    unscrambleGame.classList.toggle("is-waiting", waiting);
+  };
+
+  const updateProgress = () => {
+    if (progressText) {
+      progressText.textContent = `Sentence ${Math.min(currentIndex + 1, totalRounds)} of ${totalRounds}`;
+    }
+  };
+
+  const stopPuzzleTimer = () => {
+    if (timerId) {
+      window.clearInterval(timerId);
+      timerId = null;
+    }
+  };
+
+  const startPuzzleTimer = () => {
+    stopPuzzleTimer();
+    setPuzzleTime(remainingSeconds);
+    timerId = window.setInterval(() => {
+      remainingSeconds -= 1;
+      setPuzzleTime(remainingSeconds);
+
+      if (remainingSeconds <= 0) {
+        remainingSeconds = 0;
+        setPuzzleTime(remainingSeconds);
+        finishPuzzleGame(false);
+      }
+    }, 1000);
+  };
+
+  const shuffleArray = (items) => {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+
+    return shuffled;
+  };
+
+  const shuffleWords = (words) => {
+    if (words.length <= 1) {
+      return [...words];
+    }
+
+    let shuffled = [...words];
+    let attempts = 0;
+
+    do {
+      shuffled = shuffleArray(words);
+      attempts += 1;
+    } while (shuffled.join(" ") === words.join(" ") && attempts < 12);
+
+    return shuffled;
+  };
+
+  const buildSentenceSet = () => {
+    const groupedSentences = levelOrder.map((level) => {
+      return shuffleArray(sentencePool.filter((sentence) => sentence.level === level));
+    }).filter((group) => group.length > 0);
+
+    const nextSet = [];
+    let groupIndex = 0;
+
+    while (nextSet.length < totalRounds && groupedSentences.some((group) => group.length > 0)) {
+      const group = groupedSentences[groupIndex % groupedSentences.length];
+      if (group.length > 0) {
+        nextSet.push(group.shift());
+      }
+      groupIndex += 1;
+    }
+
+    currentSentenceSet = nextSet
+      .slice(0, totalRounds)
+      .sort((first, second) => levelOrder.indexOf(first.level) - levelOrder.indexOf(second.level));
+  };
+
+  const copyTextFallback = (text) => {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.top = "-9999px";
+    helper.style.left = "-9999px";
+    document.body.appendChild(helper);
+    helper.focus();
+    helper.select();
+    helper.setSelectionRange(0, helper.value.length);
+
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch (error) {
+      copied = false;
+    }
+
+    document.body.removeChild(helper);
+    return copied;
+  };
+
+  const clearPuzzleAreas = () => {
+    bank.innerHTML = "";
+    slots.innerHTML = "";
+  };
+
+  const updatePuzzleSlotStyles = () => {
+    Array.from(slots.querySelectorAll(".word-slot")).forEach((slot) => {
+      slot.classList.toggle("has-token", Boolean(slot.querySelector(".word-token")));
+    });
+  };
+
+  const clearPuzzleHover = (element) => {
+    if (element.classList.contains("word-slot")) {
+      element.classList.remove("is-active");
+    }
+  };
+
+  const getPuzzleSlots = () => Array.from(slots.querySelectorAll(".word-slot"));
+
+  const getNextEmptySlot = () => {
+    return getPuzzleSlots().find((slot) => !slot.querySelector(".word-token")) || null;
+  };
+
+  const moveTokenToNextSlot = (token) => {
+    const nextSlot = getNextEmptySlot();
+    if (!nextSlot) {
+      return false;
+    }
+
+    placePuzzleToken(nextSlot, token);
+    return true;
+  };
+
+  const createPuzzleToken = (word) => {
+    const token = document.createElement("button");
+    token.className = "word-token";
+    token.type = "button";
+    token.draggable = true;
+    token.dataset.word = word;
+    token.textContent = word;
+
+    token.addEventListener("dragstart", () => {
+      dragState.token = token;
+      token.classList.add("is-dragging");
+    });
+
+    token.addEventListener("dragend", () => {
+      token.classList.remove("is-dragging");
+      dragState.token = null;
+      getPuzzleSlots().forEach(clearPuzzleHover);
+    });
+
+    token.addEventListener("click", () => {
+      if (!isGameActive) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Click Start Game first</strong> to begin the challenge.";
+        }
+        return;
+      }
+
+      const parentSlot = token.closest(".word-slot");
+
+      if (parentSlot) {
+        bank.appendChild(token);
+        updatePuzzleSlotStyles();
+        return;
+      }
+
+      if (!moveTokenToNextSlot(token) && feedback) {
+        feedback.innerHTML = "<strong>Your sentence is full.</strong> Click a word in the sentence to send it back.";
+      }
+    });
+
+    return token;
+  };
+
+  const placePuzzleToken = (target, token) => {
+    if (!target || !token) {
+      return;
+    }
+
+    if (target.classList.contains("word-slot")) {
+      const existingToken = target.querySelector(".word-token");
+      if (existingToken && existingToken !== token) {
+        bank.appendChild(existingToken);
+      }
+      target.appendChild(token);
+    } else {
+      bank.appendChild(token);
+    }
+
+    token.classList.remove("is-dragging");
+    updatePuzzleSlotStyles();
+  };
+
+  const bindPuzzleDropTarget = (target) => {
+    if (target.dataset.dropBound === "true") {
+      return;
+    }
+
+    target.dataset.dropBound = "true";
+
+    target.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      if (target.classList.contains("word-slot")) {
+        target.classList.add("is-active");
+      }
+    });
+
+    target.addEventListener("dragleave", () => {
+      clearPuzzleHover(target);
+    });
+
+    target.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const token = dragState.token;
+      if (!token) {
+        return;
+      }
+
+      placePuzzleToken(target, token);
+      getPuzzleSlots().forEach(clearPuzzleHover);
+    });
+  };
+
+  const renderPuzzleSentence = () => {
+    const sentence = currentSentenceSet[currentIndex];
+    const scrambledWords = shuffleWords(sentence.words);
+
+    clearPuzzleAreas();
+    updateProgress();
+
+    if (levelText) {
+      levelText.textContent = sentence.level;
+    }
+
+    scrambledWords.forEach((word) => {
+      bank.appendChild(createPuzzleToken(word));
+    });
+
+    sentence.words.forEach((_, index) => {
+      const slot = document.createElement("span");
+      slot.className = "word-slot";
+      slot.dataset.wordSlot = String(index + 1);
+      slots.appendChild(slot);
+      bindPuzzleDropTarget(slot);
+    });
+
+    if (sentence.punctuation) {
+      const punctuation = document.createElement("span");
+      punctuation.className = "sentence-punctuation";
+      punctuation.textContent = sentence.punctuation;
+      slots.appendChild(punctuation);
+    }
+
+    bindPuzzleDropTarget(bank);
+    updatePuzzleSlotStyles();
+
+    if (feedback) {
+      feedback.textContent = "Click or drag the words into the correct order and then check your answer.";
+    }
+  };
+
+  const getBuiltSentence = () => {
+    return Array.from(slots.querySelectorAll(".word-slot"))
+      .map((slot) => {
+        const token = slot.querySelector(".word-token");
+        return token ? token.dataset.word : "";
+      })
+      .join(" ")
+      .trim();
+  };
+
+  const allPuzzleSlotsFilled = () => {
+    return Array.from(slots.querySelectorAll(".word-slot")).every((slot) => slot.querySelector(".word-token"));
+  };
+
+  const finishPuzzleGame = (completed) => {
+    isGameActive = false;
+    stopPuzzleTimer();
+    updateWaitingState(true);
+
+    if (finishCard) {
+      finishCard.hidden = false;
+    }
+
+    roundsCompleted = currentIndex;
+    lastGameSummary = completed
+      ? [
+        "🎉 **7 IN 3 - CHALLENGE COMPLETED!** 🎉",
+        "",
+        `✅ **Result:** ${totalRounds}/${totalRounds} sentences correct`,
+        `⏰ **Time left:** ${timerText ? timerText.textContent : "00:00"}`,
+        "🚀 I finished the 7 in 3 challenge on Improve Your English!"
+      ].join("\n")
+      : [
+        "🔥 **7 IN 3 - TIME CHALLENGE!** 🔥",
+        "",
+        `✅ **Result:** ${roundsCompleted}/${totalRounds} sentences correct`,
+        `⏰ **Final timer:** ${timerText ? timerText.textContent : "00:00"}`,
+        "💪 I played the 7 in 3 challenge on Improve Your English!"
+      ].join("\n");
+
+    if (finishText) {
+      finishText.textContent = completed
+        ? `You finished all ${totalRounds} sentences with ${timerText ? timerText.textContent : "00:00"} left. Great job!`
+        : `Time is up. You finished ${roundsCompleted} out of ${totalRounds} sentences.`;
+    }
+
+    if (feedback) {
+      feedback.innerHTML = completed
+        ? "<strong>Excellent work.</strong> You completed the whole challenge."
+        : "<strong>Time is up.</strong> Share your result and try a new round.";
+    }
+
+    if (levelText && !completed) {
+      levelText.textContent = "Time up";
+    }
+  };
+
+  const prepareStartState = () => {
+    currentIndex = 0;
+    remainingSeconds = countdownSeconds;
+    roundsCompleted = 0;
+    lastGameSummary = "";
+    isGameActive = false;
+    stopPuzzleTimer();
+    setPuzzleTime(remainingSeconds);
+    clearPuzzleAreas();
+    updateProgress();
+
+    if (levelText) {
+      levelText.textContent = "Ready";
+    }
+
+    if (feedback) {
+      feedback.textContent = "Click Start Game when you are ready.";
+    }
+
+    if (finishCard) {
+      finishCard.hidden = true;
+    }
+
+    updateWaitingState(true);
+  };
+
+  const startPuzzleGame = () => {
+    buildSentenceSet();
+    currentIndex = 0;
+    remainingSeconds = countdownSeconds;
+    roundsCompleted = 0;
+    isGameActive = true;
+
+    if (finishCard) {
+      finishCard.hidden = true;
+    }
+
+    updateWaitingState(false);
+    startPuzzleTimer();
+    renderPuzzleSentence();
+  };
+
+  const restartPuzzleGame = () => {
+    prepareStartState();
+  };
+
+  if (checkButton) {
+    checkButton.addEventListener("click", () => {
+      if (!isGameActive) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Click Start Game first</strong> to begin the challenge.";
+        }
+        return;
+      }
+
+      if (!allPuzzleSlotsFilled()) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Complete the full sentence first</strong>, then check your answer.";
+        }
+        return;
+      }
+
+      const expectedSentence = currentSentenceSet[currentIndex].words.join(" ");
+      const builtSentence = getBuiltSentence();
+
+      if (builtSentence !== expectedSentence) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>That order is not correct yet.</strong> Keep trying before moving on.";
+        }
+        return;
+      }
+
+      if (feedback) {
+        feedback.innerHTML = "<strong>Correct.</strong> Get ready for the next sentence.";
+      }
+
+      currentIndex += 1;
+
+      if (currentIndex >= currentSentenceSet.length) {
+        finishPuzzleGame(true);
+        return;
+      }
+
+      window.setTimeout(() => {
+        if (isGameActive) {
+          renderPuzzleSentence();
+        }
+      }, 450);
+    });
+  }
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      if (!isGameActive) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Start the game first</strong> and then you can reset the sentence.";
+        }
+        return;
+      }
+      renderPuzzleSentence();
+    });
+  }
+
+  if (startButton) {
+    startButton.addEventListener("click", startPuzzleGame);
+  }
+
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
+      const shareText = lastGameSummary || "I just played 7 in 3 on Improve Your English.";
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "7 in 3",
+            text: shareText
+          });
+          return;
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return;
+          }
+        }
+      }
+
+      try {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(shareText);
+        } else if (!copyTextFallback(shareText)) {
+          throw new Error("copy-failed");
+        }
+        if (feedback) {
+          feedback.innerHTML = "<strong>Result copied.</strong> You can now paste it into WhatsApp, email, or anywhere else.";
+        }
+      } catch (error) {
+        try {
+          window.location.href = `mailto:?subject=${encodeURIComponent("7 in 3 Result")}&body=${encodeURIComponent(shareText)}`;
+          if (feedback) {
+            feedback.innerHTML = "<strong>Your email app is opening.</strong> You can share your result from there.";
+          }
+        } catch (mailError) {
+          if (feedback) {
+            feedback.innerHTML = "<strong>Sharing is not available here.</strong> Try again on another browser or device.";
+          }
+        }
+      }
+    });
+  }
+
+  if (restartButton) {
+    restartButton.addEventListener("click", restartPuzzleGame);
+  }
+
+  prepareStartState();
+}
+
+const toForGame = document.querySelector("[data-to-for-game]");
+
+if (toForGame) {
+  const paragraphBank = [
+    {
+      topic: "Study routine",
+      parts: [
+        "Julia goes ",
+        " the library every Tuesday ",
+        " study with two classmates. She usually stays there ",
+        " three hours and uses her laptop ",
+        " take notes. Her friend Mateo brings snacks ",
+        " everyone, and Julia sometimes asks the librarian ",
+        " help with research books."
+      ],
+      answers: ["to", "to", "for", "to", "for", "to"]
+    },
+    {
+      topic: "Birthday plans",
+      parts: [
+        "Lena is planning a small party ",
+        " her brother this weekend. She wants ",
+        " decorate the living room with balloons and lights. Their parents are going ",
+        " buy a chocolate cake, and Lena is saving money ",
+        " order pizza ",
+        " the guests. She also needs ",
+        " send the invitations tonight."
+      ],
+      answers: ["for", "to", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Health and exercise",
+      parts: [
+        "Mr. Costa started going ",
+        " the park early in the morning ",
+        " walk before work. He says it is good ",
+        " his energy and helps him prepare ",
+        " long meetings at the office. On weekends, he takes his daughter there ",
+        " ride her bike and ",
+        " enjoy some fresh air together."
+      ],
+      answers: ["to", "to", "for", "for", "to", "to"]
+    },
+    {
+      topic: "Travel day",
+      parts: [
+        "My cousins arrived at the station early ",
+        " catch the first train ",
+        " the coast. They packed light bags ",
+        " the trip and brought cards ",
+        " play on the way. Their aunt came with them ",
+        " a few minutes and stopped ",
+        " say goodbye."
+      ],
+      answers: ["to", "to", "for", "to", "for", "to"]
+    },
+    {
+      topic: "Community project",
+      parts: [
+        "Some neighbors met after dinner ",
+        " talk about a community garden. They want ",
+        " use the empty lot behind the school ",
+        " vegetables and flowers. One family offered tools ",
+        " the project, and another volunteer agreed ",
+        " teach the children how ",
+        " plant seeds correctly."
+      ],
+      answers: ["to", "to", "for", "for", "to", "to"]
+    },
+    {
+      topic: "Job interview",
+      parts: [
+        "Nina bought a new folder ",
+        " organize her documents before the interview. She arrived early ",
+        " avoid heavy traffic and used the extra time ",
+        " a final review of her notes. The manager thanked her ",
+        " being well prepared and asked her ",
+        " describe a time she had ",
+        " think on her feet during a difficult project."
+      ],
+      answers: ["to", "to", "for", "for", "to", "to"]
+    },
+    {
+      topic: "Cooking class",
+      parts: [
+        "Marco signed up ",
+        " take a weekend cooking class because he wants ",
+        " learn a few tricks of the trade. He goes there every Saturday ",
+        " practice new recipes and stays after class ",
+        " extra advice. Last week, he made pasta ",
+        " surprise his cousins and invited them over ",
+        " dinner."
+      ],
+      answers: ["to", "to", "to", "for", "to", "for"]
+    },
+    {
+      topic: "City festival",
+      parts: [
+        "The town square was decorated ",
+        " welcome visitors during the spring festival. Local musicians came ",
+        " perform on the main stage, and several families brought blankets ",
+        " sit on the grass. My aunt volunteered ",
+        " sell handmade bracelets, while my uncle stopped by ",
+        " the parade and ",
+        " catch up with old friends."
+      ],
+      answers: ["to", "to", "to", "to", "for", "for"]
+    },
+    {
+      topic: "Weekend errands",
+      parts: [
+        "On Saturday morning, Paula went downtown ",
+        " return a jacket and ",
+        " pick up a birthday card. She also needed a small gift ",
+        " her neighbor, so she popped into a bookshop ",
+        " look around. In the end, she chose a notebook ",
+        " writing ideas and stayed a few extra minutes ",
+        " drink coffee before going home."
+      ],
+      answers: ["to", "to", "for", "to", "for", "to"]
+    },
+    {
+      topic: "Family visit",
+      parts: [
+        "Daniel took a bus across town ",
+        " visit his grandmother after class. He brought a scarf ",
+        " her because the evenings had turned chilly. They sat by the window ",
+        " talk for a while, and Daniel offered ",
+        " fix her old radio. Before leaving, he wrote down a few instructions ",
+        " her and promised ",
+        " come back the following week."
+      ],
+      answers: ["to", "for", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Research seminar",
+      parts: [
+        "The graduate students gathered in the lab early ",
+        " prepare ",
+        " the research seminar. Their supervisor reminded them ",
+        " keep their explanations clear ",
+        " the audience and avoid going off on a tangent. One team brought extra charts ",
+        " support its argument, while another stayed late ",
+        " rehearse the final section and ",
+        " polish a few awkward transitions."
+      ],
+      answers: ["to", "for", "to", "for", "to", "to"]
+    },
+    {
+      topic: "Essay workshop",
+      parts: [
+        "Professor Lima scheduled an extra workshop ",
+        " help students improve their essays. She encouraged everyone ",
+        " cut to the chase in the introduction and ",
+        " use stronger evidence in each paragraph. Several students stayed behind ",
+        " individual feedback, and one classmate offered snacks ",
+        " the group ",
+        " keep the energy up during the session."
+      ],
+      answers: ["to", "to", "to", "for", "for", "to"]
+    },
+    {
+      topic: "Science fair",
+      parts: [
+        "Our class met after school ",
+        " finish the science fair display. We still had graphs ",
+        " print, labels ",
+        " the posters, and a short speech ",
+        " practice. Maya volunteered ",
+        " speak first, and we saved a few quiet minutes ",
+        " a final review before the judges arrived."
+      ],
+      answers: ["to", "to", "for", "to", "to", "for"]
+    },
+    {
+      topic: "History presentation",
+      parts: [
+        "Rafael went to the archive room ",
+        " look for primary sources ",
+        " his history presentation. He needed reliable material ",
+        " back up his main points and enough detail ",
+        " the conclusion. His teacher advised him ",
+        " read between the lines and ",
+        " compare different accounts of the same event."
+      ],
+      answers: ["to", "for", "to", "for", "to", "to"]
+    },
+    {
+      topic: "Debate club",
+      parts: [
+        "The debate club met twice this week ",
+        " get ready for the regional round. The coach asked the speakers ",
+        " tighten their arguments and save a few notes ",
+        " the rebuttal. He also reminded them not ",
+        " beat around the bush when answering questions. Two students stayed after practice ",
+        " work on rebuttals, and the librarian offered a quiet room ",
+        " concentrate."
+      ],
+      answers: ["to", "to", "for", "to", "to", "for"]
+    },
+    {
+      topic: "Literature class",
+      parts: [
+        "In literature class, we were asked ",
+        " analyze the narrator's tone rather than simply summarize the plot. Our teacher gave us a checklist ",
+        " guide the discussion and reminded us ",
+        " pay attention to figurative language. One student stayed after class ",
+        " ask whether the final paragraph was meant ",
+        " create suspense or ",
+        " dramatic effect."
+      ],
+      answers: ["to", "for", "to", "to", "to", "for"]
+    },
+    {
+      topic: "Language exam",
+      parts: [
+        "Before the language exam, Sara made a detailed plan ",
+        " review vocabulary and key grammar points. She met a friend at the library ",
+        " practice speaking, and they used flashcards ",
+        " quick revision. Her tutor told her not ",
+        " panic if a question seemed unfamiliar, but rather pause ",
+        " think carefully and look ",
+        " clues in the sentence."
+      ],
+      answers: ["to", "to", "for", "to", "to", "for"]
+    },
+    {
+      topic: "Engineering project",
+      parts: [
+        "The engineering team stayed on campus late ",
+        " finish the prototype before the final review. They still had measurements ",
+        " check and a short report ",
+        " the supervisor. Their advisor stopped by ",
+        " offer suggestions, and the group used the extra hour ",
+        " final adjustments and ",
+        " make sure nothing slipped through the cracks."
+      ],
+      answers: ["to", "to", "for", "to", "for", "to"]
+    },
+    {
+      topic: "Scholarship application",
+      parts: [
+        "Beatriz spent the afternoon revising her scholarship letter ",
+        " make it more persuasive. She asked her cousin ",
+        " read the draft and point out awkward phrases. The counselor later thanked her ",
+        " submitting everything on time and reminded her ",
+        " keep copies of every document. Just ",
+        " be on the safe side, she saved the files online and printed one extra version ",
+        " her records."
+      ],
+      answers: ["to", "to", "for", "to", "to", "for"]
+    },
+    {
+      topic: "Local news report",
+      parts: [
+        "According to a local report, residents gathered in the main square ",
+        " watch the mayor open a new cultural center. Several artists were invited ",
+        " perform during the ceremony, and food trucks stayed nearby ",
+        " the crowd. One journalist remained on site ",
+        " interview visitors and ",
+        " find out whether the project had lived up ",
+        " expectations."
+      ],
+      answers: ["to", "to", "for", "to", "to", "to"]
+    },
+    {
+      topic: "Science news article",
+      parts: [
+        "A recent science article explained that researchers are developing tiny robots ",
+        " deliver medicine more precisely inside the body. The team built special models ",
+        " test the machines under controlled conditions and used computer simulations ",
+        " predict possible problems. One expert said the technology still has a long way ",
+        " go, but the early results are promising enough ",
+        " justify more funding and ",
+        " spark wider public interest."
+      ],
+      answers: ["to", "to", "to", "to", "to", "to"]
+    },
+    {
+      topic: "Fun facts about animals",
+      parts: [
+        "Many people are surprised ",
+        " learn that octopuses have three hearts. Two of them work mainly ",
+        " move blood to the gills, while the third helps ",
+        " send blood through the rest of the body. Scientists continue ",
+        " study these animals closely ",
+        " understand their behavior better and ",
+        " explain how they solve complex problems."
+      ],
+      answers: ["to", "to", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Fun facts about space",
+      parts: [
+        "It may sound hard ",
+        " believe, but a day on Venus is longer than a year there. Astronomers often use comparisons like this ",
+        " help students remember unusual facts and ",
+        " make space science more engaging. Some teachers even ask learners ",
+        " come up with their own examples ",
+        " class discussions and ",
+        " connect the information to everyday ideas."
+      ],
+      answers: ["to", "to", "to", "to", "for", "to"]
+    }
+  ];
+
+  const bank = toForGame.querySelector("[data-to-for-bank]");
+  const paragraph = toForGame.querySelector("[data-to-for-paragraph]");
+  const feedback = toForGame.querySelector("[data-to-for-feedback]");
+  const topicText = toForGame.querySelector("[data-to-for-topic]");
+  const checksText = toForGame.querySelector("[data-to-for-checks]");
+  const resetButton = toForGame.querySelector("[data-to-for-reset]");
+  const checkButton = toForGame.querySelector("[data-to-for-check]");
+  const nextButton = toForGame.querySelector("[data-to-for-next]");
+  const dragState = { token: null };
+  let currentParagraphIndex = -1;
+  let currentParagraph = null;
+  let checksLeft = 3;
+  let paragraphQueue = [];
+
+  const shuffleArray = (items) => {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+
+    return shuffled;
+  };
+
+  const getToForSlots = () => Array.from(paragraph.querySelectorAll(".to-for-inline-slot"));
+
+  const updateChecksText = () => {
+    if (checksText) {
+      checksText.textContent = String(checksLeft);
+    }
+  };
+
+  const updateSlotStyles = () => {
+    getToForSlots().forEach((slot) => {
+      slot.classList.toggle("has-token", Boolean(slot.querySelector(".word-token")));
+    });
+  };
+
+  const clearSlotHover = (element) => {
+    if (element.classList.contains("to-for-inline-slot")) {
+      element.classList.remove("is-active");
+    }
+  };
+
+  const createToForToken = (value, uniqueId) => {
+    const token = document.createElement("button");
+    token.className = "word-token";
+    token.type = "button";
+    token.draggable = true;
+    token.dataset.word = value;
+    token.dataset.tokenId = uniqueId;
+    token.textContent = value.toUpperCase();
+
+    token.addEventListener("dragstart", () => {
+      dragState.token = token;
+      token.classList.add("is-dragging");
+    });
+
+    token.addEventListener("dragend", () => {
+      token.classList.remove("is-dragging");
+      dragState.token = null;
+      getToForSlots().forEach(clearSlotHover);
+    });
+
+    token.addEventListener("click", () => {
+      const parentSlot = token.closest(".to-for-inline-slot");
+
+      if (parentSlot) {
+        bank.appendChild(token);
+        updateSlotStyles();
+        return;
+      }
+
+      const nextEmptySlot = getToForSlots().find((slot) => !slot.querySelector(".word-token"));
+      if (!nextEmptySlot) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>All 6 gaps are full.</strong> Click a block in the paragraph to send it back.";
+        }
+        return;
+      }
+
+      placeToken(nextEmptySlot, token);
+    });
+
+    return token;
+  };
+
+  const placeToken = (target, token) => {
+    if (!target || !token) {
+      return;
+    }
+
+    if (target.classList.contains("to-for-inline-slot")) {
+      const existingToken = target.querySelector(".word-token");
+      if (existingToken && existingToken !== token) {
+        bank.appendChild(existingToken);
+      }
+      target.appendChild(token);
+    } else {
+      bank.appendChild(token);
+    }
+
+    token.classList.remove("is-dragging");
+    updateSlotStyles();
+  };
+
+  const bindDropTarget = (target) => {
+    if (target.dataset.dropBound === "true") {
+      return;
+    }
+
+    target.dataset.dropBound = "true";
+
+    target.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      if (target.classList.contains("to-for-inline-slot")) {
+        target.classList.add("is-active");
+      }
+    });
+
+    target.addEventListener("dragleave", () => {
+      clearSlotHover(target);
+    });
+
+    target.addEventListener("drop", (event) => {
+      event.preventDefault();
+      const token = dragState.token;
+      if (!token) {
+        return;
+      }
+
+      placeToken(target, token);
+      getToForSlots().forEach(clearSlotHover);
+    });
+  };
+
+  const renderParagraph = () => {
+    if (!currentParagraph) {
+      return;
+    }
+
+    bank.innerHTML = "";
+    paragraph.innerHTML = "";
+
+    const blocks = shuffleArray(["to", "to", "to", "to", "for", "for"]);
+    blocks.forEach((value, index) => {
+      bank.appendChild(createToForToken(value, `${value}-${index}`));
+    });
+
+    currentParagraph.parts.forEach((part, index) => {
+      paragraph.append(document.createTextNode(part));
+
+      if (index < currentParagraph.answers.length) {
+        const slot = document.createElement("span");
+        slot.className = "to-for-inline-slot";
+        slot.dataset.answer = currentParagraph.answers[index];
+        slot.dataset.slot = String(index + 1);
+        paragraph.appendChild(slot);
+        bindDropTarget(slot);
+      }
+    });
+
+    bindDropTarget(bank);
+    updateSlotStyles();
+    checksLeft = 3;
+    updateChecksText();
+
+    if (topicText) {
+      topicText.textContent = `Topic: ${currentParagraph.topic}`;
+    }
+
+    if (feedback) {
+      feedback.textContent = "Complete all 6 gaps before checking your answers.";
+    }
+
+    if (checkButton) {
+      checkButton.disabled = false;
+    }
+  };
+
+  const loadNextParagraph = () => {
+    if (paragraphQueue.length === 0) {
+      paragraphQueue = shuffleArray(paragraphBank.map((_, index) => index));
+    }
+
+    currentParagraphIndex = paragraphQueue.shift();
+    currentParagraph = paragraphBank[currentParagraphIndex];
+    renderParagraph();
+  };
+
+  const resetCurrentParagraph = () => {
+    renderParagraph();
+  };
+
+  const getCurrentAnswers = () => {
+    return getToForSlots().map((slot) => {
+      const token = slot.querySelector(".word-token");
+      return token ? token.dataset.word : "";
+    });
+  };
+
+  const allSlotsFilled = () => {
+    return getCurrentAnswers().every((answer) => answer !== "");
+  };
+
+  if (resetButton) {
+    resetButton.addEventListener("click", resetCurrentParagraph);
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", loadNextParagraph);
+  }
+
+  if (checkButton) {
+    checkButton.addEventListener("click", () => {
+      if (!allSlotsFilled()) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Complete all 6 gaps first.</strong> Then click Check.";
+        }
+        return;
+      }
+
+      if (checksLeft <= 0) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>No checks left.</strong> Click New Paragraph or Reset Answers to try again.";
+        }
+        return;
+      }
+
+      const currentAnswers = getCurrentAnswers();
+      const correctCount = currentAnswers.reduce((count, answer, index) => {
+        return count + Number(answer === currentParagraph.answers[index]);
+      }, 0);
+
+      checksLeft -= 1;
+      updateChecksText();
+
+      if (feedback) {
+        feedback.innerHTML = `<strong>${correctCount} out of 6 are correct.</strong> You have ${checksLeft} check${checksLeft === 1 ? "" : "s"} left.`;
+      }
+
+      if (checksLeft === 0 && checkButton) {
+        checkButton.disabled = true;
+      }
+    });
+  }
+
+  loadNextParagraph();
+}
