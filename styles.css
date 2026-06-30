@@ -1367,6 +1367,27 @@ a {
   font: inherit;
 }
 
+.have-there-list {
+  padding-left: 26px;
+  line-height: 2.1;
+}
+
+.have-there-item + .have-there-item {
+  margin-top: 12px;
+}
+
+.have-there-select {
+  min-width: 132px;
+  min-height: 42px;
+  margin: 0 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(109, 59, 189, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text-main);
+  font: inherit;
+}
+
 @media (max-width: 700px) {
   .page-shell {
     width: min(100% - 20px, 1120px);

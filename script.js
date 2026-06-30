@@ -3097,8 +3097,8 @@ if (toForGame) {
         " perform on the main stage, and several families brought blankets ",
         " sit on the grass. My aunt volunteered ",
         " sell handmade bracelets, while my uncle stopped by ",
-        " the parade and ",
-        " catch up with old friends."
+        " the parade and stayed a little longer ",
+        " catching up with old friends."
       ],
       answers: ["to", "to", "to", "to", "for", "for"]
     },
@@ -3190,7 +3190,7 @@ if (toForGame) {
         " the rebuttal. He also reminded them not ",
         " beat around the bush when answering questions. Two students stayed after practice ",
         " work on rebuttals, and the librarian offered a quiet room ",
-        " concentrate."
+        " concentrating."
       ],
       answers: ["to", "to", "for", "to", "to", "for"]
     },
@@ -3199,7 +3199,7 @@ if (toForGame) {
       parts: [
         "In literature class, we were asked ",
         " analyze the narrator's tone rather than simply summarize the plot. Our teacher gave us a checklist ",
-        " guide the discussion and reminded us ",
+        " guiding the discussion and reminded us ",
         " pay attention to figurative language. One student stayed after class ",
         " ask whether the final paragraph was meant ",
         " create suspense or ",
@@ -3539,14 +3539,294 @@ if (toForGame) {
       updateChecksText();
 
       if (feedback) {
-        feedback.innerHTML = `<strong>${correctCount} out of 6 are correct.</strong> You have ${checksLeft} check${checksLeft === 1 ? "" : "s"} left.`;
+        if (correctCount === 6) {
+          feedback.innerHTML = "<strong>Excellent work. You got all 6 answers correct!</strong> Congratulations!";
+        } else {
+          feedback.innerHTML = `<strong>${correctCount} out of 6 are correct.</strong> You have ${checksLeft} check${checksLeft === 1 ? "" : "s"} left.`;
+        }
       }
 
-      if (checksLeft === 0 && checkButton) {
+      if ((checksLeft === 0 || correctCount === 6) && checkButton) {
         checkButton.disabled = true;
       }
     });
   }
 
   loadNextParagraph();
+}
+
+const haveThereGame = document.querySelector("[data-have-there-game]");
+
+if (haveThereGame) {
+  const sentenceBank = [
+    {
+      answer: "there are",
+      before: "",
+      after: " many beaches in Brazil.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "has",
+      before: "Antarctica ",
+      after: " no permanent population.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there is",
+      before: "",
+      after: " a desert in northern Chile called the Atacama.",
+      options: ["have", "has", "there is", "there are", "there was"]
+    },
+    {
+      answer: "have",
+      before: "Octopuses ",
+      after: " three hearts.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there are",
+      before: "",
+      after: " more than seven thousand languages in the world.",
+      options: ["have", "has", "there is", "there are", "there were"]
+    },
+    {
+      answer: "has",
+      before: "The Pacific Ocean ",
+      after: " the largest surface area of any ocean.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there are",
+      before: "",
+      after: " active volcanoes in Iceland.",
+      options: ["have", "has", "there is", "there are", "there was"]
+    },
+    {
+      answer: "have",
+      before: "Adult humans usually ",
+      after: " 206 bones.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there was",
+      before: "",
+      after: " a giant inland sea in the Sahara thousands of years ago.",
+      options: ["had", "there is", "there are", "there was", "there were"]
+    },
+    {
+      answer: "has",
+      before: "Japan ",
+      after: " more than six thousand islands.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there were",
+      before: "",
+      after: " dinosaurs on Earth millions of years ago.",
+      options: ["had", "there is", "there are", "there was", "there were"]
+    },
+    {
+      answer: "has",
+      before: "A giraffe ",
+      after: " the same number of neck bones as a human.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there is",
+      before: "In Australia, ",
+      after: " a pink lake called Lake Hillier.",
+      options: ["have", "has", "there is", "there are", "there was"]
+    },
+    {
+      answer: "have",
+      before: "Koalas ",
+      after: " fingerprints that look very similar to human fingerprints.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there are",
+      before: "Inside a whale's mouth, ",
+      after: " structures that help filter food from water.",
+      options: ["have", "has", "there is", "there are", "there was"]
+    },
+    {
+      answer: "has",
+      before: "Saturn ",
+      after: " more than one hundred known moons.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there was",
+      before: "In ancient times, ",
+      after: " a huge library in Alexandria.",
+      options: ["had", "there is", "there are", "there was", "there were"]
+    },
+    {
+      answer: "have",
+      before: "Cheetahs ",
+      after: " amazing speed but limited stamina.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there are",
+      before: "On the ocean floor, ",
+      after: " mountains longer than many mountain ranges on land.",
+      options: ["have", "has", "there is", "there are", "there were"]
+    },
+    {
+      answer: "has",
+      before: "The human brain ",
+      after: " billions of nerve cells.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there were",
+      before: "During the Ice Age, ",
+      after: " giant mammals in several parts of the world.",
+      options: ["had", "there is", "there are", "there was", "there were"]
+    },
+    {
+      answer: "there is",
+      before: "Near the center of our galaxy, ",
+      after: " a supermassive black hole.",
+      options: ["have", "has", "there is", "there are", "there was"]
+    },
+    {
+      answer: "has",
+      before: "A camel ",
+      after: " special adaptations for hot deserts.",
+      options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there are",
+      before: "In some caves, ",
+      after: " fish that live without sunlight.",
+      options: ["have", "has", "there is", "there are", "there were"]
+    },
+    {
+      answer: "have",
+      before: "Some frogs ",
+      after: " the ability to survive being frozen for short periods.",
+      options: ["have", "has", "had", "there is", "there are"]
+    }
+  ];
+
+  const list = haveThereGame.querySelector("[data-have-there-list]");
+  const feedback = haveThereGame.querySelector("[data-have-there-feedback]");
+  const resetButton = haveThereGame.querySelector("[data-have-there-reset]");
+  const checkButton = haveThereGame.querySelector("[data-have-there-check]");
+  const nextButton = haveThereGame.querySelector("[data-have-there-next]");
+  const blockText = haveThereGame.querySelector("[data-have-there-block]");
+  let currentBlock = [];
+  let currentBlockNumber = 1;
+
+  const shuffleArray = (items) => {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const swapIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+    }
+
+    return shuffled;
+  };
+
+  const renderBlock = () => {
+    currentBlock = shuffleArray(sentenceBank).slice(0, 3);
+    list.innerHTML = "";
+
+    currentBlock.forEach((sentence) => {
+      const item = document.createElement("li");
+      item.className = "have-there-item";
+      item.dataset.haveThereAnswer = sentence.answer;
+
+      if (sentence.before) {
+        item.append(document.createTextNode(sentence.before));
+      }
+
+      const select = document.createElement("select");
+      select.className = "have-there-select";
+      select.dataset.haveThereSelect = "";
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Choose";
+      select.appendChild(placeholder);
+
+      sentence.options.forEach((optionValue) => {
+        const option = document.createElement("option");
+        option.value = optionValue;
+        option.textContent = optionValue;
+        select.appendChild(option);
+      });
+
+      item.appendChild(select);
+
+      if (sentence.after) {
+        item.append(document.createTextNode(sentence.after));
+      }
+
+      list.appendChild(item);
+    });
+
+    if (blockText) {
+      blockText.textContent = String(currentBlockNumber);
+    }
+
+    if (feedback) {
+      feedback.textContent = "Choose one option in each sentence and then check your answers.";
+    }
+  };
+
+  const getSelects = () => Array.from(haveThereGame.querySelectorAll("[data-have-there-select]"));
+  const getItems = () => Array.from(haveThereGame.querySelectorAll(".have-there-item"));
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      getSelects().forEach((select) => {
+        select.value = "";
+      });
+
+      if (feedback) {
+        feedback.textContent = "Choose one option in each sentence and then check your answers.";
+      }
+    });
+  }
+
+  if (checkButton) {
+    checkButton.addEventListener("click", () => {
+      const selects = getSelects();
+      const items = getItems();
+      const allAnswered = selects.every((select) => select.value !== "");
+
+      if (!allAnswered) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>Complete all 3 sentences first.</strong> Then check your answers.";
+        }
+        return;
+      }
+
+      const correctCount = items.reduce((count, item) => {
+        const select = item.querySelector("[data-have-there-select]");
+        return count + Number(select && select.value === item.dataset.haveThereAnswer);
+      }, 0);
+
+      if (feedback) {
+        if (correctCount === items.length) {
+          feedback.innerHTML = "<strong>Excellent work. You got all 3 answers correct!</strong>";
+        } else {
+          feedback.innerHTML = `<strong>You got ${correctCount} out of ${items.length} correct.</strong> Keep trying.`;
+        }
+      }
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      currentBlockNumber += 1;
+      renderBlock();
+    });
+  }
+
+  renderBlock();
 }

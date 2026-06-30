@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Have or There To Be? | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html">Back to Menu</a>
+
+    <section class="hero lesson-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
+          </a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+            <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
+          </a>
+        </div>
+      </div>
+      <p class="eyebrow">Puzzle Challenge</p>
+      <h1>TO HAVE OR THERE TO BE?</h1>
+      <p class="hero-copy">
+        Practice the difference between possession and existence. Read each fun fact and choose the
+        best option in the dropdown menu.
+      </p>
+      <div class="routine-row" aria-label="Grammar icons">
+        <span class="routine-chip">Fun facts</span>
+        <span class="routine-chip">Dropdown choices</span>
+        <span class="routine-chip">Have x There is</span>
+        <span class="routine-chip">12 sentences</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card" data-have-there-game>
+      <div class="panel-heading lesson-heading">
+        <div>
+          <p class="panel-kicker">Grammar Game</p>
+          <h2>Choose the correct structure</h2>
+        </div>
+      </div>
+
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Read each block of 3 sentences carefully.</li>
+          <li>Choose the best option in the dropdown menu.</li>
+          <li>Think about the meaning: possession or existence.</li>
+          <li>Then click <strong>Check Answers</strong> or load a <strong>New Block</strong>.</li>
+        </ol>
+      </div>
+
+      <div class="puzzle-overview">
+        <div class="puzzle-stats">
+          <div class="puzzle-stat-card">
+            <span class="puzzle-stat-label">Block Size</span>
+            <strong class="puzzle-stat-value">3</strong>
+          </div>
+          <div class="puzzle-stat-card">
+            <span class="puzzle-stat-label">Current Block</span>
+            <strong class="puzzle-stat-value" data-have-there-block>1</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="paragraph-card">
+        <p class="prompt-label">Planet facts</p>
+        <ol class="choice-list have-there-list" data-have-there-list></ol>
+      </div>
+
+      <div class="activity-actions">
+        <button class="activity-button secondary-button" type="button" data-have-there-reset>Reset Answers</button>
+        <button class="activity-button" type="button" data-have-there-check>Check Answers</button>
+        <button class="activity-button reading-primary-button" type="button" data-have-there-next>New Block</button>
+      </div>
+
+      <p class="activity-feedback" data-have-there-feedback aria-live="polite">
+        Choose one option in each sentence and then check your answers.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
