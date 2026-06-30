@@ -3708,6 +3708,84 @@ if (haveThereGame) {
       before: "Some frogs ",
       after: " the ability to survive being frozen for short periods.",
       options: ["have", "has", "had", "there is", "there are"]
+    },
+    {
+      answer: "there aren't",
+      before: "On the Moon, ",
+      after: " trees or rivers.",
+      options: ["don't have", "doesn't have", "there isn't", "there aren't", "weren't"]
+    },
+    {
+      answer: "doesn't have",
+      before: "Mercury ",
+      after: " a thick atmosphere like Earth.",
+      options: ["don't have", "doesn't have", "didn't have", "there isn't", "there aren't"]
+    },
+    {
+      answer: "Is there",
+      before: "",
+      after: " a country with more than one official capital city?",
+      options: ["Does it have", "Do they have", "Is there", "Are there", "Was there"]
+    },
+    {
+      answer: "Are there",
+      before: "",
+      after: " pink dolphins in the Amazon region?",
+      options: ["Do they have", "Does it have", "Is there", "Are there", "Were there"]
+    },
+    {
+      answer: "Do penguins have",
+      before: "",
+      after: " feathers even though they cannot fly?",
+      options: ["Does penguins have", "Do penguins have", "Is there", "Are there", "Were there"]
+    },
+    {
+      answer: "there wasn't",
+      before: "Millions of years ago, ",
+      after: " ice in the Sahara all year round.",
+      options: ["didn't have", "there wasn't", "there weren't", "there isn't", "there aren't"]
+    },
+    {
+      answer: "didn't have",
+      before: "Early maps of Antarctica ",
+      after: " accurate information about the whole continent.",
+      options: ["don't have", "doesn't have", "didn't have", "there wasn't", "there weren't"]
+    },
+    {
+      answer: "Are there",
+      before: "In some parts of Norway, ",
+      after: " days in summer when the sun hardly sets?",
+      options: ["Do they have", "Does it have", "Is there", "Are there", "Was there"]
+    },
+    {
+      answer: "there isn't",
+      before: "In the deepest part of the ocean, ",
+      after: " much natural light.",
+      options: ["doesn't have", "don't have", "there isn't", "there aren't", "there wasn't"]
+    },
+    {
+      answer: "Do camels have",
+      before: "",
+      after: " eyelashes that help protect their eyes from sand?",
+      options: ["Does camels have", "Do camels have", "Is there", "Are there", "Were there"]
+    },
+    {
+      answer: "there weren't",
+      before: "Before modern instruments, ",
+      after: " easy ways to measure the depth of the ocean.",
+      options: ["didn't have", "there wasn't", "there weren't", "there isn't", "there aren't"]
+    },
+    {
+      answer: "Does Iceland have",
+      before: "",
+      after: " more renewable energy sources than many other countries?",
+      options: ["Do Iceland have", "Does Iceland have", "Is there", "Are there", "Were there"]
+    },
+    {
+      answer: "haven't",
+      before: "Many desert plants ",
+      after: " deep leaves, but they do have clever ways to store water.",
+      options: ["haven't", "hasn't", "hadn't", "there isn't", "there aren't"]
     }
   ];
 
