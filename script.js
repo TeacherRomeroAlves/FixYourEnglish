@@ -3537,9 +3537,7 @@ if (toForGame) {
         }
 
         if (segmentIndex < segments.length - 1) {
-          const lineBreak = document.createElement("span");
-          lineBreak.className = "to-for-dialogue-linebreak";
-          paragraph.appendChild(lineBreak);
+          paragraph.appendChild(document.createElement("br"));
         }
       });
 
