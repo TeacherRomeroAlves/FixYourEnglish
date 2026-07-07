@@ -3297,6 +3297,84 @@ if (toForGame) {
         " connecting the information to everyday ideas."
       ],
       answers: ["to", "to", "to", "to", "for", "for"]
+    },
+    {
+      topic: "Conversation: travel plans",
+      parts: [
+        "Jon: I called you ",
+        " ask about our trip. Do we still need money ",
+        " the tickets?\nBob: Yes, and we also need ",
+        " book the hotel today.\nJon: All right. I will go online now ",
+        " check the prices.\nBob: Great. Thanks ",
+        " taking care of that, and don't forget ",
+        " send me the final details."
+      ],
+      answers: ["to", "for", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Conversation: school project",
+      parts: [
+        "Lia: I stayed after class ",
+        " talk to the teacher.\nPedro: Was it ",
+        " the science project?\nLia: Yes. She told us ",
+        " add more examples and gave us some time ",
+        " working on the conclusion.\nPedro: That helps a lot. I can come early tomorrow ",
+        " help, and we can meet after lunch ",
+        " finish everything."
+      ],
+      answers: ["to", "for", "to", "for", "to", "to"]
+    },
+    {
+      topic: "Conversation: family dinner",
+      parts: [
+        "Mia: Dad went downtown ",
+        " buy vegetables.\nLeo: Are they ",
+        " dinner tonight?\nMia: Yes, and Mom asked me ",
+        " set the table.\nLeo: I can stay in the kitchen ",
+        " cutting the bread.\nMia: Perfect. Then we will still have time ",
+        " make dessert and ",
+        " welcome Grandma when she arrives."
+      ],
+      answers: ["to", "for", "to", "for", "to", "to"]
+    },
+    {
+      topic: "Conversation: office routine",
+      parts: [
+        "Nora: I came early ",
+        " prepare the meeting room.\nCaio: Was that ",
+        " the client presentation?\nNora: Exactly. I also stayed a few extra minutes ",
+        " print the reports.\nCaio: Good thinking. I am going downstairs now ",
+        " get coffee ",
+        " everyone and then come back ",
+        " welcome the guests."
+      ],
+      answers: ["to", "for", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Conversation: weekend workout",
+      parts: [
+        "Bruna: Do you want ",
+        " join me at the park tomorrow?\nRafa: Sure. Is it ",
+        " running or cycling?\nBruna: Mostly running, and I want ",
+        " try my new sneakers.\nRafa: Fine. I will wake up early ",
+        " meet you there.\nBruna: Thanks ",
+        " being on time. We can stop later ",
+        " stretch and drink water."
+      ],
+      answers: ["to", "for", "to", "to", "for", "to"]
+    },
+    {
+      topic: "Conversation: birthday surprise",
+      parts: [
+        "Sara: We need ",
+        " keep this secret.\nDiego: I know. The cake is ",
+        " Julia, right?\nSara: Yes, and I called Ana ",
+        " decorate the room.\nDiego: Great. I can arrive early ",
+        " carry the drinks.\nSara: Thanks ",
+        " helping. Let's meet at six ",
+        " surprise her before the guests come in."
+      ],
+      answers: ["to", "for", "to", "to", "for", "to"]
     }
   ];
 
@@ -3451,7 +3529,19 @@ if (toForGame) {
     });
 
     currentParagraph.parts.forEach((part, index) => {
-      paragraph.append(document.createTextNode(part));
+      const segments = part.split("\n");
+
+      segments.forEach((segment, segmentIndex) => {
+        if (segment) {
+          paragraph.append(document.createTextNode(segment));
+        }
+
+        if (segmentIndex < segments.length - 1) {
+          const lineBreak = document.createElement("span");
+          lineBreak.className = "to-for-dialogue-linebreak";
+          paragraph.appendChild(lineBreak);
+        }
+      });
 
       if (index < currentParagraph.answers.length) {
         const slot = document.createElement("span");
@@ -3794,9 +3884,7 @@ if (haveThereGame) {
   const resetButton = haveThereGame.querySelector("[data-have-there-reset]");
   const checkButton = haveThereGame.querySelector("[data-have-there-check]");
   const nextButton = haveThereGame.querySelector("[data-have-there-next]");
-  const blockText = haveThereGame.querySelector("[data-have-there-block]");
   let currentBlock = [];
-  let currentBlockNumber = 1;
 
   const shuffleArray = (items) => {
     const shuffled = [...items];
@@ -3846,10 +3934,6 @@ if (haveThereGame) {
 
       list.appendChild(item);
     });
-
-    if (blockText) {
-      blockText.textContent = String(currentBlockNumber);
-    }
 
     if (feedback) {
       feedback.textContent = "Choose one option in each sentence and then check your answers.";
@@ -3901,7 +3985,6 @@ if (haveThereGame) {
 
   if (nextButton) {
     nextButton.addEventListener("click", () => {
-      currentBlockNumber += 1;
       renderBlock();
     });
   }
