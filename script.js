@@ -809,6 +809,8 @@ if (activity) {
     slot.classList.remove("is-active");
   };
 
+  const getNextEmptyVerbSlot = () => slots.find((slot) => !slot.querySelector(".verb-token"));
+
   const placeTokenInSlot = (slot, token) => {
     if (!slot || !token) {
       return;
@@ -847,6 +849,26 @@ if (activity) {
   };
 
   allTokens.forEach((token) => {
+    token.addEventListener("click", () => {
+      const parentSlot = token.closest(".drop-slot");
+
+      if (parentSlot) {
+        bank.appendChild(token);
+        updateSlotStyles();
+        return;
+      }
+
+      const nextSlot = getNextEmptyVerbSlot();
+      if (!nextSlot) {
+        if (feedback) {
+          feedback.innerHTML = "<strong>All six spaces are full.</strong> Click a verb in a sentence if you want to move it back.";
+        }
+        return;
+      }
+
+      placeTokenInSlot(nextSlot, token);
+    });
+
     token.addEventListener("dragstart", () => {
       dragState.token = token;
       token.classList.add("is-dragging");
@@ -908,7 +930,11 @@ if (activity) {
 
       const correctCount = slots.reduce((count, slot) => {
         const token = slot.querySelector(".verb-token");
-        return count + Number(token && token.dataset.verb === slot.dataset.answer);
+        const answers = (slot.dataset.answer || "")
+          .split("|")
+          .map((answer) => answer.trim())
+          .filter(Boolean);
+        return count + Number(token && answers.includes(token.dataset.verb));
       }, 0);
 
       if (feedback) {
@@ -953,6 +979,9 @@ if (reorderActivity) {
       slot.classList.remove("is-active");
     }
   };
+
+  const getNextEmptyWordSlot = (builder) =>
+    Array.from(builder.querySelectorAll(".word-slot")).find((slot) => !slot.querySelector(".word-token"));
 
   const placeWordToken = (target, token, builder) => {
     if (!target || !token || !builder) {
@@ -1001,6 +1030,26 @@ if (reorderActivity) {
     const tokens = Array.from(builder.querySelectorAll(".word-token"));
 
     tokens.forEach((token) => {
+      token.addEventListener("click", () => {
+        const parentSlot = token.closest(".word-slot");
+
+        if (parentSlot) {
+          bank.appendChild(token);
+          updateWordSlotStyles();
+          return;
+        }
+
+        const nextSlot = getNextEmptyWordSlot(builder);
+        if (!nextSlot) {
+          if (reorderFeedback) {
+            reorderFeedback.innerHTML = "<strong>This sentence is already full.</strong> Click a word in the sentence if you want to move it back.";
+          }
+          return;
+        }
+
+        placeWordToken(nextSlot, token, builder);
+      });
+
       token.addEventListener("dragstart", () => {
         reorderDragState.token = token;
         token.classList.add("is-dragging");
@@ -1093,10 +1142,13 @@ if (paragraphActivity) {
 
   const normalizeTextAnswer = (text) => text
     .trim()
+    .replace(/won't/gi, "will not")
+    .replace(/didn't/gi, "did not")
     .replace(/doesn't/gi, "does not")
     .replace(/don't/gi, "do not")
     .replace(/isn't/gi, "is not")
     .replace(/aren't/gi, "are not")
+    .replace(/can't/gi, "cannot")
     .replace(/\bi'm\b/gi, "i am")
     .replace(/\bhe's\b/gi, "he is")
     .replace(/\bshe's\b/gi, "she is")
@@ -1133,7 +1185,11 @@ if (paragraphActivity) {
       }
 
       const correctCount = textGaps.reduce((count, gap) => {
-        return count + Number(normalizeTextAnswer(gap.value) === normalizeTextAnswer(gap.dataset.textAnswer));
+        const answers = (gap.dataset.textAnswer || "")
+          .split("|")
+          .map((answer) => normalizeTextAnswer(answer))
+          .filter(Boolean);
+        return count + Number(answers.includes(normalizeTextAnswer(gap.value)));
       }, 0);
 
       if (paragraphFeedback) {
@@ -2021,6 +2077,8 @@ if (emojiActivity) {
     }
   };
 
+  const getNextEmptyEmojiSlot = () => emojiSlots.find((slot) => !slot.querySelector(".emoji-token"));
+
   const shuffleEmojiTokens = () => {
     const shuffled = [...emojiTokens].sort(() => Math.random() - 0.5);
     shuffled.forEach((token) => emojiBank.appendChild(token));
@@ -2056,6 +2114,26 @@ if (emojiActivity) {
   };
 
   emojiTokens.forEach((token) => {
+    token.addEventListener("click", () => {
+      const parentSlot = token.closest(".emoji-slot");
+
+      if (parentSlot) {
+        emojiBank.appendChild(token);
+        updateEmojiSlotStyles();
+        return;
+      }
+
+      const nextSlot = getNextEmptyEmojiSlot();
+      if (!nextSlot) {
+        if (emojiFeedback) {
+          emojiFeedback.innerHTML = "<strong>All six spaces are full.</strong> Click an emoji in a sentence if you want to move it back.";
+        }
+        return;
+      }
+
+      placeEmojiToken(nextSlot, token);
+    });
+
     token.addEventListener("dragstart", () => {
       emojiDragState.token = token;
       token.classList.add("is-dragging");
@@ -2285,6 +2363,9 @@ if (conversationActivity) {
     }
   };
 
+  const getNextEmptyConversationSlot = () =>
+    conversationSlots.find((slot) => !slot.querySelector(".conversation-line"));
+
   const shuffleConversationLines = () => {
     const shuffled = [...conversationLines].sort(() => Math.random() - 0.5);
     shuffled.forEach((line) => conversationBank.appendChild(line));
@@ -2320,6 +2401,26 @@ if (conversationActivity) {
   };
 
   conversationLines.forEach((line) => {
+    line.addEventListener("click", () => {
+      const parentSlot = line.closest(".conversation-slot");
+
+      if (parentSlot) {
+        conversationBank.appendChild(line);
+        updateConversationSlotStyles();
+        return;
+      }
+
+      const nextSlot = getNextEmptyConversationSlot();
+      if (!nextSlot) {
+        if (conversationFeedback) {
+          conversationFeedback.innerHTML = "<strong>All eight spaces are full.</strong> Click a line in the conversation if you want to move it back.";
+        }
+        return;
+      }
+
+      placeConversationLine(nextSlot, line);
+    });
+
     line.addEventListener("dragstart", () => {
       conversationDragState.line = line;
       line.classList.add("is-dragging");
@@ -2777,7 +2878,7 @@ if (unscrambleGame) {
     updatePuzzleSlotStyles();
 
     if (feedback) {
-      feedback.textContent = "Click or drag the words into the correct order and then check your answer.";
+      feedback.textContent = "Click the words to send them to the next space, or drag them into place, and then check your answer.";
     }
   };
 
