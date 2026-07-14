@@ -1142,20 +1142,34 @@ if (paragraphActivity) {
 
   const normalizeTextAnswer = (text) => text
     .trim()
+    .replace(/[’`]/g, "'")
     .replace(/won't/gi, "will not")
+    .replace(/wouldn't/gi, "would not")
     .replace(/didn't/gi, "did not")
     .replace(/doesn't/gi, "does not")
     .replace(/don't/gi, "do not")
+    .replace(/hasn't/gi, "has not")
+    .replace(/haven't/gi, "have not")
+    .replace(/hadn't/gi, "had not")
     .replace(/isn't/gi, "is not")
     .replace(/aren't/gi, "are not")
+    .replace(/wasn't/gi, "was not")
+    .replace(/weren't/gi, "were not")
     .replace(/can't/gi, "cannot")
     .replace(/\bi'm\b/gi, "i am")
+    .replace(/\bI've\b/gi, "i have")
+    .replace(/\byou've\b/gi, "you have")
+    .replace(/\bwe've\b/gi, "we have")
+    .replace(/\bthey've\b/gi, "they have")
     .replace(/\bhe's\b/gi, "he is")
     .replace(/\bshe's\b/gi, "she is")
     .replace(/\bit's\b/gi, "it is")
     .replace(/\byou're\b/gi, "you are")
     .replace(/\bwe're\b/gi, "we are")
     .replace(/\bthey're\b/gi, "they are")
+    .replace(/\bthat's\b/gi, "that is")
+    .replace(/\bthere's\b/gi, "there is")
+    .replace(/[.!?]+$/g, "")
     .replace(/\s+/g, " ")
     .toLowerCase();
 
@@ -3102,28 +3116,28 @@ if (toForGame) {
     {
       topic: "Study routine",
       parts: [
-        "Julia goes ",
-        " the library every Tuesday ",
-        " study with two classmates. She usually stays there ",
-        " three hours and uses her laptop ",
-        " take notes. Her friend Mateo brings snacks ",
-        " everyone, and Julia sometimes asks the librarian ",
-        " help with research books."
+        "Julia listens ",
+        " English podcasts from Monday ",
+        " Friday because she has studied English ",
+        " three years. Every Tuesday, she goes ",
+        " the library ",
+        " study with Mateo, and she waits ",
+        " him near the front desk."
       ],
-      answers: ["to", "to", "for", "to", "for", "to"]
+      answers: ["to", "to", "for", "to", "to", "for"]
     },
     {
       topic: "Birthday plans",
       parts: [
         "Lena is planning a small party ",
-        " her brother this weekend. She wants ",
-        " decorate the living room with balloons and lights. Their parents are going ",
-        " buy a chocolate cake, and Lena is saving money ",
-        " order pizza ",
-        " the guests. She also needs ",
-        " send the invitations tonight."
+        " her brother this weekend. At a quarter ",
+        " ten, she will send invitations ",
+        " the guests and ask Ana ",
+        " bring music. She looks forward ",
+        " celebrating with everyone and will thank her parents ",
+        " helping."
       ],
-      answers: ["for", "to", "to", "to", "for", "to"]
+      answers: ["for", "to", "to", "to", "to", "for"]
     },
     {
       topic: "Health and exercise",
@@ -3141,15 +3155,15 @@ if (toForGame) {
     {
       topic: "Travel day",
       parts: [
-        "My cousins arrived at the station early ",
-        " catch the first train ",
-        " the coast. They packed light bags ",
-        " the trip and brought cards ",
-        " play on the way. Their aunt came with them ",
-        " a few minutes and stopped ",
-        " say goodbye."
+        "My cousins traveled from the city ",
+        " the coast on Friday. They bought tickets ",
+        " the trip, gave a map ",
+        " their aunt, and stopped ",
+        " coffee before boarding. At the station, they hurried ",
+        " catch the train and promised ",
+        " send photos later."
       ],
-      answers: ["to", "to", "for", "to", "for", "to"]
+      answers: ["to", "for", "to", "for", "to", "to"]
     },
     {
       topic: "Community project",
@@ -3207,41 +3221,40 @@ if (toForGame) {
       topic: "Weekend errands",
       parts: [
         "On Saturday morning, Paula went downtown ",
-        " return a jacket and ",
-        " pick up a birthday card. She also needed a small gift ",
-        " her neighbor, so she popped into a bookshop ",
-        " look around. In the end, she chose a notebook ",
-        " writing ideas and stayed a few extra minutes ",
-        " drink coffee before going home."
+        " return a jacket and look ",
+        " a birthday card. She sent a quick thank-you message ",
+        " her neighbor, then asked the clerk ",
+        " show her some notebooks. Later, she went out ",
+        " coffee with a friend ",
+        " relax before going home."
       ],
-      answers: ["to", "to", "for", "to", "for", "to"]
+      answers: ["to", "for", "to", "to", "for", "to"]
     },
     {
       topic: "Family visit",
       parts: [
         "Daniel took a bus across town ",
         " visit his grandmother after class. He brought a scarf ",
-        " her because the evenings had turned chilly. They sat by the window ",
-        " talk for a while, and Daniel offered ",
+        " her because the evenings had turned chilly. He listened ",
+        " her stories and offered ",
         " fix her old radio. Before leaving, he wrote down a few instructions ",
-        " her and promised ",
-        " come back the following week."
+        " her because he is responsible ",
+        " checking her medicine."
       ],
-      answers: ["to", "for", "to", "to", "for", "to"]
+      answers: ["to", "for", "to", "to", "to", "for"]
     },
     {
       topic: "Research seminar",
       parts: [
-        "The graduate students gathered in the lab early ",
-        " prepare ",
-        " the research seminar. Their supervisor reminded them ",
-        " keep their explanations clear ",
-        " the audience and avoid going off on a tangent. One team brought extra charts ",
-        " support its argument, while another stayed late ",
-        " rehearse the final section and ",
-        " polish a few awkward transitions."
+        "According ",
+        " the supervisor, the graduate students are responsible ",
+        " explaining their methods clearly. They listened ",
+        " his advice and agreed ",
+        " keep their slides simple. The team prepared carefully ",
+        " the seminar and looked forward ",
+        " presenting the final results."
       ],
-      answers: ["to", "for", "to", "for", "to", "to"]
+      answers: ["to", "for", "to", "to", "for", "to"]
     },
     {
       topic: "Essay workshop",

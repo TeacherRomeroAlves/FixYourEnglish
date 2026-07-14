@@ -1169,6 +1169,18 @@ a {
   line-height: 2.1;
 }
 
+.to-for-actions,
+.to-for-check-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.to-for-actions {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .to-for-inline-slot {
   display: inline-flex;
   vertical-align: middle;
