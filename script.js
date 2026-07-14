@@ -3984,10 +3984,10 @@ if (haveThereGame) {
       options: ["Do Iceland have", "Does Iceland have", "Is there", "Are there", "Were there"]
     },
     {
-      answer: "haven't",
+      answer: "don't have",
       before: "Many desert plants ",
-      after: " deep leaves, but they do have clever ways to store water.",
-      options: ["haven't", "hasn't", "hadn't", "there isn't", "there aren't"]
+      after: " broad leaves, but they do have clever ways to store water.",
+      options: ["don't have", "doesn't have", "didn't have", "there isn't", "there aren't"]
     }
   ];
 
