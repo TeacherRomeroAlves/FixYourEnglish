@@ -3,137 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive English lessons, skills practice, and language games created by Teacher Romero Alves and Teacher Lais Queiroz.">
   <title>Improve Your English</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <main class="page-shell">
-    <section class="hero">
-      <div class="hero-signature">
-        <p class="credit-line">
-          Created by
-          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
-          and
-          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
-        </p>
-        <div class="logo-signature" aria-label="Teacher logos">
-          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge">
+<body class="home-v2">
+  <header class="home-nav-wrap">
+    <nav class="home-nav" aria-label="Main navigation">
+      <a class="home-brand" href="#top" aria-label="Improve Your English home">
+        <span class="home-brand-mark">IY</span>
+        <span>Improve Your English</span>
+      </a>
+      <div class="home-nav-links">
+        <a href="#grammar">Grammar</a>
+        <a href="#skills">Skills</a>
+        <a href="#games">Games</a>
+      </div>
+      <a class="home-nav-cta" href="#grammar">Start learning <span aria-hidden="true">&#8594;</span></a>
+    </nav>
+  </header>
+
+  <main id="top" class="home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <div class="home-hero-copy">
+        <p class="home-overline">A learning platform created for our students</p>
+        <h1 id="home-title">Learn clearly.<br><em>Speak confidently.</em></h1>
+        <p class="home-intro">We created this space especially for our students: clear explanations, practical exercises, and playful challenges for using English beyond the classroom. Other learners are very welcome here, too.</p>
+        <div class="home-hero-actions">
+          <a class="home-button home-button-primary" href="#grammar">Explore lessons <span aria-hidden="true">&#8594;</span></a>
+          <a class="home-button home-button-quiet" href="#games">Play a game</a>
+        </div>
+      </div>
+
+      <div class="home-hero-art" aria-label="Teacher Romero Alves and Teacher Lais Queiroz">
+        <div class="home-art-orbit home-art-orbit-one"></div>
+        <div class="home-art-orbit home-art-orbit-two"></div>
+        <div class="home-art-logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" aria-label="Teacher Romero Alves on Instagram">
             <img src="assets/logo-romero.png" alt="Teacher Romero Alves logo">
           </a>
-          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge">
+          <span aria-hidden="true">&times;</span>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" aria-label="Teacher Lais Queiroz on Instagram">
             <img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo">
           </a>
         </div>
-      </div>
-      <p class="eyebrow">Grammar Menu</p>
-      <h1>IMPROVE YOUR ENGLISH</h1>
-      <p class="hero-copy">
-        Choose a verb tense and start practicing. This menu is the starting point for your
-        students, and each topic card is ready to connect to exercises in the next step.
-      </p>
-      <div class="routine-row" aria-label="Grammar icons">
-        <span class="routine-chip">📘 Learn</span>
-        <span class="routine-chip">✍️ Practice</span>
-        <span class="routine-chip">🧠 Review</span>
-        <span class="routine-chip">🚀 Improve</span>
+        <p class="home-art-credit">Made for our students.<br>Open to every learner.</p>
+        <div class="home-art-card home-art-card-top">
+          <span>Learn</span>
+          <strong>Grammar</strong>
+        </div>
+        <div class="home-art-card home-art-card-bottom">
+          <span>Build</span>
+          <strong>Confidence</strong>
+        </div>
+        <div class="home-art-spark" aria-hidden="true">&#10022;</div>
       </div>
     </section>
 
-    <section class="topic-panel" aria-labelledby="topics-title">
-      <div class="panel-heading">
-        <div>
-          <p class="panel-kicker">Available Topics</p>
-          <h2 id="topics-title">The pillars of verb tenses</h2>
-        </div>
-        <p class="panel-note">5 topics ready</p>
+    <div class="home-marquee" aria-label="Practice areas">
+      <div class="home-marquee-track">
+        <span>Grammar</span><i></i><span>Writing</span><i></i><span>Speaking</span><i></i><span>Understanding</span><i></i><span>Games</span><i></i>
+        <span aria-hidden="true">Grammar</span><i aria-hidden="true"></i><span aria-hidden="true">Writing</span><i aria-hidden="true"></i><span aria-hidden="true">Speaking</span><i aria-hidden="true"></i><span aria-hidden="true">Understanding</span><i aria-hidden="true"></i><span aria-hidden="true">Games</span><i aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <section id="grammar" class="home-section home-grammar" aria-labelledby="grammar-title">
+      <div class="home-section-heading home-reveal">
+        <p class="home-overline">Build a strong foundation</p>
+        <h2 id="grammar-title">The pillars of verb tenses</h2>
+        <p>Start with the essentials. Each lesson combines a clear explanation with interactive practice.</p>
       </div>
 
-      <div class="topics-grid">
-        <a class="topic-card" href="verb-to-be.html" data-topic="The Famous Verb To Be">
-          <strong>The famous verb to be</strong>
-          <span class="topic-description">Am, is, and are for names, age, feelings, jobs, nationality, and location.</span>
+      <div class="grammar-list home-reveal">
+        <a href="verb-to-be.html" class="grammar-row">
+          <span class="grammar-symbol">BE</span>
+          <span class="grammar-name"><strong>The famous verb to be</strong><small>Identity, feelings, professions and places</small></span>
+          <span class="grammar-arrow" aria-hidden="true">&#8599;</span>
         </a>
-
-        <a class="topic-card" href="simple-present.html" data-topic="Simple Present">
-          <strong>Simple Present</strong>
-          <span class="topic-description">Routines, habits, facts, and general truths.</span>
+        <a href="simple-present.html" class="grammar-row">
+          <span class="grammar-symbol">DO</span>
+          <span class="grammar-name"><strong>Simple Present</strong><small>Habits, routines and general truths</small></span>
+          <span class="grammar-arrow" aria-hidden="true">&#8599;</span>
         </a>
-
-        <a class="topic-card" href="present-continuous.html" data-topic="Present Continuous">
-          <strong>Present Continuous</strong>
-          <span class="topic-description">Actions happening now or around this moment.</span>
+        <a href="present-continuous.html" class="grammar-row">
+          <span class="grammar-symbol">ING</span>
+          <span class="grammar-name"><strong>Present Continuous</strong><small>Actions unfolding right now</small></span>
+          <span class="grammar-arrow" aria-hidden="true">&#8599;</span>
         </a>
-
-        <a class="topic-card" href="simple-past.html" data-topic="Simple Past">
-          <strong>Simple Past</strong>
-          <span class="topic-description">Finished actions in the past.</span>
+        <a href="simple-past.html" class="grammar-row">
+          <span class="grammar-symbol">ED</span>
+          <span class="grammar-name"><strong>Simple Past</strong><small>Finished actions and past experiences</small></span>
+          <span class="grammar-arrow" aria-hidden="true">&#8599;</span>
         </a>
-
-        <a class="topic-card" href="future.html" data-topic="Future (Will and Going To)">
-          <strong>Future</strong>
-          <span class="topic-description">Plans, predictions, and spontaneous decisions.</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="topic-panel skills-panel" aria-labelledby="skills-title">
-      <div class="panel-heading">
-        <div>
-          <p class="panel-kicker">Sharpen Your Skills</p>
-          <h2 id="skills-title">Build confidence beyond grammar</h2>
-        </div>
-        <p class="panel-note">3 pages ready</p>
-      </div>
-
-      <div class="topics-grid">
-        <a class="topic-card skill-card" href="improve-your-writing.html" data-topic="Improve Your Writing">
-          <strong>Improve your writing</strong>
-          <span class="topic-description">Choose a level, get a random prompt, and write your own text.</span>
-        </a>
-
-        <a class="topic-card skill-card" href="improve-your-speaking.html" data-topic="Improve Your Speaking">
-          <strong>Improve your speaking</strong>
-          <span class="topic-description">Choose a level, get a random prompt, and record your answer.</span>
-        </a>
-
-        <a class="topic-card skill-card" href="improve-your-reading.html" data-topic="Improve Your Understanding">
-          <strong>Improve your understanding</strong>
-          <span class="topic-description">Choose a level, read a random text, and answer 10 questions about it.</span>
+        <a href="future.html" class="grammar-row">
+          <span class="grammar-symbol">WILL</span>
+          <span class="grammar-name"><strong>Future</strong><small>Plans, predictions and decisions</small></span>
+          <span class="grammar-arrow" aria-hidden="true">&#8599;</span>
         </a>
       </div>
     </section>
 
-    <section class="topic-panel skills-panel" aria-labelledby="puzzles-title">
-      <div class="panel-heading">
-        <div>
-          <p class="panel-kicker">Puzzle Zone</p>
-          <h2 id="puzzles-title">Learn with games and challenges</h2>
-        </div>
-        <p class="panel-note">3 games ready</p>
+    <section id="skills" class="home-section home-skills" aria-labelledby="skills-title">
+      <div class="home-section-heading home-section-heading-light home-reveal">
+        <p class="home-overline">Practice with purpose</p>
+        <h2 id="skills-title">Sharpen your skills</h2>
+        <p>Choose your level, receive a fresh prompt, and practice the language in your own way.</p>
       </div>
 
-      <div class="topics-grid">
-        <a class="topic-card skill-card" href="unscramble-the-sentence.html" data-topic="7 in 3">
-          <strong>7 in 3</strong>
-          <span class="topic-description">Click the words to send them to the next space, or drag them into place, and finish 7 sentences before the 3-minute timer ends.</span>
+      <div class="skills-grid">
+        <a href="improve-your-writing.html" class="skill-tile skill-tile-writing home-reveal">
+          <span class="skill-line"></span>
+          <div><p>Express your ideas</p><h3>Improve your writing</h3></div>
+          <span class="skill-link">Start writing <b aria-hidden="true">&#8594;</b></span>
         </a>
-
-        <a class="topic-card skill-card" href="four-tos-and-two-fors.html" data-topic="4 To's and 2 For's">
-          <strong>4 To's and 2 For's</strong>
-          <span class="topic-description">Complete each paragraph with 4 TO blocks and 2 FOR blocks to practice common uses.</span>
+        <a href="improve-your-speaking.html" class="skill-tile skill-tile-speaking home-reveal">
+          <span class="skill-line"></span>
+          <div><p>Find your voice</p><h3>Improve your speaking</h3></div>
+          <span class="skill-link">Start speaking <b aria-hidden="true">&#8594;</b></span>
         </a>
-
-        <a class="topic-card skill-card" href="to-have-or-there-to-be.html" data-topic="To Have or There To Be?">
-          <strong>To have or There to be?</strong>
-          <span class="topic-description">Choose the correct structure in fun facts and learn when to use possession or existence.</span>
+        <a href="improve-your-reading.html" class="skill-tile skill-tile-reading home-reveal">
+          <span class="skill-line"></span>
+          <div><p>Read, listen, understand</p><h3>Improve your understanding</h3></div>
+          <span class="skill-link">Start reading <b aria-hidden="true">&#8594;</b></span>
         </a>
       </div>
+    </section>
+
+    <section id="games" class="home-section home-games" aria-labelledby="games-title">
+      <div class="games-heading home-reveal">
+        <p class="home-overline">Learn without noticing</p>
+        <h2 id="games-title">Challenge your English</h2>
+        <p>Quick games that turn tricky grammar into something memorable.</p>
+      </div>
+      <div class="games-grid">
+        <a href="unscramble-the-sentence.html" class="game-card game-card-featured home-reveal">
+          <div class="game-visual"><span>7</span><small>in</small><span>3</span></div>
+          <div><h3>7 in 3</h3><p>Build seven increasingly difficult sentences before time runs out.</p></div>
+          <span class="game-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a href="four-tos-and-two-fors.html" class="game-card game-card-to-for home-reveal">
+          <div class="game-mini-visual"><span>TO</span><span>FOR</span></div>
+          <div><h3>4 To's and 2 For's</h3><p>Master two small words that make a big difference.</p></div>
+          <span class="game-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a href="to-have-or-there-to-be.html" class="game-card game-card-have-there home-reveal">
+          <div class="game-mini-visual game-mini-visual-alt"><span>HAVE</span><span>THERE</span></div>
+          <div><h3>To have or There to be?</h3><p>Choose the natural structure for each fun fact.</p></div>
+          <span class="game-go" aria-hidden="true">&#8594;</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="home-closing home-reveal">
+      <p class="home-overline">Your next sentence starts here</p>
+      <h2>Small practice.<br>Real progress.</h2>
+      <a class="home-button home-button-light" href="#grammar">Choose your lesson <span aria-hidden="true">&#8594;</span></a>
     </section>
   </main>
 
+  <footer class="home-footer">
+    <div class="home-footer-brand"><span class="home-brand-mark">IY</span><strong>Improve Your English</strong></div>
+    <p>Created with care by
+      <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+      and
+      <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+    </p>
+    <div class="home-footer-logos">
+      <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer"><img src="assets/logo-romero.png" alt="Teacher Romero Alves on Instagram"></a>
+      <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz on Instagram"></a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    if (window.gsap && window.ScrollTrigger && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('.home-hero-copy > *', { opacity: 0, y: 28, duration: 0.8, stagger: 0.1, ease: 'power3.out' });
+      gsap.from('.home-hero-art', { opacity: 0, scale: 0.84, rotate: 3, duration: 1.1, ease: 'power3.out' });
+      gsap.utils.toArray('.home-reveal').forEach(function(element) {
+        gsap.from(element, { opacity: 0.18, y: 54, scale: 0.97, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: element, start: 'top 88%', end: 'top 58%', scrub: 0.6 } });
+      });
+    }
+  </script>
 </body>
 </html>
