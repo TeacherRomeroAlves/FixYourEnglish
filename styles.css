@@ -456,6 +456,7 @@ a {
   .home-art-card { min-width: 135px; padding: 13px 15px; }
   .home-section { padding: 100px 20px; }
   .home-section-heading { display: block; margin-bottom: 45px; }
+  .home-section-heading .home-overline { margin-bottom: 18px; }
   .home-section-heading h2, .games-heading h2 { margin-bottom: 24px; }
   .grammar-row { grid-template-columns: 68px 1fr 30px; min-height: 106px; }
   .grammar-symbol { width: 46px; height: 46px; }
