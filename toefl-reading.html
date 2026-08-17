@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive TOEFL iBT Reading practice with Complete the Words, Read in Daily Life, and Academic Passage tasks.">
+  <title>TOEFL iBT Reading | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell toefl-shell">
+    <a class="back-link" href="index.html#toefl">Back to TOEFL Preparation</a>
+
+    <section class="hero lesson-hero toefl-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">TOEFL iBT Preparation</p>
+      <h1>READING PRACTICE</h1>
+      <p class="hero-copy">Build speed, accuracy, and confidence with original exercises based on the three official Reading task types.</p>
+      <div class="routine-row" aria-label="Reading task types">
+        <span class="routine-chip">Complete the Words</span>
+        <span class="routine-chip">Read in Daily Life</span>
+        <span class="routine-chip">Academic Passage</span>
+        <span class="routine-chip">7 mock tests</span>
+      </div>
+    </section>
+
+    <section class="toefl-test-picker" aria-labelledby="toefl-test-picker-title">
+      <div>
+        <p class="panel-kicker">Choose your test</p>
+        <h2 id="toefl-test-picker-title">Seven complete practice sets</h2>
+        <p>Each mock test includes one Complete the Words task, two Daily Life texts, and one Academic Passage.</p>
+      </div>
+      <div class="toefl-test-buttons" role="group" aria-label="Select a TOEFL mock test">
+        <button class="toefl-test-button is-active" type="button" data-toefl-test-button="1" aria-pressed="true"><span>Mock Test</span><strong>01</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="2" aria-pressed="false"><span>Mock Test</span><strong>02</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="3" aria-pressed="false"><span>Mock Test</span><strong>03</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="4" aria-pressed="false"><span>Mock Test</span><strong>04</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="5" aria-pressed="false"><span>Mock Test</span><strong>05</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="6" aria-pressed="false"><span>Mock Test</span><strong>06</strong></button>
+        <button class="toefl-test-button" type="button" data-toefl-test-button="7" aria-pressed="false"><span>Mock Test</span><strong>07</strong></button>
+      </div>
+    </section>
+
+    <div class="toefl-current-test" aria-live="polite">
+      <span>Currently practicing</span>
+      <strong data-toefl-current-test>Mock Test 1</strong>
+    </div>
+
+    <section class="toefl-start-panel" data-toefl-start-panel>
+      <div>
+        <p class="panel-kicker">Choose your mode</p>
+        <h2>How would you like to practice?</h2>
+        <p>Try the complete test in 14 minutes, or practice without a time limit.</p>
+      </div>
+      <div class="toefl-mode-actions">
+        <button class="activity-button toefl-timed-start" type="button" data-toefl-start-timed>Start 14-Minute Test</button>
+        <button class="activity-button secondary-button" type="button" data-toefl-start-untimed>Practice Without Timer</button>
+      </div>
+    </section>
+
+    <section class="toefl-timer-panel" data-toefl-timer-panel hidden aria-live="polite">
+      <div>
+        <span class="toefl-timer-label" data-toefl-timer-label>Time remaining</span>
+        <strong class="toefl-timer-value" data-toefl-timer>14:00</strong>
+      </div>
+      <p data-toefl-timer-status>Complete all three tasks before the timer reaches zero.</p>
+      <button class="activity-button secondary-button" type="button" data-toefl-pause-timer hidden>Pause</button>
+    </section>
+
+    <section class="toefl-export-panel" data-toefl-export-panel hidden>
+      <div>
+        <p class="panel-kicker">Save or print this test</p>
+        <p>Choose a blank homework copy or include the student's current responses for correction.</p>
+      </div>
+      <div class="toefl-export-actions">
+        <button class="activity-button secondary-button" type="button" data-toefl-print-blank>Save Blank Homework PDF</button>
+        <button class="activity-button" type="button" data-toefl-print-answers>Save PDF with Student Answers</button>
+      </div>
+    </section>
+
+    <header class="toefl-print-header" aria-hidden="true">
+      <p>Improve Your English - TOEFL iBT Reading</p>
+      <h1 data-toefl-print-title>Mock Test 1</h1>
+      <div><span>Name: ____________________________________</span><span>Date: ____________________</span></div>
+      <strong data-toefl-print-mode>Blank Homework</strong>
+    </header>
+
+    <nav class="toefl-task-nav" aria-label="Tasks in the selected TOEFL Reading test" data-toefl-test-content hidden>
+      <a href="#complete-words"><span>01</span> Complete the Words</a>
+      <a href="#daily-life"><span>02</span> Read in Daily Life</a>
+      <a href="#academic-passage"><span>03</span> Academic Passage</a>
+    </nav>
+
+    <section id="complete-words" class="toefl-task-section" data-toefl-task-section data-toefl-test-content hidden>
+      <div class="toefl-task-heading">
+        <div>
+          <p class="panel-kicker">Task type 1</p>
+          <h2>Complete the Words</h2>
+        </div>
+        <p>Type only the missing letters. Each paragraph contains 10 incomplete words.</p>
+      </div>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="1">
+        <div class="toefl-exercise-heading"><div><span>Mock Test 1 - Task 1</span><h3>Cooling the City</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">
+          Cities around the world are planting more trees to improve urban environments.
+          Trees pro<input class="toefl-letter-gap" data-answer="tect" aria-label="Missing letters in protect" autocomplete="off"> city resi<input class="toefl-letter-gap" data-answer="dents" aria-label="Missing letters in residents" autocomplete="off"> from int<input class="toefl-letter-gap" data-answer="ense" aria-label="Missing letters in intense" autocomplete="off"> heat b<input class="toefl-letter-gap short" data-answer="y" aria-label="Missing letters in by" autocomplete="off"> providing sh<input class="toefl-letter-gap short" data-answer="ade" aria-label="Missing letters in shade" autocomplete="off"> and rele<input class="toefl-letter-gap" data-answer="asing" aria-label="Missing letters in releasing" autocomplete="off"> moisture in<input class="toefl-letter-gap short" data-answer="to" aria-label="Missing letters in into" autocomplete="off"> the a<input class="toefl-letter-gap short" data-answer="ir" aria-label="Missing letters in air" autocomplete="off"> during h<input class="toefl-letter-gap short" data-answer="ot" aria-label="Missing letters in hot" autocomplete="off"> summer after<input class="toefl-letter-gap" data-answer="noons" aria-label="Missing letters in afternoons" autocomplete="off">. Their roots also absorb rainwater, which can reduce flooding after heavy storms. In addition, urban trees create habitats for birds and insects. City planners therefore consider trees an important investment in public health and environmental resilience for future generations.
+        </p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="2" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 2 - Task 1</span><h3>Life on a Coral Reef</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">
+          Coral reefs support an extraordinary variety of life in warm, shallow oceans.
+          Although cor<input class="toefl-letter-gap short" data-answer="als" aria-label="Missing letters in corals" autocomplete="off"> look l<input class="toefl-letter-gap short" data-answer="ike" aria-label="Missing letters in like" autocomplete="off"> rocks, th<input class="toefl-letter-gap short" data-answer="ey" aria-label="Missing letters in they" autocomplete="off"> are liv<input class="toefl-letter-gap short" data-answer="ing" aria-label="Missing letters in living" autocomplete="off"> animals th<input class="toefl-letter-gap short" data-answer="at" aria-label="Missing letters in that" autocomplete="off"> form colo<input class="toefl-letter-gap" data-answer="nies" aria-label="Missing letters in colonies" autocomplete="off"> and bu<input class="toefl-letter-gap short" data-answer="ild" aria-label="Missing letters in build" autocomplete="off"> complex struc<input class="toefl-letter-gap" data-answer="tures" aria-label="Missing letters in structures" autocomplete="off"> over ma<input class="toefl-letter-gap short" data-answer="ny" aria-label="Missing letters in many" autocomplete="off"> generations i<input class="toefl-letter-gap short" data-answer="n" aria-label="Missing letters in in" autocomplete="off"> shallow seas. Tiny algae live inside the corals and provide much of their food through photosynthesis. In return, the corals give the algae a protected home. However, rising ocean temperatures can disrupt this relationship and cause widespread coral bleaching across many tropical regions.
+        </p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="3" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 3 - Task 1</span><h3>Early Human Dance</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">
+          We know from drawings that have been preserved in caves for over 10,000 years that early humans performed dances as a group activity.
+          We mi<input class="toefl-letter-gap" data-answer="ght" aria-label="Missing letters in might" autocomplete="off"> think th<input class="toefl-letter-gap short" data-answer="at" aria-label="Missing letters in that" autocomplete="off"> prehistoric peo<input class="toefl-letter-gap" data-answer="ple" aria-label="Missing letters in people" autocomplete="off"> concentrated on<input class="toefl-letter-gap short" data-answer="ly" aria-label="Missing letters in only" autocomplete="off"> on ba<input class="toefl-letter-gap" data-answer="sic" aria-label="Missing letters in basic" autocomplete="off"> survival. How<input class="toefl-letter-gap" data-answer="ever" aria-label="Missing letters in however" autocomplete="off">, it i<input class="toefl-letter-gap short" data-answer="s" aria-label="Missing letters in is" autocomplete="off"> clear fr<input class="toefl-letter-gap short" data-answer="om" aria-label="Missing letters in from" autocomplete="off"> the rec<input class="toefl-letter-gap" data-answer="ord" aria-label="Missing letters in record" autocomplete="off"> that dan<input class="toefl-letter-gap" data-answer="cing" aria-label="Missing letters in dancing" autocomplete="off"> was important to them. They recorded more drawings of dances than any other group activity. Dances served various purposes, including ritualistic communication with the divine, storytelling, and social cohesion.
+        </p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="4" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 4 - Task 1</span><h3>The Human Brain</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">
+          The human brain is a complex organ responsible for controlling all bodily functions and enabling thought, emotion, and memory.
+          It i<input class="toefl-letter-gap short" data-answer="s" aria-label="Missing letters in is" autocomplete="off"> divided in<input class="toefl-letter-gap short" data-answer="to" aria-label="Missing letters in into" autocomplete="off"> several reg<input class="toefl-letter-gap" data-answer="ions" aria-label="Missing letters in regions" autocomplete="off">, each wi<input class="toefl-letter-gap short" data-answer="th" aria-label="Missing letters in with" autocomplete="off"> specific ro<input class="toefl-letter-gap" data-answer="les" aria-label="Missing letters in roles" autocomplete="off">. The cerebrum, i<input class="toefl-letter-gap short" data-answer="ts" aria-label="Missing letters in its" autocomplete="off"> largest pa<input class="toefl-letter-gap short" data-answer="rt" aria-label="Missing letters in part" autocomplete="off">, is invo<input class="toefl-letter-gap" data-answer="lved" aria-label="Missing letters in involved" autocomplete="off"> in cogn<input class="toefl-letter-gap" data-answer="itive" aria-label="Missing letters in cognitive" autocomplete="off"> functions su<input class="toefl-letter-gap short" data-answer="ch" aria-label="Missing letters in such" autocomplete="off"> as reasoning, planning, and language. The cerebellum coordinates movement and balance, while the brainstem controls vital bodily functions like breathing and heart rate. Together, they enable the brain to perform its various tasks.
+        </p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="5" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 5 - Task 1</span><h3>Why Leaves Change Color</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">In autumn, shorter days and cooler temperatures signal trees to prepare for winter. Trees st<input class="toefl-letter-gap" data-answer="op" aria-label="Missing letters in stop" autocomplete="off"> producing chlor<input class="toefl-letter-gap" data-answer="ophyll" aria-label="Missing letters in chlorophyll" autocomplete="off">, the green pig<input class="toefl-letter-gap" data-answer="ment" aria-label="Missing letters in pigment" autocomplete="off"> that he<input class="toefl-letter-gap short" data-answer="lps" aria-label="Missing letters in helps" autocomplete="off"> leaves cap<input class="toefl-letter-gap" data-answer="ture" aria-label="Missing letters in capture" autocomplete="off"> sunlight. As th<input class="toefl-letter-gap short" data-answer="is" aria-label="Missing letters in this" autocomplete="off"> pigment fa<input class="toefl-letter-gap short" data-answer="des" aria-label="Missing letters in fades" autocomplete="off">, yellow a<input class="toefl-letter-gap short" data-answer="nd" aria-label="Missing letters in and" autocomplete="off"> orange co<input class="toefl-letter-gap" data-answer="lors" aria-label="Missing letters in colors" autocomplete="off"> become vis<input class="toefl-letter-gap" data-answer="ible" aria-label="Missing letters in visible" autocomplete="off">. Some trees also produce red pigments when sugar becomes trapped in their leaves. Weather conditions influence the brightness and duration of the seasonal display.</p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="6" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 6 - Task 1</span><h3>Ancient Trade Routes</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">Ancient trade routes connected distant societies long before modern transportation existed. Merchants tra<input class="toefl-letter-gap" data-answer="veled" aria-label="Missing letters in traveled" autocomplete="off"> across des<input class="toefl-letter-gap" data-answer="erts" aria-label="Missing letters in deserts" autocomplete="off"> and se<input class="toefl-letter-gap short" data-answer="as" aria-label="Missing letters in seas" autocomplete="off"> to exch<input class="toefl-letter-gap" data-answer="ange" aria-label="Missing letters in exchange" autocomplete="off"> silk, sp<input class="toefl-letter-gap short" data-answer="ices" aria-label="Missing letters in spices" autocomplete="off">, metals, a<input class="toefl-letter-gap short" data-answer="nd" aria-label="Missing letters in and" autocomplete="off"> other val<input class="toefl-letter-gap" data-answer="uable" aria-label="Missing letters in valuable" autocomplete="off"> goods. Th<input class="toefl-letter-gap short" data-answer="ese" aria-label="Missing letters in these" autocomplete="off"> journeys al<input class="toefl-letter-gap short" data-answer="so" aria-label="Missing letters in also" autocomplete="off"> spread id<input class="toefl-letter-gap" data-answer="eas" aria-label="Missing letters in ideas" autocomplete="off"> between regions. Languages, technologies, artistic styles, and religious beliefs moved with travelers. Trade routes therefore shaped cultures as powerfully as they shaped economies.</p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-word-exercise data-toefl-test="7" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 7 - Task 1</span><h3>Learning Through Play</h3></div><strong>10 gaps</strong></div>
+        <p class="toefl-directions">Fill in the missing letters in the paragraph.</p>
+        <p class="toefl-cloze-text">Play is an important part of childhood development. While chil<input class="toefl-letter-gap" data-answer="dren" aria-label="Missing letters in children" autocomplete="off"> build tow<input class="toefl-letter-gap short" data-answer="ers" aria-label="Missing letters in towers" autocomplete="off">, invent ga<input class="toefl-letter-gap short" data-answer="mes" aria-label="Missing letters in games" autocomplete="off">, or pre<input class="toefl-letter-gap" data-answer="tend" aria-label="Missing letters in pretend" autocomplete="off"> to be ot<input class="toefl-letter-gap short" data-answer="her" aria-label="Missing letters in other" autocomplete="off"> people, th<input class="toefl-letter-gap short" data-answer="ey" aria-label="Missing letters in they" autocomplete="off"> practice sol<input class="toefl-letter-gap" data-answer="ving" aria-label="Missing letters in solving" autocomplete="off"> problems a<input class="toefl-letter-gap short" data-answer="nd" aria-label="Missing letters in and" autocomplete="off"> expressing em<input class="toefl-letter-gap" data-answer="otions" aria-label="Missing letters in emotions" autocomplete="off">. Group play al<input class="toefl-letter-gap short" data-answer="so" aria-label="Missing letters in also" autocomplete="off"> teaches cooperation and negotiation. Researchers note that unstructured play gives children freedom to make decisions, test ideas, and learn from mistakes without adult pressure.</p>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Complete all 10 words, then check your answers.</p>
+      </article>
+    </section>
+
+    <section id="daily-life" class="toefl-task-section" data-toefl-task-section data-toefl-test-content hidden>
+      <div class="toefl-task-heading">
+        <div><p class="panel-kicker">Task type 2</p><h2>Read in Daily Life</h2></div>
+        <p>Read each real-world text, then choose the best answer to each question.</p>
+      </div>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="1">
+        <div class="toefl-exercise-heading"><div><span>Mock Test 1 - Task 2</span><h3>Two Community Notices</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text">
+          <p class="prompt-label">Westfield Public Library</p>
+          <h4>Second-floor study area temporarily closed</h4>
+          <p>From Monday, March 9, through Friday, March 20, the second-floor study area will be closed while new lighting and electrical outlets are installed. The first-floor reading room will remain open, but seating is limited. Students who need a quiet workspace may reserve a room at the East Branch through our website. Books located on the second floor can still be requested at the information desk. Please allow staff approximately ten minutes to retrieve them.</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="b"><legend>1. Why will the study area be closed?</legend><label><input type="radio" name="daily1q1" value="a"> The library is moving its books.</label><label><input type="radio" name="daily1q1" value="b"> Workers are improving the space.</label><label><input type="radio" name="daily1q1" value="c"> Students reserved the entire floor.</label><label><input type="radio" name="daily1q1" value="d"> Staff members are attending training.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>2. What should students do if they want guaranteed seating?</legend><label><input type="radio" name="daily1q2" value="a"> Arrive ten minutes early.</label><label><input type="radio" name="daily1q2" value="b"> Ask at the information desk.</label><label><input type="radio" name="daily1q2" value="c"> Reserve a room at another branch.</label><label><input type="radio" name="daily1q2" value="d"> Use the second-floor reading room.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="a"><legend>3. What does “retrieve” most nearly mean?</legend><label><input type="radio" name="daily1q3" value="a"> Get and bring back</label><label><input type="radio" name="daily1q3" value="b"> Repair carefully</label><label><input type="radio" name="daily1q3" value="c"> Record digitally</label><label><input type="radio" name="daily1q3" value="d"> Return permanently</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-social-post">
+          <p class="prompt-label">Westfield Community Center</p>
+          <h4>Free Bicycle Safety Workshop</h4>
+          <p>Join us this Saturday at 2:00 p.m. for a free bicycle safety workshop in the community center parking lot. An instructor will demonstrate how to check brakes, adjust a helmet, and ride safely in traffic. Participants should bring their own bicycle and helmet. Children under 14 must attend with an adult. The workshop may move inside if it rains, but the bicycle inspection will be canceled.</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="c"><legend>4. What should participants take to the workshop?</legend><label><input type="radio" name="daily1q4" value="a"> A repair manual and tools</label><label><input type="radio" name="daily1q4" value="b"> An identification card</label><label><input type="radio" name="daily1q4" value="c"> A bicycle and a helmet</label><label><input type="radio" name="daily1q4" value="d"> An indoor exercise bicycle</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>5. What will happen if it rains?</legend><label><input type="radio" name="daily1q5" value="a"> The entire workshop will be canceled.</label><label><input type="radio" name="daily1q5" value="b"> Some activities may continue indoors.</label><label><input type="radio" name="daily1q5" value="c"> Children will not be allowed to attend.</label><label><input type="radio" name="daily1q5" value="d"> The workshop will begin later.</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="2" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 2 - Task 2</span><h3>Two Volunteer Messages</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text toefl-email">
+          <p><strong>To:</strong> Saturday Garden Team<br><strong>From:</strong> Maya Chen<br><strong>Subject:</strong> Change of plans for Saturday</p>
+          <p>Hi everyone,</p>
+          <p>The weather forecast now predicts heavy rain on Saturday morning, so we will not plant the vegetable beds as planned. Instead, please meet in the community center at 10:30 a.m. We will label seed containers and prepare signs for next month's plant sale. If you already borrowed gardening tools, there is no need to bring them. However, please drop by the center before noon if you have the printed price lists. We need those before we can finish the signs.</p>
+          <p>Thanks,<br>Maya</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="d"><legend>1. Why did Maya send the email?</legend><label><input type="radio" name="daily2q1" value="a"> To cancel the plant sale</label><label><input type="radio" name="daily2q1" value="b"> To request new gardening tools</label><label><input type="radio" name="daily2q1" value="c"> To report damage to the garden</label><label><input type="radio" name="daily2q1" value="d"> To explain a change in the team's activities</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>2. What should volunteers bring to the center?</legend><label><input type="radio" name="daily2q2" value="a"> Seed containers</label><label><input type="radio" name="daily2q2" value="b"> Printed price lists</label><label><input type="radio" name="daily2q2" value="c"> Gardening tools</label><label><input type="radio" name="daily2q2" value="d"> Vegetables for the sale</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>3. In the email, “drop by” means to</legend><label><input type="radio" name="daily2q3" value="a"> leave an object outside.</label><label><input type="radio" name="daily2q3" value="b"> cancel an appointment.</label><label><input type="radio" name="daily2q3" value="c"> visit for a short time.</label><label><input type="radio" name="daily2q3" value="d"> send something electronically.</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-social-post">
+          <p class="prompt-label">Message from Daniel - Food Bank Coordinator</p>
+          <p>Thank you to everyone who volunteered at Tuesday's food drive. We collected more than 300 cans! Before next week's distribution, we need four volunteers to sort the donations on Monday from 4:00 to 6:00 p.m. Please wear closed-toe shoes because some boxes are heavy. If you can help, reply to this message by Friday afternoon. Volunteers who worked on Tuesday are welcome to participate again, but new team members are encouraged to join us.</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="a"><legend>4. Why did Daniel write the message?</legend><label><input type="radio" name="daily2q4" value="a"> To find people to organize donations</label><label><input type="radio" name="daily2q4" value="b"> To change the date of the food drive</label><label><input type="radio" name="daily2q4" value="c"> To request additional canned food</label><label><input type="radio" name="daily2q4" value="d"> To cancel next week's distribution</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>5. What are interested volunteers asked to do?</legend><label><input type="radio" name="daily2q5" value="a"> Bring heavy boxes on Tuesday</label><label><input type="radio" name="daily2q5" value="b"> Arrive at the food bank by Friday</label><label><input type="radio" name="daily2q5" value="c"> Purchase closed-toe shoes</label><label><input type="radio" name="daily2q5" value="d"> Respond before Friday afternoon ends</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="3" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 3 - Task 2</span><h3>Notices and Social Media</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text">
+          <p class="prompt-label">Municipal Charter</p>
+          <h4>Sign up for paperless billing statements today.</h4>
+          <p>Safe, convenient, easy. Enroll in paperless billing to receive monthly savings account statements in an electronic PDF document. Access your Municipal Charter account through the mobile app and select account preferences in the upper right-hand corner to enroll.</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="d"><legend>1. What type of business issued the notice?</legend><label><input type="radio" name="daily3q1" value="a"> An Internet provider</label><label><input type="radio" name="daily3q1" value="b"> A computer company</label><label><input type="radio" name="daily3q1" value="c"> A paper company</label><label><input type="radio" name="daily3q1" value="d"> A bank</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>2. How can customers enroll in paperless billing?</legend><label><input type="radio" name="daily3q2" value="a"> By visiting a Municipal Charter office</label><label><input type="radio" name="daily3q2" value="b"> By accessing the Municipal Charter website</label><label><input type="radio" name="daily3q2" value="c"> By using the Municipal Charter app</label><label><input type="radio" name="daily3q2" value="d"> By calling a customer service representative</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-social-post">
+          <p class="prompt-label">Sofia Baker - Social media post</p>
+          <p>Every Saturday, our local farmer's market is the place to be! Fresh fruits, veggies, homemade goodies, and unique crafts await you. The Thompson family's organic produce is a must-try, known for its quality and cordial service. Their stall is always bustling with customers eager to buy fresh, pesticide-free vegetables from the welcoming staff.</p>
+          <p>Don't miss the bakery stall - get there early for the best bread and pastries, including gluten-free and vegan options. The smell of freshly baked goods fills the air, and these treats sell out fast!</p>
+          <p>In addition to food, the market sells handmade crafts like jewelry, pottery, and textiles. These unique items make perfect gifts and support local artisans. Plus, enjoy live music while you shop. Talented local musicians help create a vibrant atmosphere, and the community spirit makes it a delightful experience for all. See you there!</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="b"><legend>3. What is the main purpose of the post?</legend><label><input type="radio" name="daily3q3" value="a"> To explain the benefits of organic farming</label><label><input type="radio" name="daily3q3" value="b"> To describe the variety of products available at the farmer's market</label><label><input type="radio" name="daily3q3" value="c"> To compare different farmer's markets in the area</label><label><input type="radio" name="daily3q3" value="d"> To offer advice on starting a stall at the farmer's market</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>4. What reason is given for the popularity of the Thompson family's stall?</legend><label><input type="radio" name="daily3q4" value="a"> They offer cooking tips and recipes.</label><label><input type="radio" name="daily3q4" value="b"> They offer the lowest prices at the market.</label><label><input type="radio" name="daily3q4" value="c"> They provide friendly service and excellent products.</label><label><input type="radio" name="daily3q4" value="d"> They have a beautiful and well-decorated stall.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>5. Why do customers go to the bakery stall early?</legend><label><input type="radio" name="daily3q5" value="a"> To get the free samples given in mornings</label><label><input type="radio" name="daily3q5" value="b"> To get freshly baked bread and pastries before they are gone</label><label><input type="radio" name="daily3q5" value="c"> To meet the famous baker</label><label><input type="radio" name="daily3q5" value="d"> To take advantage of early morning discounts</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="4" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 4 - Task 2</span><h3>Two Important Emails</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text toefl-email">
+          <p><strong>To:</strong> edward56L@dmail.com<br><strong>From:</strong> artforeveryone@dmail.com<br><strong>Date:</strong> 10/09/2025<br><strong>Subject:</strong> Art Workshop Reservation Confirmation</p>
+          <p>Dear Ms. Edwards,</p>
+          <p>The reservation for the art workshop that you made on September 10th has been confirmed. The workshop will take place on September 20th at 3:00 PM. All necessary arts supplies will be provided, but please bring your own apron or smock.</p>
+          <p>Best regards,<br>Laura Bennett</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="c"><legend>1. When is the date of the art workshop?</legend><label><input type="radio" name="daily4q1" value="a"> September 10th</label><label><input type="radio" name="daily4q1" value="b"> September 12th</label><label><input type="radio" name="daily4q1" value="c"> September 20th</label><label><input type="radio" name="daily4q1" value="d"> September 30th</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>2. What should Ms. Edwards bring to the workshop?</legend><label><input type="radio" name="daily4q2" value="a"> A payment method</label><label><input type="radio" name="daily4q2" value="b"> Extra paint</label><label><input type="radio" name="daily4q2" value="c"> A protective garment</label><label><input type="radio" name="daily4q2" value="d"> Proof of reservation</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-email">
+          <p><strong>To:</strong> nguyebooklover@dmail.com<br><strong>From:</strong> part.gymworkers@dmail.com<br><strong>Subject:</strong> You're Invited - Bring Friends &amp; Family to Our Grand Opening!</p>
+          <p>Dear Ms. Nguyen,</p>
+          <p>We're excited to invite you - and your friends and family - to the grand opening of our new branch at 25 Orchid Street, happening next Monday. This event is a great opportunity to explore our state-of-the-art facility, featuring top-tier equipment, energizing group classes, and expert personal training.</p>
+          <p>This celebration, exclusively for our valued members and their guests, will include guided tours, live fitness demonstrations, and complimentary refreshments. It's the perfect chance to experience our community-focused approach to wellness and introduce others to a space designed for all fitness levels.</p>
+          <p>Bring your friends and family! We're offering a special one-day-only discount on memberships for all attendees.</p>
+          <p>Warm regards,<br>John Parker</p>
+        </div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="a"><legend>3. What is the main purpose of the email?</legend><label><input type="radio" name="daily4q3" value="a"> To attract customers to a new fitness center</label><label><input type="radio" name="daily4q3" value="b"> To provide Ms. Nguyen with an opportunity to provide expert personal training</label><label><input type="radio" name="daily4q3" value="c"> To celebrate Ms. Nguyen's achievements in wellness</label><label><input type="radio" name="daily4q3" value="d"> To announce a discount available to fitness-center members</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>4. What can be inferred about Ms. Nguyen's relationship with the fitness center?</legend><label><input type="radio" name="daily4q4" value="a"> She helps the fitness center to organize activities.</label><label><input type="radio" name="daily4q4" value="b"> She has already explored the new facility.</label><label><input type="radio" name="daily4q4" value="c"> She is a member at one of the fitness center's other locations.</label><label><input type="radio" name="daily4q4" value="d"> She is new to using fitness centers and exercise equipment.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>5. The new fitness center is intended for use by which group of people?</legend><label><input type="radio" name="daily4q5" value="a"> Expert personal trainers</label><label><input type="radio" name="daily4q5" value="b"> Top-tier athletes</label><label><input type="radio" name="daily4q5" value="c"> Existing fitness-center members</label><label><input type="radio" name="daily4q5" value="d"> Community members of all fitness levels</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="5" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 5 - Task 2</span><h3>Campus Event and Store Notice</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text toefl-email"><p><strong>From:</strong> Student Activities Office<br><strong>Subject:</strong> Outdoor Movie Update</p><p>Tonight's outdoor movie will begin at 8:30 p.m. on the South Lawn, thirty minutes later than originally announced. Bring a blanket or folding chair. Free popcorn is available while supplies last, but other snacks must be purchased. If rain begins before 7:00 p.m., the event will move to Carter Hall. Check the student portal after 7:15 for a final location update.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="c"><legend>1. What has changed about the movie?</legend><label><input type="radio" name="daily5q1" value="a"> Its title</label><label><input type="radio" name="daily5q1" value="b"> Its admission price</label><label><input type="radio" name="daily5q1" value="c"> Its starting time</label><label><input type="radio" name="daily5q1" value="d"> Its scheduled date</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>2. Why should students check the portal?</legend><label><input type="radio" name="daily5q2" value="a"> To reserve a chair</label><label><input type="radio" name="daily5q2" value="b"> To confirm where the movie will be shown</label><label><input type="radio" name="daily5q2" value="c"> To select a movie</label><label><input type="radio" name="daily5q2" value="d"> To order free snacks</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>3. What is provided at no cost?</legend><label><input type="radio" name="daily5q3" value="a"> Folding chairs</label><label><input type="radio" name="daily5q3" value="b"> Blankets</label><label><input type="radio" name="daily5q3" value="c"> All refreshments</label><label><input type="radio" name="daily5q3" value="d"> A limited amount of popcorn</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-social-post"><p class="prompt-label">Riverside Bookstore</p><p>Our used-book exchange begins Thursday. Bring up to five books in good condition and receive one store credit for each title we accept. Textbooks older than five years, damaged books, and magazines cannot be exchanged. Credits may be used on used books beginning Friday, but they are not valid for stationery or new releases. Unused credits expire at the end of the month.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="a"><legend>4. Which item would the store most likely accept?</legend><label><input type="radio" name="daily5q4" value="a"> A recent novel in good condition</label><label><input type="radio" name="daily5q4" value="b"> A torn travel guide</label><label><input type="radio" name="daily5q4" value="c"> A weekly magazine</label><label><input type="radio" name="daily5q4" value="d"> A ten-year-old textbook</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>5. What can customers buy with exchange credits?</legend><label><input type="radio" name="daily5q5" value="a"> Pens and notebooks</label><label><input type="radio" name="daily5q5" value="b"> Newly published books</label><label><input type="radio" name="daily5q5" value="c"> Previously owned books</label><label><input type="radio" name="daily5q5" value="d"> Magazine subscriptions</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="6" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 6 - Task 2</span><h3>Travel Alert and Club Message</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text"><p class="prompt-label">City Transit Alert</p><h4>Route 18 Weekend Detour</h4><p>Because of road repairs, Route 18 buses will not stop at Pine Street or Museum Square this Saturday and Sunday. Passengers for the museum should use the temporary stop beside Central Station, approximately a six-minute walk from the main entrance. Buses will follow their regular schedule, although minor delays are possible. Normal service resumes Monday morning.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="d"><legend>1. Why is Route 18 changing?</legend><label><input type="radio" name="daily6q1" value="a"> A museum event is blocking traffic.</label><label><input type="radio" name="daily6q1" value="b"> The regular buses are being replaced.</label><label><input type="radio" name="daily6q1" value="c"> Central Station is closed.</label><label><input type="radio" name="daily6q1" value="d"> Work is being done on the road.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="a"><legend>2. Where should museum visitors leave the bus?</legend><label><input type="radio" name="daily6q2" value="a"> Near Central Station</label><label><input type="radio" name="daily6q2" value="b"> At Pine Street</label><label><input type="radio" name="daily6q2" value="c"> At the museum entrance</label><label><input type="radio" name="daily6q2" value="d"> At Museum Square</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>3. When will the usual route return?</legend><label><input type="radio" name="daily6q3" value="a"> Sunday morning</label><label><input type="radio" name="daily6q3" value="b"> Monday morning</label><label><input type="radio" name="daily6q3" value="c"> Monday evening</label><label><input type="radio" name="daily6q3" value="d"> Next Saturday</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-email"><p><strong>From:</strong> Photography Club<br><strong>Subject:</strong> Portrait Session</p><p>Wednesday's portrait session is open to beginners, so no previous studio experience is required. Cameras are available to borrow, but members must request one by noon on Tuesday. Meet in Studio B at 6:00 p.m. The first half hour will cover lighting techniques; afterward, students will work in pairs. Please ask permission before posting another student's portrait online.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="c"><legend>4. What must members do to borrow equipment?</legend><label><input type="radio" name="daily6q4" value="a"> Arrive thirty minutes early</label><label><input type="radio" name="daily6q4" value="b"> Have studio experience</label><label><input type="radio" name="daily6q4" value="c"> Make a request before the deadline</label><label><input type="radio" name="daily6q4" value="d"> Work without a partner</label></fieldset>
+          <fieldset class="toefl-question" data-answer="a"><legend>5. What are members reminded to do?</legend><label><input type="radio" name="daily6q5" value="a"> Obtain consent before sharing portraits</label><label><input type="radio" name="daily6q5" value="b"> Bring their own studio lights</label><label><input type="radio" name="daily6q5" value="c"> Post every photograph online</label><label><input type="radio" name="daily6q5" value="d"> Avoid photographing beginners</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="7" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 7 - Task 2</span><h3>Delivery Email and Museum Post</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-realworld-text toefl-email"><p><strong>From:</strong> Green Basket Delivery<br><strong>Subject:</strong> Action needed for your order</p><p>We attempted to deliver your grocery order this morning, but no one was available to receive the refrigerated items. Please choose a new delivery window through your account by 9:00 p.m. today. There is no charge for the first rescheduling. If no new time is selected, the order will be canceled automatically and your payment will be refunded within five business days.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="b"><legend>1. Why was the order not delivered?</legend><label><input type="radio" name="daily7q1" value="a"> The refrigerated products were unavailable.</label><label><input type="radio" name="daily7q1" value="b"> Nobody was present to accept it.</label><label><input type="radio" name="daily7q1" value="c"> The customer had not paid.</label><label><input type="radio" name="daily7q1" value="d"> The driver had the wrong address.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>2. What must the customer do by 9:00 p.m.?</legend><label><input type="radio" name="daily7q2" value="a"> Request a refund</label><label><input type="radio" name="daily7q2" value="b"> Pay a delivery fee</label><label><input type="radio" name="daily7q2" value="c"> Contact the driver</label><label><input type="radio" name="daily7q2" value="d"> Select another delivery time</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>3. What happens if the customer takes no action?</legend><label><input type="radio" name="daily7q3" value="a"> A second delivery is attempted tomorrow.</label><label><input type="radio" name="daily7q3" value="b"> An extra fee is added.</label><label><input type="radio" name="daily7q3" value="c"> The purchase is canceled and refunded.</label><label><input type="radio" name="daily7q3" value="d"> The refrigerated items are removed.</label></fieldset>
+        </div>
+        <div class="toefl-realworld-text toefl-social-post"><p class="prompt-label">Natural History Museum</p><p>Looking for a quieter museum visit? Beginning next month, the first Thursday evening of every month will be sensory-friendly. Visitor numbers will be limited, gallery sounds will be reduced, and a quiet room will be available. The regular admission fee applies, and advance booking is strongly recommended because tickets are limited. All visitors are welcome.</p></div>
+        <div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="a"><legend>4. What is special about the Thursday evening visits?</legend><label><input type="radio" name="daily7q4" value="a"> The environment will be calmer than usual.</label><label><input type="radio" name="daily7q4" value="b"> Admission will be free.</label><label><input type="radio" name="daily7q4" value="c"> Only children may enter.</label><label><input type="radio" name="daily7q4" value="d"> Every gallery will have live music.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>5. Why does the museum recommend booking early?</legend><label><input type="radio" name="daily7q5" value="a"> The admission price will increase.</label><label><input type="radio" name="daily7q5" value="b"> Fewer tickets will be offered.</label><label><input type="radio" name="daily7q5" value="c"> The quiet room requires a separate reservation.</label><label><input type="radio" name="daily7q5" value="d"> The event occurs only once.</label></fieldset>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+    </section>
+
+    <section id="academic-passage" class="toefl-task-section" data-toefl-task-section data-toefl-test-content hidden>
+      <div class="toefl-task-heading">
+        <div><p class="panel-kicker">Task type 3</p><h2>Read an Academic Passage</h2></div>
+        <p>Read each short academic text and answer five questions about ideas, details, vocabulary, inference, and purpose.</p>
+      </div>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="1">
+        <div class="toefl-exercise-heading"><div><span>Mock Test 1 - Task 3</span><h3>Sleep and Memory</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout">
+          <div class="toefl-academic-text">
+            <p>For many years, researchers viewed sleep mainly as a period of rest. Current evidence, however, shows that the sleeping brain remains active and performs important work. One of its central tasks is memory consolidation, the process through which newly acquired information becomes more stable and easier to retrieve later.</p>
+            <p>Different stages of sleep appear to support different kinds of memory. Deep sleep is strongly associated with declarative memories, which include facts and events. During this stage, patterns of brain activity recorded while a person was learning may be repeated. Researchers believe this replay helps transfer information from temporary storage to more durable networks in the brain. Rapid eye movement, or REM, sleep may be especially useful for procedural memories involving skills, as well as for connecting new information with earlier experiences.</p>
+            <p>Sleep does not preserve every detail equally. Instead, the brain seems to select and reorganize information. In some experiments, participants who slept after learning identified broader patterns that they had not consciously noticed before. This suggests that sleep can do more than strengthen individual memories; it may also help people discover relationships among them. Consequently, losing sleep before or after studying can affect both recall and the ability to apply knowledge flexibly.</p>
+          </div>
+          <div class="toefl-question-list">
+            <fieldset class="toefl-question" data-answer="b"><legend>1. What is the passage mainly about?</legend><label><input type="radio" name="academic1q1" value="a"> Why dreams are difficult to remember</label><label><input type="radio" name="academic1q1" value="b"> How sleep contributes to learning and memory</label><label><input type="radio" name="academic1q1" value="c"> Why adults require less sleep than children</label><label><input type="radio" name="academic1q1" value="d"> How researchers measure brain activity</label></fieldset>
+            <fieldset class="toefl-question" data-answer="a"><legend>2. According to paragraph 2, deep sleep particularly supports memories of</legend><label><input type="radio" name="academic1q2" value="a"> facts and events.</label><label><input type="radio" name="academic1q2" value="b"> physical movements only.</label><label><input type="radio" name="academic1q2" value="c"> emotional reactions.</label><label><input type="radio" name="academic1q2" value="d"> unfamiliar sounds.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="d"><legend>3. The word “durable” is closest in meaning to</legend><label><input type="radio" name="academic1q3" value="a"> complicated.</label><label><input type="radio" name="academic1q3" value="b"> temporary.</label><label><input type="radio" name="academic1q3" value="c"> separate.</label><label><input type="radio" name="academic1q3" value="d"> long-lasting.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="c"><legend>4. What can be inferred from the experiments in paragraph 3?</legend><label><input type="radio" name="academic1q4" value="a"> Participants studied while they were asleep.</label><label><input type="radio" name="academic1q4" value="b"> Sleep preserved every learned detail equally.</label><label><input type="radio" name="academic1q4" value="c"> Sleep helped participants recognize connections.</label><label><input type="radio" name="academic1q4" value="d"> Participants forgot the original information.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="b"><legend>5. Why does the author discuss different stages of sleep?</legend><label><input type="radio" name="academic1q5" value="a"> To argue that REM sleep is unnecessary</label><label><input type="radio" name="academic1q5" value="b"> To show that stages may support different memory functions</label><label><input type="radio" name="academic1q5" value="c"> To explain why people wake during the night</label><label><input type="radio" name="academic1q5" value="d"> To compare sleep patterns across cultures</label></fieldset>
+          </div>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="2" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 2 - Task 3</span><h3>How Bees Navigate</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout">
+          <div class="toefl-academic-text">
+            <p>Honeybees often travel several kilometers from their hive while searching for flowers, yet they can return by a direct route. Their navigation depends on several sources of information rather than a single sense. One important guide is the Sun. Bees can detect its position and use an internal sense of time to compensate for the Sun's movement across the sky.</p>
+            <p>Clouds do not necessarily prevent solar navigation. Patterns of polarized light, which human eyes cannot normally see, remain visible to bees in parts of the sky. These patterns reveal the Sun's location even when it is hidden. Bees also learn visual landmarks such as trees, buildings, and the shape of the horizon. Young worker bees make a series of short orientation flights before they begin collecting food. During these flights, they appear to memorize the landscape surrounding the hive.</p>
+            <p>Odor provides another layer of guidance, especially close to home or a food source. Because each method has limitations, combining them makes the system more reliable. A familiar landmark may disappear, the Sun may be obscured, or wind may carry an odor away from its source. By comparing several kinds of evidence, a bee can adjust its path when conditions change. This flexible system helps explain how an insect with a small brain performs remarkably complex journeys.</p>
+          </div>
+          <div class="toefl-question-list">
+            <fieldset class="toefl-question" data-answer="c"><legend>1. What is the main purpose of the passage?</legend><label><input type="radio" name="academic2q1" value="a"> To describe how bees build hives</label><label><input type="radio" name="academic2q1" value="b"> To compare bees with other insects</label><label><input type="radio" name="academic2q1" value="c"> To explain the information bees use to navigate</label><label><input type="radio" name="academic2q1" value="d"> To show why flowers attract bees</label></fieldset>
+            <fieldset class="toefl-question" data-answer="b"><legend>2. How can bees locate the Sun when clouds cover it?</legend><label><input type="radio" name="academic2q2" value="a"> They follow the direction of the wind.</label><label><input type="radio" name="academic2q2" value="b"> They detect patterns of polarized light.</label><label><input type="radio" name="academic2q2" value="c"> They remember the temperature of the air.</label><label><input type="radio" name="academic2q2" value="d"> They compare odors from several flowers.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="a"><legend>3. The word “obscured” is closest in meaning to</legend><label><input type="radio" name="academic2q3" value="a"> hidden.</label><label><input type="radio" name="academic2q3" value="b"> reflected.</label><label><input type="radio" name="academic2q3" value="c"> measured.</label><label><input type="radio" name="academic2q3" value="d"> weakened.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="d"><legend>4. Why do young worker bees take orientation flights?</legend><label><input type="radio" name="academic2q4" value="a"> To search for unfamiliar flowers</label><label><input type="radio" name="academic2q4" value="b"> To practice communicating with other bees</label><label><input type="radio" name="academic2q4" value="c"> To determine the time of day</label><label><input type="radio" name="academic2q4" value="d"> To learn the area around the hive</label></fieldset>
+            <fieldset class="toefl-question" data-answer="c"><legend>5. What does paragraph 3 suggest about bee navigation?</legend><label><input type="radio" name="academic2q5" value="a"> It becomes impossible when one landmark disappears.</label><label><input type="radio" name="academic2q5" value="b"> It depends mainly on the bee's sense of smell.</label><label><input type="radio" name="academic2q5" value="c"> It remains effective because bees combine several guides.</label><label><input type="radio" name="academic2q5" value="d"> It works only in familiar weather conditions.</label></fieldset>
+          </div>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="3" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 3 - Task 3</span><h3>The Mirror Test</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout">
+          <div class="toefl-academic-text">
+            <p>Very young children cannot recognize themselves in a mirror; they usually achieve this milestone around 18 months of age. The ability to recognize oneself in the mirror is considered to be a key component of self-awareness and consciousness for humans. But what about animals?</p>
+            <p>For many years, scientists have known that members of the great ape family could recognize themselves in mirrors. They measured this by the “mirror test,” which involved putting a colored mark on an ape's body, and then showing the ape its reflection in a mirror. If the ape tried to remove the mark on its own body, the scientists knew that the ape was recognizing its reflection.</p>
+            <p>Apes are close relatives of humans, but in recent years, scientists have discovered that other animals also pass the “mirror test.” Elephants and dolphins have shown signs of self-recognition. These, like apes, are highly intelligent animals. But in a more recent experiment, a type of fish called the cleaner fish tried to scrape a mark off its body when it saw itself in the mirror. This suggests that even less intelligent animals may possess more self-awareness than previously suspected.</p>
+          </div>
+          <div class="toefl-question-list">
+            <fieldset class="toefl-question" data-answer="b"><legend>1. What is the passage mainly about?</legend><label><input type="radio" name="academic3q1" value="a"> Stages of early childhood development</label><label><input type="radio" name="academic3q1" value="b"> Research on animal cognition</label><label><input type="radio" name="academic3q1" value="c"> Differences between apes, elephants, and dolphins</label><label><input type="radio" name="academic3q1" value="d"> Recent experiments on fish</label></fieldset>
+            <fieldset class="toefl-question" data-answer="a"><legend>2. The word “milestone” is closest in meaning to</legend><label><input type="radio" name="academic3q2" value="a"> accomplishment.</label><label><input type="radio" name="academic3q2" value="b"> distance.</label><label><input type="radio" name="academic3q2" value="c"> weight.</label><label><input type="radio" name="academic3q2" value="d"> discovery.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="b"><legend>3. Why did scientists put colored marks on animals' bodies?</legend><label><input type="radio" name="academic3q3" value="a"> It made it possible to track the animals' movements.</label><label><input type="radio" name="academic3q3" value="b"> It helped them determine whether the animals recognized themselves.</label><label><input type="radio" name="academic3q3" value="c"> It made it easier to tell the animals apart.</label><label><input type="radio" name="academic3q3" value="d"> It showed whether some animals can detect color differences.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="d"><legend>4. According to the passage, all are true about elephants EXCEPT:</legend><label><input type="radio" name="academic3q4" value="a"> They can recognize themselves in mirrors.</label><label><input type="radio" name="academic3q4" value="b"> They are highly intelligent animals.</label><label><input type="radio" name="academic3q4" value="c"> They possess qualities in common with apes.</label><label><input type="radio" name="academic3q4" value="d"> They understand certain signs from other animals.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="a"><legend>5. Why does the author mention cleaner fish?</legend><label><input type="radio" name="academic3q5" value="a"> To suggest that a wide range of animals may possess self-awareness</label><label><input type="radio" name="academic3q5" value="b"> To imply that ocean animals are highly intelligent</label><label><input type="radio" name="academic3q5" value="c"> To demonstrate a flaw in a recent experiment</label><label><input type="radio" name="academic3q5" value="d"> To provide an example of an animal that does not recognize itself</label></fieldset>
+          </div>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="4" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 4 - Task 3</span><h3>The Paradox of Choice</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout">
+          <div class="toefl-academic-text">
+            <p>The paradox of choice, a concept popularized by psychologist Barry Schwartz, suggests that more options can lead to less satisfaction. While the freedom to choose is fundamental to consumer culture, an overabundance of choices - from groceries to electronics - can overwhelm individuals, causing anxiety and decision fatigue. This paradox implies that the vast array of possibilities available today might actually diminish consumer contentment, as the fear of making the wrong choice looms large.</p>
+            <p>Research supports this notion. In an experiment, psychologist Sheena Iyengar found that shoppers were more likely to purchase jam when offered 6 varieties instead of 24. The limited selection eased the decision process, reducing the pressure to find the 'perfect' option and making the experience more enjoyable. This phenomenon reveals that fewer choices can sometimes make consumers happier, which is a valuable insight for marketers and retailers aiming to boost satisfaction by curating their offerings.</p>
+            <p>The paradox also has broader implications. In individualistic cultures, where personal choice is highly valued, the burden of decision-making can be significant. Conversely, collectivist cultures, which often provide fewer choices, report higher levels of contentment. This dynamic suggests that understanding cultural differences in consumer psychology can help businesses optimize their product strategies and enhance overall well-being.</p>
+          </div>
+          <div class="toefl-question-list">
+            <fieldset class="toefl-question" data-answer="d"><legend>1. Which statement best expresses a main idea of the passage?</legend><label><input type="radio" name="academic4q1" value="a"> Effective marketing strategies focus on increasing product options.</label><label><input type="radio" name="academic4q1" value="b"> Modern consumer culture is driven by a demand for fewer products.</label><label><input type="radio" name="academic4q1" value="c"> Individualism enhances consumer satisfaction.</label><label><input type="radio" name="academic4q1" value="d"> Limiting consumer choices can lead to higher satisfaction.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="b"><legend>2. What is one effect of decision fatigue mentioned in the passage?</legend><label><input type="radio" name="academic4q2" value="a"> Desire to make the same choices as other consumers</label><label><input type="radio" name="academic4q2" value="b"> Anxiety about making the wrong choice</label><label><input type="radio" name="academic4q2" value="c"> Preference for consumer cultures</label><label><input type="radio" name="academic4q2" value="d"> Enhanced freedom to choose</label></fieldset>
+            <fieldset class="toefl-question" data-answer="c"><legend>3. Why does the author mention Sheena Iyengar's experiment?</legend><label><input type="radio" name="academic4q3" value="a"> To highlight the effectiveness of marketing strategies</label><label><input type="radio" name="academic4q3" value="b"> To explain the methodology used in consumer psychology</label><label><input type="radio" name="academic4q3" value="c"> To provide evidence supporting the paradox of choice</label><label><input type="radio" name="academic4q3" value="d"> To criticize the abundance of products in modern markets</label></fieldset>
+            <fieldset class="toefl-question" data-answer="b"><legend>4. The word “curating” is closest in meaning to</legend><label><input type="radio" name="academic4q4" value="a"> eliminating.</label><label><input type="radio" name="academic4q4" value="b"> organizing.</label><label><input type="radio" name="academic4q4" value="c"> increasing.</label><label><input type="radio" name="academic4q4" value="d"> changing.</label></fieldset>
+            <fieldset class="toefl-question" data-answer="c"><legend>5. What can be inferred about consumers in collectivist cultures?</legend><label><input type="radio" name="academic4q5" value="a"> They tend to report lower levels of satisfaction.</label><label><input type="radio" name="academic4q5" value="b"> They are more affected by the paradox of choice.</label><label><input type="radio" name="academic4q5" value="c"> They generally have fewer choices available.</label><label><input type="radio" name="academic4q5" value="d"> They prefer individual decision-making.</label></fieldset>
+          </div>
+        </div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div>
+        <p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="5" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 5 - Task 3</span><h3>How Desert Plants Survive</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout"><div class="toefl-academic-text">
+          <p>Deserts receive little rainfall, and the water that does arrive may evaporate quickly. Yet many plants flourish in these environments because they possess specialized adaptations. Some succulents store water in thick stems or leaves. Their waxy outer surfaces reduce evaporation, while shallow, widespread roots absorb rain before it disappears into the soil.</p>
+          <p>Other species avoid drought rather than endure it. Their seeds remain inactive underground for months or even years. After sufficient rain falls, the seeds germinate rapidly. The plants then grow, flower, and produce new seeds within a few weeks. This compressed life cycle allows them to reproduce during brief periods when water is available.</p>
+          <p>Desert plants must also manage heat. Many open the tiny pores on their leaves at night instead of during the day. They collect carbon dioxide in the cooler darkness and use it for photosynthesis after sunrise while their pores remain closed. This process conserves water but can limit growth, helping explain why many desert plants develop slowly.</p>
+        </div><div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="b"><legend>1. What is the passage mainly about?</legend><label><input type="radio" name="academic5q1" value="a"> Why deserts receive little rainfall</label><label><input type="radio" name="academic5q1" value="b"> Strategies plants use to live in dry environments</label><label><input type="radio" name="academic5q1" value="c"> Why all desert plants grow slowly</label><label><input type="radio" name="academic5q1" value="d"> Methods for cultivating desert plants</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>2. What is one advantage of shallow, widespread roots?</legend><label><input type="radio" name="academic5q2" value="a"> They store carbon dioxide.</label><label><input type="radio" name="academic5q2" value="b"> They protect seeds for years.</label><label><input type="radio" name="academic5q2" value="c"> They reduce sunlight.</label><label><input type="radio" name="academic5q2" value="d"> They collect rainwater quickly.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="a"><legend>3. The word “compressed” is closest in meaning to</legend><label><input type="radio" name="academic5q3" value="a"> shortened.</label><label><input type="radio" name="academic5q3" value="b"> interrupted.</label><label><input type="radio" name="academic5q3" value="c"> hidden.</label><label><input type="radio" name="academic5q3" value="d"> repeated.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>4. Why do some desert plants open their pores at night?</legend><label><input type="radio" name="academic5q4" value="a"> To grow more rapidly</label><label><input type="radio" name="academic5q4" value="b"> To release stored rainwater</label><label><input type="radio" name="academic5q4" value="c"> To reduce water loss</label><label><input type="radio" name="academic5q4" value="d"> To produce new seeds</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>5. What can be inferred about dormant desert seeds?</legend><label><input type="radio" name="academic5q5" value="a"> They require constant sunlight.</label><label><input type="radio" name="academic5q5" value="b"> They can wait a long time for favorable conditions.</label><label><input type="radio" name="academic5q5" value="c"> They absorb water through leaves.</label><label><input type="radio" name="academic5q5" value="d"> They grow best in cold climates.</label></fieldset>
+        </div></div><div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="6" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 6 - Task 3</span><h3>The Development of Paper</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout"><div class="toefl-academic-text">
+          <p>Before paper became common, societies recorded information on materials such as clay, bamboo, silk, and animal skin. These surfaces served important purposes but had disadvantages. Clay tablets were heavy, bamboo strips were bulky, and silk was too expensive for ordinary use. A lighter and less costly writing material could make record keeping more efficient.</p>
+          <p>Paper production is traditionally associated with Cai Lun, a Chinese court official who described an improved method around 105 CE. Plant fibers, old cloth, and fishing nets were soaked and beaten into pulp. Workers spread the pulp across a screen, drained away the water, and dried the remaining thin layer. Although paper-like materials existed earlier, Cai Lun's process helped standardize production.</p>
+          <p>Knowledge of papermaking gradually moved west along trade routes. Paper mills later appeared in Central Asia, the Islamic world, and Europe. Because paper was relatively affordable, it supported the expansion of government records, education, literature, and eventually printing. Its influence resulted not merely from the material itself but from the wider access to information that it enabled.</p>
+        </div><div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="c"><legend>1. What is the main idea of the passage?</legend><label><input type="radio" name="academic6q1" value="a"> Silk remained the best writing material for centuries.</label><label><input type="radio" name="academic6q1" value="b"> Trade routes were created to transport paper.</label><label><input type="radio" name="academic6q1" value="c"> Improved papermaking expanded access to recorded information.</label><label><input type="radio" name="academic6q1" value="d"> Printing was invented by Cai Lun.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="a"><legend>2. Why does the author mention clay and bamboo?</legend><label><input type="radio" name="academic6q2" value="a"> To show limitations of earlier writing surfaces</label><label><input type="radio" name="academic6q2" value="b"> To identify ingredients in paper</label><label><input type="radio" name="academic6q2" value="c"> To explain how trade routes developed</label><label><input type="radio" name="academic6q2" value="d"> To compare Chinese and European records</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>3. What happened after workers spread pulp across a screen?</legend><label><input type="radio" name="academic6q3" value="a"> They added silk.</label><label><input type="radio" name="academic6q3" value="b"> They beat it with fishing nets.</label><label><input type="radio" name="academic6q3" value="c"> They transported it west.</label><label><input type="radio" name="academic6q3" value="d"> They removed water and dried it.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>4. The word “standardize” is closest in meaning to</legend><label><input type="radio" name="academic6q4" value="a"> conceal.</label><label><input type="radio" name="academic6q4" value="b"> make consistent.</label><label><input type="radio" name="academic6q4" value="c"> make expensive.</label><label><input type="radio" name="academic6q4" value="d"> replace completely.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>5. Which statement can be inferred from the final paragraph?</legend><label><input type="radio" name="academic6q5" value="a"> Paper mills prevented printing from spreading.</label><label><input type="radio" name="academic6q5" value="b"> Governments were the only users of paper.</label><label><input type="radio" name="academic6q5" value="c"> Lower material costs helped more people obtain information.</label><label><input type="radio" name="academic6q5" value="d"> European paper was made without plant fibers.</label></fieldset>
+        </div></div><div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+
+      <article class="lesson-card activity-card toefl-exercise" data-toefl-choice-exercise data-toefl-test="7" hidden>
+        <div class="toefl-exercise-heading"><div><span>Mock Test 7 - Task 3</span><h3>Urban Wildlife</h3></div><strong>5 questions</strong></div>
+        <div class="toefl-academic-layout"><div class="toefl-academic-text">
+          <p>Cities may appear unsuitable for wildlife, yet numerous species live successfully within them. Buildings can resemble cliffs, parks provide vegetation, and human waste offers a dependable food source. Animals that tolerate noise and frequent contact with people are especially likely to establish urban populations.</p>
+          <p>Urban life can alter animal behavior. Some birds sing at a higher pitch so their calls can be heard above traffic. Certain mammals become active later at night, when streets are quieter. Researchers have also observed animals solving unfamiliar problems, such as opening containers or using traffic patterns to cross roads. Behavioral flexibility can therefore be as important as physical adaptation.</p>
+          <p>However, success in a city involves risks. Artificial light may disrupt migration, vehicles cause injuries, and unhealthy food can reduce animals' well-being. Wildlife may also spread disease or damage property, creating conflict with residents. Urban ecologists argue that cities should reduce these problems by protecting connected green spaces, securing garbage, and designing safer routes across roads.</p>
+        </div><div class="toefl-question-list">
+          <fieldset class="toefl-question" data-answer="a"><legend>1. What is the passage mainly about?</legend><label><input type="radio" name="academic7q1" value="a"> How animals adapt to cities and the challenges they face</label><label><input type="radio" name="academic7q1" value="b"> Why all wildlife should be removed from cities</label><label><input type="radio" name="academic7q1" value="c"> How traffic patterns are designed</label><label><input type="radio" name="academic7q1" value="d"> Why city parks resemble cliffs</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>2. Why do some urban birds sing at a higher pitch?</legend><label><input type="radio" name="academic7q2" value="a"> To attract different species</label><label><input type="radio" name="academic7q2" value="b"> To imitate vehicle sounds</label><label><input type="radio" name="academic7q2" value="c"> To make their calls audible over noise</label><label><input type="radio" name="academic7q2" value="d"> To communicate only at night</label></fieldset>
+          <fieldset class="toefl-question" data-answer="b"><legend>3. The word “flexibility” is closest in meaning to</legend><label><input type="radio" name="academic7q3" value="a"> physical strength.</label><label><input type="radio" name="academic7q3" value="b"> ability to adjust.</label><label><input type="radio" name="academic7q3" value="c"> desire to migrate.</label><label><input type="radio" name="academic7q3" value="d"> dependence on people.</label></fieldset>
+          <fieldset class="toefl-question" data-answer="d"><legend>4. Which is NOT mentioned as a risk of urban life?</legend><label><input type="radio" name="academic7q4" value="a"> Artificial lighting</label><label><input type="radio" name="academic7q4" value="b"> Vehicle collisions</label><label><input type="radio" name="academic7q4" value="c"> Poor-quality food</label><label><input type="radio" name="academic7q4" value="d"> A complete absence of shelter</label></fieldset>
+          <fieldset class="toefl-question" data-answer="c"><legend>5. What solution do urban ecologists recommend?</legend><label><input type="radio" name="academic7q5" value="a"> Providing more human food to animals</label><label><input type="radio" name="academic7q5" value="b"> Increasing artificial light at night</label><label><input type="radio" name="academic7q5" value="c"> Connecting and protecting green areas</label><label><input type="radio" name="academic7q5" value="d"> Encouraging wildlife to cross busy roads</label></fieldset>
+        </div></div><div class="activity-actions"><button class="activity-button secondary-button" type="button" data-toefl-reset>Reset</button><button class="activity-button" type="button" data-toefl-check>Check Answers</button></div><p class="activity-feedback" data-toefl-feedback aria-live="polite">Answer all five questions, then check your result.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="toefl.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive TOEFL iBT Writing mock tests with Build a Sentence, Write an Email, and Academic Discussion tasks.">
+  <title>TOEFL iBT Writing | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell toefl-shell toefl-writing-shell" data-toefl-writing>
+    <a class="back-link" href="index.html#toefl">Back to TOEFL Preparation</a>
+    <section class="hero lesson-hero toefl-hero toefl-writing-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">TOEFL iBT Preparation</p>
+      <h1>WRITING PRACTICE</h1>
+      <p class="hero-copy">Practice each Writing task with its own official-style countdown.</p>
+      <div class="routine-row"><span class="routine-chip">Build a Sentence</span><span class="routine-chip">Write an Email</span><span class="routine-chip">Academic Discussion</span><span class="routine-chip">5 mock tests</span></div>
+    </section>
+
+    <section class="toefl-writing-overview">
+      <div><p class="panel-kicker">Writing section</p><h2>Three tasks. One focused test.</h2></div>
+      <div class="toefl-writing-task-summary"><article><strong>10</strong><span>Build a Sentence</span><p>Arrange words and phrases into an appropriate reply.</p></article><article><strong>7 min</strong><span>Write an Email</span><p>Achieve three communication goals in complete sentences.</p></article><article><strong>10 min</strong><span>Academic Discussion</span><p>Express and support your opinion in at least 100 words.</p></article></div>
+    </section>
+
+    <section class="toefl-test-picker" aria-labelledby="writing-test-picker-title">
+      <div><p class="panel-kicker">Choose your test</p><h2 id="writing-test-picker-title">Five complete writing mocks</h2><p>Your work stays on the page while you move between tasks.</p></div>
+      <div class="toefl-test-buttons" role="group" aria-label="Select a TOEFL Writing mock test">
+        <button class="toefl-test-button is-active" type="button" data-writing-test-button="1" aria-pressed="true"><span>Mock Test</span><strong>01</strong></button>
+        <button class="toefl-test-button" type="button" data-writing-test-button="2" aria-pressed="false"><span>Mock Test</span><strong>02</strong></button>
+        <button class="toefl-test-button" type="button" data-writing-test-button="3" aria-pressed="false"><span>Mock Test</span><strong>03</strong></button>
+        <button class="toefl-test-button" type="button" data-writing-test-button="4" aria-pressed="false"><span>Mock Test</span><strong>04</strong></button>
+        <button class="toefl-test-button" type="button" data-writing-test-button="5" aria-pressed="false"><span>Mock Test</span><strong>05</strong></button>
+      </div>
+    </section>
+
+    <section class="toefl-export-panel" data-writing-export>
+      <div><p class="panel-kicker">Save or share your work</p><p>Export a blank homework copy, keep your current answers for correction, or share your written responses.</p></div>
+      <div class="toefl-export-actions"><button class="activity-button secondary-button" type="button" data-writing-print-blank>Save Blank PDF</button><button class="activity-button" type="button" data-writing-print-answers>Save PDF with Answers</button><button class="activity-button" type="button" data-writing-share>Share Responses</button></div>
+    </section>
+    <p class="activity-feedback toefl-writing-share-feedback" data-writing-share-feedback aria-live="polite"></p>
+
+    <header class="toefl-print-header" aria-hidden="true"><p>Improve Your English - TOEFL iBT Writing</p><h1 data-writing-print-title>Mock Test 1</h1><div><span>Name: ____________________________________</span><span>Date: ____________________</span></div><strong data-writing-print-mode>Blank Homework</strong></header>
+
+    <div data-writing-content>
+      <nav class="toefl-task-nav" aria-label="Writing test tasks"><a href="#build-sentence"><span>01</span> Build a Sentence</a><a href="#write-email"><span>02</span> Write an Email</a><a href="#academic-discussion"><span>03</span> Academic Discussion</a></nav>
+
+      <section id="build-sentence" class="toefl-task-section writing-task-section">
+        <div class="toefl-task-heading"><div><p class="panel-kicker">Questions 1-10</p><h2>Build a Sentence</h2></div><p>Click a word or phrase to place it in the next position. You can also drag items between the bank and your answer.</p></div>
+        <div class="writing-task-timer" data-task-timer data-duration="180"><div><span data-task-timer-label>Ready</span><strong data-task-timer-value>03:00</strong></div><p data-task-timer-status>Your timer starts only when you click Start.</p><div><button class="activity-button" type="button" data-task-timer-start>Start 3-Minute Timer</button><button class="activity-button secondary-button" type="button" data-task-timer-pause hidden>Pause</button></div></div>
+        <div class="toefl-writing-progress"><strong data-build-progress>0 of 10 complete</strong><span>Make each reply grammatical and appropriate for the conversation.</span></div>
+        <div class="build-sentence-list" data-build-list></div>
+        <div class="activity-actions"><button class="activity-button secondary-button" type="button" data-build-reset>Reset All</button><button class="activity-button" type="button" data-share-task="sentences">Share This Exercise</button></div>
+        <p class="activity-feedback" data-build-feedback aria-live="polite">Build all ten replies. This practice task does not reveal or score the answers.</p>
+      </section>
+
+      <section id="write-email" class="toefl-task-section writing-task-section">
+        <div class="toefl-task-heading"><div><p class="panel-kicker">Task 11 - Suggested time: 7 minutes</p><h2>Write an Email</h2></div><p>Write as much as you can in complete sentences. Make sure you address all three points.</p></div>
+        <div class="writing-task-timer" data-task-timer data-duration="420"><div><span data-task-timer-label>Ready</span><strong data-task-timer-value>07:00</strong></div><p data-task-timer-status>Your timer starts only when you click Start.</p><div><button class="activity-button" type="button" data-task-timer-start>Start 7-Minute Timer</button><button class="activity-button secondary-button" type="button" data-task-timer-pause hidden>Pause</button></div></div>
+        <article class="lesson-card activity-card toefl-writing-response-card"><div class="toefl-writing-prompt" data-email-prompt></div><div class="toefl-email-header" data-email-header></div><label class="toefl-response-label" for="toefl-email-response">Your response</label><textarea id="toefl-email-response" class="writing-textarea toefl-response-area" data-email-response spellcheck="true" placeholder="Write your email here..."></textarea><div class="toefl-word-count"><span>Remember a greeting and closing.</span><strong><span data-email-count>0</span> words</strong></div></article>
+        <div class="activity-actions"><button class="activity-button" type="button" data-share-task="email">Share This Exercise</button></div><p class="activity-feedback" data-task-share-feedback="email" aria-live="polite"></p>
+      </section>
+
+      <section id="academic-discussion" class="toefl-task-section writing-task-section">
+        <div class="toefl-task-heading"><div><p class="panel-kicker">Task 12 - Suggested time: 10 minutes</p><h2>Academic Discussion</h2></div><p>Express and support your opinion, and make a contribution in your own words. Aim for at least 100 words.</p></div>
+        <div class="writing-task-timer" data-task-timer data-duration="600"><div><span data-task-timer-label>Ready</span><strong data-task-timer-value>10:00</strong></div><p data-task-timer-status>Your timer starts only when you click Start.</p><div><button class="activity-button" type="button" data-task-timer-start>Start 10-Minute Timer</button><button class="activity-button secondary-button" type="button" data-task-timer-pause hidden>Pause</button></div></div>
+        <article class="lesson-card activity-card toefl-writing-response-card"><div class="discussion-board" data-discussion-prompt></div><label class="toefl-response-label" for="toefl-discussion-response">Your contribution</label><textarea id="toefl-discussion-response" class="writing-textarea toefl-response-area" data-discussion-response spellcheck="true" placeholder="Write your discussion post here..."></textarea><div class="toefl-word-count"><span>Use reasons, examples, or relevant knowledge.</span><strong class="discussion-count"><span data-discussion-count>0</span> / 100+ words</strong></div></article>
+        <div class="activity-actions"><button class="activity-button" type="button" data-share-task="discussion">Share This Exercise</button></div><p class="activity-feedback" data-task-share-feedback="discussion" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+  <script src="toefl-writing.js"></script>
+</body>
+</html>
