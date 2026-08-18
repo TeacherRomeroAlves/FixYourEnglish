@@ -2014,12 +2014,6 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
 .build-sentence-item.is-entering-back { animation: toefl-question-from-left 280ms ease both; }
 .build-question-navigator { margin-top: 18px; }
 .build-sentence-number { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: var(--editorial-plum); color: white; font-weight: 800; }
-.build-sentence-meta { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 8px; }
-.build-sentence-meta small { color: #7b6a83; font-weight: 700; }
-.build-level-badge { display: inline-flex; align-items: center; min-height: 25px; padding: 4px 10px; border-radius: 999px; background: #dff5ef; color: var(--editorial-teal-dark); font-size: .7rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
-.build-sentence-item[data-sentence-level="intermediate"] .build-level-badge { background: #fff0b8; color: #855d05; }
-.build-sentence-item[data-sentence-level="advanced"] .build-level-badge { background: #eee0f3; color: var(--editorial-plum); }
-.build-sentence-item[data-sentence-level="advanced"] { border-color: rgba(91, 35, 116, .2); background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(247,240,250,.82)); }
 .build-conversation-line { margin: 4px 0 15px; color: var(--editorial-ink); font-size: 1.05rem; font-weight: 750; }
 .build-answer-zone, .build-bank { display: flex; min-height: 58px; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px; border-radius: 15px; transition: border-color 160ms ease, background 160ms ease; }
 .build-answer-zone { margin-bottom: 10px; border: 2px dashed rgba(91, 35, 116, .32); background: #faf5fc; }
@@ -2066,7 +2060,7 @@ body:not(.home-v2) .toefl-response-area { min-height: 310px; background: white; 
   .toefl-writing-progress, .toefl-word-count { align-items: flex-start; flex-direction: column; }
   .build-sentence-item { grid-template-columns: 1fr; padding: 17px; }
   .build-sentence-number { width: 34px; height: 34px; }
-  .build-sentence-instructions, .build-sentence-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .build-sentence-instructions { align-items: flex-start; flex-direction: column; gap: 8px; }
   .build-answer-zone, .build-bank { min-height: 66px; }
   .build-piece { padding: 10px 12px; }
   body:not(.home-v2) .toefl-response-area { min-height: 260px; }

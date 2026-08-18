@@ -205,7 +205,6 @@ if (root) {
     zone.addEventListener("dragleave", () => zone.classList.remove("is-drag-over"));
     zone.addEventListener("drop", (event) => { event.preventDefault(); zone.classList.remove("is-drag-over"); if (dragPiece) movePiece(dragPiece, zone); });
   };
-  const getSentenceLevel = (index) => index < 3 ? "Beginner" : index < 7 ? "Intermediate" : "Advanced";
   const getDistractors = (index, testNumber, answer) => {
     if (index < 2) return [];
     const sentence = answer.join(" ").toLowerCase();
@@ -274,9 +273,7 @@ if (root) {
     test.sentences.forEach(([prompt, bank, answer], index) => {
       const item = document.createElement("article");
       item.className = "build-sentence-item";
-      const level = getSentenceLevel(index);
-      item.dataset.sentenceLevel = level.toLowerCase();
-      item.innerHTML = `<div class="build-sentence-number">${index + 1}</div><div class="build-sentence-work"><div class="build-sentence-meta"><span class="build-level-badge">${level}</span></div><p class="build-conversation-line">${prompt}</p><div class="build-answer-zone" data-build-answer aria-label="Your sentence"></div><div class="build-bank" data-build-bank aria-label="Word bank"></div></div>`;
+      item.innerHTML = `<div class="build-sentence-number">${index + 1}</div><div class="build-sentence-work"><p class="build-conversation-line">${prompt}</p><div class="build-answer-zone" data-build-answer aria-label="Your sentence"></div><div class="build-bank" data-build-bank aria-label="Word bank"></div></div>`;
       const firstAnswerPiece = answer[0].toLowerCase();
       item.querySelector("[data-build-answer]").dataset.ending = ["the", "she", "i", "i'm", "because", "so that"].includes(firstAnswerPiece) ? "." : "?";
       const bankZone = item.querySelector("[data-build-bank]");
