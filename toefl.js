@@ -66,11 +66,67 @@ document.querySelectorAll("[data-toefl-choice-exercise]").forEach((exercise) => 
   const checkButton = exercise.querySelector("[data-toefl-check]");
   const resetButton = exercise.querySelector("[data-toefl-reset]");
   const revealButton = createRevealButton(exercise);
+  const actions = exercise.querySelector(".activity-actions");
+  const navigator = document.createElement("div");
+  navigator.className = "toefl-question-navigator";
+  navigator.innerHTML = `
+    <button class="toefl-question-nav-button" type="button" data-question-back aria-label="Previous question">← Back</button>
+    <div class="toefl-question-progress"><strong data-question-progress>Question 1 of ${questions.length}</strong><span data-question-dots aria-hidden="true"></span></div>
+    <button class="toefl-question-nav-button is-next" type="button" data-question-next aria-label="Next question">Next →</button>
+  `;
+  actions?.before(navigator);
+  const backButton = navigator.querySelector("[data-question-back]");
+  const nextButton = navigator.querySelector("[data-question-next]");
+  const progress = navigator.querySelector("[data-question-progress]");
+  const dots = navigator.querySelector("[data-question-dots]");
+  const questionLists = Array.from(exercise.querySelectorAll(".toefl-question-list"));
+  const readingTexts = Array.from(exercise.querySelectorAll(".toefl-realworld-text"));
+  let currentQuestion = 0;
+
+  questions.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.className = "toefl-question-dot";
+    dot.title = `Question ${index + 1}`;
+    dots.append(dot);
+  });
+
+  const showQuestion = (index, direction = "next") => {
+    currentQuestion = Math.max(0, Math.min(index, questions.length - 1));
+    questions.forEach((question, questionIndex) => {
+      question.hidden = questionIndex !== currentQuestion;
+      question.classList.remove("is-entering-next", "is-entering-back");
+      if (questionIndex === currentQuestion) {
+        void question.offsetWidth;
+        question.classList.add(direction === "back" ? "is-entering-back" : "is-entering-next");
+      }
+    });
+    const activeQuestionList = questions[currentQuestion].closest(".toefl-question-list");
+    activeQuestionList?.append(navigator);
+    if (readingTexts.length > 1) {
+      const activeTextIndex = questionLists.indexOf(activeQuestionList);
+      readingTexts.forEach((text, textIndex) => { text.hidden = textIndex !== activeTextIndex; });
+    }
+    progress.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+    Array.from(dots.children).forEach((dot, dotIndex) => {
+      dot.classList.toggle("is-current", dotIndex === currentQuestion);
+      dot.classList.toggle("is-answered", Boolean(questions[dotIndex].querySelector("input:checked")));
+    });
+    backButton.disabled = currentQuestion === 0;
+    nextButton.disabled = currentQuestion === questions.length - 1;
+  };
+
+  backButton.addEventListener("click", () => showQuestion(currentQuestion - 1, "back"));
+  nextButton.addEventListener("click", () => showQuestion(currentQuestion + 1, "next"));
+  exercise.addEventListener("change", (event) => {
+    if (event.target.matches("input[type='radio']")) showQuestion(currentQuestion, "next");
+  });
+  showQuestion(0);
 
   checkButton?.addEventListener("click", () => {
     const answers = questions.map((question) => question.querySelector("input:checked"));
     if (answers.some((answer) => !answer)) {
       feedback.textContent = "Answer every question before checking.";
+      showQuestion(answers.findIndex((answer) => !answer), "next");
       return;
     }
 
@@ -90,6 +146,7 @@ document.querySelectorAll("[data-toefl-choice-exercise]").forEach((exercise) => 
     revealButton.hidden = true;
     revealButton.disabled = true;
     feedback.textContent = `Answer all ${questions.length} questions, then check your result.`;
+    showQuestion(0, "back");
   });
 
   revealButton.addEventListener("click", () => {

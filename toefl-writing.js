@@ -151,9 +151,14 @@ if (root) {
   const buildList = $('[data-build-list]');
   const buildFeedback = $('[data-build-feedback]');
   const buildProgress = $('[data-build-progress]');
+  const buildBackButton = $('[data-build-back]');
+  const buildNextButton = $('[data-build-next]');
+  const buildQuestionProgress = $('[data-build-question-progress]');
+  const buildDots = $('[data-build-dots]');
   const emailResponse = $('[data-email-response]');
   const discussionResponse = $('[data-discussion-response]');
   let selectedTest = 1;
+  let currentBuildQuestion = 0;
   let dragPiece = null;
   let restoreAfterPrint = null;
   const taskTimers = new Map();
@@ -200,22 +205,87 @@ if (root) {
     zone.addEventListener("dragleave", () => zone.classList.remove("is-drag-over"));
     zone.addEventListener("drop", (event) => { event.preventDefault(); zone.classList.remove("is-drag-over"); if (dragPiece) movePiece(dragPiece, zone); });
   };
+  const getSentenceLevel = (index) => index < 3 ? "Beginner" : index < 7 ? "Intermediate" : "Advanced";
+  const getDistractors = (index, testNumber, answer) => {
+    if (index < 2) return [];
+    const sentence = answer.join(" ").toLowerCase();
+    const firstPiece = answer[0].toLowerCase();
+    let candidates;
+
+    if (sentence.includes("whether") || sentence.includes(" if ")) {
+      candidates = ["that it", "does it", "will they be", "that was"];
+    } else if (sentence.includes("wanted to know") || sentence.includes("she said") || sentence.includes("she suggested")) {
+      candidates = ["did she", "was she", "was asking", "does she"];
+    } else if (/\b(was|were|been|held|provided|replaced|included|extended)\b/.test(sentence)) {
+      candidates = ["did it", "was being", "have they", "by them"];
+    } else if (["what", "where", "when", "which", "how", "who"].includes(firstPiece)) {
+      candidates = ["do you", "does it", "were they", "to know"];
+    } else if (["do", "does", "did", "can", "could", "will", "should", "have", "has"].includes(firstPiece)) {
+      candidates = ["does she", "did they", "has been", "to do"];
+    } else if (["because", "so that"].includes(firstPiece)) {
+      candidates = ["why did", "because of", "in order to", "did everyone"];
+    } else {
+      candidates = ["did she", "were they", "has been", "to have"];
+    }
+
+    const available = candidates.filter((piece) => !answer.includes(piece));
+    const rotated = available.slice((index + testNumber) % available.length).concat(available.slice(0, (index + testNumber) % available.length));
+    return rotated.slice(0, index >= 7 ? 2 : 1);
+  };
   const updateProgress = () => {
     const complete = $$('[data-build-answer]').filter((zone, index) => zone.children.length === writingTests[selectedTest].sentences[index][2].length).length;
     buildProgress.textContent = `${complete} of 10 complete`;
+    Array.from(buildDots.children).forEach((dot, index) => {
+      const zone = $$('[data-build-answer]')[index];
+      dot.classList.toggle("is-answered", Boolean(zone) && zone.children.length === writingTests[selectedTest].sentences[index][2].length);
+      dot.classList.toggle("is-current", index === currentBuildQuestion);
+    });
   };
+  const showBuildQuestion = (index, direction = "next") => {
+    const items = $$('.build-sentence-item');
+    currentBuildQuestion = Math.max(0, Math.min(index, items.length - 1));
+    items.forEach((item, itemIndex) => {
+      item.hidden = itemIndex !== currentBuildQuestion;
+      item.classList.remove("is-entering-next", "is-entering-back");
+      if (itemIndex === currentBuildQuestion) {
+        void item.offsetWidth;
+        item.classList.add(direction === "back" ? "is-entering-back" : "is-entering-next");
+      }
+    });
+    buildQuestionProgress.textContent = `Sentence ${currentBuildQuestion + 1} of ${items.length}`;
+    buildBackButton.disabled = currentBuildQuestion === 0;
+    buildNextButton.disabled = currentBuildQuestion === items.length - 1;
+    updateProgress();
+  };
+
+  buildBackButton.addEventListener("click", () => showBuildQuestion(currentBuildQuestion - 1, "back"));
+  buildNextButton.addEventListener("click", () => showBuildQuestion(currentBuildQuestion + 1, "next"));
 
   const renderTest = () => {
     const test = writingTests[selectedTest];
     buildList.innerHTML = "";
-    test.sentences.forEach(([prompt, bank], index) => {
+    buildDots.innerHTML = "";
+    test.sentences.forEach((_, index) => {
+      const dot = document.createElement("span");
+      dot.className = "toefl-question-dot";
+      dot.title = `Sentence ${index + 1}`;
+      buildDots.append(dot);
+    });
+    test.sentences.forEach(([prompt, bank, answer], index) => {
       const item = document.createElement("article");
       item.className = "build-sentence-item";
-      item.innerHTML = `<div class="build-sentence-number">${index + 1}</div><div class="build-sentence-work"><p class="build-conversation-line">${prompt}</p><div class="build-answer-zone" data-build-answer aria-label="Your sentence"></div><div class="build-bank" data-build-bank aria-label="Word bank"></div></div>`;
-      const firstAnswerPiece = writingTests[selectedTest].sentences[index][2][0].toLowerCase();
+      const level = getSentenceLevel(index);
+      item.dataset.sentenceLevel = level.toLowerCase();
+      item.innerHTML = `<div class="build-sentence-number">${index + 1}</div><div class="build-sentence-work"><div class="build-sentence-meta"><span class="build-level-badge">${level}</span></div><p class="build-conversation-line">${prompt}</p><div class="build-answer-zone" data-build-answer aria-label="Your sentence"></div><div class="build-bank" data-build-bank aria-label="Word bank"></div></div>`;
+      const firstAnswerPiece = answer[0].toLowerCase();
       item.querySelector("[data-build-answer]").dataset.ending = ["the", "she", "i", "i'm", "because", "so that"].includes(firstAnswerPiece) ? "." : "?";
       const bankZone = item.querySelector("[data-build-bank]");
-      bank.forEach((text, pieceIndex) => {
+      const displayBank = [...bank];
+      getDistractors(index, selectedTest, answer).forEach((piece, distractorIndex) => {
+        const position = (selectedTest * 3 + index * 2 + distractorIndex * 4) % (displayBank.length + 1);
+        displayBank.splice(position, 0, piece);
+      });
+      displayBank.forEach((text, pieceIndex) => {
         const piece = document.createElement("button");
         piece.type = "button"; piece.className = "build-piece"; piece.draggable = true; piece.textContent = text; piece.dataset.pieceId = `${index}-${pieceIndex}`;
         wirePiece(piece); bankZone.append(piece);
@@ -223,6 +293,7 @@ if (root) {
       item.querySelectorAll("[data-build-bank], [data-build-answer]").forEach(wireDropZone);
       buildList.append(item);
     });
+    showBuildQuestion(0);
     const email = test.email;
     $('[data-email-prompt]').innerHTML = `<p class="panel-kicker">Situation</p><p>${email.scenario}</p><h3>Write an email. In your email:</h3><ul>${email.goals.map((goal) => `<li>${goal}</li>`).join("")}</ul>`;
     $('[data-email-header]').innerHTML = `<p><strong>To:</strong> ${email.recipient}</p><p><strong>Subject:</strong> ${email.subject}</p>`;
@@ -282,7 +353,7 @@ if (root) {
         .forEach((piece) => bank.append(piece));
     });
     buildFeedback.textContent = "Build all ten replies. This practice task does not reveal or score the answers.";
-    updateProgress();
+    showBuildQuestion(0, "back");
   });
 
   emailResponse.addEventListener("input", () => { $('[data-email-count]').textContent = countWords(emailResponse.value); });
