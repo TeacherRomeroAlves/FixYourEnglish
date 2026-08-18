@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Situational English Practice | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell situation-practice-shell" data-situation-practice>
+    <a class="back-link" href="situational-english.html">Back to Situations</a>
+    <section class="hero lesson-hero situation-topic-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow" data-topic-eyebrow>Situational English</p>
+      <h1 data-topic-title>TRAVEL ENGLISH</h1>
+      <p class="hero-copy" data-topic-intro>Useful language for a real-life situation.</p>
+      <div class="routine-row" aria-label="Lesson steps"><span class="routine-chip">&#128218; Learn</span><span class="routine-chip">&#128266; Repeat</span><span class="routine-chip">&#129513; Complete</span><span class="routine-chip">&#127908; Speak</span></div>
+    </section>
+
+    <section class="lesson-card vocabulary-lab" aria-labelledby="vocabulary-title">
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Step 1</p><h2 id="vocabulary-title">Useful words &amp; expressions</h2></div><p class="panel-note">Click Listen, then repeat</p></div>
+      <p class="situation-helper">Listen to each expression and read its meaning. The voice reads only the English expression.</p>
+      <div class="situation-vocabulary-list" data-vocabulary-list></div>
+      <p class="activity-feedback" data-pronunciation-feedback aria-live="polite">Choose an expression when you are ready.</p>
+    </section>
+
+    <section class="lesson-card situation-dialogues" aria-labelledby="dialogues-title">
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Step 2</p><h2 id="dialogues-title">Complete the conversations</h2></div><p class="panel-note">2 real-life scenes</p></div>
+      <p class="situation-helper">Click an expression to place it in the next gap. You can also drag it. Click a filled gap to return the expression.</p>
+      <div data-dialogue-list></div>
+    </section>
+
+    <section class="lesson-card speaking-mission-lab" aria-labelledby="missions-title">
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Step 3</p><h2 id="missions-title">Your speaking missions</h2></div><p class="panel-note">Plan it. Say it. Save it.</p></div>
+      <p class="situation-helper">Choose a mission. Include every detail in one natural message, record yourself, and download the audio to send to your teacher.</p>
+      <div class="mission-tabs" data-mission-tabs></div>
+      <article class="mission-card" data-mission-card>
+        <p class="mission-label" data-mission-label>Mission 1</p>
+        <h3 data-mission-title>Your mission</h3>
+        <p data-mission-scenario></p>
+        <p class="mission-checklist-title">Make sure you:</p>
+        <ul class="mission-checklist" data-mission-points></ul>
+        <p class="mission-language"><strong>Useful language:</strong> <span data-mission-language></span></p>
+      </article>
+      <div class="recorder-card situation-recorder">
+        <p class="recorder-status" data-situation-recording-status>Click Start Recording when you are ready.</p>
+        <p class="recorder-timer" data-situation-recording-timer>00:00</p>
+        <div class="activity-actions recorder-actions">
+          <button class="activity-button" type="button" data-situation-start>Start Recording</button>
+          <button class="activity-button secondary-button" type="button" data-situation-stop disabled>Stop Recording</button>
+          <button class="activity-button secondary-button" type="button" data-situation-delete>Delete Recording</button>
+        </div>
+        <audio class="speaking-audio-player" controls data-situation-audio></audio>
+        <div class="activity-actions"><a class="activity-button speaking-download-link is-disabled" href="#" download data-situation-download aria-disabled="true">Download Audio</a></div>
+      </div>
+    </section>
+  </main>
+  <script src="situational-english.js"></script>
+</body>
+</html>
