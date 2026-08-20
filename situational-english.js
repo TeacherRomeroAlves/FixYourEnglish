@@ -103,9 +103,9 @@ const situationTopics = {
       ["A one-way ticket", "A ticket for traveling to a destination without returning."], ["Where do I get off?", "Ask at which stop you should leave the bus or train."]
     ],
     dialogues:[
-      {title:"Finding the museum", bank:["How do I get to", "straight ahead", "Turn left", "across from", "walking distance"], lines:[
-        ["Traveler","Excuse me. {{How do I get to}} the city museum?"],["Local","Go {{straight ahead}} for two blocks. {{Turn left}} at the bank."],
-        ["Traveler","What is it {{across from}}?"],["Local","The public library."],["Traveler","Is it within {{walking distance}}?"],["Local","Yes, about ten minutes."]]},
+      {title:"Finding the restroom in the shopping center", bank:["How do I get to", "Go straight ahead", "information desk", "Turn right", "across from"], lines:[
+        ["Shopper","Excuse me. {{How do I get to}} the restroom?"],["Employee","{{Go straight ahead}} and walk past the {{information desk}}."],
+        ["Shopper","What should I do after that?"],["Employee","{{Turn right}} at the shoe store. The restrooms are {{across from}} the elevators."],["Shopper","Thank you for your help!"]]},
       {title:"Taking the subway", bank:["Which line", "one-way ticket", "get off", "Take", "right"], lines:[
         ["Traveler","{{Which line}} should I take to Central Station?"],["Agent","{{Take}} the green line."],["Traveler","Where do I {{get off}}?"],["Agent","At Park Street, then turn {{right}}."],
         ["Traveler","Thanks. I'd like a {{one-way ticket}}, please."]]}
@@ -201,6 +201,259 @@ const situationTopics = {
       ["Buy a handmade souvenir","You found a handmade wooden box that costs fifty dollars.",["Ask whether it is handmade","Say the price is a little expensive","Ask for the seller's best price"],"Is this handmade?, That's a little expensive, What is your best price?"],
       ["Negotiate for two items","You want two scarves, but together they cost forty dollars.",["Say you will take two","Ask for a discount","Offer thirty-two dollars politely"],"I'll take two, Can you give me a discount?, Could you do...?"],
       ["Decide not to buy yet","You like a painting, but the seller cannot meet your budget.",["Thank the seller for explaining the price","Say you need to think about it","Leave the conversation politely"],"Thank you, I'll think about it, Maybe I'll come back later." ]]
+  },
+  restaurant: {
+    eyebrow:"Table service", title:"EATING AT A RESTAURANT", intro:"Reserve a table, understand a full-service menu, order different courses, and ask for the bill politely.",
+    vocabulary:[
+      ["I have a reservation.", "Say this when you booked a table before arriving."], ["A table for two, please.", "Ask the host for a table and state the number of guests."],
+      ["The menu", "The list of dishes and beverages available."], ["An appetizer", "A small dish served before the main course."],
+      ["The main course", "The largest or most important dish in a meal."], ["A side dish", "A smaller food item served with the main course."],
+      ["What do you recommend?", "Ask the server to suggest a dish."], ["How would you like it cooked?", "A question about how meat should be prepared."],
+      ["I am allergic to...", "Warn the server that an ingredient may cause a reaction."], ["Still or sparkling water?", "A choice between water without or with bubbles."],
+      ["Could we see the dessert menu?", "Ask to look at the available desserts."], ["Could we have the bill, please?", "Politely ask for the final amount to pay."]
+    ],
+    dialogues:[
+      {title:"Arriving for dinner", bank:["a reservation", "table for two", "menu", "still or sparkling", "recommend"], lines:[
+        ["Host","Good evening. Do you have {{a reservation}}?"],["Guest","No, but we would like a {{table for two}}, please."],["Host","Certainly. Here is your {{menu}}."],
+        ["Server","Would you like {{still or sparkling}} water?"],["Guest","Still water, please. What do you {{recommend}} for an appetizer?"]]},
+      {title:"Ordering and paying", bank:["main course", "cooked", "allergic to", "dessert menu", "bill"], lines:[
+        ["Server","Are you ready to order your {{main course}}?"],["Guest","Yes, I would like the steak."],["Server","How would you like it {{cooked}}?"],
+        ["Guest","Medium, please. I am {{allergic to}} nuts."],["Server","Thank you for telling me."],["Guest","After dinner, could we see the {{dessert menu}}? And later, could we have the {{bill}}, please?"]]}
+    ],
+    missions:[
+      ["Reserve and arrive","You are having dinner with a friend at a popular restaurant.",["Say you have a reservation under your name","Ask for a quiet table","Request the menu"],"I have a reservation..., Could we have...?, May we see the menu?"],
+      ["Order a complete meal","You want an appetizer, a main course, and a beverage.",["Ask what the server recommends","Order one appetizer to share","Explain one ingredient you do not eat"],"What do you recommend?, We'd like..., I don't eat..."],
+      ["Solve a problem politely","Your main course is cold and you still need to pay.",["Explain that the food is cold","Ask whether it can be reheated","Request the bill after the problem is solved"],"Excuse me..., Could you...?, Could we have the bill?" ]]
+  },
+  "rental-car": {
+    eyebrow:"At the rental desk", title:"RENTING A CAR", intro:"Pick up an online reservation or compare options and rent a vehicle directly at the counter.",
+    vocabulary:[
+      ["I have a reservation.", "Say this when the vehicle was booked online or through an app."], ["A booking reference", "The code used to find an existing reservation."],
+      ["A driver's license", "The official document that permits someone to drive."], ["The rental agreement", "The contract containing the rental rules and charges."],
+      ["Insurance coverage", "Financial protection for certain accidents or damage."], ["A security deposit", "Money temporarily held by the company during the rental."],
+      ["Automatic or manual?", "A choice between two types of transmission."], ["The fuel policy", "The rule explaining how much fuel must be in the car when returned."],
+      ["Unlimited mileage", "Permission to drive without paying for each additional mile or kilometer."], ["An additional driver", "Another person authorized to drive the rental car."],
+      ["Could I inspect the car?", "Ask to check and record existing damage before leaving."], ["Where should I return it?", "Ask for the vehicle return location."]
+    ],
+    dialogues:[
+      {title:"Picking up an app reservation", bank:["a reservation", "booking reference", "driver's license", "fuel policy", "inspect the car"], lines:[
+        ["Agent","Welcome. How can I help you?"],["Customer","I have {{a reservation}} through your app."],["Agent","May I have your {{booking reference}} and {{driver's license}}?"],
+        ["Customer","Of course. What is the {{fuel policy}}?"],["Agent","Please return it with a full tank."],["Customer","Before I leave, could I {{inspect the car}} for existing damage?"]]}
+      ,{title:"Renting at the counter", bank:["automatic", "insurance coverage", "security deposit", "unlimited mileage", "return it"], lines:[
+        ["Customer","I need a car for three days. Do you have an {{automatic}} compact car?"],["Agent","Yes. Would you like basic or full {{insurance coverage}}?"],
+        ["Customer","Full coverage, please. Is there a {{security deposit}}?"],["Agent","Yes, two hundred dollars. The rental includes {{unlimited mileage}}."],["Customer","Great. Where should I {{return it}} on Monday?"]]}
+    ],
+    missions:[
+      ["Pick up your online rental","You reserved a compact car through an app yesterday.",["Give your booking reference","Present your driver's license","Ask about the fuel policy"],"I have a reservation, My booking reference is..., What is the fuel policy?"],
+      ["Rent a car now","You did not book ahead and need a car for four days.",["Ask whether an automatic car is available","Ask about insurance coverage","Ask how much the security deposit is"],"Do you have...?, What insurance...?, How much is...?"],
+      ["Check before driving","The employee gives you the keys, but you notice a scratch.",["Point out the existing scratch","Ask the employee to record it","Confirm where and when to return the car"],"There is a scratch..., Could you record it?, Where should I return...?" ]]
+  },
+  taxi: {
+    eyebrow:"On the road", title:"GETTING AN UBER OR TAXI", intro:"Confirm the correct ride, communicate your destination, discuss the route, and talk naturally with the driver.",
+    vocabulary:[
+      ["I booked a ride through the app.", "Say that you requested the car using a rideshare application."], ["The pickup point", "The place where the driver meets the passenger."],
+      ["Is this car for...?", "Confirm that the vehicle is the correct ride for a passenger."], ["The license plate", "The letters and numbers identifying a vehicle."],
+      ["Could you open the trunk?", "Ask the driver to open the luggage compartment."], ["Please take me to...", "Tell a taxi driver your destination."],
+      ["Which route do you prefer?", "The driver is asking which way you want to travel."], ["Please use the meter.", "Ask a taxi driver to calculate the fare using the official device."],
+      ["How long will it take?", "Ask for the estimated journey time."], ["Is traffic usually this heavy?", "Ask whether the road is normally very busy."],
+      ["Could you drop me off here?", "Ask the driver to stop and let you leave at the current location."], ["Can I pay by card?", "Ask whether card payment is accepted."]
+    ],
+    dialogues:[
+      {title:"Meeting an app driver", bank:["through the app", "pickup point", "for Camila", "license plate", "open the trunk"], lines:[
+        ["Passenger","Hi. I booked a ride {{through the app}}."],["Driver","Great. Were you waiting at the main {{pickup point}}?"],["Passenger","Yes. Is this car {{for Camila}}?"],
+        ["Driver","Yes. You can check the {{license plate}} in the app."],["Passenger","Perfect. Could you {{open the trunk}} for my suitcase?"]]}
+      ,{title:"Taking a city taxi", bank:["take me to", "route", "meter", "take", "pay by card"], lines:[
+        ["Passenger","Please {{take me to}} the Riverside Hotel."],["Driver","Of course. Which {{route}} do you prefer, the highway or downtown?"],
+        ["Passenger","Whichever is faster. Please use the {{meter}}."],["Driver","No problem. It should {{take}} about twenty minutes."],["Passenger","Thanks. Can I {{pay by card}} at the end?"]]}
+    ],
+    missions:[
+      ["Start a conversation","You are taking a thirty-minute ride and want to speak with the driver.",["Greet the driver and ask how their day is going","Ask whether they are from this city","Ask for one local restaurant recommendation"],"How is your day going?, Are you from...?, What restaurant do you recommend?"],
+      ["Confirm an app ride","Several similar cars are waiting outside your hotel.",["Ask whether the ride is for you","Confirm the driver's name and license plate","Ask the driver to open the trunk"],"Is this car for...?, Is your name...?, Could you open the trunk?"],
+      ["Direct a taxi ride","You need to reach the airport but traffic is heavy.",["Tell the driver your destination","Ask how long the journey will take","Confirm that you can pay by card"],"Please take me to..., How long will it take?, Can I pay by card?" ]]
+  }
+};
+
+const supplementalVocabulary = {
+  "fast-food": [
+    ["A menu", "The list of food and drinks available to order."], ["The cashier", "The employee who takes your order and payment."],
+    ["A tray", "A flat object used to carry food and drinks."], ["A receipt", "The paper showing what you bought and paid."]
+  ],
+  hotel: [
+    ["The lobby", "The main entrance and waiting area of a hotel."], ["The receptionist", "The employee who welcomes guests at the front desk."],
+    ["A suitcase", "A travel case used for clothes and personal items."], ["The elevator", "The machine that carries guests between floors."]
+  ],
+  clothes: [
+    ["A size", "The measurement category of a piece of clothing."], ["A price tag", "The label showing an item's price."],
+    ["A cashier", "The employee who receives your payment."], ["A receipt", "Proof of purchase that may be needed for a return."]
+  ],
+  immigration: [
+    ["A passport", "An official document used to identify you when traveling internationally."], ["A visa", "Official permission to enter or stay in a country."],
+    ["A border officer", "The official who checks travelers entering a country."], ["Customs", "The area where goods entering a country may be inspected."]
+  ],
+  directions: [
+    ["A map", "A visual guide showing streets, places, or rooms."], ["A platform", "The area where passengers wait for a train."],
+    ["A ticket", "A document or digital pass that allows you to travel."], ["An escalator", "Moving stairs used inside stations, stores, and shopping centers."],
+    ["The restroom", "A public toilet inside a store, station, or shopping center."], ["The information desk", "A counter where visitors can ask for directions and assistance."]
+  ],
+  pharmacy: [
+    ["A pharmacist", "A healthcare professional who prepares and advises about medicine."], ["A prescription", "A doctor's written authorization for medicine."],
+    ["Medicine", "A substance used to treat or prevent illness."], ["The dosage", "The amount of medicine to take at one time."]
+  ],
+  supermarket: [
+    ["A shopping basket", "A small container carried while collecting groceries."], ["The checkout", "The area where customers pay for their shopping."],
+    ["A barcode", "The printed lines scanned to identify a product and its price."], ["A receipt", "The paper listing the products and prices after payment."]
+  ],
+  "airport-check-in": [
+    ["A ticket", "A document confirming that you purchased a flight."], ["A suitcase", "A travel case that may be checked or carried on board."],
+    ["The check-in counter", "The airline desk where passengers check in and leave bags."], ["A baggage tag", "A label attached to checked luggage so it reaches the right destination."]
+  ],
+  souvenir: [
+    ["A souvenir", "An object bought to remember a place or trip."], ["A market stall", "A small open shop or stand at a market."],
+    ["Cash", "Money in the form of notes and coins."], ["A local craft", "An object traditionally made by people in the area."]
+  ]
+};
+
+Object.entries(supplementalVocabulary).forEach(([key, additions]) => {
+  situationTopics[key].vocabulary.push(...additions);
+});
+
+const challengeWords = {
+  "fast-food": ["menu", "cashier", "tray", "receipt", "mustard"],
+  hotel: ["lobby", "receptionist", "suitcase", "elevator", "passport"],
+  clothes: ["size", "price tag", "cashier", "receipt", "fitting room"],
+  immigration: ["passport", "visa", "border officer", "customs", "ticket"],
+  directions: ["food court", "escalator", "map", "platform", "ticket"],
+  pharmacy: ["pharmacist", "prescription", "medicine", "dosage", "receipt"],
+  supermarket: ["shopping basket", "checkout", "barcode", "receipt", "aisle"],
+  "airport-check-in": ["ticket", "suitcase", "check-in counter", "baggage tag", "passport"],
+  souvenir: ["souvenir", "market stall", "cash", "local craft", "receipt"],
+  restaurant: ["server", "wine list", "napkin", "service charge", "reservation"],
+  "rental-car": ["car keys", "rental desk", "parking lot", "upgrade", "receipt"],
+  taxi: ["driver", "destination", "traffic", "fare", "tip"]
+};
+
+Object.entries(situationTopics).forEach(([key, topicData]) => {
+  topicData.dialogues.forEach((dialogue, index) => {
+    const extras = challengeWords[key].filter((word) => !dialogue.bank.includes(word));
+    dialogue.bank.push(...extras.slice(index, index + 3));
+    while (dialogue.bank.length < 8) {
+      const next = extras.find((word) => !dialogue.bank.includes(word));
+      if (!next) break;
+      dialogue.bank.push(next);
+    }
+  });
+});
+
+const specialActivities = {
+  "fast-food": {
+    type: "menu", title: "Build an order from the overhead menu", note: "Interactive menu", intro: "Choose items from the fictional menu. Your order and total will appear on the customer display.",
+    categories: [
+      {name:"Burgers", items:[["Classic Burger",7.5],["Cheese Burger",8.5],["Chicken Burger",8],["Veggie Burger",7]]},
+      {name:"Sides", items:[["Small Fries",3],["Large Fries",4.5],["Onion Rings",4],["Side Salad",4.5]]},
+      {name:"Drinks & extras", items:[["Soft Drink",2.5],["Orange Juice",3],["Extra Ketchup",0.5],["Extra Cheese",1.5]]}
+    ]
+  },
+  hotel: {
+    type:"kiosk", title:"Use the hotel self-check-in kiosk", note:"Hotel kiosk", intro:"Complete the touchscreen check-in and collect the information you need for your stay.", finish:"Check-in complete. Your room is 508. Breakfast is on the second floor from 6:30 to 10:00.",
+    steps:[
+      {prompt:"How would you like to begin?", options:["Find my reservation","Make a new reservation"]},
+      {prompt:"Select the document you will scan.", options:["Passport","National ID"]},
+      {prompt:"Choose one room preference.", options:["Quiet room","High floor","Near the elevator"]},
+      {prompt:"Would you like two room keys?", options:["Yes, two keys","No, one key"]}
+    ]
+  },
+  clothes: {
+    type:"products", title:"Explore the clothing collection", note:"6 store products", intro:"Select a product to reveal its price, available colors and sizes, stock information, and special offers.",
+    products:[
+      {icon:"&#128085;", name:"Classic T-shirt", price:"$18.00", facts:[["Colors","White, teal, black"],["Sizes","XS to XL"],["Stock","Available"]], offer:"Buy 3 and get 1 free"},
+      {icon:"&#128086;", name:"Straight-leg jeans", price:"$46.00", facts:[["Colors","Light blue, dark blue"],["Sizes","28 to 38"],["Stock","Size 32 in dark blue is out of stock"]], offer:"Second pair 30% off"},
+      {icon:"&#129509;", name:"Rain jacket", price:"$72.00", facts:[["Colors","Yellow, navy, green"],["Sizes","S to XXL"],["Stock","Only 2 yellow jackets left"]], offer:"Free reusable bag"},
+      {icon:"&#128087;", name:"Summer dress", price:"$54.00", facts:[["Colors","Red, floral, black"],["Sizes","XS to L"],["Stock","Floral size M is out of stock"]], offer:"20% off today"},
+      {icon:"&#128095;", name:"Walking shoes", price:"$68.00", facts:[["Colors","White, gray, burgundy"],["Sizes","US 5 to 11"],["Stock","Available"]], offer:"Buy shoes and get socks for $5"},
+      {icon:"&#129506;", name:"Wool cap", price:"$24.00", facts:[["Colors","Cream, teal, burgundy"],["Size","One size"],["Stock","Cream is out of stock"]], offer:"Two caps for $40"}
+    ]
+  },
+  immigration: {
+    type:"roulette", title:"Immigration interview roulette", note:"12 interview questions", intro:"Click the button to receive a random border-control question. Answer aloud immediately, as in a real interview.",
+    questions:["May I see your passport?","What is the purpose of your visit?","How long are you planning to stay?","Where will you be staying?","Are you traveling alone?","Who are you traveling with?","Do you have a return ticket?","What places are you planning to visit?","What do you do for a living?","How much money are you bringing for this trip?","Have you visited this country before?","Do you have anything to declare?"]
+  },
+  directions: {
+    type:"ticket", title:"Buy a subway ticket", note:"Interactive ticket totem", intro:"Read your destination, select the correct fare area, choose a ticket, apply any citizen-card discount, and pay at the touchscreen.",
+    areas:[
+      {name:"Downtown", price:2.5, destinations:["Central Museum","Harbor Square","City Hall"]},
+      {name:"Outer Suburbs", price:4, destinations:["International Airport","Lakeview Park","North Terminal"]},
+      {name:"Neighboring Cities", price:7.5, destinations:["Greenfield","Oakridge","Seaside City"]}
+    ],
+    ticketTypes:[
+      {name:"One-way", multiplier:1, description:"One journey"},
+      {name:"Round-trip", multiplier:1.8, description:"Travel there and back"},
+      {name:"Daily", multiplier:3, description:"Unlimited travel today"},
+      {name:"Weekly", multiplier:12, description:"Unlimited travel for 7 days"}
+    ],
+    discount:0.15,
+    payments:["Credit card","Cash","Cellphone payment"]
+  },
+  pharmacy: {
+    type:"products", title:"Explore the pharmacy shelves", note:"6 pharmacy products", intro:"Select a product to read its price, format, stock status, and offer. This is language practice only; ask a pharmacist for medical guidance.",
+    products:[
+      {icon:"&#128138;", name:"Pain relief tablets", price:"$8.50", facts:[["Package","20 tablets"],["Options","Regular or extra strength"],["Stock","Regular strength available"]], offer:"Ask the pharmacist before choosing"},
+      {icon:"&#129656;", name:"Adhesive bandages", price:"$5.20", facts:[["Package","30 assorted sizes"],["Colors","Skin tone or colorful"],["Stock","Available"]], offer:"Buy 2 boxes for $9"},
+      {icon:"&#129514;", name:"Cough syrup", price:"$11.90", facts:[["Size","120 ml"],["Options","Adult or children's formula"],["Stock","Children's formula is out of stock"]], offer:"Ask the pharmacist which product is appropriate"},
+      {icon:"&#127852;", name:"Throat lozenges", price:"$6.40", facts:[["Flavors","Honey, lemon, mint"],["Package","24 lozenges"],["Stock","Mint is out of stock"]], offer:"Second package 25% off"},
+      {icon:"&#129524;", name:"Sunscreen", price:"$16.00", facts:[["Sizes","100 ml or 200 ml"],["Options","SPF 30 or SPF 50"],["Stock","Available"]], offer:"Travel-size bottle included"},
+      {icon:"&#128203;", name:"Prescription medicine", price:"Price at the counter", facts:[["Requirement","A valid prescription"],["Pickup","Pharmacy counter only"],["Stock","Ask the pharmacist"]], offer:"Generic option may be available"}
+    ]
+  },
+  supermarket: {
+    type:"kiosk", title:"Use the supermarket self-checkout", note:"Self-checkout totem", intro:"Follow the English touchscreen instructions to scan groceries, choose a bag, and pay.", finish:"Payment approved. Please take your groceries and receipt. Thank you for shopping with us!",
+    steps:[
+      {prompt:"Welcome. What would you like to do?", options:["Start scanning items","Enter a loyalty card"]},
+      {prompt:"Scan the barcode. Which item appears on the screen?", options:["A loaf of bread - $3.20","A carton of milk - $2.80","Apples - $4.10"]},
+      {prompt:"Would you like a bag?", options:["No, I brought my own","Yes, add one bag - $0.20"]},
+      {prompt:"Select a payment method.", options:["Credit or debit card","Cash","Mobile payment"]}
+    ]
+  },
+  "airport-check-in": {
+    type:"kiosk", title:"Use the airline check-in totem", note:"Airport kiosk", intro:"Complete an English self-check-in sequence and generate a fictional boarding pass.", finish:"Check-in successful. Flight IYE 482 departs from Gate 16. Boarding begins at 8:20.",
+    steps:[
+      {prompt:"How would you like to find your booking?", options:["Scan my passport","Enter my booking reference"]},
+      {prompt:"Are you checking any bags?", options:["No, carry-on only","Yes, one suitcase","Yes, two suitcases"]},
+      {prompt:"Select your seat preference.", options:["Window seat","Aisle seat","No preference"]},
+      {prompt:"How would you like your boarding pass?", options:["Print boarding pass","Send to my phone"]}
+    ]
+  },
+  souvenir: {
+    type:"products", title:"Explore the souvenir market", note:"6 market products", intro:"Select a souvenir to reveal its asking price, available styles, stock information, and possible bundle offer before bargaining.",
+    products:[
+      {icon:"&#127994;", name:"Handmade bowl", price:"$42.00", facts:[["Material","Painted ceramic"],["Colors","Blue, green, terracotta"],["Stock","Green is out of stock"]], offer:"Two bowls for $75"},
+      {icon:"&#129506;", name:"Woven cap", price:"$24.00", facts:[["Material","Local cotton"],["Colors","Six patterns available"],["Stock","Available"]], offer:"Buy 2 caps for $40"},
+      {icon:"&#128444;", name:"Small painting", price:"$55.00", facts:[["Style","Street or landscape"],["Size","20 x 25 cm"],["Stock","Three originals left"]], offer:"Frame included"},
+      {icon:"&#128273;", name:"City key ring", price:"$6.00", facts:[["Material","Metal or wood"],["Styles","Landmark, flag, map"],["Stock","Available"]], offer:"Buy 3 and get 1 free"},
+      {icon:"&#128214;", name:"Travel notebook", price:"$14.00", facts:[["Cover","Leather-look or fabric"],["Colors","Brown, teal, burgundy"],["Stock","Teal is out of stock"]], offer:"Free name engraving"},
+      {icon:"&#128508;", name:"Wooden figurine", price:"$38.00", facts:[["Material","Hand-carved local wood"],["Sizes","Small or medium"],["Stock","Only 2 medium figures left"]], offer:"Cash price: $34"}
+    ]
+  },
+  restaurant: {
+    type:"menu", title:"Explore the restaurant menu", note:"Full-service menu", intro:"Read the description of each dish or beverage, build a complete table-service order, and review the total.",
+    categories:[
+      {name:"Starters", items:[["Tomato Bruschetta",9,"Toasted bread topped with tomato, basil, garlic, and olive oil."],["Pumpkin Soup",8,"Creamy roasted pumpkin soup served with herb croutons."],["Garden Salad",10,"Mixed greens, cucumber, tomato, carrots, and lemon dressing."]]},
+      {name:"Main courses", items:[["Grilled Salmon",26,"Salmon fillet with roasted vegetables and lemon butter."],["Mushroom Risotto",22,"Creamy Italian rice with mushrooms, parmesan, and fresh herbs."],["Roast Chicken",24,"Herb-roasted chicken with mashed potatoes and seasonal vegetables."],["Sirloin Steak",29,"Grilled beef served with fries and peppercorn sauce."]]},
+      {name:"Desserts & beverages", items:[["Chocolate Mousse",9,"Light chocolate dessert topped with fresh berries."],["Apple Tart",10,"Warm apple pastry served with vanilla ice cream."],["Sparkling Water",5,"Chilled mineral water with bubbles, 750 ml."],["Fresh Lemonade",6,"Homemade lemonade with mint, served over ice."]]}
+    ]
+  },
+  "rental-car": {
+    type:"kiosk", title:"Pick up your app reservation", note:"Rental-car pickup totem", intro:"Use the self-service screen to retrieve a booking made online, verify the driver, confirm rental details, and receive pickup instructions.", finish:"Pickup confirmed. Your blue automatic compact car is in Space B24. Inspect it in the app before leaving. The keys are in the center console.",
+    steps:[
+      {prompt:"How would you like to find your reservation?", options:["Scan the QR code from the app","Enter my booking reference"]},
+      {prompt:"Verify the main driver's document.", options:["Scan driver's license","Use saved verified license"]},
+      {prompt:"Review your protection choice.", options:["Keep full insurance coverage","Change to basic coverage"]},
+      {prompt:"Confirm the fuel policy shown in your booking.", options:["Full-to-full fuel policy","Prepaid fuel option"]},
+      {prompt:"Would you like to add another authorized driver?", options:["No additional driver","Add a driver at the counter"]}
+    ]
+  },
+  taxi: {
+    type:"roulette", title:"Questions from your driver", note:"12 real ride questions", intro:"Click for a random question you might hear during an Uber or taxi ride. Answer promptly and naturally.",
+    questions:["Is this ride for you?","Where are you headed today?","Is this pickup point convenient for you?","Would you like me to put your luggage in the trunk?","Do you prefer the highway or the downtown route?","Are you in a hurry?","Is the air conditioning comfortable?","Would you like the window open or closed?","Is this your first time visiting the city?","Are you here for work or on vacation?","Would you like me to drop you off at the main entrance?","Will you be paying by card or cash?"]
   }
 };
 
@@ -326,6 +579,205 @@ if (practiceRoot) {
     });
     dialogueList.append(dialogue);
   });
+
+  const special = specialActivities[topicKey];
+  const specialTitle = practiceRoot.querySelector("[data-special-title]");
+  const specialNote = practiceRoot.querySelector("[data-special-note]");
+  const specialIntro = practiceRoot.querySelector("[data-special-intro]");
+  const specialStage = practiceRoot.querySelector("[data-special-stage]");
+  const specialFeedback = practiceRoot.querySelector("[data-special-feedback]");
+  specialTitle.textContent = special.title;
+  specialNote.textContent = special.note;
+  specialIntro.textContent = special.intro;
+
+  const renderRoulette = () => {
+    let previousQuestion = -1;
+    specialStage.innerHTML = `<div class="roulette-machine"><div class="roulette-dial" aria-hidden="true"><span>?</span></div><div class="roulette-content"><p class="special-screen-label">Your interview question</p><p class="roulette-question" data-roulette-question>Click the button when the student is ready.</p><button class="activity-button special-primary-button" type="button" data-spin-question>Get a Random Question</button></div></div>`;
+    const questionText = specialStage.querySelector("[data-roulette-question]");
+    specialStage.querySelector("[data-spin-question]").addEventListener("click", () => {
+      let index = Math.floor(Math.random() * special.questions.length);
+      while (special.questions.length > 1 && index === previousQuestion) index = Math.floor(Math.random() * special.questions.length);
+      previousQuestion = index;
+      questionText.classList.remove("is-revealing");
+      void questionText.offsetWidth;
+      questionText.textContent = special.questions[index];
+      questionText.classList.add("is-revealing");
+      specialFeedback.innerHTML = `<strong>Question ${index + 1} of ${special.questions.length} selected.</strong> Answer naturally in complete sentences.`;
+    });
+  };
+
+  const renderKiosk = () => {
+    let stepIndex = 0;
+    const selections = [];
+    specialStage.innerHTML = `<div class="practice-kiosk"><div class="kiosk-topbar"><span>Improve Your English</span><span>EN</span></div><div class="kiosk-screen" data-kiosk-screen></div></div>`;
+    const screen = specialStage.querySelector("[data-kiosk-screen]");
+    const showStep = () => {
+      if (stepIndex >= special.steps.length) {
+        screen.innerHTML = `<div class="kiosk-success-icon">&#10003;</div><p class="special-screen-label">Transaction complete</p><h3>${special.finish}</h3><div class="kiosk-summary">${selections.map((selection, index) => `<p><span>${index + 1}</span>${selection}</p>`).join("")}</div><button class="activity-button secondary-button" type="button" data-restart-kiosk>Start Again</button>`;
+        specialFeedback.innerHTML = "<strong>Simulation complete!</strong> Read the final information aloud and explain your choices.";
+        screen.querySelector("[data-restart-kiosk]").addEventListener("click", () => { stepIndex = 0; selections.length = 0; showStep(); });
+        return;
+      }
+      const step = special.steps[stepIndex];
+      screen.innerHTML = `<div class="kiosk-progress"><span style="width:${((stepIndex + 1) / special.steps.length) * 100}%"></span></div><p class="special-screen-label">Step ${stepIndex + 1} of ${special.steps.length}</p><h3>${step.prompt}</h3><div class="kiosk-options">${step.options.map((option) => `<button type="button">${option}</button>`).join("")}</div>`;
+      screen.querySelectorAll(".kiosk-options button").forEach((button) => button.addEventListener("click", () => {
+        selections.push(button.textContent);
+        stepIndex += 1;
+        showStep();
+      }));
+      specialFeedback.textContent = "Read the screen and select the option that matches your situation.";
+    };
+    showStep();
+  };
+
+  const renderMenu = () => {
+    const order = [];
+    specialStage.innerHTML = `<div class="overhead-menu"><div class="menu-brand"><span>${topicKey === "restaurant" ? "THE TRAVELER'S TABLE" : "ROUTE 66"}</span><strong>${topicKey === "restaurant" ? "DINNER MENU" : "BURGERS &amp; MORE"}</strong></div><div class="menu-category-grid">${special.categories.map((category) => `<section><h3>${category.name}</h3>${category.items.map(([name, price, description]) => `<button type="button" data-item="${name}" data-price="${price}"><span><strong>${name}</strong>${description ? `<small>${description}</small>` : ""}</span><b>$${price.toFixed(2)}</b></button>`).join("")}</section>`).join("")}</div></div><aside class="order-display"><p class="special-screen-label">Your order</p><div data-order-lines><p class="empty-order">Choose an item from the menu.</p></div><div class="order-total"><span>Total</span><strong data-order-total>$0.00</strong></div><button class="activity-button secondary-button" type="button" data-clear-order>Clear Order</button></aside>`;
+    const lines = specialStage.querySelector("[data-order-lines]");
+    const total = specialStage.querySelector("[data-order-total]");
+    const updateOrder = () => {
+      lines.innerHTML = order.length ? order.map((item, index) => `<button type="button" data-remove-item="${index}"><span>${item.name}</span><b>$${item.price.toFixed(2)}</b><small>remove</small></button>`).join("") : `<p class="empty-order">Choose an item from the menu.</p>`;
+      total.textContent = `$${order.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`;
+      lines.querySelectorAll("[data-remove-item]").forEach((button) => button.addEventListener("click", () => { order.splice(Number(button.dataset.removeItem), 1); updateOrder(); }));
+      specialFeedback.innerHTML = order.length ? `<strong>${order.length} item${order.length === 1 ? "" : "s"} selected.</strong> Practice ordering everything in one natural sentence.` : "Build an order by selecting items from the overhead menu.";
+    };
+    specialStage.querySelectorAll("[data-item]").forEach((button) => button.addEventListener("click", () => { order.push({name:button.dataset.item, price:Number(button.dataset.price)}); updateOrder(); }));
+    specialStage.querySelector("[data-clear-order]").addEventListener("click", () => { order.length = 0; updateOrder(); });
+  };
+
+  const renderTicket = () => {
+    const allDestinations = special.areas.flatMap((area) => area.destinations.map((destination) => ({destination, area})));
+    let journey = allDestinations[Math.floor(Math.random() * allDestinations.length)];
+    let selectedType = null;
+    let hasCitizenCard = false;
+    let selectedPayment = "";
+    let phase = "area";
+    const money = (amount) => `$${amount.toFixed(2)}`;
+    const getTotal = () => {
+      const subtotal = journey.area.price * selectedType.multiplier;
+      return {subtotal, discount:hasCitizenCard ? subtotal * special.discount : 0, total:subtotal - (hasCitizenCard ? subtotal * special.discount : 0)};
+    };
+    specialStage.innerHTML = `<div class="ticket-machine"><div class="ticket-machine-top"><span class="ticket-network-mark">M</span><div><strong>METRO TICKETS</strong><small>English / EN</small></div><span data-ticket-clock>OPEN</span></div><div class="ticket-machine-screen" data-ticket-screen></div></div>`;
+    const screen = specialStage.querySelector("[data-ticket-screen]");
+    const progress = (active) => `<div class="ticket-progress">${["Area","Ticket","Discount","Payment","Review"].map((label, index) => `<span class="${index <= active ? "is-active" : ""}"><b>${index + 1}</b>${label}</span>`).join("")}</div>`;
+    const showArea = () => {
+      screen.innerHTML = `${progress(0)}<div class="ticket-destination"><p class="special-screen-label">Your destination</p><h3>${journey.destination}</h3><p>Which fare area is this destination in?</p></div><div class="fare-area-grid">${special.areas.map((area) => `<button type="button" data-area="${area.name}"><strong>${area.name}</strong><span>One-way from ${money(area.price)}</span><small>${area.destinations.join(" • ")}</small></button>`).join("")}</div><button class="ticket-new-destination" type="button" data-new-destination>Choose another destination</button>`;
+      screen.querySelectorAll("[data-area]").forEach((button) => button.addEventListener("click", () => {
+        if (button.dataset.area !== journey.area.name) {
+          button.classList.add("is-wrong");
+          specialFeedback.innerHTML = `<strong>That is not the correct area.</strong> Look for ${journey.destination} in the destination lists and try again.`;
+          return;
+        }
+        button.classList.add("is-correct");
+        specialFeedback.innerHTML = `<strong>Correct!</strong> ${journey.destination} is in the ${journey.area.name} area.`;
+        window.setTimeout(showTicketType, 350);
+      }));
+      screen.querySelector("[data-new-destination]").addEventListener("click", () => {
+        const previous = journey.destination;
+        do { journey = allDestinations[Math.floor(Math.random() * allDestinations.length)]; } while (journey.destination === previous);
+        showArea();
+      });
+    };
+    const showTicketType = () => {
+      screen.innerHTML = `${progress(1)}<p class="special-screen-label">Destination: ${journey.destination} • ${journey.area.name}</p><h3 class="ticket-screen-title">Select a ticket type</h3><div class="ticket-type-grid">${special.ticketTypes.map((type, index) => `<button type="button" data-ticket-type="${index}"><strong>${type.name}</strong><span>${type.description}</span><b>${money(journey.area.price * type.multiplier)}</b></button>`).join("")}</div><button class="ticket-back-button" type="button" data-ticket-back>Back to areas</button>`;
+      screen.querySelectorAll("[data-ticket-type]").forEach((button) => button.addEventListener("click", () => { selectedType = special.ticketTypes[Number(button.dataset.ticketType)]; showDiscount(); }));
+      screen.querySelector("[data-ticket-back]").addEventListener("click", showArea);
+    };
+    const showDiscount = () => {
+      screen.innerHTML = `${progress(2)}<div class="citizen-card-screen"><span class="citizen-card-icon" aria-hidden="true">&#128179;</span><p class="special-screen-label">Discount card</p><h3>Do you have a City Citizen Card?</h3><p>Cardholders receive 15% off this ticket.</p><div class="ticket-choice-row"><button type="button" data-card="yes">Yes, I have a card</button><button type="button" data-card="no">No, continue without it</button></div></div>`;
+      screen.querySelectorAll("[data-card]").forEach((button) => button.addEventListener("click", () => { hasCitizenCard = button.dataset.card === "yes"; showPayment(); }));
+    };
+    const showPayment = () => {
+      const amounts = getTotal();
+      screen.innerHTML = `${progress(3)}<p class="special-screen-label">Amount due: ${money(amounts.total)}</p><h3 class="ticket-screen-title">How would you like to pay?</h3><div class="payment-method-grid">${special.payments.map((payment) => `<button type="button" data-payment="${payment}"><span aria-hidden="true">${payment === "Cash" ? "&#128181;" : payment === "Cellphone payment" ? "&#128241;" : "&#128179;"}</span><strong>${payment}</strong></button>`).join("")}</div>`;
+      screen.querySelectorAll("[data-payment]").forEach((button) => button.addEventListener("click", () => { selectedPayment = button.dataset.payment; showReview(); }));
+    };
+    const showReview = () => {
+      const amounts = getTotal();
+      screen.innerHTML = `${progress(4)}<div class="ticket-review"><p class="special-screen-label">Review your purchase</p><h3>${selectedType.name} ticket to ${journey.destination}</h3><dl><div><dt>Fare area</dt><dd>${journey.area.name}</dd></div><div><dt>Ticket price</dt><dd>${money(amounts.subtotal)}</dd></div><div><dt>Citizen Card discount</dt><dd>${hasCitizenCard ? `-${money(amounts.discount)}` : "Not applied"}</dd></div><div><dt>Payment</dt><dd>${selectedPayment}</dd></div><div class="ticket-review-total"><dt>Total</dt><dd>${money(amounts.total)}</dd></div></dl><button class="activity-button special-primary-button" type="button" data-confirm-ticket>Confirm and Pay</button></div>`;
+      screen.querySelector("[data-confirm-ticket]").addEventListener("click", showReceipt);
+    };
+    const showReceipt = () => {
+      const amounts = getTotal();
+      screen.innerHTML = `<div class="ticket-complete"><div class="kiosk-success-icon">&#10003;</div><p class="special-screen-label">Payment approved</p><h3>Your ${selectedType.name.toLowerCase()} ticket is ready.</h3><div class="printed-ticket"><span>METRO</span><strong>${journey.destination}</strong><small>${journey.area.name} • ${selectedType.name}</small><b>${money(amounts.total)}</b></div><button class="activity-button secondary-button" type="button" data-new-ticket>Buy Another Ticket</button></div>`;
+      specialFeedback.innerHTML = "<strong>Purchase complete!</strong> Read the ticket information aloud and explain how you paid.";
+      screen.querySelector("[data-new-ticket]").addEventListener("click", () => {
+        selectedType = null; hasCitizenCard = false; selectedPayment = ""; phase = "area";
+        journey = allDestinations[Math.floor(Math.random() * allDestinations.length)];
+        showArea();
+      });
+    };
+    showArea();
+  };
+
+  const renderRoutes = () => {
+    const groups = [...new Set(special.routes.map((route) => route.group))];
+    specialStage.innerHTML = `<div class="route-totem"><div class="route-sidebar"><p class="special-screen-label">Choose an area</p>${groups.map((group, index) => `<button type="button" class="${index === 0 ? "is-active" : ""}" data-route-group="${group}">${group}</button>`).join("")}</div><div class="route-main"><p class="special-screen-label">Select a destination</p><div class="route-destinations" data-route-destinations></div><article class="route-result" data-route-result><span aria-hidden="true">&#128205;</span><p>Your directions will appear here.</p></article></div></div>`;
+    const destinations = specialStage.querySelector("[data-route-destinations]");
+    const result = specialStage.querySelector("[data-route-result]");
+    const showGroup = (group) => {
+      destinations.innerHTML = special.routes.filter((route) => route.group === group).map((route) => `<button type="button" data-route-label="${route.label}">${route.label}</button>`).join("");
+      destinations.querySelectorAll("button").forEach((button) => button.addEventListener("click", () => {
+        const route = special.routes.find((item) => item.label === button.dataset.routeLabel);
+        result.innerHTML = `<span aria-hidden="true">&#128205;</span><div><h3>${route.label}</h3><p>${route.directions}</p><button class="listen-expression-button" type="button" data-listen-route>&#128266; Listen</button></div>`;
+        result.querySelector("[data-listen-route]").addEventListener("click", (event) => speakExpression(route.directions, event.currentTarget));
+        specialFeedback.innerHTML = `<strong>Route selected.</strong> Read or listen to the directions, then repeat them without looking.`;
+      }));
+    };
+    specialStage.querySelectorAll("[data-route-group]").forEach((button) => button.addEventListener("click", () => {
+      specialStage.querySelectorAll("[data-route-group]").forEach((item) => item.classList.toggle("is-active", item === button));
+      showGroup(button.dataset.routeGroup);
+      result.innerHTML = `<span aria-hidden="true">&#128205;</span><p>Your directions will appear here.</p>`;
+    }));
+    showGroup(groups[0]);
+  };
+
+  const renderProducts = () => {
+    specialStage.innerHTML = `<div class="product-showcase-grid">${special.products.map((product, index) => `<button type="button" data-product-index="${index}"><span class="product-showcase-icon" aria-hidden="true">${product.icon}</span><strong>${product.name}</strong><small>View details</small></button>`).join("")}</div><article class="product-detail-panel" data-product-detail><div class="product-detail-placeholder"><span aria-hidden="true">&#128070;</span><p>Select one of the six products to see its information.</p></div></article>`;
+    const detailPanel = specialStage.querySelector("[data-product-detail]");
+    specialStage.querySelectorAll("[data-product-index]").forEach((button) => button.addEventListener("click", () => {
+      const product = special.products[Number(button.dataset.productIndex)];
+      specialStage.querySelectorAll("[data-product-index]").forEach((item) => item.classList.toggle("is-selected", item === button));
+      detailPanel.innerHTML = `<div class="product-detail-heading"><span class="product-detail-icon" aria-hidden="true">${product.icon}</span><div><p class="special-screen-label">Product information</p><h3>${product.name}</h3></div><strong class="product-detail-price">${product.price}</strong></div><div class="product-fact-grid">${product.facts.map(([label, value]) => `<p><span>${label}</span><strong>${value}</strong></p>`).join("")}</div><div class="product-offer"><span aria-hidden="true">&#9733;</span><div><small>Special information</small><strong>${product.offer}</strong></div></div>`;
+      specialFeedback.innerHTML = `<strong>${product.name} selected.</strong> Read the information aloud, then ask a partner one question about the product.`;
+    }));
+  };
+
+  const renderDecision = () => {
+    let scenarioIndex = 0;
+    let score = 0;
+    const showScenario = () => {
+      if (scenarioIndex >= special.scenarios.length) {
+        specialStage.innerHTML = `<div class="decision-finish"><span>&#9733;</span><p class="special-screen-label">Challenge complete</p><h3>${score} of ${special.scenarios.length} best responses selected</h3><button class="activity-button secondary-button" type="button" data-restart-decision>Try Again</button></div>`;
+        specialFeedback.innerHTML = score === special.scenarios.length ? "<strong>Excellent!</strong> Every response was natural and polite." : "<strong>Good practice.</strong> Try again and look for the clearest, most polite response.";
+        specialStage.querySelector("[data-restart-decision]").addEventListener("click", () => { scenarioIndex = 0; score = 0; showScenario(); });
+        return;
+      }
+      const scenario = special.scenarios[scenarioIndex];
+      specialStage.innerHTML = `<div class="decision-card"><p class="special-screen-label">Situation ${scenarioIndex + 1} of ${special.scenarios.length}</p><h3>${scenario.prompt}</h3><div class="decision-options">${scenario.options.map((option, index) => `<button type="button" data-option-index="${index}">${option}</button>`).join("")}</div></div>`;
+      specialStage.querySelectorAll("[data-option-index]").forEach((button) => button.addEventListener("click", () => {
+        const isBest = Number(button.dataset.optionIndex) === scenario.best;
+        if (isBest) score += 1;
+        specialFeedback.innerHTML = isBest ? "<strong>Natural choice!</strong> That response is clear and polite." : `<strong>Not the best choice.</strong> A more natural response is: ${scenario.options[scenario.best]}`;
+        specialStage.querySelectorAll("[data-option-index]").forEach((item) => { item.disabled = true; item.classList.toggle("is-best", Number(item.dataset.optionIndex) === scenario.best); });
+        const next = document.createElement("button");
+        next.className = "activity-button special-next-button";
+        next.type = "button";
+        next.textContent = scenarioIndex === special.scenarios.length - 1 ? "See Result" : "Next Situation";
+        next.addEventListener("click", () => { scenarioIndex += 1; showScenario(); });
+        specialStage.querySelector(".decision-card").append(next);
+      }));
+    };
+    showScenario();
+  };
+
+  if (special.type === "roulette") renderRoulette();
+  if (special.type === "kiosk") renderKiosk();
+  if (special.type === "menu") renderMenu();
+  if (special.type === "ticket") renderTicket();
+  if (special.type === "routes") renderRoutes();
+  if (special.type === "products") renderProducts();
+  if (special.type === "decision") renderDecision();
 
   const missionLabel = practiceRoot.querySelector("[data-mission-label]");
   const missionTitle = practiceRoot.querySelector("[data-mission-title]");
