@@ -1,0 +1,31 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Person waking up</title>
+  <desc id="desc">A friendly illustration of a person waking up in bed beside an alarm clock.</desc>
+  <rect width="640" height="420" rx="36" fill="#FFF9D9"/>
+  <circle cx="520" cy="90" r="42" fill="#EDE3FF"/>
+  <circle cx="520" cy="90" r="24" fill="#6D3BBD"/>
+  <path d="M520 73V91L533 99" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M493 56L479 40" stroke="#6D3BBD" stroke-width="8" stroke-linecap="round"/>
+  <path d="M547 56L561 40" stroke="#6D3BBD" stroke-width="8" stroke-linecap="round"/>
+  <path d="M72 314C72 286.386 94.3858 264 122 264H385C412.614 264 435 286.386 435 314V343H72V314Z" fill="#1D8F8B"/>
+  <rect x="101" y="220" width="130" height="54" rx="24" fill="#EFE7FF"/>
+  <rect x="218" y="210" width="182" height="74" rx="28" fill="white"/>
+  <path d="M132 165C132 131.311 159.311 104 193 104C226.689 104 254 131.311 254 165V221H132V165Z" fill="#6D3BBD"/>
+  <circle cx="193" cy="159" r="39" fill="#FFD8B8"/>
+  <path d="M160 144C168 130 182 122 198 122C214 122 229 130 237 144V160H160V144Z" fill="#37224C"/>
+  <path d="M237 184C227 199 211 208 193 208C175 208 159 199 149 184" stroke="#37224C" stroke-width="6" stroke-linecap="round"/>
+  <rect x="126" y="210" width="136" height="64" rx="28" fill="#EDE3FF"/>
+  <path d="M288 214C315 205 341 205 370 214C393 221 411 239 419 264H257C264 241 274 223 288 214Z" fill="#6D3BBD"/>
+  <path d="M295 204C316 190 347 189 370 201" stroke="#37224C" stroke-width="6" stroke-linecap="round"/>
+  <path d="M117 88L134 74" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M143 71L159 56" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M175 58L180 37" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M204 61L211 40" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M229 74L243 57" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M250 96L271 85" stroke="#1D8F8B" stroke-width="7" stroke-linecap="round"/>
+  <path d="M86 304H460" stroke="#37224C" stroke-width="6" stroke-linecap="round" opacity="0.22"/>
+  <path d="M84 343H533" stroke="#37224C" stroke-width="8" stroke-linecap="round" opacity="0.22"/>
+  <path d="M474 332C474 311.013 491.013 294 512 294H528C548.987 294 566 311.013 566 332V343H474V332Z" fill="#EDE3FF"/>
+  <circle cx="519" cy="313" r="14" fill="#6D3BBD"/>
+  <rect x="498" y="326" width="42" height="17" rx="8.5" fill="#6D3BBD"/>
+</svg>

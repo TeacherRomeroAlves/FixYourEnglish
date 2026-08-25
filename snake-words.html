@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Snake | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html">Back to Menu</a>
+
+    <section class="hero lesson-hero snake-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">Language Arcade</p>
+      <h1>WORD SNAKE</h1>
+      <p class="hero-copy">Guide the snake toward the words in the correct order. Complete seven English tips, grow with every answer, and avoid the wrong word, the walls, and your own tail.</p>
+      <div class="routine-row" aria-label="Game features">
+        <span class="routine-chip">7 levels</span>
+        <span class="routine-chip">21 sentences</span>
+        <span class="routine-chip">Arrow keys + WASD</span>
+        <span class="routine-chip">Swipe on mobile</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card snake-game" data-word-snake>
+      <div class="panel-heading lesson-heading">
+        <div><p class="panel-kicker">Game On</p><h2>Build the sentence. Feed the snake.</h2></div>
+      </div>
+
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Click <strong>Start Game</strong>. The timer begins only then.</li>
+          <li>Use the arrow keys, WASD, swipe, or the direction buttons.</li>
+          <li>Eat the sentence words in order. Two choices are always on the board.</li>
+          <li>A wrong word, wall, or body collision restarts the current level. The timer keeps running.</li>
+          <li>Complete all seven levels and share your score and time.</li>
+        </ol>
+      </div>
+
+      <div class="snake-toolbar">
+        <button class="activity-button reading-primary-button" type="button" data-snake-start>Start Game</button>
+        <button class="activity-button secondary-button" type="button" data-snake-restart hidden>Restart Level</button>
+        <div class="snake-stats" aria-label="Game statistics">
+          <div><span>Level</span><strong data-snake-level>1 / 7</strong></div>
+          <div><span>Score</span><strong data-snake-score>0</strong></div>
+          <div><span>Time</span><strong data-snake-time>00:00</strong></div>
+        </div>
+      </div>
+
+      <div class="snake-sentence-panel">
+        <p class="prompt-label">Target sentence</p>
+        <div class="snake-sentence-progress" data-snake-sentence aria-live="polite"></div>
+      </div>
+
+      <div class="snake-board-wrap" data-snake-touch>
+        <canvas class="snake-canvas" data-snake-canvas width="800" height="560" aria-label="Word Snake game board"></canvas>
+        <div class="snake-board-message" data-snake-message>
+          <strong>Ready?</strong>
+          <span>Choose Start Game when you are ready.</span>
+        </div>
+      </div>
+
+      <div class="snake-dpad" aria-label="Direction controls">
+        <button type="button" data-snake-direction="up" aria-label="Move up">&#8593;</button>
+        <button type="button" data-snake-direction="left" aria-label="Move left">&#8592;</button>
+        <button type="button" data-snake-direction="down" aria-label="Move down">&#8595;</button>
+        <button type="button" data-snake-direction="right" aria-label="Move right">&#8594;</button>
+      </div>
+
+      <p class="activity-feedback snake-feedback" data-snake-feedback aria-live="polite">The sentence changes every time you play.</p>
+
+      <div class="puzzle-finish-card snake-finish" data-snake-finish hidden>
+        <p class="prompt-label">Seven levels complete</p>
+        <h3>You mastered the Word Snake challenge!</h3>
+        <p class="prompt-text" data-snake-result></p>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-snake-share>Share Result</button>
+          <button class="activity-button secondary-button" type="button" data-snake-play-again>Play Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="snake-words.js"></script>
+</body>
+</html>

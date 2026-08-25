@@ -270,6 +270,75 @@ const situationTopics = {
       ["Start a conversation","You are taking a thirty-minute ride and want to speak with the driver.",["Greet the driver and ask how their day is going","Ask whether they are from this city","Ask for one local restaurant recommendation"],"How is your day going?, Are you from...?, What restaurant do you recommend?"],
       ["Confirm an app ride","Several similar cars are waiting outside your hotel.",["Ask whether the ride is for you","Confirm the driver's name and license plate","Ask the driver to open the trunk"],"Is this car for...?, Is your name...?, Could you open the trunk?"],
       ["Direct a taxi ride","You need to reach the airport but traffic is heavy.",["Tell the driver your destination","Ask how long the journey will take","Confirm that you can pay by card"],"Please take me to..., How long will it take?, Can I pay by card?" ]]
+  },
+  electronics: {
+    eyebrow:"Comparing technology", title:"AT AN ELECTRONICS STORE", intro:"Compare devices, ask about specifications, understand warranties, and choose the right product for your needs.",
+    vocabulary:[
+      ["I am looking for...", "Say which kind of device you want to buy."], ["A laptop", "A portable computer with a screen and keyboard."],
+      ["A smartphone", "A cellphone that runs apps and connects to the internet."], ["How much storage does it have?", "Ask how much digital space is available for files and apps."],
+      ["The battery life", "How long a device works before it needs charging."], ["The screen size", "The diagonal measurement of a display."],
+      ["Is it unlocked?", "Ask whether a phone can be used with different mobile carriers."], ["Does it come with a charger?", "Ask whether a charging device is included."],
+      ["A warranty", "A promise to repair or replace a product under certain conditions."], ["Is it compatible with...?", "Ask whether a device works with another product or system."],
+      ["Is there a cheaper model?", "Ask whether a less expensive version is available."], ["Can I return or exchange it?", "Ask about returning the product or replacing it with another one."]
+    ],
+    dialogues:[
+      {title:"Choosing a laptop", bank:["looking for", "laptop", "storage", "battery life", "cheaper model"], lines:[
+        ["Customer","Hi. I am {{looking for}} a lightweight {{laptop}} for university."],["Assistant","This model is popular with students."],
+        ["Customer","How much {{storage}} does it have?"],["Assistant","Five hundred and twelve gigabytes, and the {{battery life}} is about twelve hours."],["Customer","That sounds good. Is there a {{cheaper model}} with similar features?"]]}
+      ,{title:"Buying a cellphone", bank:["unlocked", "charger", "warranty", "compatible with", "exchange it"], lines:[
+        ["Customer","Is this phone {{unlocked}}?"],["Assistant","Yes, it works with all major carriers."],["Customer","Does it come with a {{charger}}?"],
+        ["Assistant","Yes, and it has a two-year {{warranty}}."],["Customer","Is it {{compatible with}} my smartwatch? And can I {{exchange it}} if there is a problem?"]]}
+    ],
+    missions:[
+      ["Choose a study laptop","You need a lightweight computer for classes and video calls.",["Explain what you will use it for","Ask about storage and battery life","Ask whether a student discount is available"],"I am looking for..., How much storage...?, Is there a student discount?"],
+      ["Replace your cellphone","Your phone stopped working during your trip.",["Ask for an unlocked smartphone","Ask whether a charger is included","Ask about the warranty and return policy"],"Is it unlocked?, Does it come with...?, What is the warranty?"],
+      ["Compare two devices","Two tablets have different prices and specifications.",["Ask about both screen sizes","Compare their battery life","Ask which model the assistant recommends"],"What is the screen size?, How long...?, Which do you recommend?" ]]
+  },
+  "phone-food": {
+    eyebrow:"Calling for delivery", title:"ORDERING FOOD BY PHONE", intro:"Place a delivery order clearly, customize food, give your address, and confirm the total and estimated arrival time.",
+    vocabulary:[
+      ["I would like to place an order.", "Begin a telephone order politely."], ["For delivery or pickup?", "A question asking how you want to receive the food."],
+      ["The delivery address", "The location where the restaurant should bring the order."], ["A phone number", "The number the restaurant can call about the delivery."],
+      ["What sizes do you have?", "Ask about the available portion or pizza sizes."], ["The crust", "The baked outer edge and base of a pizza."],
+      ["A topping", "An ingredient placed on top of a pizza."], ["Could you leave off...?", "Ask the restaurant not to include an ingredient."],
+      ["Special instructions", "Extra information about preparing or delivering the order."], ["How long will delivery take?", "Ask for the estimated arrival time."],
+      ["What is the total?", "Ask for the complete price including fees."], ["I will pay by card / in cash.", "Tell the restaurant how you intend to pay."]
+    ],
+    dialogues:[
+      {title:"Ordering a pizza", bank:["place an order", "delivery", "sizes", "thin crust", "leave off"], lines:[
+        ["Employee","Good evening, Bella Pizza. How can I help?"],["Customer","I would like to {{place an order}}, please."],["Employee","Is that for pickup or {{delivery}}?"],
+        ["Customer","Delivery. What {{sizes}} do you have?"],["Employee","Medium, large, and family size."],["Customer","I would like a large pizza with {{thin crust}}. Could you {{leave off}} the onions?"]]}
+      ,{title:"Confirming the delivery", bank:["delivery address", "phone number", "special instructions", "delivery take", "total"], lines:[
+        ["Employee","What is the {{delivery address}}?"],["Customer","Twenty Oak Street, Apartment 4B."],["Employee","May I have your {{phone number}} and any {{special instructions}}?"],
+        ["Customer","Please call when the driver arrives. How long will {{delivery take}}?"],["Employee","About forty minutes."],["Customer","Great. What is the {{total}}? I will pay by card."]]}
+    ],
+    missions:[
+      ["Order a customized pizza","You want a large pizza delivered to your hotel.",["Choose two toppings and thin crust","Ask them to leave off onions","Give your room number as a delivery instruction"],"I'd like..., Could you leave off...?, Please call..."],
+      ["Give complete delivery details","The restaurant needs information before confirming the order.",["Give your full delivery address","Provide a phone number","Ask how long delivery will take"],"The address is..., My number is..., How long...?"],
+      ["Correct a telephone order","The employee repeats your order with the wrong drink and size.",["Politely correct the pizza size","Replace the drink with sparkling water","Confirm the total and payment method"],"Sorry, I ordered..., Could I change...?, What is the total?" ]]
+  },
+  doctor: {
+    eyebrow:"At a clinic or hospital", title:"GOING TO THE DOCTOR", intro:"Make an appointment, describe symptoms clearly, answer common questions, and provide international health-insurance information abroad.",
+    vocabulary:[
+      ["I would like to make an appointment.", "Ask to schedule a time to see a doctor."], ["What symptoms do you have?", "A question asking what health problems you are experiencing."],
+      ["I have been feeling...", "Describe how you have felt over a period of time."], ["How long have you had this?", "A question about when a symptom started."],
+      ["A medical history", "Information about previous health conditions and treatment."], ["I am allergic to...", "Tell medical staff about a known allergy."],
+      ["A prescription", "A doctor's written authorization for medicine."], ["A follow-up appointment", "A later visit to review your condition or progress."],
+      ["An international health-insurance card", "Proof that you have travel or international medical coverage."], ["A policy number", "The identification number for an insurance plan."],
+      ["Is this covered by my insurance?", "Ask whether your insurance will pay for a service."], ["The emergency room", "The hospital department for urgent or serious medical problems."]
+    ],
+    dialogues:[
+      {title:"Making a clinic appointment", bank:["make an appointment", "symptoms", "feeling dizzy", "How long", "medical history"], lines:[
+        ["Receptionist","How may I help you?"],["Patient","I would like to {{make an appointment}} with a doctor."],["Receptionist","What {{symptoms}} do you have?"],
+        ["Patient","I have been {{feeling dizzy}} since yesterday."],["Receptionist","{{How long}} has each episode lasted?"],["Patient","A few minutes. I can provide my {{medical history}} at the appointment."]]}
+      ,{title:"Registering at a hospital abroad", bank:["health-insurance card", "policy number", "covered", "allergic to", "emergency room"], lines:[
+        ["Hospital clerk","Before registration, we need your passport and international {{health-insurance card}}."],["Patient","Here they are. My {{policy number}} is on the back."],
+        ["Hospital clerk","Thank you. You should contact the insurer to confirm what is {{covered}}."],["Nurse","Are you {{allergic to}} any medicine?"],["Patient","No known allergies. Do I need to go to the {{emergency room}} or wait for the clinic doctor?"]]}
+    ],
+    missions:[
+      ["Describe your symptoms","You have felt unwell since yesterday and need a clinic appointment.",["Say when the symptoms began","Describe two symptoms clearly","Mention any known allergies"],"I have been feeling..., It started..., I am allergic to..."],
+      ["Register at an international hospital","The hospital requires proof of coverage before a non-emergency consultation.",["Present your passport and international insurance card","Give your policy number","Ask whether the consultation is covered"],"Here is my insurance card, My policy number is..., Is this covered...?"],
+      ["Ask follow-up questions","The doctor finishes the examination and explains the next steps.",["Ask whether you need a prescription","Ask when to return for a follow-up","Ask who to contact if symptoms become urgent"],"Do I need...?, When should I...?, Who should I contact...?" ]]
   }
 };
 
@@ -329,7 +398,10 @@ const challengeWords = {
   souvenir: ["souvenir", "market stall", "cash", "local craft", "receipt"],
   restaurant: ["server", "wine list", "napkin", "service charge", "reservation"],
   "rental-car": ["car keys", "rental desk", "parking lot", "upgrade", "receipt"],
-  taxi: ["driver", "destination", "traffic", "fare", "tip"]
+  taxi: ["driver", "destination", "traffic", "fare", "tip"],
+  electronics: ["receipt", "price tag", "headphones", "charger", "cashier"],
+  "phone-food": ["menu", "topping", "crust", "delivery fee", "receipt"],
+  doctor: ["appointment", "insurance", "passport", "prescription", "clinic"]
 };
 
 Object.entries(situationTopics).forEach(([key, topicData]) => {
@@ -454,6 +526,29 @@ const specialActivities = {
   taxi: {
     type:"roulette", title:"Questions from your driver", note:"12 real ride questions", intro:"Click for a random question you might hear during an Uber or taxi ride. Answer promptly and naturally.",
     questions:["Is this ride for you?","Where are you headed today?","Is this pickup point convenient for you?","Would you like me to put your luggage in the trunk?","Do you prefer the highway or the downtown route?","Are you in a hurry?","Is the air conditioning comfortable?","Would you like the window open or closed?","Is this your first time visiting the city?","Are you here for work or on vacation?","Would you like me to drop you off at the main entrance?","Will you be paying by card or cash?"]
+  },
+  electronics: {
+    type:"products", title:"Explore the electronics department", note:"6 technology products", intro:"Select a product to compare its price, colors, specifications, stock status, warranty, and special offer.",
+    products:[
+      {icon:"&#128187;", name:"Everyday laptop", price:"$749.00", facts:[["Specifications","16 GB RAM • 512 GB storage"],["Colors","Silver or dark blue"],["Stock","Silver is available"]], offer:"Two-year warranty included"},
+      {icon:"&#128241;", name:"5G smartphone", price:"$599.00", facts:[["Storage","128 GB or 256 GB"],["Colors","Black, white, green"],["Stock","Green 256 GB is out of stock"]], offer:"Free protective case"},
+      {icon:"&#128190;", name:"Student tablet", price:"$389.00", facts:[["Screen","11-inch display"],["Storage","128 GB"],["Stock","Available"]], offer:"Keyboard cover 30% off"},
+      {icon:"&#127911;", name:"Wireless headphones", price:"$129.00", facts:[["Battery","Up to 30 hours"],["Colors","Black, cream, teal"],["Stock","Only 3 teal units left"]], offer:"Second pair 25% off"},
+      {icon:"&#8986;", name:"Smartwatch", price:"$219.00", facts:[["Sizes","40 mm or 44 mm"],["Colors","Black, silver, rose"],["Stock","44 mm silver is out of stock"]], offer:"Extra watch band included"},
+      {icon:"&#128268;", name:"Universal charger", price:"$39.00", facts:[["Ports","Two USB-C ports"],["Compatibility","Phones, tablets, laptops"],["Stock","Available"]], offer:"Travel adapter included"}
+    ]
+  },
+  "phone-food": {
+    type:"menu", title:"Choose from the pizza delivery menu", note:"Pizza phone menu", intro:"Read each description, build the order you want to request by phone, and use the total to confirm the call.", brand:"BELLA PIZZA", menuTitle:"DELIVERY MENU",
+    categories:[
+      {name:"Pizzas", items:[["Margherita",15,"Tomato sauce, mozzarella, basil, and olive oil."],["Pepperoni",18,"Tomato sauce, mozzarella, and sliced pepperoni."],["Garden Vegetable",17,"Mozzarella, peppers, mushrooms, onions, olives, and tomato."],["Chicken Barbecue",20,"Chicken, mozzarella, red onion, and barbecue sauce."]]},
+      {name:"Sides", items:[["Garlic Bread",6,"Oven-baked bread with garlic butter and herbs."],["Caesar Salad",9,"Lettuce, parmesan, croutons, and Caesar dressing."],["Mozzarella Sticks",8,"Six breaded mozzarella sticks with tomato sauce."]]},
+      {name:"Drinks & desserts", items:[["Sparkling Water",4,"Chilled 750 ml bottle of sparkling mineral water."],["Soft Drink",4,"Choose cola, lemon-lime, or orange, 1 liter."],["Chocolate Brownie",7,"Warm chocolate brownie cut into four pieces."],["Vanilla Cheesecake",8,"Creamy vanilla cheesecake with berry sauce."]]}
+    ]
+  },
+  doctor: {
+    type:"roulette", title:"Questions from the doctor", note:"12 appointment questions", intro:"Click for a random question you may hear during an appointment abroad. Practice clear answers; this activity does not provide medical advice.",
+    questions:["What brings you in today?","What symptoms are you experiencing?","When did the symptoms begin?","Have the symptoms become better or worse?","Do you have a fever?","On a scale from one to ten, how severe is the pain?","Are you allergic to any medicine?","Are you currently taking any medicine?","Have you had this problem before?","Do you have any relevant medical conditions?","May I see your international health-insurance card?","Do you know your insurance policy number?"]
   }
 };
 
@@ -632,7 +727,7 @@ if (practiceRoot) {
 
   const renderMenu = () => {
     const order = [];
-    specialStage.innerHTML = `<div class="overhead-menu"><div class="menu-brand"><span>${topicKey === "restaurant" ? "THE TRAVELER'S TABLE" : "ROUTE 66"}</span><strong>${topicKey === "restaurant" ? "DINNER MENU" : "BURGERS &amp; MORE"}</strong></div><div class="menu-category-grid">${special.categories.map((category) => `<section><h3>${category.name}</h3>${category.items.map(([name, price, description]) => `<button type="button" data-item="${name}" data-price="${price}"><span><strong>${name}</strong>${description ? `<small>${description}</small>` : ""}</span><b>$${price.toFixed(2)}</b></button>`).join("")}</section>`).join("")}</div></div><aside class="order-display"><p class="special-screen-label">Your order</p><div data-order-lines><p class="empty-order">Choose an item from the menu.</p></div><div class="order-total"><span>Total</span><strong data-order-total>$0.00</strong></div><button class="activity-button secondary-button" type="button" data-clear-order>Clear Order</button></aside>`;
+    specialStage.innerHTML = `<div class="overhead-menu"><div class="menu-brand"><span>${special.brand || (topicKey === "restaurant" ? "THE TRAVELER'S TABLE" : "ROUTE 66")}</span><strong>${special.menuTitle || (topicKey === "restaurant" ? "DINNER MENU" : "BURGERS &amp; MORE")}</strong></div><div class="menu-category-grid">${special.categories.map((category) => `<section><h3>${category.name}</h3>${category.items.map(([name, price, description]) => `<button type="button" data-item="${name}" data-price="${price}"><span><strong>${name}</strong>${description ? `<small>${description}</small>` : ""}</span><b>$${price.toFixed(2)}</b></button>`).join("")}</section>`).join("")}</div></div><aside class="order-display"><p class="special-screen-label">Your order</p><div data-order-lines><p class="empty-order">Choose an item from the menu.</p></div><div class="order-total"><span>Total</span><strong data-order-total>$0.00</strong></div><button class="activity-button secondary-button" type="button" data-clear-order>Clear Order</button></aside>`;
     const lines = specialStage.querySelector("[data-order-lines]");
     const total = specialStage.querySelector("[data-order-total]");
     const updateOrder = () => {

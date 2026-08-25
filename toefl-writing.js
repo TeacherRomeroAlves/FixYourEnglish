@@ -57,16 +57,16 @@ const writingTests = {
   },
   3: {
     sentences: [
-      ["The campus tour starts at ten.", ["where", "meet", "we", "should"], ["where", "should", "we", "meet"]],
-      ["I missed yesterday's biology lecture.", ["notes", "could", "your", "borrow", "I"], ["could", "I", "borrow", "your", "notes"]],
-      ["The library closes earlier now.", ["why", "changed", "do", "the schedule", "you know"], ["do", "you know", "why", "the schedule", "changed"]],
-      ["I'm applying for a summer internship.", ["deadline", "when", "the", "is", "application"], ["when", "is", "the", "application", "deadline"]],
-      ["Our professor assigned a research presentation.", ["topic", "have", "chosen", "you", "a"], ["have", "you", "chosen", "a", "topic"]],
-      ["The student center is organizing a concert.", ["performing", "who", "know", "do", "you", "is"], ["do", "you", "know", "who", "is", "performing"]],
-      ["I want to join the debate club.", ["meetings", "held", "are", "where", "the"], ["where", "are", "the", "meetings", "held"]],
-      ["My statistics assignment is difficult.", ["help", "tutor", "could", "a", "me", "find", "you"], ["could", "you", "help", "me", "find", "a", "tutor"]],
-      ["What did Rosa say about the workshop?", ["that", "useful", "extremely", "it", "was", "she said"], ["she said", "that", "it", "was", "extremely", "useful"]],
-      ["Why are you going to the administration office?", ["student ID", "need", "replaced", "I", "my"], ["I", "need", "my", "student ID", "replaced"]]
+      ["The campus tour starts at ten.", ["where", "meet", "we", "should", "are", "supposed to"], ["where", "are", "we", "supposed to", "meet"], ["where", "should", "we", "meet"]],
+      ["I missed yesterday's biology lecture.", ["could", "I", "borrow", "your notes", "would", "be able to"], ["would", "I", "be able to", "borrow", "your notes"], ["could", "I", "borrow", "your notes"]],
+      ["The library closes earlier now.", ["why", "did", "the schedule", "change", "do", "you know"], ["do", "you know", "why", "the schedule", "did", "change"], ["why", "did", "the schedule", "change"]],
+      ["I'm applying for a summer internship.", ["when", "is", "the application deadline", "could", "you tell me"], ["could", "you tell me", "when", "the application deadline", "is"], ["when", "is", "the application deadline"]],
+      ["Our professor assigned a research presentation.", ["have", "you", "chosen", "a topic", "already", "for the presentation"], ["have", "you", "already", "chosen", "a topic", "for the presentation"], ["have", "you", "chosen", "a topic"]],
+      ["The student center is organizing a concert.", ["who", "is performing", "do", "you know", "at the concert"], ["do", "you know", "who", "is performing", "at the concert"], ["who", "is performing"]],
+      ["I want to join the debate club.", ["where", "are", "the meetings", "held", "could", "you tell me"], ["could", "you tell me", "where", "the meetings", "are", "held"], ["where", "are", "the meetings", "held"]],
+      ["My statistics assignment is difficult.", ["could", "you", "help me", "find", "a tutor", "who understands statistics"], ["could", "you", "help me", "find", "a tutor", "who understands statistics"], ["could", "you", "help me"]],
+      ["What did Rosa say about the workshop?", ["she said", "it", "was useful", "that", "was", "extremely", "useful", "for new students"], ["she said", "that", "it", "was", "extremely", "useful", "for new students"], ["she said", "it", "was useful"]],
+      ["Why are you going to the administration office?", ["I", "need", "my student ID", "replaced", "because", "I lost it"], ["I", "need", "my student ID", "replaced", "because", "I lost it"], ["I", "need", "my student ID", "replaced"]]
     ],
     email: {
       scenario: "Your university library recently changed its opening hours. It now closes much earlier, and many students are unhappy because they cannot study there in the evening. You want to write to the library director about the situation.",
@@ -85,16 +85,16 @@ const writingTests = {
   },
   4: {
     sentences: [
-      ["The language school offers conversation classes.", ["level", "which", "for", "suitable", "is", "beginners"], ["which", "level", "is", "suitable", "for", "beginners"]],
-      ["My classroom is always very noisy.", ["another room", "could", "move", "we", "to"], ["could", "we", "move", "to", "another room"]],
-      ["I downloaded the new learning app.", ["used", "have", "it", "yet", "you"], ["have", "you", "used", "it", "yet"]],
-      ["Our teacher recommended an English podcast.", ["called", "remember", "it", "what", "do", "you", "is"], ["do", "you", "remember", "what", "it", "is", "called"]],
-      ["The school is planning an international day.", ["can", "students", "participate", "how"], ["how", "can", "students", "participate"]],
-      ["I have trouble understanding fast speech.", ["practice", "suggest", "what", "do", "you"], ["what", "practice", "do", "you", "suggest"]],
-      ["We're taking a placement test tomorrow.", ["long", "will", "know", "do", "last", "how", "it", "you"], ["do", "you", "know", "how", "long", "it", "will", "last"]],
-      ["The coordinator announced a schedule change.", ["classes", "start", "earlier", "will", "now"], ["will", "classes", "start", "earlier", "now"]],
-      ["What did Ben ask about the course?", ["included", "materials", "whether", "wanted to know", "were", "he"], ["he", "wanted to know", "whether", "materials", "were", "included"]],
-      ["Why are you recording yourself speaking?", ["pronunciation", "so that", "check", "I can", "my"], ["so that", "I can", "check", "my", "pronunciation"]]
+      ["The language school offers conversation classes.", ["which level", "is", "for beginners", "would", "be suitable"], ["which level", "would", "be suitable", "for beginners"]],
+      ["My classroom is always very noisy.", ["could", "we", "move", "to another room", "would", "it be possible to"], ["would", "it be possible to", "move", "to another room"]],
+      ["I downloaded the new learning app.", ["have", "you", "used it", "yet", "had", "a chance to", "use it"], ["have", "you", "had", "a chance to", "use it", "yet"]],
+      ["Our teacher recommended an English podcast.", ["what", "is it called", "do", "you remember", "it is called"], ["do", "you remember", "what", "it is called"]],
+      ["The school is planning an international day.", ["how", "can", "students", "participate", "do", "you know"], ["do", "you know", "how", "students", "can", "participate"]],
+      ["I have trouble understanding fast speech.", ["what practice", "do", "you suggest", "would", "you recommend"], ["what practice", "would", "you recommend"]],
+      ["We're taking a placement test tomorrow.", ["how long", "will it last", "do", "you know", "it will last"], ["do", "you know", "how long", "it will last"]],
+      ["The coordinator announced a schedule change.", ["will", "classes", "start earlier", "now", "does that mean"], ["does that mean", "classes", "will", "start earlier", "now"]],
+      ["What did Ben ask about the course?", ["he asked", "if", "materials", "were included", "he", "wanted to know", "whether"], ["he", "wanted to know", "whether", "materials", "were included"]],
+      ["Why are you recording yourself speaking?", ["I want to", "check", "my pronunciation", "so that", "I can", "improve it"], ["I want to", "check", "my pronunciation", "so that", "I can", "improve it"]]
     ],
     email: {
       scenario: "You recently started taking classes at a language school. Although you like the teacher, the classroom is too small and very noisy, which makes it difficult to concentrate. You want to write to the school coordinator.",
@@ -113,16 +113,16 @@ const writingTests = {
   },
   5: {
     sentences: [
-      ["Our group project is due next Friday.", ["finished", "your section", "have", "you"], ["have", "you", "finished", "your section"]],
-      ["One teammate has missed every meeting.", ["contacted", "anyone", "has", "him"], ["has", "anyone", "contacted", "him"]],
-      ["We need to divide the remaining work.", ["take", "task", "which", "you", "can"], ["which", "task", "can", "you", "take"]],
-      ["The professor wants a progress report.", ["include", "should", "what", "we"], ["what", "should", "we", "include"]],
-      ["I'm worried we won't finish on time.", ["extension", "ask", "we", "for", "should", "an"], ["should", "we", "ask", "for", "an", "extension"]],
-      ["Maria created the presentation slides.", ["reviewed", "have", "them", "you"], ["have", "you", "reviewed", "them"]],
-      ["We are meeting online this evening.", ["sent", "link", "the", "has", "been"], ["has", "the", "link", "been", "sent"]],
-      ["The research results are surprising.", ["them", "explain", "how", "will", "we"], ["how", "will", "we", "explain", "them"]],
-      ["What did the professor recommend?", ["roles", "assign", "clearly", "that", "we", "she suggested"], ["she suggested", "that", "we", "assign", "roles", "clearly"]],
-      ["Why did you email the whole group?", ["everyone", "because", "update", "needed", "an"], ["because", "everyone", "needed", "an", "update"]]
+      ["Our group project is due next Friday.", ["have", "you", "finished", "your section", "been able to", "finish", "of the report"], ["have", "you", "been able to", "finish", "your section", "of the report"]],
+      ["One teammate has missed every meeting.", ["has", "anyone", "contacted him", "to find out", "what happened"], ["has", "anyone", "contacted him", "to find out", "what happened"]],
+      ["We need to divide the remaining work.", ["which task", "can", "you take", "would", "you be willing to", "take"], ["which task", "would", "you be willing to", "take"]],
+      ["The professor wants a progress report.", ["what", "should", "we include", "do", "you think", "we", "include"], ["what", "do", "you think", "we", "should", "include"]],
+      ["I'm worried we won't finish on time.", ["should", "we", "ask for", "an extension", "do", "you think"], ["do", "you think", "we", "should", "ask for", "an extension"]],
+      ["Maria created the presentation slides.", ["have", "you", "reviewed them", "had", "a chance to", "review them"], ["have", "you", "had", "a chance to", "review them"]],
+      ["We are meeting online this evening.", ["has", "the link", "been sent", "do", "you know", "whether"], ["do", "you know", "whether", "the link", "has", "been sent"]],
+      ["The research results are surprising.", ["how", "will", "we explain them", "are", "we going to", "explain them"], ["how", "are", "we going to", "explain them"]],
+      ["What did the professor recommend?", ["she suggested", "assigning roles", "that", "we", "assign roles", "clearly"], ["she suggested", "that", "we", "assign roles", "clearly"]],
+      ["Why did you email the whole group?", ["everyone", "needed", "an update", "because", "I thought", "that"], ["because", "I thought", "that", "everyone", "needed", "an update"]]
     ],
     email: {
       scenario: "You are working on a group project for one of your classes. One member has not attended meetings or completed their part of the work. You want to inform your professor about the situation.",
@@ -140,6 +140,130 @@ const writingTests = {
     }
   }
 };
+
+Object.assign(writingTests, {
+  6: {
+    sentences: [
+      ["The science lab opens at eight.", ["when", "should", "we arrive", "are", "expected to"], ["when", "are", "we", "expected to", "arrive"]],
+      ["I cannot access the online journal.", ["can", "you", "help me", "figure out", "why", "it is unavailable"], ["can", "you", "help me", "figure out", "why", "it is unavailable"]],
+      ["The guest lecturer canceled her visit.", ["why", "did she cancel", "do", "you know", "she canceled"], ["do", "you know", "why", "she canceled"]],
+      ["I need permission to enter the archive.", ["who", "should", "I ask", "could", "you tell me"], ["could", "you tell me", "who", "I", "should", "ask"]],
+      ["The chemistry assignment is due tomorrow.", ["have", "you", "completed it", "managed to", "yet"], ["have", "you", "managed to", "complete it", "yet"]],
+      ["Our class is visiting the observatory.", ["what", "will", "we see", "are", "likely to"], ["what", "are", "we", "likely to", "see"]],
+      ["The experiment produced unexpected results.", ["how", "can", "we explain them", "do", "you think"], ["how", "do", "you think", "we", "can", "explain them"]],
+      ["I lost the worksheet from class.", ["could", "you send it", "would", "you mind", "sending it again"], ["would", "you mind", "sending it again"]],
+      ["What did the lab assistant warn you about?", ["she warned me", "not to touch", "the equipment", "unless", "a teacher was present"], ["she warned me", "not to touch", "the equipment", "unless", "a teacher was present"]],
+      ["Why are you repeating the measurement?", ["I want to", "make sure", "that", "the first result", "was accurate"], ["I want to", "make sure", "that", "the first result", "was accurate"]]
+    ],
+    email: { scenario: "Your campus laboratory has introduced a booking system, but your confirmed reservation disappeared and you cannot complete an important assignment.", recipient: "lab.manager@university.edu", subject: "Missing laboratory reservation", goals: ["Explain the assignment you need to complete.", "Describe what happened to your reservation.", "Request a practical solution."] },
+    discussion: { course: "Science and Society", professor: "Should universities require every student, regardless of major, to take at least one laboratory science course? Why or why not?", students: [["Nina", "A laboratory course develops evidence-based thinking and helps students understand how scientific claims are tested."], ["Omar", "A universal requirement may reduce room for courses that are more relevant to a student's academic and professional goals."]] }
+  },
+  7: {
+    sentences: [
+      ["The career fair begins after lunch.", ["where", "is it", "being held", "do", "you know"], ["do", "you know", "where", "it is", "being held"]],
+      ["I am updating my resume.", ["could", "you review it", "would", "you be willing to", "review it"], ["would", "you be willing to", "review it"]],
+      ["Several companies will conduct interviews.", ["which companies", "are attending", "can", "you tell me"], ["can", "you tell me", "which companies", "are attending"]],
+      ["My interview is at two o'clock.", ["how early", "should", "I arrive", "am", "supposed to"], ["how early", "am", "I", "supposed to", "arrive"]],
+      ["The application requires two references.", ["have", "you", "asked anyone", "been able to", "yet"], ["have", "you", "been able to", "ask anyone", "yet"]],
+      ["I received an internship offer.", ["when", "must", "you reply", "are", "required to"], ["when", "are", "you", "required to", "reply"]],
+      ["The position involves weekend work.", ["would", "you accept it", "if", "you had to work Saturdays"], ["would", "you accept it", "if", "you had to work Saturdays"]],
+      ["I do not understand the salary information.", ["could", "you explain it", "would", "you mind", "explaining it"], ["would", "you mind", "explaining it"]],
+      ["What did the recruiter ask?", ["she wanted to know", "whether", "I had", "any previous experience"], ["she wanted to know", "whether", "I had", "any previous experience"]],
+      ["Why did you decline the interview?", ["because", "the schedule", "would have conflicted", "with my classes"], ["because", "the schedule", "would have conflicted", "with my classes"]]
+    ],
+    email: { scenario: "You attended a university career fair and spoke with a company representative who invited you to apply, but the application link they provided does not work.", recipient: "recruitment@northstartech.com", subject: "Application link from career fair", goals: ["Remind the representative where you met.", "Describe the problem with the link.", "Ask how you should submit your application."] },
+    discussion: { course: "Career Development", professor: "Is practical work experience more valuable to university students than earning high grades? Explain your view.", students: [["Leo", "Internships teach workplace communication and allow students to apply ideas that can remain abstract in class."], ["Priya", "Strong grades demonstrate discipline and subject knowledge, and they can open the door to competitive opportunities."]] }
+  },
+  8: {
+    sentences: [
+      ["The residence hall is being renovated.", ["when", "will it reopen", "is", "expected to"], ["when", "is", "it", "expected to", "reopen"]],
+      ["My room has no hot water.", ["who", "should", "I contact", "could", "you tell me"], ["could", "you tell me", "who", "I", "should", "contact"]],
+      ["The kitchen closes at ten.", ["are", "we allowed to", "cook later", "can", "we cook later"], ["are", "we allowed to", "cook later"]],
+      ["A package arrived for me.", ["where", "can", "I collect it", "do", "you know"], ["do", "you know", "where", "I", "can", "collect it"]],
+      ["My neighbor plays loud music.", ["have", "you", "spoken to them", "considered", "speaking to them"], ["have", "you", "considered", "speaking to them"]],
+      ["The elevator is out of service.", ["how long", "has it been broken", "do", "you know"], ["do", "you know", "how long", "it has been broken"]],
+      ["We need to choose a new roommate.", ["what qualities", "should", "we look for", "do", "you think"], ["what qualities", "do", "you think", "we", "should", "look for"]],
+      ["The housing payment is due Friday.", ["can", "I pay online", "would", "it be possible to", "pay online"], ["would", "it be possible to", "pay online"]],
+      ["What did the resident adviser announce?", ["she said", "that", "all visitors", "must register", "at the front desk"], ["she said", "that", "all visitors", "must register", "at the front desk"]],
+      ["Why are you moving to another floor?", ["because", "I need", "a room", "that is", "more accessible"], ["because", "I need", "a room", "that is", "more accessible"]]
+    ],
+    email: { scenario: "Your residence hall has had unreliable hot water for several days, and earlier reports have not solved the problem.", recipient: "housing.services@university.edu", subject: "Continuing hot-water problem", goals: ["Describe how long the problem has continued.", "Explain how it affects residents.", "Request action and an update."] },
+    discussion: { course: "Campus Life", professor: "Should first-year university students be required to live on campus? Why or why not?", students: [["Mateo", "Living on campus helps new students build friendships and participate in university life more easily."], ["Sara", "Students have different financial and family circumstances, so housing decisions should remain flexible."]] }
+  },
+  9: {
+    sentences: [
+      ["The history seminar has a waiting list.", ["can", "I still join", "would", "it be possible to", "join it"], ["would", "it be possible to", "join it"]],
+      ["I need to change my course schedule.", ["who", "should", "I speak to", "could", "you tell me"], ["could", "you tell me", "who", "I", "should", "speak to"]],
+      ["The economics class conflicts with chemistry.", ["which one", "should", "I keep", "do", "you think"], ["which one", "do", "you think", "I", "should", "keep"]],
+      ["Registration closes tonight.", ["have", "you", "registered", "managed to", "yet"], ["have", "you", "managed to", "register", "yet"]],
+      ["The professor approved my request.", ["when", "can", "you start", "are", "you allowed to"], ["when", "are", "you", "allowed to", "start"]],
+      ["This course has several prerequisites.", ["what", "are they", "do", "you know"], ["do", "you know", "what", "they are"]],
+      ["I may drop advanced calculus.", ["what", "will happen", "if", "you drop it"], ["what", "will happen", "if", "you drop it"]],
+      ["My academic record has an error.", ["could", "you correct it", "would", "you mind", "checking it"], ["would", "you mind", "checking it"]],
+      ["What did your adviser recommend?", ["she recommended", "taking", "a lighter course load", "until", "I adjusted"], ["she recommended", "taking", "a lighter course load", "until", "I adjusted"]],
+      ["Why did you postpone graduation?", ["because", "I decided", "to complete", "an additional minor"], ["because", "I decided", "to complete", "an additional minor"]]
+    ],
+    email: { scenario: "A required course is full, and without it you may have to delay graduation. You want to contact your academic adviser.", recipient: "adviser@university.edu", subject: "Required course is full", goals: ["Explain why the course is necessary.", "Describe the registration problem.", "Ask about alternatives or special permission."] },
+    discussion: { course: "Higher Education", professor: "Should students be permitted to design part of their own university curriculum instead of following only fixed requirements?", students: [["Amira", "Choice lets students connect their studies to personal goals and may increase motivation."], ["Daniel", "Core requirements ensure that graduates develop essential knowledge and prevent important gaps in their education."]] }
+  },
+  10: {
+    sentences: [
+      ["The volunteer program begins in June.", ["when", "must", "we apply", "are", "required to"], ["when", "are", "we", "required to", "apply"]],
+      ["I want to help at the food bank.", ["what", "can", "I do", "could", "you tell me"], ["could", "you tell me", "what", "I", "can", "do"]],
+      ["The organization provides training.", ["is it required", "do", "you know", "whether"], ["do", "you know", "whether", "it is required"]],
+      ["My shift starts very early.", ["could", "I change it", "would", "it be possible to", "change it"], ["would", "it be possible to", "change it"]],
+      ["We collected many winter coats.", ["where", "will", "they be donated", "are", "going to"], ["where", "are", "they", "going to", "be donated"]],
+      ["The event needs more volunteers.", ["have", "you", "invited anyone", "considered", "inviting your classmates"], ["have", "you", "considered", "inviting your classmates"]],
+      ["Some volunteers did not arrive.", ["how", "should", "we respond", "do", "you think"], ["how", "do", "you think", "we", "should", "respond"]],
+      ["I cannot attend Saturday's event.", ["could", "someone replace me", "would", "anyone be able to"], ["would", "anyone be able to", "replace me"]],
+      ["What did the coordinator request?", ["she asked us", "to arrive early", "so that", "we could", "set up"], ["she asked us", "to arrive early", "so that", "we could", "set up"]],
+      ["Why do you continue volunteering?", ["because", "it gives me", "the opportunity", "to support", "my community"], ["because", "it gives me", "the opportunity", "to support", "my community"]]
+    ],
+    email: { scenario: "You registered to volunteer at a community event, but the assigned shift overlaps with an important class presentation.", recipient: "volunteers@communityday.org", subject: "Request to change volunteer shift", goals: ["Confirm your interest in volunteering.", "Explain the scheduling conflict.", "Propose another shift or solution."] },
+    discussion: { course: "Civic Engagement", professor: "What is the most effective way for universities to encourage students to serve their communities?", students: [["Hana", "Universities should connect volunteer projects to courses so students can apply academic knowledge to real needs."], ["Eric", "Recognition and flexible opportunities are better than requirements because genuine service depends on personal commitment."]] }
+  },
+  11: {
+    sentences: [
+      ["The art museum offers student admission.", ["how much", "does it cost", "could", "you tell me"], ["could", "you tell me", "how much", "it costs"]],
+      ["The photography exhibit ends Sunday.", ["have", "you", "seen it", "had", "a chance to"], ["have", "you", "had", "a chance to", "see it"]],
+      ["We are writing a review of the play.", ["what", "should", "we discuss", "do", "you think"], ["what", "do", "you think", "we", "should", "discuss"]],
+      ["The performance is sold out.", ["can", "we join a waiting list", "would", "it be possible to"], ["would", "it be possible to", "join a waiting list"]],
+      ["Our class will meet the director.", ["what questions", "are", "we supposed to ask", "should", "we ask"], ["what questions", "are", "we", "supposed to ask"]],
+      ["The gallery prohibits flash photography.", ["why", "is it prohibited", "do", "you know"], ["do", "you know", "why", "it is prohibited"]],
+      ["I prefer the earlier performance.", ["would", "you attend it", "if", "tickets were available"], ["would", "you attend it", "if", "tickets were available"]],
+      ["The sculpture has been moved.", ["where", "is it now", "could", "you tell me"], ["could", "you tell me", "where", "it is now"]],
+      ["What did the critic write?", ["she argued", "that", "the ending", "was less convincing", "than the opening"], ["she argued", "that", "the ending", "was less convincing", "than the opening"]],
+      ["Why are you taking notes during the film?", ["so that", "I can compare", "its visual style", "with", "the director's earlier work"], ["so that", "I can compare", "its visual style", "with", "the director's earlier work"]]
+    ],
+    email: { scenario: "Your class bought tickets for a museum exhibition, but the museum changed the visit date without notifying your group.", recipient: "education@citymuseum.org", subject: "Unexpected change to group visit", goals: ["Identify your class and original booking.", "Explain the problem caused by the change.", "Request a suitable new arrangement."] },
+    discussion: { course: "Arts and Culture", professor: "Should public museums charge admission or remain free for everyone? Support your position.", students: [["Mei", "Free admission makes culture accessible and allows families and students to visit repeatedly."], ["Jonas", "Reasonable fees can fund preservation, staff, and high-quality exhibitions when public budgets are limited."]] }
+  },
+  12: {
+    sentences: [
+      ["The university is reducing paper use.", ["how", "will it help", "is", "expected to"], ["how", "is", "it", "expected to", "help"]],
+      ["Our building needs recycling bins.", ["who", "should", "we contact", "could", "you tell me"], ["could", "you tell me", "who", "we", "should", "contact"]],
+      ["The environmental club meets tonight.", ["are", "you going", "do", "you plan to", "attend"], ["do", "you plan to", "attend"]],
+      ["The cafeteria wastes a lot of food.", ["what", "can", "be done", "do", "you think"], ["what", "do", "you think", "can", "be done"]],
+      ["Students proposed a bicycle program.", ["when", "will it begin", "is", "likely to"], ["when", "is", "it", "likely to", "begin"]],
+      ["The campus uses too much electricity.", ["could", "we reduce it", "would", "it be possible to"], ["would", "it be possible to", "reduce it"]],
+      ["The new policy may be expensive.", ["would", "you support it", "even if", "fees increased"], ["would", "you support it", "even if", "fees increased"]],
+      ["I missed the sustainability lecture.", ["can", "you summarize it", "would", "you mind", "summarizing it"], ["would", "you mind", "summarizing it"]],
+      ["What did the researcher conclude?", ["she concluded", "that", "small changes", "could produce", "significant savings"], ["she concluded", "that", "small changes", "could produce", "significant savings"]],
+      ["Why did the committee reject the proposal?", ["because", "it had not explained", "how the project", "would be funded"], ["because", "it had not explained", "how the project", "would be funded"]]
+    ],
+    email: { scenario: "Your university removed several recycling stations during construction and has not replaced them, causing recyclable waste to be thrown away.", recipient: "sustainability@university.edu", subject: "Missing recycling stations", goals: ["Describe where stations are missing.", "Explain the effect on students and waste.", "Suggest where replacements should be installed."] },
+    discussion: { course: "Environmental Policy", professor: "Should universities spend more money now to make campuses environmentally sustainable, even if student fees increase slightly?", students: [["Aisha", "Early investment can lower future energy costs and gives universities a responsibility to model sustainable behavior."], ["Tom", "Students already face high expenses, so institutions should find savings or outside funding before raising fees."]] }
+  }
+});
+
+const writingPicker = document.querySelector("[data-toefl-writing] .toefl-test-buttons");
+if (writingPicker) {
+  for (let test = 6; test <= 12; test += 1) {
+    writingPicker.insertAdjacentHTML("beforeend", `<button class="toefl-test-button" type="button" data-writing-test-button="${test}" aria-pressed="false"><span>Mock Test</span><strong>${String(test).padStart(2, "0")}</strong></button>`);
+  }
+  const pickerTitle = document.querySelector("#writing-test-picker-title");
+  if (pickerTitle) pickerTitle.textContent = "Twelve complete writing mocks";
+}
 
 const root = document.querySelector("[data-toefl-writing]");
 if (root) {
@@ -232,11 +356,11 @@ if (root) {
     return rotated.slice(0, index >= 7 ? 2 : 1);
   };
   const updateProgress = () => {
-    const complete = $$('[data-build-answer]').filter((zone, index) => zone.children.length === writingTests[selectedTest].sentences[index][2].length).length;
-    buildProgress.textContent = `${complete} of 10 complete`;
+    const complete = $$('[data-build-answer]').filter((zone) => zone.children.length > 0).length;
+    buildProgress.textContent = `${complete} of 10 attempted`;
     Array.from(buildDots.children).forEach((dot, index) => {
       const zone = $$('[data-build-answer]')[index];
-      dot.classList.toggle("is-answered", Boolean(zone) && zone.children.length === writingTests[selectedTest].sentences[index][2].length);
+      dot.classList.toggle("is-answered", Boolean(zone) && zone.children.length > 0);
       dot.classList.toggle("is-current", index === currentBuildQuestion);
     });
   };
@@ -277,7 +401,8 @@ if (root) {
       const firstAnswerPiece = answer[0].toLowerCase();
       item.querySelector("[data-build-answer]").dataset.ending = ["the", "she", "i", "i'm", "because", "so that"].includes(firstAnswerPiece) ? "." : "?";
       const bankZone = item.querySelector("[data-build-bank]");
-      const displayBank = [...bank];
+      // Keep every modeled construction available while still allowing unused blocks.
+      const displayBank = [...new Set([...bank, ...answer])];
       getDistractors(index, selectedTest, answer).forEach((piece, distractorIndex) => {
         const position = (selectedTest * 3 + index * 2 + distractorIndex * 4) % (displayBank.length + 1);
         displayBank.splice(position, 0, piece);
