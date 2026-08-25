@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Match | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html">Back to Menu</a>
+
+    <section class="hero lesson-hero memory-hero">
+      <div class="hero-signature">
+        <p class="credit-line">
+          Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">Vocabulary Arcade</p>
+      <h1>MEMORY MATCH</h1>
+      <p class="hero-copy">Choose a language topic, flip the cards, and connect all twelve pairs. Remember where every word is hiding, but watch out for the moving Joker.</p>
+      <div class="routine-row" aria-label="Game features">
+        <span class="routine-chip">5 topics</span>
+        <span class="routine-chip">12 pairs</span>
+        <span class="routine-chip">25 cards</span>
+        <span class="routine-chip">1 moving Joker</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card memory-game" data-memory-game>
+      <div class="panel-heading lesson-heading">
+        <div><p class="panel-kicker">Choose a deck</p><h2>What would you like to practice?</h2></div>
+      </div>
+
+      <div class="memory-topic-grid" role="group" aria-label="Memory game topics">
+        <button type="button" class="memory-topic is-selected" data-memory-topic="past"><span>Past</span><strong>Infinitive + Simple Past</strong></button>
+        <button type="button" class="memory-topic" data-memory-topic="numbers"><span>123</span><strong>Number + Written Number</strong></button>
+        <button type="button" class="memory-topic" data-memory-topic="participle"><span>V3</span><strong>Infinitive + Past Participle</strong></button>
+        <button type="button" class="memory-topic" data-memory-topic="phrasal"><span>UP</span><strong>Phrasal Verb Parts</strong></button>
+        <button type="button" class="memory-topic" data-memory-topic="opposites"><span>&#8596;</span><strong>Adjective + Opposite</strong></button>
+      </div>
+
+      <div class="speaking-instructions-card memory-instructions">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Choose a topic and click <strong>Start Game</strong>.</li>
+          <li>Flip two cards. A correct pair stays visible but becomes dimmer.</li>
+          <li>An incorrect pair flips back after a short pause.</li>
+          <li>If you find the Joker, it flips back and exchanges places with a card from a pair you already found.</li>
+          <li>Find all twelve pairs in the fewest attempts and shortest time.</li>
+        </ol>
+      </div>
+
+      <div class="memory-toolbar">
+        <button class="activity-button reading-primary-button" type="button" data-memory-start>Start Game</button>
+        <button class="activity-button secondary-button" type="button" data-memory-new hidden>Shuffle &amp; Restart</button>
+        <div class="memory-stats" aria-label="Game statistics">
+          <div><span>Pairs</span><strong data-memory-pairs>0 / 12</strong></div>
+          <div><span>Attempts</span><strong data-memory-attempts>0</strong></div>
+          <div><span>Time</span><strong data-memory-time>00:00</strong></div>
+        </div>
+      </div>
+
+      <p class="memory-deck-label" data-memory-deck-label>Infinitive + Simple Past</p>
+      <div class="memory-board is-locked" data-memory-board aria-label="Memory card board"></div>
+      <p class="activity-feedback memory-feedback" data-memory-feedback aria-live="polite">Choose a topic, then start the game.</p>
+
+      <div class="puzzle-finish-card memory-finish" data-memory-finish hidden>
+        <p class="prompt-label">All pairs found</p>
+        <h3>Excellent memory!</h3>
+        <p class="prompt-text" data-memory-result></p>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-memory-share>Share Result</button>
+          <button class="activity-button secondary-button" type="button" data-memory-play-again>Play Again</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="memory-match.js"></script>
+</body>
+</html>
