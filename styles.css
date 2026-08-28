@@ -1446,6 +1446,46 @@ a {
 .empty-order { color: var(--text-soft); line-height: 1.5; }
 .order-total { display: flex; justify-content: space-between; margin: 16px 0; padding-top: 15px; border-top: 2px solid #173f49; font-size: 1.3rem; font-weight: 800; }
 
+.exchange-desk { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(330px, .85fr); gap: 16px; max-width: 980px; margin: auto; }
+.exchange-rate-board, .exchange-calculator { overflow: hidden; border: 7px solid #263d49; border-radius: 24px; box-shadow: 0 20px 45px rgba(31,49,62,.18); }
+.exchange-rate-board { background: #173f49; color: white; }
+.exchange-board-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; background: #102f37; }
+.exchange-board-heading div { display: grid; gap: 3px; }
+.exchange-board-heading span { color: #8ce0d8; font-size: .68rem; font-weight: 900; letter-spacing: .16em; }
+.exchange-board-heading strong { font-size: 1.2rem; }
+.exchange-board-heading small { color: rgba(255,255,255,.62); text-align: right; }
+.exchange-rate-head, .exchange-rate-list button { display: grid; grid-template-columns: 1.35fr .72fr .72fr; align-items: center; gap: 8px; }
+.exchange-rate-head { padding: 10px 15px; color: #8ce0d8; font-size: .67rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+.exchange-rate-head span:not(:first-child) { text-align: right; }
+.exchange-rate-list button { width: 100%; padding: 13px 15px; border: 0; border-top: 1px solid rgba(255,255,255,.1); background: transparent; color: white; font: inherit; text-align: left; cursor: pointer; }
+.exchange-rate-list button:hover, .exchange-rate-list button.is-selected { background: #f4cb55; color: #241334; }
+.exchange-rate-list button > span { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; }
+.exchange-rate-list button > span strong { font-size: 1.08rem; }
+.exchange-rate-list button small { color: rgba(255,255,255,.62); font-size: .66rem; line-height: 1.35; }
+.exchange-rate-list button:hover small, .exchange-rate-list button.is-selected small { color: rgba(36,19,52,.65); }
+.exchange-rate-list button > b { text-align: right; }
+.exchange-calculator { padding: 23px; background: #eef7f5; }
+.exchange-mode { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+.exchange-mode button { min-height: 52px; padding: 9px; border: 2px solid #c6d9d6; border-radius: 12px; background: white; color: #342043; font: inherit; font-weight: 800; cursor: pointer; }
+.exchange-mode button.is-selected { border-color: #168e8b; background: #168e8b; color: white; }
+.exchange-amount-label { display: grid; gap: 7px; font-weight: 800; }
+.exchange-amount-label input { width: 100%; padding: 13px 15px; border: 2px solid #bdd3cf; border-radius: 12px; background: white; color: #241334; font: 800 1.25rem Outfit, sans-serif; }
+.exchange-amount-label input:focus { border-color: #168e8b; outline: none; box-shadow: 0 0 0 3px rgba(22,142,139,.12); }
+.exchange-selection { display: grid; gap: 4px; margin: 15px 0; padding: 13px; border-radius: 13px; background: white; }
+.exchange-selection span { color: #766a7b; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.exchange-selection strong { font-size: 1.15rem; }
+.exchange-selection small { color: #116f70; font-weight: 700; }
+.exchange-calculator .special-primary-button { width: 100%; }
+.exchange-result { min-height: 135px; margin-top: 15px; padding: 15px; border-radius: 14px; background: #173f49; color: white; }
+.exchange-result > p:only-child { margin: 0; color: rgba(255,255,255,.7); line-height: 1.5; }
+.exchange-result .special-screen-label { color: #8ce0d8; }
+.exchange-result h3 { margin: 0 0 10px; color: #f4cb55; font-size: 1.6rem; }
+.exchange-result dl { margin: 0; }
+.exchange-result dl div { display: flex; justify-content: space-between; gap: 15px; padding: 6px 0; border-top: 1px solid rgba(255,255,255,.12); }
+.exchange-result dd { margin: 0; font-weight: 800; text-align: right; }
+.exchange-result dl div:last-child { color: #f4cb55; font-size: 1.08rem; }
+.exchange-error { color: #ffd3ca !important; font-weight: 800; }
+
 .ticket-machine { max-width: 930px; margin: auto; overflow: hidden; border: 12px solid #263d49; border-radius: 30px; background: #eef7f5; box-shadow: 0 24px 60px rgba(31,49,62,.25); }
 .ticket-machine-top { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; padding: 13px 18px; background: #173f49; color: white; }
 .ticket-network-mark { display: grid; place-items: center; width: 38px; aspect-ratio: 1; border-radius: 10px; background: #f4cb55; color: #173f49; font-size: 1.3rem; font-weight: 900; }
@@ -1566,6 +1606,7 @@ a {
   .route-sidebar { display: flex; flex-wrap: wrap; gap: 8px; }
   .route-sidebar .special-screen-label { flex-basis: 100%; }
   .route-sidebar > button { width: auto; margin: 0; }
+  .exchange-desk { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 900px) {
@@ -1610,6 +1651,13 @@ a {
   .product-showcase-icon { font-size: 2.3rem; }
   .product-showcase-grid strong { font-size: .76rem; }
   .product-showcase-grid small { display: none; }
+  .exchange-rate-board, .exchange-calculator { border-width: 5px; border-radius: 18px; }
+  .exchange-board-heading { align-items: flex-start; flex-direction: column; padding: 14px; }
+  .exchange-board-heading small { text-align: left; }
+  .exchange-rate-head, .exchange-rate-list button { grid-template-columns: 1.2fr .7fr .7fr; padding-right: 10px; padding-left: 10px; }
+  .exchange-rate-list button small { display: none; }
+  .exchange-calculator { padding: 17px 13px; }
+  .exchange-mode { grid-template-columns: 1fr; }
   .product-detail-panel { padding: 17px; }
   .product-detail-heading { grid-template-columns: auto 1fr; }
   .product-detail-icon { width: 54px; border-radius: 14px; font-size: 2rem; }

@@ -339,6 +339,83 @@ const situationTopics = {
       ["Describe your symptoms","You have felt unwell since yesterday and need a clinic appointment.",["Say when the symptoms began","Describe two symptoms clearly","Mention any known allergies"],"I have been feeling..., It started..., I am allergic to..."],
       ["Register at an international hospital","The hospital requires proof of coverage before a non-emergency consultation.",["Present your passport and international insurance card","Give your policy number","Ask whether the consultation is covered"],"Here is my insurance card, My policy number is..., Is this covered...?"],
       ["Ask follow-up questions","The doctor finishes the examination and explains the next steps.",["Ask whether you need a prescription","Ask when to return for a follow-up","Ask who to contact if symptoms become urgent"],"Do I need...?, When should I...?, Who should I contact...?" ]]
+  },
+  visa: {
+    eyebrow:"At an embassy or consulate", title:"GETTING A VISA", intro:"Prepare documents, explain your plans, and answer common visa-interview questions clearly and honestly.",
+    vocabulary:[
+      ["A visa application", "The official request for permission to enter a country."], ["An application form", "The document where you provide personal and travel information."],
+      ["The embassy / consulate", "The official government office that processes many visa applications abroad."], ["A visa interview", "A meeting where an officer asks about your application and plans."],
+      ["The purpose of my trip is...", "Explain the main reason you want to travel."], ["Supporting documents", "Evidence submitted with an application, such as statements or letters."],
+      ["Proof of funds", "Documents showing that you can pay for the trip."], ["A sponsor", "A person or organization helping pay for or support your visit."],
+      ["An itinerary", "A plan listing travel dates, destinations, and activities."], ["Ties to my home country", "Work, study, family, or property that connects you to where you live."],
+      ["I intend to return...", "Clearly state when or why you plan to go back home."], ["Previous travel history", "Information about countries you visited before."],
+      ["Has my visa been approved?", "Ask whether the application was accepted."], ["How long will processing take?", "Ask when a decision or passport may be ready."]
+    ],
+    dialogues:[
+      {title:"Presenting a tourist application", bank:["visa application", "purpose", "itinerary", "proof of funds", "supporting documents", "intend to return"], lines:[
+        ["Officer","May I see your {{visa application}} and passport?"],["Applicant","Certainly. I also brought the requested {{supporting documents}}."],
+        ["Officer","What is the {{purpose}} of your visit?"],["Applicant","Tourism. Here is my two-week {{itinerary}} and my {{proof of funds}}."],
+        ["Officer","What will you do after the trip?"],["Applicant","I {{intend to return}} to my job in Brazil."]]}
+      ,{title:"Explaining study plans", bank:["visa interview", "sponsor", "proof", "ties", "processing take", "approved"], lines:[
+        ["Officer","Welcome to your {{visa interview}}. Who will pay for your course?"],["Applicant","My parents are my {{sponsor}}. I have {{proof}} of their financial support."],
+        ["Officer","What {{ties}} do you have to your home country?"],["Applicant","My family and current university program are there."],
+        ["Applicant","How long will {{processing take}}?"],["Officer","Usually ten business days. You will receive a message if the visa is {{approved}}."]]}
+    ],
+    missions:[
+      ["Explain a tourist application","You are applying for a two-week vacation visa.",["State the purpose of your trip","Describe your itinerary and accommodation","Explain why you will return home"],"The purpose of my trip is..., My itinerary includes..., I intend to return..."],
+      ["Describe financial support","An officer asks how you will pay for your visit.",["Say who is paying for the trip","Mention your proof of funds","Explain your estimated travel budget"],"My sponsor is..., I have proof of..., My budget is..."],
+      ["Discuss a study visa","You have been accepted for a short international course.",["Name the course and institution","Explain how it supports your goals","Mention your ties to your home country"],"I was accepted by..., This course will..., My ties include..." ]]
+  },
+  exchange: {
+    eyebrow:"At a currency-exchange desk", title:"EXCHANGING MONEY", intro:"Compare rates, ask about fees, and clearly explain which currency you want to buy or sell.",
+    vocabulary:[
+      ["The exchange rate", "The value of one currency compared with another."], ["Foreign currency", "Money used in a country different from your own."],
+      ["I would like to buy...", "Say which foreign currency you want to receive."], ["I would like to sell...", "Say which foreign currency you want to exchange."],
+      ["The buy rate", "The rate the exchange office pays when buying currency from you."], ["The sell rate", "The rate you pay when the exchange office sells currency to you."],
+      ["Is there a service fee?", "Ask whether the office charges an additional amount."], ["How much will I receive?", "Ask for the final amount after the conversion."],
+      ["A commission", "A fee charged for completing an exchange."], ["Cash", "Money in physical notes and coins."],
+      ["Small denominations", "Banknotes with lower values."], ["Large denominations", "Banknotes with higher values."],
+      ["May I see your passport?", "A request for identification before the transaction."], ["Could I have a receipt?", "Ask for written proof of the exchange."]
+    ],
+    dialogues:[
+      {title:"Buying euros", bank:["buy", "exchange rate", "service fee", "receive", "small denominations", "receipt"], lines:[
+        ["Customer","I would like to {{buy}} euros, please."],["Clerk","Today's {{exchange rate}} is displayed on the board."],
+        ["Customer","Is there a {{service fee}}?"],["Clerk","Yes, four dollars. How many euros would you like to {{receive}}?"],
+        ["Customer","Two hundred, preferably in {{small denominations}}. Could I have a {{receipt}}?"]]}
+      ,{title:"Selling foreign currency", bank:["sell", "buy rate", "commission", "passport", "How much", "cash"], lines:[
+        ["Customer","I would like to {{sell}} these British pounds."],["Clerk","We will use today's {{buy rate}}, and there is no percentage {{commission}}."],
+        ["Clerk","May I see your {{passport}}?"],["Customer","Of course. {{How much}} will I receive?"],
+        ["Clerk","One hundred eighty-four dollars after the fee."],["Customer","That is fine. I would like the payment in {{cash}}."]]}
+    ],
+    missions:[
+      ["Buy currency for a trip","You need euros before traveling tomorrow.",["Ask for the current sell rate","Say how many euros you want","Ask for small denominations and a receipt"],"What is today's sell rate?, I'd like to buy..., Could I have...?"],
+      ["Sell leftover money","You returned with unused British pounds.",["Say how much you want to sell","Ask about the buy rate and fees","Confirm how much you will receive"],"I'd like to sell..., What is the buy rate?, How much will I receive?"],
+      ["Compare before exchanging","You want to understand the complete cost first.",["Ask the clerk to explain the displayed rates","Ask whether there is a commission","Politely decide whether to continue"],"Could you explain...?, Is there a commission?, I'd like to proceed / think about it." ]]
+  },
+  airbnb: {
+    eyebrow:"At a vacation rental", title:"AIRBNB SITUATIONS", intro:"Communicate with a host during check-in, solve apartment problems, ask for local tips, and check out correctly.",
+    vocabulary:[
+      ["The host", "The person who manages or rents the accommodation to guests."], ["The guest", "The person staying in the apartment or house."],
+      ["Self check-in", "Entering the property without meeting the host in person."], ["A lockbox", "A secure box containing the property key."],
+      ["The access code", "The numbers used to open a door, gate, or lockbox."], ["House rules", "Instructions guests are expected to follow during the stay."],
+      ["What is the Wi-Fi password?", "Ask for the information needed to connect to the internet."], ["Could you recommend...?", "Ask the host to suggest a place, service, or activity."],
+      ["There seems to be a problem with...", "Politely introduce an issue in the accommodation."], ["It is not working.", "Explain that an appliance or service does not function."],
+      ["Could someone take a look?", "Ask the host to arrange an inspection or repair."], ["Check-out instructions", "The host's directions for leaving the property."],
+      ["Where should I leave the keys?", "Ask what to do with the keys at departure."], ["A cleaning fee", "An amount charged for cleaning after a stay."]
+    ],
+    dialogues:[
+      {title:"Completing self check-in", bank:["self check-in", "access code", "lockbox", "house rules", "Wi-Fi password", "recommend"], lines:[
+        ["Guest","Hello. I am ready for {{self check-in}}."],["Host","Great. The gate {{access code}} is 4281, and the key is in the {{lockbox}}."],
+        ["Guest","Thank you. Where can I read the {{house rules}}?"],["Host","They are inside the welcome guide."],
+        ["Guest","What is the {{Wi-Fi password}}? Also, could you {{recommend}} a nearby grocery store?"]]}
+      ,{title:"Reporting an apartment problem", bank:["problem with", "not working", "take a look", "hot water", "check-out instructions", "leave the keys"], lines:[
+        ["Guest","There seems to be a {{problem with}} the shower."],["Host","What is happening?"],["Guest","The {{hot water}} is {{not working}}."],
+        ["Host","I am sorry. I will ask someone to {{take a look}} this afternoon."],["Guest","Thank you. Could you also send the {{check-out instructions}} and tell me where to {{leave the keys}} tomorrow?"]]}
+    ],
+    missions:[
+      ["Check in independently","The host sent instructions, but you need a few details.",["Confirm that you found the lockbox","Ask for the access code and Wi-Fi password","Check one important house rule"],"I found the lockbox, What is the access code?, Could you confirm...?"],
+      ["Report apartment problems","The apartment is not as expected when you arrive.",["Explain that the hot water is not working","Say the bedroom has not been cleaned properly","Ask when someone can come to help"],"There seems to be..., It has not been..., Could someone take a look?"],
+      ["Prepare to check out","You are leaving early tomorrow morning.",["Ask for the check-out time and instructions","Ask where to leave the keys","Thank the host and mention one thing you enjoyed"],"What time is check-out?, Where should I leave...?, Thank you for..." ]]
   }
 };
 
@@ -401,7 +478,10 @@ const challengeWords = {
   taxi: ["driver", "destination", "traffic", "fare", "tip"],
   electronics: ["receipt", "price tag", "headphones", "charger", "cashier"],
   "phone-food": ["menu", "topping", "crust", "delivery fee", "receipt"],
-  doctor: ["appointment", "insurance", "passport", "prescription", "clinic"]
+  doctor: ["appointment", "insurance", "passport", "prescription", "clinic"],
+  visa: ["passport", "application form", "embassy", "appointment", "decision"],
+  exchange: ["currency", "rate board", "banknotes", "identification", "transaction"],
+  airbnb: ["host", "guest", "apartment", "booking", "cleaning fee"]
 };
 
 Object.entries(situationTopics).forEach(([key, topicData]) => {
@@ -549,6 +629,27 @@ const specialActivities = {
   doctor: {
     type:"roulette", title:"Questions from the doctor", note:"12 appointment questions", intro:"Click for a random question you may hear during an appointment abroad. Practice clear answers; this activity does not provide medical advice.",
     questions:["What brings you in today?","What symptoms are you experiencing?","When did the symptoms begin?","Have the symptoms become better or worse?","Do you have a fever?","On a scale from one to ten, how severe is the pain?","Are you allergic to any medicine?","Are you currently taking any medicine?","Have you had this problem before?","Do you have any relevant medical conditions?","May I see your international health-insurance card?","Do you know your insurance policy number?"]
+  },
+  visa: {
+    type:"roulette", title:"Visa interview practice", note:"12 interview questions", intro:"Receive a random question commonly asked during a visa interview. Answer truthfully, clearly, and with details that match your own application.",
+    screenLabel:"Your visa interview question", buttonLabel:"Get a Visa Question",
+    questions:["Why do you want to visit this country?","What is the purpose of your trip?","How long do you intend to stay?","Where will you stay during your visit?","Who will pay for your trip?","What do you do for work or study?","How does this trip relate to your work or education?","Do you have relatives or friends in this country?","What ties do you have to your home country?","Have you traveled internationally before?","What will you do when you return home?","Which supporting documents did you bring today?"]
+  },
+  exchange: {
+    type:"exchange", title:"Use the currency-exchange calculator", note:"Interactive exchange desk", intro:"Choose whether to buy or sell foreign currency, compare the fictional USD counter rates, enter an amount, and review the transaction before continuing.",
+    fee:4,
+    currencies:[
+      {code:"EUR", name:"Euro", unit:1, buy:1.12, sell:1.18},
+      {code:"GBP", name:"British pound", unit:1, buy:1.29, sell:1.36},
+      {code:"CAD", name:"Canadian dollar", unit:1, buy:0.69, sell:0.75},
+      {code:"BRL", name:"Brazilian real", unit:1, buy:0.17, sell:0.20},
+      {code:"JPY", name:"Japanese yen", unit:100, buy:0.64, sell:0.70}
+    ]
+  },
+  airbnb: {
+    type:"roulette", title:"Messages from your Airbnb host", note:"12 host questions and comments", intro:"Receive a random message you might hear during check-in, a problem, local recommendations, or check-out. Respond naturally as the guest.",
+    screenLabel:"Your host says", buttonLabel:"Get a Host Message", responsePrompt:"Respond naturally as the guest in complete sentences.",
+    questions:["Did you find the apartment easily?","The key is inside the lockbox beside the entrance.","Please let me know when you have completed self check-in.","Would you like recommendations for restaurants nearby?","The quiet hours begin at ten in the evening.","Is everything in the apartment working correctly?","Can you describe the problem with the shower?","I can send someone to inspect the air conditioner this afternoon.","Would tomorrow morning be a convenient time for the repair?","Please take the garbage to the bins behind the building.","Check-out is at eleven. Will you need extra time?","Please leave the keys in the lockbox when you depart."]
   }
 };
 
@@ -687,7 +788,7 @@ if (practiceRoot) {
 
   const renderRoulette = () => {
     let previousQuestion = -1;
-    specialStage.innerHTML = `<div class="roulette-machine"><div class="roulette-dial" aria-hidden="true"><span>?</span></div><div class="roulette-content"><p class="special-screen-label">Your interview question</p><p class="roulette-question" data-roulette-question>Click the button when the student is ready.</p><button class="activity-button special-primary-button" type="button" data-spin-question>Get a Random Question</button></div></div>`;
+    specialStage.innerHTML = `<div class="roulette-machine"><div class="roulette-dial" aria-hidden="true"><span>?</span></div><div class="roulette-content"><p class="special-screen-label">${special.screenLabel || "Your interview question"}</p><p class="roulette-question" data-roulette-question>Click the button when the student is ready.</p><button class="activity-button special-primary-button" type="button" data-spin-question>${special.buttonLabel || "Get a Random Question"}</button></div></div>`;
     const questionText = specialStage.querySelector("[data-roulette-question]");
     specialStage.querySelector("[data-spin-question]").addEventListener("click", () => {
       let index = Math.floor(Math.random() * special.questions.length);
@@ -697,7 +798,52 @@ if (practiceRoot) {
       void questionText.offsetWidth;
       questionText.textContent = special.questions[index];
       questionText.classList.add("is-revealing");
-      specialFeedback.innerHTML = `<strong>Question ${index + 1} of ${special.questions.length} selected.</strong> Answer naturally in complete sentences.`;
+      specialFeedback.innerHTML = `<strong>Prompt ${index + 1} of ${special.questions.length} selected.</strong> ${special.responsePrompt || "Answer naturally in complete sentences."}`;
+    });
+  };
+
+  const renderExchange = () => {
+    let mode = "buy";
+    let selectedCurrency = special.currencies[0];
+    const money = (amount) => `$${amount.toFixed(2)}`;
+    const rateUnit = (currency) => currency.unit === 1 ? `1 ${currency.code}` : `${currency.unit} ${currency.code}`;
+    specialStage.innerHTML = `<div class="exchange-desk"><div class="exchange-rate-board"><div class="exchange-board-heading"><div><span>TRAVEL MONEY</span><strong>Today's counter rates</strong></div><small>Practice rates • USD base</small></div><div class="exchange-rate-head"><span>Currency</span><span>We buy</span><span>We sell</span></div><div class="exchange-rate-list">${special.currencies.map((currency, index) => `<button type="button" class="${index === 0 ? "is-selected" : ""}" data-exchange-currency="${currency.code}"><span><strong>${currency.code}</strong><small>${currency.name}<br>per ${rateUnit(currency)}</small></span><b>${money(currency.buy)}</b><b>${money(currency.sell)}</b></button>`).join("")}</div></div><div class="exchange-calculator"><p class="special-screen-label">Currency calculator</p><div class="exchange-mode" role="group" aria-label="Transaction type"><button type="button" class="is-selected" data-exchange-mode="buy">Buy foreign currency</button><button type="button" data-exchange-mode="sell">Sell foreign currency</button></div><label class="exchange-amount-label"><span data-exchange-amount-label>How many EUR would you like to buy?</span><input type="number" min="1" step="1" value="100" data-exchange-amount></label><div class="exchange-selection"><span>Selected currency</span><strong data-exchange-selected>EUR • Euro</strong><small data-exchange-rate>Desk sells at $1.18 per 1 EUR</small></div><button class="activity-button special-primary-button" type="button" data-calculate-exchange>Calculate Exchange</button><div class="exchange-result" data-exchange-result><p>Choose a transaction and enter an amount.</p></div></div></div>`;
+    const amountInput = specialStage.querySelector("[data-exchange-amount]");
+    const amountLabel = specialStage.querySelector("[data-exchange-amount-label]");
+    const selectedLabel = specialStage.querySelector("[data-exchange-selected]");
+    const rateLabel = specialStage.querySelector("[data-exchange-rate]");
+    const result = specialStage.querySelector("[data-exchange-result]");
+    const updateSelection = () => {
+      amountLabel.textContent = `How many ${selectedCurrency.code} would you like to ${mode}?`;
+      selectedLabel.textContent = `${selectedCurrency.code} • ${selectedCurrency.name}`;
+      rateLabel.textContent = mode === "buy"
+        ? `Desk sells at ${money(selectedCurrency.sell)} per ${rateUnit(selectedCurrency)}`
+        : `Desk buys at ${money(selectedCurrency.buy)} per ${rateUnit(selectedCurrency)}`;
+      result.innerHTML = "<p>Enter an amount, then calculate the exchange.</p>";
+    };
+    specialStage.querySelectorAll("[data-exchange-currency]").forEach((button) => button.addEventListener("click", () => {
+      selectedCurrency = special.currencies.find((currency) => currency.code === button.dataset.exchangeCurrency);
+      specialStage.querySelectorAll("[data-exchange-currency]").forEach((item) => item.classList.toggle("is-selected", item === button));
+      updateSelection();
+    }));
+    specialStage.querySelectorAll("[data-exchange-mode]").forEach((button) => button.addEventListener("click", () => {
+      mode = button.dataset.exchangeMode;
+      specialStage.querySelectorAll("[data-exchange-mode]").forEach((item) => item.classList.toggle("is-selected", item === button));
+      updateSelection();
+    }));
+    specialStage.querySelector("[data-calculate-exchange]").addEventListener("click", () => {
+      const amount = Number(amountInput.value);
+      if (!Number.isFinite(amount) || amount <= 0) {
+        result.innerHTML = "<p class=\"exchange-error\">Enter an amount greater than zero.</p>";
+        specialFeedback.innerHTML = "<strong>Enter a valid amount.</strong> Then calculate the exchange again.";
+        return;
+      }
+      const converted = (amount / selectedCurrency.unit) * (mode === "buy" ? selectedCurrency.sell : selectedCurrency.buy);
+      const finalAmount = mode === "buy" ? converted + special.fee : Math.max(0, converted - special.fee);
+      result.innerHTML = mode === "buy"
+        ? `<p class="special-screen-label">You buy</p><h3>${amount.toLocaleString()} ${selectedCurrency.code}</h3><dl><div><dt>Currency cost</dt><dd>${money(converted)}</dd></div><div><dt>Service fee</dt><dd>${money(special.fee)}</dd></div><div><dt>You pay</dt><dd>${money(finalAmount)} USD</dd></div></dl>`
+        : `<p class="special-screen-label">You sell</p><h3>${amount.toLocaleString()} ${selectedCurrency.code}</h3><dl><div><dt>Exchange value</dt><dd>${money(converted)}</dd></div><div><dt>Service fee</dt><dd>-${money(special.fee)}</dd></div><div><dt>You receive</dt><dd>${money(finalAmount)} USD</dd></div></dl>`;
+      specialFeedback.innerHTML = `<strong>Calculation complete.</strong> Practice asking: “How much will I ${mode === "buy" ? "pay" : "receive"} after the fee?”`;
     });
   };
 
@@ -873,6 +1019,7 @@ if (practiceRoot) {
   if (special.type === "routes") renderRoutes();
   if (special.type === "products") renderProducts();
   if (special.type === "decision") renderDecision();
+  if (special.type === "exchange") renderExchange();
 
   const missionLabel = practiceRoot.querySelector("[data-mission-label]");
   const missionTitle = practiceRoot.querySelector("[data-mission-title]");
