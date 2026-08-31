@@ -481,20 +481,63 @@ if (root) {
   emailResponse.addEventListener("input", () => { $('[data-email-count]').textContent = countWords(emailResponse.value); });
   discussionResponse.addEventListener("input", () => { const count = countWords(discussionResponse.value); $('[data-discussion-count]').textContent = count; $('.discussion-count').classList.toggle("has-target", count >= 100); });
 
-  const buildShareText = () => {
-    const sentences = $$('[data-build-answer]').map((zone, index) => `${index + 1}. ${Array.from(zone.children, (piece) => piece.textContent).join(" ")}`).join("\n");
-    return `TOEFL iBT Writing - Mock Test ${selectedTest}\n\nBUILD A SENTENCE\n${sentences}\n\nEMAIL RESPONSE\n${emailResponse.value || "No response written."}\n\nACADEMIC DISCUSSION\n${discussionResponse.value || "No response written."}`;
+  const getBuildExportItems = () => $$('.build-sentence-item').map((item, index) => {
+    const zone = item.querySelector('[data-build-answer]');
+    const response = Array.from(zone.children, (piece) => piece.textContent).join(' ');
+    const unused = Array.from(item.querySelector('[data-build-bank]').children, (piece) => piece.textContent);
+    return {
+      number: index + 1,
+      prompt: writingTests[selectedTest].sentences[index][0],
+      response: response ? `${response}${zone.dataset.ending}` : 'No response built.',
+      unused
+    };
+  });
+  const formatBuildExport = () => getBuildExportItems().map((item) => [
+    `${item.number}. Prompt: ${item.prompt}`,
+    `Student sentence: ${item.response}`,
+    `Unused options: ${item.unused.length ? item.unused.join(' | ') : 'None'}`
+  ].join('\n')).join('\n\n');
+  const formatEmailPrompt = () => {
+    const email = writingTests[selectedTest].email;
+    return [
+      `Situation: ${email.scenario}`,
+      `To: ${email.recipient}`,
+      `Subject: ${email.subject}`,
+      'Goals:',
+      ...email.goals.map((goal) => `- ${goal}`)
+    ].join('\n');
   };
+  const formatDiscussionPrompt = () => {
+    const discussion = writingTests[selectedTest].discussion;
+    return [
+      `Course: ${discussion.course}`,
+      `Professor's question: ${discussion.professor}`,
+      'Student posts:',
+      ...discussion.students.map(([name, post]) => `- ${name}: ${post}`)
+    ].join('\n');
+  };
+  const buildShareText = () => `TOEFL iBT Writing - Mock Test ${selectedTest}
+
+BUILD A SENTENCE
+${formatBuildExport()}
+
+WRITE AN EMAIL - PROMPT
+${formatEmailPrompt()}
+
+STUDENT EMAIL
+${emailResponse.value || "No response written."}
+
+ACADEMIC DISCUSSION - PROMPT
+${formatDiscussionPrompt()}
+
+STUDENT DISCUSSION RESPONSE
+${discussionResponse.value || "No response written."}`;
   const buildTaskShareText = (task) => {
     if (task === 'sentences') {
-      const sentences = $$('[data-build-answer]').map((zone, index) => {
-        const response = Array.from(zone.children, (piece) => piece.textContent).join(' ');
-        return `${index + 1}. ${response}${response ? zone.dataset.ending : ''}`;
-      }).join('\n');
-      return `TOEFL iBT Writing - Mock Test ${selectedTest}\nBUILD A SENTENCE\n\n${sentences}`;
+      return `TOEFL iBT Writing - Mock Test ${selectedTest}\nBUILD A SENTENCE\n\n${formatBuildExport()}`;
     }
-    if (task === 'email') return `TOEFL iBT Writing - Mock Test ${selectedTest}\nWRITE AN EMAIL\nTo: ${writingTests[selectedTest].email.recipient}\nSubject: ${writingTests[selectedTest].email.subject}\n\n${emailResponse.value || 'No response written.'}`;
-    return `TOEFL iBT Writing - Mock Test ${selectedTest}\nACADEMIC DISCUSSION\n\n${discussionResponse.value || 'No response written.'}`;
+    if (task === 'email') return `TOEFL iBT Writing - Mock Test ${selectedTest}\nWRITE AN EMAIL\n\n${formatEmailPrompt()}\n\nSTUDENT RESPONSE\n${emailResponse.value || 'No response written.'}`;
+    return `TOEFL iBT Writing - Mock Test ${selectedTest}\nACADEMIC DISCUSSION\n\n${formatDiscussionPrompt()}\n\nSTUDENT RESPONSE\n${discussionResponse.value || 'No response written.'}`;
   };
   $$('[data-share-task]').forEach((button) => button.addEventListener('click', async () => {
     const task = button.dataset.shareTask;
@@ -520,16 +563,37 @@ if (root) {
     const answerZones = $$('[data-build-answer]');
     const bankZones = $$('[data-build-bank]');
     const pieceStates = $$('.build-piece').map((piece) => ({ piece, parent: piece.parentElement, order: Array.from(piece.parentElement.children).indexOf(piece) }));
+    const printSummaries = [];
     if (!withAnswers) { emailResponse.value = ""; discussionResponse.value = ""; answerZones.forEach((zone) => { Array.from(zone.children).forEach((piece) => bankZones[answerZones.indexOf(zone)].append(piece)); }); }
     document.body.classList.add("toefl-writing-printing");
+    document.body.dataset.writingPrintMode = withAnswers ? "answers" : "blank";
+    if (withAnswers) {
+      getBuildExportItems().forEach((entry, index) => {
+        const summary = document.createElement('div');
+        summary.className = 'build-print-summary';
+        const answerLabel = document.createElement('strong');
+        answerLabel.textContent = 'Student sentence';
+        const answer = document.createElement('p');
+        answer.textContent = entry.response;
+        const unusedLabel = document.createElement('strong');
+        unusedLabel.textContent = 'Unused options';
+        const unused = document.createElement('p');
+        unused.textContent = entry.unused.length ? entry.unused.join('  |  ') : 'None';
+        summary.append(answerLabel, answer, unusedLabel, unused);
+        $$('.build-sentence-item')[index].querySelector('.build-sentence-work').append(summary);
+        printSummaries.push(summary);
+      });
+    }
     $('[data-writing-print-title]').textContent = `Mock Test ${selectedTest}`;
     $('[data-writing-print-mode]').textContent = withAnswers ? "Student Answer Copy" : "Blank Homework";
     restoreAfterPrint = () => {
       textValues.forEach((value, index) => { [emailResponse, discussionResponse][index].value = value; });
       pieceStates.forEach(({ piece }) => piece.remove());
+      printSummaries.forEach((summary) => summary.remove());
       const parents = [...new Set(pieceStates.map(({ parent }) => parent))];
       parents.forEach((parent) => pieceStates.filter((state) => state.parent === parent).sort((a, b) => a.order - b.order).forEach(({ piece }) => parent.append(piece)));
       document.body.classList.remove("toefl-writing-printing"); updateProgress();
+      delete document.body.dataset.writingPrintMode;
     };
     requestAnimationFrame(() => window.print());
   };

@@ -2736,7 +2736,8 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
   body.toefl-printing .toefl-exercise::after { display: none !important; }
   body.toefl-printing .toefl-exercise-heading { margin-bottom: 5mm; }
   body.toefl-printing .toefl-exercise-heading h3 { font-size: 18pt; }
-  body.toefl-printing .toefl-exercise-heading > strong { border: 1px solid #b9b0bd; background: white; }
+  body.toefl-printing .toefl-exercise-heading span { display: none; }
+  body.toefl-printing .toefl-exercise-heading > strong { padding: 0; border: 0; background: white; color: #555; }
   body.toefl-printing .toefl-directions { font-size: 10pt; }
   body.toefl-printing .toefl-cloze-text,
   body.toefl-printing .toefl-realworld-text,
@@ -2748,7 +2749,7 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
   body.toefl-printing .toefl-question-list { gap: 4mm; }
   body.toefl-printing .toefl-question-navigator { display: none !important; }
   body.toefl-printing .toefl-question[hidden] { display: grid !important; }
-  body.toefl-printing .toefl-question { padding: 4mm; border: 1px solid #c8c2ca; border-radius: 5px; background: white; break-inside: avoid; }
+  body.toefl-printing .toefl-question { padding: 3mm 0; border: 0; border-top: 1px solid #d5d1d7; border-radius: 0; background: white; break-inside: avoid; }
   body.toefl-printing .toefl-question label { padding: 1.5mm 2mm; border: 0 !important; background: transparent !important; color: #19151d !important; font-size: 9.5pt; }
   body.toefl-printing .toefl-question input { appearance: none; width: 3.5mm; height: 3.5mm; margin: 1mm 0 0; border: 1px solid #19151d; border-radius: 50%; }
   body.toefl-printing .toefl-question input:checked::after { display: block; width: 1.8mm; height: 1.8mm; margin: 0.65mm; border-radius: 50%; background: #19151d; content: ""; }
@@ -2766,6 +2767,7 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
 .toefl-writing-task-summary span { display: block; margin-top: 12px; color: var(--editorial-ink); font-weight: 800; }
 .toefl-writing-task-summary p { margin: 9px 0 0; color: #6a5878; line-height: 1.5; }
 .toefl-writing-share-feedback { margin: -20px 0 35px; text-align: right; }
+.build-print-summary { display: none; }
 .writing-task-section { margin-top: 75px; }
 .writing-task-timer { display: grid; grid-template-columns: auto minmax(220px, 1fr) auto; align-items: center; gap: 22px; margin: 0 0 22px; padding: 16px 20px; border: 1px solid rgba(22, 142, 139, .22); border-radius: 20px; background: linear-gradient(135deg, #eef9f6, #fffdf5); box-shadow: 0 12px 30px rgba(36, 19, 52, .07); }
 .writing-task-timer > div:first-child { display: grid; min-width: 120px; }
@@ -2875,6 +2877,13 @@ body:not(.home-v2) .toefl-response-area { min-height: 310px; background: white; 
   body.toefl-writing-printing .toefl-writing-prompt, body.toefl-writing-printing .discussion-board { padding: 4mm; border: 1px solid #aaa; background: white; font-size: 9.5pt; }
   body.toefl-writing-printing .discussion-avatar > span, body.toefl-writing-printing .discussion-student { animation: none !important; opacity: 1; transform: none; }
   body.toefl-writing-printing .toefl-response-area { min-height: 95mm; border: 1px solid #777; background: white; font: 10pt Arial, sans-serif; }
+  body.toefl-writing-printing .build-print-summary { display: grid; grid-template-columns: 28mm 1fr; gap: 1.5mm 3mm; margin-top: 2mm; padding-top: 2mm; border-top: 1px solid #bbb; font-size: 8.8pt; }
+  body.toefl-writing-printing .build-print-summary strong, body.toefl-writing-printing .build-print-summary p { margin: 0; }
+  body.toefl-writing-printing[data-writing-print-mode="answers"] .build-answer-zone,
+  body.toefl-writing-printing[data-writing-print-mode="answers"] .build-bank { display: none !important; }
+  body.toefl-writing-printing .discussion-avatar > span { display: none; }
+  body.toefl-writing-printing .discussion-avatar { width: auto; min-width: 22mm; height: auto; border: 0; background: none; }
+  body.toefl-writing-printing .discussion-student-posts { gap: 2mm; }
 }
 
 body:not(.home-v2) {
