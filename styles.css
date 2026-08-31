@@ -428,6 +428,8 @@ a {
 .snake-card-visual span { width: 42px; height: 42px; margin-left: -8px; border-radius: 13px; background: #4bb6a9; box-shadow: inset 0 0 0 2px rgba(255,255,255,.12); }
 .snake-card-visual span:first-child { background: #ffd764; }
 .snake-card-visual b { margin-left: 12px; padding: 9px 13px; border-radius: 10px; background: #f5a9a3; color: var(--home-ink); font-size: .76rem; }
+.game-card-ramble { grid-column: span 6; background: linear-gradient(135deg, #bce7da, #f8e69f); color: var(--home-ink); }
+.game-card-ramble + .game-card-memory { grid-column: span 6; }
 .game-card-memory { grid-column: span 12; min-height: 320px; background: linear-gradient(120deg, #eb784b, #f2b544); color: var(--home-ink); }
 .game-card-memory p { color: rgba(36,19,52,.72); }
 .memory-card-visual { position: absolute; top: 30px; right: 32px; display: flex; gap: 10px; transform: rotate(3deg); }
@@ -468,7 +470,7 @@ a {
   .home-section-heading { grid-template-columns: 1fr; }
   .skill-tile { grid-column: span 12; min-height: 360px; }
   .games-heading { margin-bottom: 40px; }
-  .game-card { grid-column: span 12; min-height: 320px; }
+  .game-card, .game-card-ramble + .game-card-memory { grid-column: span 12; min-height: 320px; }
   .home-footer { grid-template-columns: 1fr; }
   .home-situational { grid-template-columns: 1fr; gap: 35px; }
   .situational-home-scene { min-height: 400px; }
@@ -1352,6 +1354,9 @@ a {
 .topic-electronics { background: #cfd9ee; }
 .topic-phone-food { background: #f0c5b4; }
 .topic-doctor { background: #cde9df; }
+.topic-visa { background: #e4d3f3; }
+.topic-exchange { background: #f5df91; }
+.topic-airbnb { background: #bfe7db; }
 .vocabulary-lab,
 .situation-dialogues,
 .speaking-mission-lab { margin-bottom: 24px; }
@@ -1934,7 +1939,7 @@ a {
 
 .memory-topic-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
 }
 

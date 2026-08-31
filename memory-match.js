@@ -11,10 +11,6 @@ const memoryTopics = {
     label: "Infinitive + Past Participle",
     pairs: [["be", "been"], ["have", "had"], ["do", "done"], ["go", "gone"], ["make", "made"], ["know", "known"], ["take", "taken"], ["see", "seen"], ["give", "given"], ["write", "written"], ["speak", "spoken"], ["eat", "eaten"]]
   },
-  phrasal: {
-    label: "Phrasal Verb Part 1 + Part 2",
-    pairs: [["wake", "up"], ["look", "after"], ["find", "out"], ["give", "away"], ["take", "off"], ["turn", "down"], ["carry", "on"], ["run", "into"], ["fill", "in"], ["break", "through"], ["check", "over"], ["put", "aside"]]
-  },
   opposites: {
     label: "Adjective + Opposite",
     pairs: [["big", "small"], ["hot", "cold"], ["happy", "sad"], ["fast", "slow"], ["easy", "difficult"], ["old", "young"], ["early", "late"], ["strong", "weak"], ["clean", "dirty"], ["cheap", "expensive"], ["quiet", "noisy"], ["safe", "dangerous"]]

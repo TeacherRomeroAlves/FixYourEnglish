@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unscramble the Ramble | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ramble.css">
+  <script src="ramble-engine.js" defer></script>
+  <script src="ramble.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero ramble-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">Three sentences. One big mix.</p>
+      <h1>UNSCRAMBLE THE RAMBLE</h1>
+      <p class="hero-copy">Choose one grammar topic and start small. Turn a shared word bank into an affirmative sentence, a negative sentence, and a question. Three gentle steps, one topic at a time.</p>
+      <div class="routine-row" aria-label="Game features">
+        <span class="routine-chip">&#129513; 6 topics</span>
+        <span class="routine-chip">3 levels per topic</span>
+        <span class="routine-chip">&#128172; 3 sentences</span>
+        <span class="routine-chip">&#10003; 3 checks per level</span>
+        <span class="routine-chip">No timer</span>
+      </div>
+    </section>
+
+    <section class="lesson-card ramble-chooser" data-ramble-chooser aria-labelledby="ramble-choose-title">
+      <p class="panel-kicker">Your practice, your choice</p>
+      <h2 id="ramble-choose-title" data-ramble-chooser-title tabindex="-1">What would you like to practice?</h2>
+      <p>Each topic starts with very short sentences. Complete its three levels at your own pace.</p>
+      <div class="ramble-topic-grid">
+        <button type="button" class="ramble-topic" data-ramble-topic="be"><span aria-hidden="true">&#128075;</span><strong>Verb to Be</strong><small>Names, feelings &amp; places</small></button>
+        <button type="button" class="ramble-topic" data-ramble-topic="present"><span aria-hidden="true">&#9728;</span><strong>Simple Present (Routine)</strong><small>Habits &amp; everyday activities</small></button>
+        <button type="button" class="ramble-topic" data-ramble-topic="past"><span aria-hidden="true">&#128197;</span><strong>Simple Past (Past Activities)</strong><small>Things that already happened</small></button>
+        <button type="button" class="ramble-topic" data-ramble-topic="continuous"><span aria-hidden="true">&#127939;</span><strong>Present Continuous</strong><small>Actions happening now</small></button>
+        <button type="button" class="ramble-topic" data-ramble-topic="perfect"><span aria-hidden="true">&#9989;</span><strong>Present Perfect</strong><small>Experiences &amp; completed actions</small></button>
+        <button type="button" class="ramble-topic" data-ramble-topic="future"><span aria-hidden="true">&#128640;</span><strong>Future (Will &amp; Going To)</strong><small>Plans &amp; future activities</small></button>
+      </div>
+      <p class="ramble-helper">Selecting a topic starts a fresh game with three checks per level.</p>
+    </section>
+
+    <section class="lesson-card activity-card ramble-game" data-ramble-game aria-label="Unscramble the Ramble game" hidden>
+      <button type="button" class="activity-button secondary-button" data-ramble-change-topic>Choose Another Topic</button>
+      <p class="ramble-helper">Choosing another topic starts a new run. It does not carry over your current answers.</p>
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Select a sentence row, then click words to add them. Or drag words into any row.</li>
+          <li>Click a placed word to return it to the bank. Drag it before another word to reorder, or focus it and use the left/right arrow keys.</li>
+          <li>Build one <strong>affirmative</strong>, one <strong>negative</strong>, and one <strong>question</strong>. Use <strong>every block</strong>; sentence lengths can vary.</li>
+          <li>You have <strong>three checks per level</strong>. Feedback marks whole sentences only. Clearing the board does not restore checks.</li>
+          <li>Get all three correct to unlock the next level. Finish Level 3 to win!</li>
+        </ol>
+        <p class="ramble-helper">More than one answer can work. Stay with your chosen grammar topic. Contractions such as isn't and don't stay in a single block. The checker recognizes patterns for these word banks, not every possible English sentence. Capital letters and punctuation are handled for you.</p>
+      </div>
+
+      <ol class="ramble-progress" aria-label="Level progress">
+        <li data-ramble-step="0">1 <span>Start Small</span></li>
+        <li data-ramble-step="1">2 <span>Add a Little Detail</span></li>
+        <li data-ramble-step="2">3 <span>Bring It Together</span></li>
+      </ol>
+      <div class="ramble-heading">
+        <div><p class="panel-kicker" data-ramble-level></p><h2 data-ramble-title tabindex="-1"></h2><p data-ramble-focus></p></div>
+        <div class="ramble-check-counter"><span>Checks left</span><strong data-ramble-checks>3 / 3</strong></div>
+      </div>
+
+      <section class="ramble-bank-card" aria-label="Shared word bank">
+        <div class="ramble-bank-heading"><h3>One shared word bank</h3><span data-ramble-remaining></span></div>
+        <p class="ramble-helper" data-ramble-selection></p>
+        <div class="ramble-word-area" data-ramble-destination="bank" aria-label="Word bank"></div>
+      </section>
+      <div class="ramble-rows">
+        <section class="ramble-row" data-ramble-row="0">
+          <div class="ramble-row-heading"><button class="ramble-row-select" type="button" data-ramble-select="0" aria-pressed="true" aria-controls="ramble-affirmative">1. Affirmative</button><span class="ramble-row-result" data-ramble-result="0"></span></div>
+          <div class="ramble-sentence"><div id="ramble-affirmative" class="ramble-word-area" data-ramble-destination="0" aria-label="Affirmative sentence"></div><span aria-hidden="true">.</span></div>
+        </section>
+        <section class="ramble-row" data-ramble-row="1">
+          <div class="ramble-row-heading"><button class="ramble-row-select" type="button" data-ramble-select="1" aria-pressed="false" aria-controls="ramble-negative">2. Negative</button><span class="ramble-row-result" data-ramble-result="1"></span></div>
+          <div class="ramble-sentence"><div id="ramble-negative" class="ramble-word-area" data-ramble-destination="1" aria-label="Negative sentence"></div><span aria-hidden="true">.</span></div>
+        </section>
+        <section class="ramble-row" data-ramble-row="2">
+          <div class="ramble-row-heading"><button class="ramble-row-select" type="button" data-ramble-select="2" aria-pressed="false" aria-controls="ramble-question">3. Question</button><span class="ramble-row-result" data-ramble-result="2"></span></div>
+          <div class="ramble-sentence"><div id="ramble-question" class="ramble-word-area" data-ramble-destination="2" aria-label="Question"></div><span aria-hidden="true">?</span></div>
+        </section>
+      </div>
+      <div class="activity-actions ramble-actions">
+        <button class="activity-button reading-primary-button" type="button" data-ramble-check>Check Sentences</button>
+        <button class="activity-button secondary-button" type="button" data-ramble-clear>Clear Words</button>
+      </div>
+      <p class="activity-feedback" data-ramble-feedback role="status" aria-live="polite">Take your time. Use all the words before checking.</p>
+      <div class="ramble-outcome" data-ramble-outcome hidden>
+        <h3 data-ramble-outcome-title></h3>
+        <p data-ramble-outcome-copy></p>
+        <button class="activity-button reading-primary-button" type="button" data-ramble-next hidden>Next Level</button>
+        <button class="activity-button secondary-button" type="button" data-ramble-retry hidden>Retry This Level</button>
+        <button class="activity-button reading-primary-button" type="button" data-ramble-share hidden>Share My Result</button>
+        <button class="activity-button reading-primary-button" type="button" data-ramble-replay hidden>Play Again</button>
+        <div class="ramble-share-options" data-ramble-share-options hidden>
+          <label for="ramble-share-message">Challenge your friends</label>
+          <textarea id="ramble-share-message" data-ramble-share-message rows="5" readonly></textarea>
+          <div class="activity-actions">
+            <a class="activity-button" data-ramble-whatsapp target="_blank" rel="noopener noreferrer">Share on WhatsApp</a>
+            <button class="activity-button secondary-button" type="button" data-ramble-copy>Copy Message</button>
+          </div>
+          <p data-ramble-share-feedback role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+    <noscript><p>Please enable JavaScript to choose a topic and play this game.</p></noscript>
+  </main>
+</body>
+</html>

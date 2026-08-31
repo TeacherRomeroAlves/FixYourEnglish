@@ -1,0 +1,73 @@
+.ramble-game [hidden] { display: none !important; }
+.ramble-game[hidden], .ramble-chooser[hidden] { display: none !important; }
+.ramble-topic-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 24px 0; }
+.ramble-topic { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 12px; padding: 24px; border: 2px solid transparent; border-radius: 18px; background: #e0f3ee; color: var(--text-main); cursor: pointer; transition: transform .18s ease, border-color .18s ease; }
+.ramble-topic:nth-child(2n) { background: #fff1bf; }
+.ramble-topic:nth-child(3n) { background: #ede1f9; }
+.ramble-topic > span { font-size: 2rem; }
+.ramble-topic strong { font-size: 1.25rem; }
+.ramble-topic small { font-size: .95rem; line-height: 1.5; }
+.ramble-topic:hover { border-color: var(--purple); transform: translateY(-3px); }
+.ramble-topic:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+@media (max-width: 900px) { .ramble-topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (prefers-reduced-motion: reduce) { .ramble-topic { transition: none; } }
+body:not(.home-v2) .ramble-hero h1 { overflow-wrap: anywhere; }
+.ramble-helper { font-size: .95rem; color: var(--text-soft); line-height: 1.6; }
+.ramble-progress { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 28px 0; padding: 0; }
+.ramble-progress li { display: flex; align-items: center; gap: 12px; padding: 16px; border-radius: 14px; border: 1px solid var(--border); font-weight: 800; color: var(--text-soft); background: #f5f2f8; }
+.ramble-progress span { font-size: .9rem; font-weight: 500; }
+.ramble-progress li.is-current { background: var(--purple-soft); color: #54238a; border-color: var(--purple); }
+.ramble-progress li.is-complete { background: #e0f4eb; color: #125e44; }
+.ramble-heading, .ramble-bank-heading, .ramble-row-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.ramble-heading { margin: 24px 0; }
+.ramble-heading h2 { margin: 8px 0; }
+.ramble-heading p { margin-bottom: 0; }
+.ramble-check-counter { background: #fff5ce; padding: 16px 22px; border-radius: 18px; text-align: center; flex-shrink: 0; }
+.ramble-check-counter span { display: block; font-size: .85rem; }
+.ramble-check-counter strong { display: block; font-size: 1.8rem; color: #54238a; }
+.ramble-bank-card { padding: 22px; background: linear-gradient(130deg, #f0e4fc, #e6f6f3); border: 1px solid var(--border); border-radius: 22px; }
+.ramble-bank-heading h3 { margin: 0; }
+.ramble-bank-heading > span { font-size: .9rem; white-space: nowrap; font-weight: 700; color: #54238a; }
+.ramble-word-area { display: flex; align-content: flex-start; align-items: flex-start; gap: 9px; flex-wrap: wrap; min-height: 80px; padding: 12px; border: 2px dashed transparent; border-radius: 14px; }
+.ramble-word-area.is-drag-over { border-color: var(--purple); background: #eee1ff; }
+body:not(.home-v2) .ramble-token { font-size: 1.1rem; padding: 10px 15px; min-height: 44px; border-radius: 11px; cursor: grab; }
+body:not(.home-v2) .ramble-token:disabled { opacity: 1; cursor: default; }
+.ramble-rows { display: grid; gap: 16px; margin-top: 22px; }
+.ramble-row { border: 2px solid var(--border); border-radius: 18px; padding: 16px; background: #fffdf6; }
+.ramble-row.is-selected { border-color: var(--purple); box-shadow: 0 0 0 3px #6d3bbd12; }
+.ramble-row.is-correct { border-color: #27815f; background: #edf8f1; }
+.ramble-row.is-incorrect { border-color: #ad4549; background: #fff4f1; }
+.ramble-row-select { border: 0; padding: 10px 15px; border-radius: 10px; background: #ede8f2; color: var(--text-main); font-weight: 700; cursor: pointer; min-height: 44px; }
+.ramble-row-select[aria-pressed="true"] { background: var(--purple); color: white; }
+.ramble-row-result { font-weight: 800; }
+.is-correct .ramble-row-result { color: #176247; }
+.is-incorrect .ramble-row-result { color: #96343b; }
+.ramble-sentence { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
+.ramble-sentence > .ramble-word-area { flex: 1; min-width: 0; background: #ffffff90; }
+.ramble-sentence > span { font-size: 1.8rem; font-weight: 800; padding-right: 6px; }
+.ramble-empty { color: var(--text-soft); padding: 8px 0; font-size: .95rem; pointer-events: none; }
+.ramble-actions { margin-top: 24px; }
+.ramble-outcome { background: linear-gradient(135deg, #e8f7ef, #fff6d4); padding: 24px; border: 1px solid #b7d9c5; border-radius: 18px; }
+.ramble-outcome > .activity-button { margin: 4px 6px 4px 0; }
+.ramble-share-options { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+.ramble-share-options label { display: block; margin-bottom: 10px; font-weight: 700; }
+.ramble-share-options textarea { display: block; width: 100%; min-height: 160px; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: white; color: var(--text-main); font: inherit; line-height: 1.5; resize: vertical; }
+.ramble-share-options .activity-actions { margin-top: 14px; }
+.ramble-share-options a { text-align: center; text-decoration: none; }
+.ramble-game button:focus-visible { outline: 3px solid #137c91; outline-offset: 4px; }
+.ramble-game button:disabled:not(.ramble-token) { opacity: .6; cursor: default; }
+@media (max-width: 620px) {
+  .ramble-topic-grid { grid-template-columns: 1fr; }
+  body:not(.home-v2) .ramble-hero h1 { font-size: clamp(1.9rem, 9vw, 3.5rem); line-height: 1; }
+  .ramble-progress { gap: 6px; }
+  .ramble-progress li { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px; }
+  .ramble-progress span { font-size: .75rem; }
+  .ramble-heading { align-items: flex-start; flex-direction: column; }
+  .ramble-check-counter { display: flex; align-items: center; gap: 15px; width: 100%; text-align: left; }
+  .ramble-check-counter strong { margin-left: auto; }
+  .ramble-bank-heading { flex-wrap: wrap; gap: 8px; }
+  .ramble-bank-card, .ramble-row { padding: 12px; }
+  .ramble-word-area { padding: 8px 2px; gap: 7px; }
+  body:not(.home-v2) .ramble-token { padding: 9px 11px; font-size: 1rem; }
+  .ramble-actions { flex-direction: column; align-items: stretch; }
+}
