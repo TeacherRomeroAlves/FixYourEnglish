@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rebuild an eight-word English sentence in a classic sliding puzzle.">
+  <title>Sliding Words | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sliding-words.css">
+  <script src="sliding-words-engine.js" defer></script>
+  <script src="sliding-words.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero sliding-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a>
+          and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a>
+        </p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">A classic puzzle with an English twist</p>
+      <h1>SLIDING WORDS</h1>
+      <p class="hero-copy">Eight words are trapped in a 3×3 grid. Slide one word at a time into the empty space until a complete English sentence appears.</p>
+      <div class="routine-row" aria-label="Game features">
+        <span class="routine-chip">8 word tiles</span>
+        <span class="routine-chip">1 empty space</span>
+        <span class="routine-chip">18 sentences</span>
+        <span class="routine-chip">No time limit</span>
+      </div>
+    </section>
+
+    <section class="lesson-card activity-card sliding-game" data-sliding-words>
+      <div class="panel-heading lesson-heading">
+        <div><p class="panel-kicker">Sentence Puzzle</p><h2>Slide every word into order</h2></div>
+      </div>
+      <div class="speaking-instructions-card">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Read the grid from <strong>left to right</strong> and <strong>top to bottom</strong>.</li>
+          <li>Click a word beside the empty space to slide it. You can also drag that word into the gap.</li>
+          <li>Only neighboring tiles can move. The finished puzzle has the empty space in the bottom-right corner.</li>
+          <li>Arrange all eight words into one natural sentence. Punctuation stays attached to the final word.</li>
+        </ol>
+      </div>
+
+      <div class="sliding-toolbar">
+        <div class="sliding-stat"><span>Moves</span><strong data-slide-moves>0</strong></div>
+        <div class="activity-actions">
+          <button class="activity-button secondary-button" type="button" data-slide-reset>Reset Board</button>
+          <button class="activity-button reading-primary-button" type="button" data-slide-new>New Sentence</button>
+        </div>
+      </div>
+      <div class="sliding-board-wrap">
+        <div class="sliding-board" data-slide-board aria-label="Three by three sliding word puzzle"></div>
+      </div>
+      <p class="activity-feedback sliding-feedback" data-slide-feedback role="status" aria-live="polite"></p>
+      <div class="puzzle-finish-card sliding-finish" data-slide-finish hidden>
+        <p class="prompt-label">Puzzle complete</p>
+        <h3>The sentence is back in order!</h3>
+        <p class="prompt-text" data-slide-result></p>
+        <div class="activity-actions">
+          <button class="activity-button" type="button" data-slide-share>Share Result</button>
+          <button class="activity-button secondary-button" type="button" data-slide-play-again>Try Another Sentence</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p>Please enable JavaScript to play Sliding Words.</p></noscript>
+</body>
+</html>

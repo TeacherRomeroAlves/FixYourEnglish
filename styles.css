@@ -428,8 +428,14 @@ a {
 .snake-card-visual span { width: 42px; height: 42px; margin-left: -8px; border-radius: 13px; background: #4bb6a9; box-shadow: inset 0 0 0 2px rgba(255,255,255,.12); }
 .snake-card-visual span:first-child { background: #ffd764; }
 .snake-card-visual b { margin-left: 12px; padding: 9px 13px; border-radius: 10px; background: #f5a9a3; color: var(--home-ink); font-size: .76rem; }
-.game-card-ramble { grid-column: span 6; background: linear-gradient(135deg, #bce7da, #f8e69f); color: var(--home-ink); }
-.game-card-ramble + .game-card-memory { grid-column: span 6; }
+.game-card-ramble { grid-column: span 4; background: linear-gradient(135deg, #bce7da, #f8e69f); color: var(--home-ink); }
+.game-card-ramble + .game-card-memory { grid-column: span 4; min-height: 390px; }
+.game-card-sliding { grid-column: span 4; background: linear-gradient(145deg, #bfe9e1, #f7d866); color: var(--home-ink); }
+.sliding-card-visual { position: absolute; top: 28px; right: 28px; display: grid; grid-template-columns: repeat(2, auto); gap: 6px; transform: rotate(3deg); }
+.sliding-card-visual span, .sliding-card-visual i { display: grid; place-items: center; min-width: 55px; height: 48px; padding: 5px; border-radius: 9px; background: white; color: var(--home-plum); font-size: .65rem; font-style: normal; font-weight: 800; box-shadow: 0 6px 12px rgba(36,19,52,.12); }
+.sliding-card-visual span:nth-child(2) { background: var(--home-plum); color: white; }
+.sliding-card-visual span:nth-child(3) { background: #ffd764; }
+.sliding-card-visual i { border: 2px dashed rgba(36,19,52,.18); background: transparent; box-shadow: none; }
 .game-card-memory { grid-column: span 12; min-height: 320px; background: linear-gradient(120deg, #eb784b, #f2b544); color: var(--home-ink); }
 .game-card-memory p { color: rgba(36,19,52,.72); }
 .memory-card-visual { position: absolute; top: 30px; right: 32px; display: flex; gap: 10px; transform: rotate(3deg); }
