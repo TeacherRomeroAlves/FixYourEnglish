@@ -1219,6 +1219,85 @@ if (paragraphActivity) {
   }
 }
 
+let activeStandardPrintDocument = null;
+
+const cloneForStandardPrint = (source) => {
+  const clone = source.cloneNode(true);
+  const originalFields = Array.from(source.querySelectorAll("input, textarea, select"));
+  const clonedFields = Array.from(clone.querySelectorAll("input, textarea, select"));
+
+  originalFields.forEach((field, index) => {
+    const copy = clonedFields[index];
+    if (!copy) return;
+
+    if (field.matches('input[type="radio"], input[type="checkbox"]')) {
+      copy.checked = field.checked;
+      if (field.checked) copy.setAttribute("checked", "");
+      else copy.removeAttribute("checked");
+      return;
+    }
+
+    const answer = document.createElement(field.matches("textarea") ? "div" : "span");
+    answer.className = field.matches("textarea") ? "standard-print-writing" : "standard-print-answer";
+    answer.textContent = field.matches("select")
+      ? (field.selectedOptions[0]?.textContent.trim() || "Not answered")
+      : (field.value.trim() || "Not answered");
+    copy.replaceWith(answer);
+  });
+
+  clone.querySelectorAll(
+    ".activity-actions, .activity-feedback, .panel-note, .reading-top-actions, " +
+    ".reading-instructions-card, .reading-audio-actions, audio, [hidden]"
+  ).forEach((element) => element.remove());
+  clone.querySelectorAll("[data-reading-text-card]").forEach((card) => card.classList.remove("is-hidden"));
+
+  clone.querySelectorAll("button").forEach((button) => {
+    const text = button.textContent.trim();
+    if (!text) return button.remove();
+    const piece = document.createElement("span");
+    piece.className = `standard-print-piece${button.classList.contains("is-selected") ? " is-selected" : ""}`;
+    piece.textContent = text;
+    button.replaceWith(piece);
+  });
+
+  clone.removeAttribute("data-writing-practice");
+  clone.removeAttribute("data-reading-practice");
+  return clone;
+};
+
+const clearStandardPrintDocument = () => {
+  activeStandardPrintDocument?.remove();
+  activeStandardPrintDocument = null;
+  document.body.classList.remove("standard-printing");
+};
+
+const printStandardDocument = ({ title, subtitle, sections }) => {
+  clearStandardPrintDocument();
+  const documentSheet = document.createElement("article");
+  documentSheet.className = "standard-print-document";
+  documentSheet.innerHTML = `
+    <header class="standard-print-header">
+      <p>Improve Your English</p>
+      <h1>${title}</h1>
+      ${subtitle ? `<strong>${subtitle}</strong>` : ""}
+      <div><span>Name: ____________________________________</span><span>Date: ____________________</span></div>
+    </header>
+    <main class="standard-print-content"></main>
+    <footer>Created by Teacher Romero Alves and Teacher Lais Queiroz</footer>
+  `;
+  const content = documentSheet.querySelector(".standard-print-content");
+  sections.filter(Boolean).forEach((section) => content.append(cloneForStandardPrint(section)));
+  document.body.append(documentSheet);
+  activeStandardPrintDocument = documentSheet;
+  document.body.classList.add("standard-printing");
+  window.requestAnimationFrame(() => window.print());
+};
+
+window.addEventListener("afterprint", clearStandardPrintDocument);
+window.addEventListener("focus", () => {
+  if (document.body.classList.contains("standard-printing")) window.setTimeout(clearStandardPrintDocument, 300);
+});
+
 const shareButton = document.querySelector("[data-share-performance]");
 const savePdfButton = document.querySelector("[data-save-pdf]");
 const shareFeedback = document.querySelector("[data-share-feedback]");
@@ -1282,9 +1361,21 @@ if (shareButton) {
 
 if (savePdfButton) {
   savePdfButton.addEventListener("click", () => {
-    window.print();
+    const lessonTitle = document.querySelector(".lesson-hero h1")?.textContent.trim() || "English Practice";
+    printStandardDocument({
+      title: lessonTitle,
+      subtitle: "Practice Activities",
+      sections: Array.from(document.querySelectorAll(".activity-card"))
+    });
   });
 }
+
+const highlightFreshPrompt = (prompt) => {
+  if (!prompt) return;
+  prompt.classList.remove("is-new-prompt");
+  void prompt.offsetWidth;
+  prompt.classList.add("is-new-prompt");
+};
 
 const writingPractice = document.querySelector("[data-writing-practice]");
 
@@ -1331,6 +1422,7 @@ if (writingPractice) {
 
     if (promptText) {
       promptText.textContent = currentPrompt;
+      highlightFreshPrompt(promptText);
     }
 
     if (levelLabel) {
@@ -1388,7 +1480,22 @@ if (writingPractice) {
 
   if (saveWritingPdfButton) {
     saveWritingPdfButton.addEventListener("click", () => {
-      window.print();
+      const writingTask = document.createElement("section");
+      writingTask.className = "standard-print-task";
+      writingTask.innerHTML = `
+        <p class="standard-print-label">Writing prompt</p>
+        <h2>${currentPrompt}</h2>
+        <p class="standard-print-level">${levelTitles[activeLevel]} Level</p>
+        <div class="standard-print-response"></div>
+      `;
+      const writtenResponse = document.createElement("p");
+      writtenResponse.textContent = writingTextarea?.value.trim() || "No response written yet.";
+      writingTask.querySelector(".standard-print-response").append(writtenResponse);
+      printStandardDocument({
+        title: "Improve Your Writing",
+        subtitle: `${levelTitles[activeLevel]} Level`,
+        sections: [writingTask]
+      });
     });
   }
 
@@ -1514,6 +1621,7 @@ if (speakingPractice) {
 
     if (promptText) {
       promptText.textContent = currentPrompt;
+      highlightFreshPrompt(promptText);
     }
 
     if (levelLabel) {
@@ -1980,7 +2088,19 @@ if (readingPractice) {
 
   if (saveReadingPdfButton) {
     saveReadingPdfButton.addEventListener("click", () => {
-      window.print();
+      const readingTask = document.createElement("section");
+      readingTask.className = "standard-print-task";
+      const heading = document.createElement("div");
+      heading.className = "standard-print-reading-heading";
+      heading.innerHTML = `<p class="standard-print-label">Reading passage</p><h2>${currentReading?.title || "Reading Practice"}</h2>`;
+      readingTask.append(heading);
+      if (readingTextCard) readingTask.append(readingTextCard.cloneNode(true));
+      if (readingQuestions) readingTask.append(readingQuestions.cloneNode(true));
+      printStandardDocument({
+        title: "Improve Your Understanding",
+        subtitle: `${levelTitles[activeLevel]} Level`,
+        sections: [readingTask]
+      });
     });
   }
 

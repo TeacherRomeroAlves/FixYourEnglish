@@ -2598,7 +2598,54 @@ body:not(.home-v2) .lesson-hero.toefl-writing-hero {
 .toefl-export-panel { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; margin: 18px 0 34px; padding: 22px 25px; border: 1px solid rgba(91, 35, 116, 0.16); border-radius: 22px; background: linear-gradient(135deg, #f7f0fa, #eef9f6); box-shadow: 0 12px 30px rgba(36, 19, 52, 0.07); }
 .toefl-export-panel p:not(.panel-kicker) { margin: 4px 0 0; color: #64546f; line-height: 1.5; }
 .toefl-export-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
-.toefl-print-header { display: none; }
+.toefl-print-header, .standard-print-document { display: none; }
+
+@page { size: A4; margin: 14mm; }
+
+@media print {
+  body.standard-printing { background: white !important; color: #17131a !important; font-family: Arial, sans-serif !important; }
+  body.standard-printing > :not(.standard-print-document) { display: none !important; }
+  body.standard-printing .standard-print-document { display: block !important; width: 100%; margin: 0; padding: 0; }
+  body.standard-printing .standard-print-header { margin-bottom: 9mm; padding-bottom: 5mm; border-bottom: 2px solid #168e8b; }
+  body.standard-printing .standard-print-header > p { margin: 0 0 2mm; color: #396f6d; font-size: 9pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  body.standard-printing .standard-print-header h1 { margin: 0 0 2mm; color: #17131a; font-size: 22pt; line-height: 1.1; }
+  body.standard-printing .standard-print-header > strong { display: inline-block; margin-bottom: 5mm; color: #5b2374; font-size: 10pt; }
+  body.standard-printing .standard-print-header > div { display: flex; justify-content: space-between; gap: 10mm; font-size: 9.5pt; }
+  body.standard-printing .standard-print-content { display: grid; gap: 8mm; }
+  body.standard-printing .standard-print-content * { animation: none !important; box-shadow: none !important; text-shadow: none !important; }
+  body.standard-printing .standard-print-content > section { display: block !important; margin: 0; padding: 0 0 7mm; border: 0; border-bottom: 1px solid #d5d1d7; border-radius: 0; background: white !important; box-shadow: none !important; break-inside: auto; }
+  body.standard-printing .standard-print-content > section:last-child { padding-bottom: 0; border-bottom: 0; }
+  body.standard-printing .standard-print-content section::before,
+  body.standard-printing .standard-print-content section::after { display: none !important; }
+  body.standard-printing .panel-heading,
+  body.standard-printing .lesson-heading { display: block; margin: 0 0 4mm; }
+  body.standard-printing .panel-kicker,
+  body.standard-printing .standard-print-label { margin: 0 0 1mm; color: #397472; font-size: 8pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+  body.standard-printing h2 { margin: 0 0 3mm; color: #17131a; font-size: 16pt; line-height: 1.25; }
+  body.standard-printing h3 { margin: 3mm 0 2mm; color: #17131a; font-size: 11pt; }
+  body.standard-printing p, body.standard-printing li { color: #27222b; font-size: 9.5pt; line-height: 1.55; }
+  body.standard-printing img { max-width: 90mm; max-height: 55mm; object-fit: cover; }
+  body.standard-printing .standard-print-piece { display: inline-block; margin: 1mm; padding: 1.2mm 2.2mm; border: 1px solid #aaa; border-radius: 3px; color: #27222b; font-size: 8.5pt; }
+  body.standard-printing .standard-print-piece.is-selected { border-color: #5b2374; font-weight: 700; }
+  body.standard-printing .standard-print-answer { display: inline-block; min-width: 20mm; margin: 0 1mm; padding: 0 1mm 1mm; border-bottom: 1px solid #444; color: #17131a; font-weight: 700; }
+  body.standard-printing .standard-print-writing,
+  body.standard-printing .standard-print-response { min-height: 70mm; margin-top: 4mm; padding: 5mm; white-space: pre-wrap; border: 1px solid #999; border-radius: 3px; background: white !important; color: #17131a; font: 10pt/1.6 Arial, sans-serif; }
+  body.standard-printing .standard-print-response p { margin: 0; white-space: pre-wrap; }
+  body.standard-printing .standard-print-level { margin: -1mm 0 4mm; color: #5b2374; font-weight: 700; }
+  body.standard-printing .reading-text-card,
+  body.standard-printing .paragraph-card { margin: 0 0 6mm; padding: 5mm; border: 1px solid #bbb; border-radius: 3px; background: white !important; box-shadow: none; }
+  body.standard-printing .reading-questions { display: grid; gap: 4mm; }
+  body.standard-printing .reading-question-card { margin: 0; padding: 3mm 0; border: 0; border-top: 1px solid #ddd; border-radius: 0; background: white !important; box-shadow: none; break-inside: avoid; }
+  body.standard-printing .reading-question-type { display: none; }
+  body.standard-printing .reading-options { display: grid; gap: 1mm; }
+  body.standard-printing .reading-option { padding: 1mm 0; border: 0 !important; background: transparent !important; color: #27222b !important; font-size: 9pt; }
+  body.standard-printing input[type="radio"],
+  body.standard-printing input[type="checkbox"] { width: 3.5mm; height: 3.5mm; accent-color: #17131a; }
+  body.standard-printing .drag-bank,
+  body.standard-printing .sentence-bank,
+  body.standard-printing .verb-bank { padding: 3mm; border: 1px solid #bbb; background: white !important; }
+  body.standard-printing footer { margin-top: 10mm; padding-top: 3mm; border-top: 1px solid #ccc; color: #6c646f; font-size: 8pt; text-align: center; }
+}
 
 .toefl-task-nav a {
   display: flex;
@@ -3258,6 +3305,64 @@ body:not(.home-v2) .reading-instructions-card {
 body:not(.home-v2) .prompt-text {
   font-size: 1.2rem;
   line-height: 1.7;
+}
+
+body:not(.home-v2) .writing-prompt-shell .prompt-card,
+body:not(.home-v2) .speaking-shell .prompt-card {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(26px, 4vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .2);
+  background:
+    radial-gradient(circle at 93% 15%, rgba(255, 218, 99, .26), transparent 10rem),
+    linear-gradient(135deg, #0d6664 0%, #155f69 52%, #4d2865 100%);
+  box-shadow: 0 20px 42px rgba(29, 58, 72, .2);
+}
+
+body:not(.home-v2) .writing-prompt-shell .prompt-card::after,
+body:not(.home-v2) .speaking-shell .prompt-card::after {
+  position: absolute;
+  z-index: -1;
+  right: 22px;
+  bottom: -34px;
+  color: rgba(255, 255, 255, .08);
+  content: "?";
+  font-size: 10rem;
+  font-weight: 800;
+  line-height: 1;
+  transform: rotate(8deg);
+}
+
+body:not(.home-v2) .writing-prompt-shell .prompt-label,
+body:not(.home-v2) .speaking-shell .prompt-label {
+  margin-bottom: 10px;
+  color: #ffe38a;
+  font-size: .78rem;
+  letter-spacing: .15em;
+}
+
+body:not(.home-v2) .writing-prompt-shell .prompt-text,
+body:not(.home-v2) .speaking-shell .prompt-text {
+  max-width: 920px;
+  color: #fffdf5;
+  font-size: clamp(1.38rem, 2.5vw, 1.8rem);
+  font-weight: 650;
+  line-height: 1.48;
+  text-wrap: balance;
+}
+
+body:not(.home-v2) .prompt-text.is-new-prompt {
+  animation: fresh-prompt-arrival 520ms cubic-bezier(.2, .8, .25, 1) both;
+}
+
+@keyframes fresh-prompt-arrival {
+  from { opacity: .15; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.home-v2) .prompt-text.is-new-prompt { animation: none; }
 }
 
 body:not(.home-v2) .verb-bank,
