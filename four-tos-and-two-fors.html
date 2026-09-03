@@ -59,16 +59,41 @@
           <li>Read the paragraph and complete all 6 gaps.</li>
           <li>Click a block to send it to the next space, or drag it into place.</li>
           <li>Use exactly 4 <strong>TO</strong> blocks and 2 <strong>FOR</strong> blocks.</li>
-          <li>You can click <strong>Check</strong> only 3 times for each paragraph.</li>
+          <li>You have 3 hearts. Every check uses one heart and powers the machine with your correct answers.</li>
+          <li>Power all 6 parts of Machine 42 to advance automatically.</li>
         </ol>
       </div>
 
-      <div class="puzzle-overview">
-        <div class="puzzle-stats">
-          <div class="puzzle-stat-card">
-            <span class="puzzle-stat-label">Checks Left</span>
-            <strong class="puzzle-stat-value" data-to-for-checks>3</strong>
+      <div class="to-for-game-dashboard">
+        <div class="to-for-machine" data-to-for-machine aria-label="Machine 42: zero of six power cells active">
+          <div class="machine-topline"><span>Machine</span><strong>42</strong></div>
+          <div class="machine-core" aria-hidden="true">
+            <span class="machine-ring"></span>
+            <strong>42</strong>
+            <i class="machine-spark machine-spark-one"></i>
+            <i class="machine-spark machine-spark-two"></i>
           </div>
+          <div class="machine-power-grid" aria-hidden="true">
+            <span data-to-for-power-segment></span>
+            <span data-to-for-power-segment></span>
+            <span data-to-for-power-segment></span>
+            <span data-to-for-power-segment></span>
+            <span data-to-for-power-segment></span>
+            <span data-to-for-power-segment></span>
+          </div>
+          <p><strong data-to-for-power>0</strong> / 6 systems powered</p>
+        </div>
+
+        <div class="to-for-mission-panel">
+          <p class="panel-kicker">Current Mission</p>
+          <strong class="to-for-level-label">Level <span data-to-for-level>1</span></strong>
+          <p>Fill every gap, check your choices, and power all six parts of the machine.</p>
+          <div class="to-for-lives" data-to-for-lives aria-label="3 lives remaining">
+            <span aria-hidden="true">&#10084;</span>
+            <span aria-hidden="true">&#10084;</span>
+            <span aria-hidden="true">&#10084;</span>
+          </div>
+          <p class="to-for-check-copy">Checks left: <strong data-to-for-checks>3</strong></p>
         </div>
       </div>
 
@@ -87,7 +112,7 @@
           <button class="activity-button secondary-button" type="button" data-to-for-reset>Reset Answers</button>
           <button class="activity-button" type="button" data-to-for-check>Check</button>
         </div>
-        <button class="activity-button reading-primary-button" type="button" data-to-for-next>New Paragraph</button>
+        <button class="activity-button reading-primary-button" type="button" data-to-for-next>Skip to Next Level</button>
       </div>
 
       <p class="activity-feedback" data-to-for-feedback aria-live="polite">

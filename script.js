@@ -3651,6 +3651,11 @@ if (toForGame) {
   const feedback = toForGame.querySelector("[data-to-for-feedback]");
   const topicText = toForGame.querySelector("[data-to-for-topic]");
   const checksText = toForGame.querySelector("[data-to-for-checks]");
+  const levelText = toForGame.querySelector("[data-to-for-level]");
+  const lives = Array.from(toForGame.querySelectorAll("[data-to-for-lives] span"));
+  const machine = toForGame.querySelector("[data-to-for-machine]");
+  const powerText = toForGame.querySelector("[data-to-for-power]");
+  const powerSegments = Array.from(toForGame.querySelectorAll("[data-to-for-power-segment]"));
   const resetButton = toForGame.querySelector("[data-to-for-reset]");
   const checkButton = toForGame.querySelector("[data-to-for-check]");
   const nextButton = toForGame.querySelector("[data-to-for-next]");
@@ -3659,6 +3664,8 @@ if (toForGame) {
   let currentParagraph = null;
   let checksLeft = 3;
   let paragraphQueue = [];
+  let levelNumber = 1;
+  let levelTransitionTimer = null;
 
   const shuffleArray = (items) => {
     const shuffled = [...items];
@@ -3676,6 +3683,21 @@ if (toForGame) {
   const updateChecksText = () => {
     if (checksText) {
       checksText.textContent = String(checksLeft);
+    }
+
+    lives.forEach((life, index) => life.classList.toggle("is-spent", index >= checksLeft));
+    const livesLabel = toForGame.querySelector("[data-to-for-lives]");
+    if (livesLabel) livesLabel.setAttribute("aria-label", `${checksLeft} ${checksLeft === 1 ? "life" : "lives"} remaining`);
+  };
+
+  const updateMachine = (correctCount = 0, complete = false) => {
+    const safeCount = Math.max(0, Math.min(6, correctCount));
+    powerSegments.forEach((segment, index) => segment.classList.toggle("is-powered", index < safeCount));
+    if (powerText) powerText.textContent = String(safeCount);
+    if (machine) {
+      machine.dataset.power = String(safeCount);
+      machine.classList.toggle("is-complete", complete);
+      machine.setAttribute("aria-label", `Machine 42: ${safeCount} of six power cells active`);
     }
   };
 
@@ -3823,6 +3845,11 @@ if (toForGame) {
     updateSlotStyles();
     checksLeft = 3;
     updateChecksText();
+    updateMachine(0);
+
+    if (levelText) {
+      levelText.textContent = String(levelNumber);
+    }
 
     if (topicText) {
       topicText.textContent = `Topic: ${currentParagraph.topic}`;
@@ -3835,9 +3862,18 @@ if (toForGame) {
     if (checkButton) {
       checkButton.disabled = false;
     }
+
+    if (nextButton) {
+      nextButton.disabled = false;
+    }
   };
 
-  const loadNextParagraph = () => {
+  const loadNextParagraph = (advanceLevel = true) => {
+    if (levelTransitionTimer) {
+      window.clearTimeout(levelTransitionTimer);
+      levelTransitionTimer = null;
+    }
+    if (advanceLevel) levelNumber += 1;
     if (paragraphQueue.length === 0) {
       paragraphQueue = shuffleArray(paragraphBank.map((_, index) => index));
     }
@@ -3848,6 +3884,10 @@ if (toForGame) {
   };
 
   const resetCurrentParagraph = () => {
+    if (levelTransitionTimer) {
+      window.clearTimeout(levelTransitionTimer);
+      levelTransitionTimer = null;
+    }
     renderParagraph();
   };
 
@@ -3867,7 +3907,7 @@ if (toForGame) {
   }
 
   if (nextButton) {
-    nextButton.addEventListener("click", loadNextParagraph);
+    nextButton.addEventListener("click", () => loadNextParagraph(true));
   }
 
   if (checkButton) {
@@ -3893,10 +3933,11 @@ if (toForGame) {
 
       checksLeft -= 1;
       updateChecksText();
+      updateMachine(correctCount, correctCount === 6);
 
       if (feedback) {
         if (correctCount === 6) {
-          feedback.innerHTML = "<strong>Excellent work. You got all 6 answers correct!</strong> Congratulations!";
+          feedback.innerHTML = `<strong>Machine 42 is fully powered!</strong> Excellent work. Level ${levelNumber + 1} is loading...`;
         } else {
           feedback.innerHTML = `<strong>${correctCount} out of 6 are correct.</strong> You have ${checksLeft} check${checksLeft === 1 ? "" : "s"} left.`;
         }
@@ -3905,10 +3946,15 @@ if (toForGame) {
       if ((checksLeft === 0 || correctCount === 6) && checkButton) {
         checkButton.disabled = true;
       }
+
+      if (correctCount === 6) {
+        if (nextButton) nextButton.disabled = true;
+        levelTransitionTimer = window.setTimeout(() => loadNextParagraph(true), 1800);
+      }
     });
   }
 
-  loadNextParagraph();
+  loadNextParagraph(false);
 }
 
 const haveThereGame = document.querySelector("[data-have-there-game]");
@@ -4145,12 +4191,133 @@ if (haveThereGame) {
     }
   ];
 
+  const worldStops = [
+    {
+      name: "Brazil",
+      region: "South America",
+      icon: "&#127463;&#127479;",
+      intro: "Rainforests, an enormous coastline, and remarkable wildlife shape Brazil.",
+      facts: [
+        { answer: "there are", before: "", after: " thousands of beaches along Brazil's coast.", options: ["have", "has", "there is", "there are", "there was"] },
+        { answer: "has", before: "Brazil ", after: " the largest share of the Amazon rainforest.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "Are there", before: "", after: " pink dolphins in the Brazilian Amazon?", options: ["Does it have", "Do they have", "Is there", "Are there", "Were there"] }
+      ]
+    },
+    {
+      name: "Japan",
+      region: "East Asia",
+      icon: "&#127471;&#127477;",
+      intro: "Japan combines thousands of islands, active geology, and fast transportation.",
+      facts: [
+        { answer: "has", before: "Japan ", after: " thousands of islands of different sizes.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "there are", before: "Across Japan, ", after: " many active volcanoes.", options: ["it has", "they have", "there is", "there are", "there were"] },
+        { answer: "Does Japan have", before: "", after: " one of the world's busiest high-speed rail networks?", options: ["Do Japan have", "Does Japan have", "Is there", "Are there", "Was there"] }
+      ]
+    },
+    {
+      name: "Australia",
+      region: "Oceania",
+      icon: "&#127462;&#127482;",
+      intro: "Australia is known for unusual landscapes and animals found nowhere else.",
+      facts: [
+        { answer: "there is", before: "In Western Australia, ", after: " a famous pink lake called Lake Hillier.", options: ["it has", "they have", "there is", "there are", "there was"] },
+        { answer: "have", before: "Koalas ", after: " fingerprints that look surprisingly similar to human fingerprints.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "has", before: "Australia ", after: " many animal species that live nowhere else.", options: ["have", "has", "had", "there is", "there are"] }
+      ]
+    },
+    {
+      name: "Antarctica",
+      region: "The Frozen Continent",
+      icon: "&#10052;&#65039;",
+      intro: "The coldest continent has no cities, countries, or permanent residents.",
+      facts: [
+        { answer: "doesn't have", before: "Antarctica ", after: " a permanent human population.", options: ["don't have", "doesn't have", "didn't have", "there isn't", "there aren't"] },
+        { answer: "there aren't", before: "On Antarctica, ", after: " any native land mammals.", options: ["it doesn't have", "they don't have", "there isn't", "there aren't", "there weren't"] },
+        { answer: "didn't have", before: "Early maps of Antarctica ", after: " accurate information about the entire continent.", options: ["don't have", "doesn't have", "didn't have", "there wasn't", "there weren't"] }
+      ]
+    },
+    {
+      name: "Iceland",
+      region: "Northern Europe",
+      icon: "&#127470;&#127480;",
+      intro: "Fire and ice meet on this volcanic island in the North Atlantic.",
+      facts: [
+        { answer: "there are", before: "In Iceland, ", after: " active volcanoes beneath glaciers and open landscapes.", options: ["it has", "they have", "there is", "there are", "there was"] },
+        { answer: "has", before: "Iceland ", after: " abundant geothermal and hydroelectric energy resources.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "Are there", before: "", after: " very few forests across modern Iceland?", options: ["Does it have", "Do they have", "Is there", "Are there", "Were there"] }
+      ]
+    },
+    {
+      name: "The Sahara",
+      region: "North Africa",
+      icon: "&#127964;&#65039;",
+      intro: "The world's largest hot desert has changed dramatically during Earth's history.",
+      facts: [
+        { answer: "there was", before: "Thousands of years ago, ", after: " much more water in parts of the Sahara.", options: ["it had", "they had", "there is", "there was", "there were"] },
+        { answer: "don't have", before: "Many desert plants ", after: " broad leaves because they must conserve water.", options: ["don't have", "doesn't have", "didn't have", "there isn't", "there aren't"] },
+        { answer: "has", before: "The Sahara ", after: " mountains, rocky plateaus, and gravel plains as well as sand.", options: ["have", "has", "had", "there is", "there are"] }
+      ]
+    },
+    {
+      name: "The Amazon",
+      region: "South America",
+      icon: "&#127795;",
+      intro: "The Amazon region supports extraordinary biodiversity across several countries.",
+      facts: [
+        { answer: "there are", before: "In the Amazon River, ", after: " freshwater dolphins with pink coloring.", options: ["it has", "they have", "there is", "there are", "there were"] },
+        { answer: "have", before: "Some Amazonian frogs ", after: " bright colors that warn predators about danger.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "Does the Amazon have", before: "", after: " one of the greatest concentrations of biodiversity on Earth?", options: ["Do the Amazon have", "Does the Amazon have", "Is there", "Are there", "Was there"] }
+      ]
+    },
+    {
+      name: "The World's Oceans",
+      region: "Across the Planet",
+      icon: "&#127754;",
+      intro: "Most of Earth's surface is covered by oceans that still contain many mysteries.",
+      facts: [
+        { answer: "there are", before: "On the ocean floor, ", after: " mountain ranges longer than many ranges on land.", options: ["it has", "they have", "there is", "there are", "there were"] },
+        { answer: "there isn't", before: "In the deepest ocean zones, ", after: " much natural light.", options: ["it doesn't have", "they don't have", "there isn't", "there aren't", "there wasn't"] },
+        { answer: "have", before: "Whales ", after: " special adaptations that allow them to remain underwater.", options: ["have", "has", "had", "there is", "there are"] }
+      ]
+    },
+    {
+      name: "Our Solar System",
+      region: "Beyond Earth",
+      icon: "&#129680;",
+      intro: "Planets and moons offer extreme environments beyond our home world.",
+      facts: [
+        { answer: "has", before: "Saturn ", after: " more than one hundred confirmed moons.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "there aren't", before: "On the Moon, ", after: " trees, rivers, or natural lakes.", options: ["it doesn't have", "they don't have", "there isn't", "there aren't", "there weren't"] },
+        { answer: "Does Mars have", before: "", after: " the largest volcano known in our solar system?", options: ["Do Mars have", "Does Mars have", "Is there", "Are there", "Was there"] }
+      ]
+    },
+    {
+      name: "The Animal World",
+      region: "Habitats Everywhere",
+      icon: "&#129409;",
+      intro: "Animals possess surprising features that help them survive in their environments.",
+      facts: [
+        { answer: "have", before: "Octopuses ", after: " three hearts and blue blood.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "has", before: "A giraffe ", after: " the same number of neck bones as a human.", options: ["have", "has", "had", "there is", "there are"] },
+        { answer: "Do camels have", before: "", after: " eyelashes that protect their eyes from blowing sand?", options: ["Does camels have", "Do camels have", "Is there", "Are there", "Were there"] }
+      ]
+    }
+  ];
+
   const list = haveThereGame.querySelector("[data-have-there-list]");
   const feedback = haveThereGame.querySelector("[data-have-there-feedback]");
+  const stopIcon = haveThereGame.querySelector("[data-world-stop-icon]");
+  const stopRegion = haveThereGame.querySelector("[data-world-stop-region]");
+  const stopName = haveThereGame.querySelector("[data-world-stop-name]");
+  const stopIntro = haveThereGame.querySelector("[data-world-stop-intro]");
   const resetButton = haveThereGame.querySelector("[data-have-there-reset]");
   const checkButton = haveThereGame.querySelector("[data-have-there-check]");
+  const shareButton = haveThereGame.querySelector("[data-have-there-share]");
   const nextButton = haveThereGame.querySelector("[data-have-there-next]");
   let currentBlock = [];
+  let currentStop = null;
+  let destinationQueue = [];
+  let latestScore = null;
 
   const shuffleArray = (items) => {
     const shuffled = [...items];
@@ -4164,8 +4331,16 @@ if (haveThereGame) {
   };
 
   const renderBlock = () => {
-    currentBlock = shuffleArray(sentenceBank).slice(0, 3);
+    if (!destinationQueue.length) destinationQueue = shuffleArray(worldStops.map((_, index) => index));
+    currentStop = worldStops[destinationQueue.shift()];
+    currentBlock = shuffleArray(currentStop.facts);
+    latestScore = null;
     list.innerHTML = "";
+
+    if (stopIcon) stopIcon.innerHTML = currentStop.icon;
+    if (stopRegion) stopRegion.textContent = currentStop.region;
+    if (stopName) stopName.textContent = currentStop.name;
+    if (stopIntro) stopIntro.textContent = currentStop.intro;
 
     currentBlock.forEach((sentence) => {
       const item = document.createElement("li");
@@ -4202,8 +4377,10 @@ if (haveThereGame) {
     });
 
     if (feedback) {
-      feedback.textContent = "Choose one option in each sentence and then check your answers.";
+      feedback.textContent = `Choose the structures that make all 3 facts about ${currentStop.name} true.`;
     }
+
+    if (shareButton) shareButton.disabled = true;
   };
 
   const getSelects = () => Array.from(haveThereGame.querySelectorAll("[data-have-there-select]"));
@@ -4216,8 +4393,10 @@ if (haveThereGame) {
       });
 
       if (feedback) {
-        feedback.textContent = "Choose one option in each sentence and then check your answers.";
+        feedback.textContent = `Choose the structures that make all 3 facts about ${currentStop.name} true.`;
       }
+      latestScore = null;
+      if (shareButton) shareButton.disabled = true;
     });
   }
 
@@ -4238,13 +4417,44 @@ if (haveThereGame) {
         const select = item.querySelector("[data-have-there-select]");
         return count + Number(select && select.value === item.dataset.haveThereAnswer);
       }, 0);
+      latestScore = correctCount;
+      if (shareButton) shareButton.disabled = false;
 
       if (feedback) {
         if (correctCount === items.length) {
-          feedback.innerHTML = "<strong>Excellent work. You got all 3 answers correct!</strong>";
+          feedback.innerHTML = `<strong>${currentStop.name} explored!</strong> You made all 3 facts true.`;
         } else {
-          feedback.innerHTML = `<strong>You got ${correctCount} out of ${items.length} correct.</strong> Keep trying.`;
+          feedback.innerHTML = `<strong>You made ${correctCount} out of ${items.length} facts true.</strong> Revisit your choices and keep exploring.`;
         }
+      }
+    });
+  }
+
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
+      if (latestScore === null || !currentStop) return;
+      const discovery = currentStop.facts[0];
+      const exampleFact = `${discovery.before}${discovery.answer}${discovery.after}`.replace(/\s+/g, " ").trim();
+      const shareText = [
+        `&#127758; I explored ${currentStop.name} in World Explorer!`,
+        `&#9989; I made ${latestScore}/3 facts true using HAVE and THERE TO BE.`,
+        `&#128161; I discovered: ${exampleFact}`,
+        "",
+        "Explore the world through English:",
+        "https://improveyourenglish.vercel.app/to-have-or-there-to-be.html"
+      ].join("\n").replace(/&#127758;/g, "🌍").replace(/&#9989;/g, "✅").replace(/&#128161;/g, "💡");
+
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: `World Explorer - ${currentStop.name}`, text: shareText });
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(shareText);
+          feedback.innerHTML = "<strong>Discovery copied!</strong> Paste it into WhatsApp or another app.";
+        } else {
+          feedback.innerHTML = "<strong>Sharing is unavailable.</strong> You can take a screenshot of your discovery.";
+        }
+      } catch (error) {
+        if (error.name !== "AbortError") feedback.innerHTML = "<strong>Sharing is unavailable right now.</strong> Please try again.";
       }
     });
   }
