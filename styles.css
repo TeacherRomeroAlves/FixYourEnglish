@@ -429,6 +429,9 @@ a {
 .snake-card-visual span:first-child { background: #ffd764; }
 .snake-card-visual b { margin-left: 12px; padding: 9px 13px; border-radius: 10px; background: #f5a9a3; color: var(--home-ink); font-size: .76rem; }
 .game-card-ramble { grid-column: span 4; background: linear-gradient(135deg, #bce7da, #f8e69f); color: var(--home-ink); }
+.game-card-ramble > div:not([class*="visual"]) { padding-right: 30px; }
+.game-card-ramble h3 { font-size: clamp(1.42rem, 1.85vw, 1.8rem); overflow-wrap: normal; }
+.game-card-ramble h3 span { display: block; white-space: nowrap; }
 .game-card-ramble + .game-card-memory { grid-column: span 4; min-height: 390px; }
 .game-card-sliding { grid-column: span 4; background: linear-gradient(145deg, #bfe9e1, #f7d866); color: var(--home-ink); }
 .game-card-voyage { grid-column: span 12; min-height: 340px; background: radial-gradient(circle at 80% 20%, rgba(255,216,100,.2), transparent 24%), linear-gradient(125deg, #173d49, #16766e); color: white; }
