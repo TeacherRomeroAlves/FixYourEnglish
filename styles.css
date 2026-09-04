@@ -2290,6 +2290,25 @@ a {
   margin-top: 0;
 }
 
+.browser-language-note {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 5px;
+  max-width: 330px;
+  margin: 0 0 0 4px;
+  padding: 8px 11px;
+  border-left: 3px solid #d3a72f;
+  border-radius: 8px;
+  background: rgba(255, 226, 121, 0.22);
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.browser-language-note strong { color: var(--purple); }
+.situation-language-note { display: flex; width: fit-content; max-width: 100%; margin: -10px 0 18px; }
+
 .reading-text {
   display: grid;
   gap: 14px;
