@@ -433,7 +433,10 @@ a {
 .game-card-sliding { grid-column: span 4; background: linear-gradient(145deg, #bfe9e1, #f7d866); color: var(--home-ink); }
 .game-card-voyage { grid-column: span 12; min-height: 340px; background: radial-gradient(circle at 80% 20%, rgba(255,216,100,.2), transparent 24%), linear-gradient(125deg, #173d49, #16766e); color: white; }
 .game-card-voyage p { color: rgba(255,255,255,.76); }
-.voyage-card-visual { position: absolute; top: 30px; right: 36px; display: grid; grid-template-columns: 120px auto; gap: 18px; align-items: start; transform: rotate(3deg); }
+.game-card-voyage > div:not([class*="visual"]) { padding-right: 34px; }
+.game-card-voyage h3 { font-size: clamp(1.3rem, 1.7vw, 1.7rem); letter-spacing: -.03em; overflow-wrap: normal; }
+.game-card-voyage h3 span { display: block; white-space: nowrap; }
+.voyage-card-visual { position: absolute; top: 20px; right: 26px; display: grid; grid-template-columns: 120px auto; gap: 18px; align-items: start; transform: rotate(3deg) scale(.86); transform-origin: top right; }
 .voyage-card-visual span { display: grid; place-items: center; width: 120px; height: 145px; border: 6px double rgba(255,216,100,.55); border-radius: 14px; background: #174b51; font-size: 3rem; box-shadow: 12px 13px 0 rgba(255,216,100,.75); }
 .voyage-card-visual b { padding-top: 28px; color: #ffd864; font-size: 1.05rem; line-height: .85; letter-spacing: .06em; }
 .sliding-card-visual { position: absolute; top: 28px; right: 28px; display: grid; grid-template-columns: repeat(2, auto); gap: 6px; transform: rotate(3deg); }
