@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Travel through ten destinations and discover loanwords used in English.">
+  <title>Vocabulary Voyage | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vocabulary-voyage.css">
+  <script src="vocabulary-voyage-engine.js" defer></script>
+  <script src="vocabulary-voyage.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero voyage-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos"><a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a><a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a></div>
+      </div>
+      <p class="eyebrow">Ten words · Ten destinations</p>
+      <h1>VOCABULARY<br>VOYAGE</h1>
+      <p class="hero-copy">Some English words have traveled a very long way. Guess each passenger, collect its passport stamp, and complete your journey around the world.</p>
+      <div class="routine-row"><span class="routine-chip">30 possible destinations</span><span class="routine-chip">10 stops per voyage</span><span class="routine-chip">Clues cost points</span></div>
+    </section>
+
+    <section class="voyage-start lesson-card" data-voyage-start>
+      <div class="voyage-passport-cover"><span>🌍</span><small>IMPROVE YOUR ENGLISH</small><strong>WORD<br>PASSPORT</strong><b>VOCABULARY VOYAGE</b></div>
+      <div><p class="panel-kicker">Before departure</p><h2>Can you recognize English's traveling words?</h2><p>You will see the word's length, destination flag, and source language. Ask for clues only when you need them: every clue reduces the points available at that stop.</p><button class="activity-button voyage-primary" type="button" data-voyage-begin>Start the Voyage</button></div>
+    </section>
+
+    <section class="voyage-game" data-voyage-game hidden>
+      <div class="voyage-status lesson-card">
+        <div><p class="panel-kicker">Your route</p><strong data-voyage-progress>Stop 1 of 10</strong></div>
+        <div class="voyage-route" data-voyage-route aria-label="Voyage progress"></div>
+        <button class="voyage-stop-button" type="button" data-voyage-stop>End Trip &amp; Share Progress</button>
+      </div>
+
+      <article class="voyage-ticket lesson-card">
+        <div class="ticket-edge" aria-hidden="true"></div>
+        <header class="voyage-destination"><div class="voyage-flag" data-voyage-flag></div><div><p>Now arriving in</p><h2 data-voyage-country></h2><span>Source language: <strong data-voyage-language></strong></span></div><div class="voyage-score"><span>Points remaining</span><strong data-voyage-total>1,000</strong></div></header>
+        <div class="voyage-mystery"><p>Who is this word?</p><div class="letter-board" data-voyage-mask aria-label="Hidden word"></div><small data-voyage-letter-count></small></div>
+        <div class="voyage-clue-grid">
+          <button type="button" data-clue="meaning"><span>01</span><strong>Current meaning</strong><small>−10 points</small></button>
+          <button type="button" data-clue="context"><span>02</span><strong>Use it in English</strong><small>−10 points</small></button>
+          <button type="button" data-clue="original"><span>03</span><strong>Original meaning</strong><small>−15 points</small></button>
+          <button type="button" data-clue="letter"><span>04</span><strong>Reveal a letter</strong><small>−10 points each</small></button>
+        </div>
+        <div class="voyage-clues" data-voyage-clues aria-live="polite"></div>
+        <form class="voyage-guess" data-voyage-form><label for="voyage-answer">Your answer</label><div><input id="voyage-answer" data-voyage-answer type="text" autocomplete="off" spellcheck="false" placeholder="Type the word"><button class="activity-button voyage-primary" type="submit">Check Passport</button></div></form>
+        <p class="activity-feedback voyage-feedback" data-voyage-feedback role="status" aria-live="polite">Look at the flag and language, then make your first guess or request a clue.</p>
+        <div class="voyage-arrival" data-voyage-arrival hidden><div class="passport-stamp"><span data-arrival-flag></span><strong>WORD<br>DISCOVERED</strong><small data-arrival-country></small></div><div><p class="panel-kicker">Passport approved</p><h3 data-arrival-word></h3><p data-arrival-summary></p><button class="activity-button voyage-primary" type="button" data-voyage-next>Fly to the Next Stop</button></div></div>
+      </article>
+    </section>
+
+    <section class="voyage-finish lesson-card" data-voyage-finish hidden>
+      <div class="finish-globe">🌎</div><p class="panel-kicker" data-voyage-finish-kicker>Journey complete</p><h2 data-voyage-finish-title>You traveled through ten words!</h2><p data-voyage-final-copy></p><div class="final-stamps" data-voyage-final-stamps></div><div class="final-score"><span>Final score</span><strong data-voyage-final-score></strong><small>out of 1,000</small></div><div class="activity-actions"><button class="activity-button voyage-primary" type="button" data-voyage-share>Share My Voyage</button><button class="activity-button secondary-button" type="button" data-voyage-restart>Begin a New Voyage</button></div><p class="activity-feedback" data-voyage-share-feedback aria-live="polite"></p>
+    </section>
+  </main>
+</body>
+</html>
