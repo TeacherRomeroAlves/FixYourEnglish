@@ -3,8 +3,9 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { words, VoyageGame } = require("../vocabulary-voyage-engine.js");
 
-assert.equal(words.length, 30);
-assert.equal(new Set(words.map(item => item.destination)).size, 29);
+assert.equal(words.length, 50);
+const poolCounts = words.reduce((counts, item) => counts.set(item.destination, (counts.get(item.destination) || 0) + 1), new Map());
+assert.ok([...poolCounts.values()].every(count => count <= 3), "No destination may have more than three pool words");
 assert.equal(words.some(item => ["amok", "batik", "anorak"].includes(item.word)), false);
 assert.equal(words.some(item => item.word === "pizza"), true);
 words.forEach(item => {
@@ -15,17 +16,18 @@ words.forEach(item => {
 });
 
 const game = new VoyageGame(() => 0.42);
-assert.equal(game.stops.length, 10);
-assert.equal(new Set(game.stops.map(item => item.destination)).size, 10);
+assert.equal(game.stops.length, 7);
+const tripCounts = game.stops.reduce((counts, item) => counts.set(item.destination, (counts.get(item.destination) || 0) + 1), new Map());
+assert.ok([...tripCounts.values()].every(count => count <= 2), "A trip may visit one destination at most twice");
 assert.equal(game.mask().length, game.current.word.length);
 assert.equal(game.clue("meaning"), "meaning");
-assert.equal(game.total, 990);
+assert.equal(game.total, 690);
 assert.equal(game.clue("meaning"), null);
 assert.equal(game.clue("letter", () => 0), "letter");
-assert.equal(game.total, 980);
+assert.equal(game.total, 680);
 assert.equal(game.guess("definitelywrong").correct, false);
 assert.equal(game.guess(game.current.word.toUpperCase()).correct, true);
-assert.equal(game.total, 975);
+assert.equal(game.total, 675);
 assert.equal(game.next(), true);
 assert.equal(game.stopIndex, 1);
 game.stop();
@@ -47,10 +49,22 @@ assert.equal(whiskyGame.guess("whiskey").correct, true);
 
 const root = path.resolve(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "vocabulary-voyage.html"), "utf8");
+const script = fs.readFileSync(path.join(root, "vocabulary-voyage.js"), "utf8");
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 assert.match(html, /data-voyage-share/);
 assert.match(html, /data-voyage-stop/);
 assert.doesNotMatch(html, /data-voyage-round/);
 assert.match(html, /data-clue="meaning"/);
 assert.match(home, /href="vocabulary-voyage\.html"/);
-console.log("PASS: 30-word bank, destination-safe 10-stop voyages, clue scoring, letter reveals, guesses, passport progression, sharing, and homepage link.");
+assert.match(script, /flagcdn\.com/);
+assert.match(script, /stamp-country-flag/);
+for (let seed = 1; seed <= 200; seed += 1) {
+  let state = seed;
+  const random = () => ((state = (state * 1664525 + 1013904223) >>> 0) / 4294967296);
+  const sampledTrip = new VoyageGame(random).stops;
+  const counts = sampledTrip.reduce((map, item) => map.set(item.destination, (map.get(item.destination) || 0) + 1), new Map());
+  assert.equal(sampledTrip.length, 7);
+  assert.ok([...counts.values()].every(count => count <= 2));
+}
+
+console.log("PASS: 50-word bank, balanced 7-stop voyages, 700-point scoring, letter reveals, guesses, passport progression, SVG flags, sharing, and homepage link.");
