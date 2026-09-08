@@ -2757,6 +2757,21 @@ body:not(.home-v2) .lesson-hero.toefl-writing-hero {
 @page { size: A4; margin: 14mm; }
 
 @media print {
+  body.standard-printing .print-brand,
+  body.toefl-printing .print-brand,
+  body.toefl-writing-printing .print-brand { display: flex; align-items: center; justify-content: space-between; gap: 8mm; margin: 0 0 5mm; padding: 0 0 4mm; border-bottom: 1px solid #d8d2da; }
+  body.standard-printing .print-brand-logos,
+  body.toefl-printing .print-brand-logos,
+  body.toefl-writing-printing .print-brand-logos { display: flex; flex: 0 0 auto; align-items: center; gap: 2.5mm; }
+  body.standard-printing .print-brand-logos img,
+  body.toefl-printing .print-brand-logos img,
+  body.toefl-writing-printing .print-brand-logos img { display: block; width: 12mm; height: 12mm; padding: 1.5mm; border: 1px solid #ddd6df; border-radius: 3mm; background: #fffdf8; object-fit: contain; }
+  body.standard-printing .print-brand > span,
+  body.toefl-printing .print-brand > span,
+  body.toefl-writing-printing .print-brand > span { color: #5e5363; font-size: 8.5pt; line-height: 1.35; text-align: right; }
+  body.standard-printing .print-brand > span strong,
+  body.toefl-printing .print-brand > span strong,
+  body.toefl-writing-printing .print-brand > span strong { color: #241334; font-weight: 700; }
   body.standard-printing { background: white !important; color: #17131a !important; font-family: Arial, sans-serif !important; }
   body.standard-printing > :not(.standard-print-document) { display: none !important; }
   body.standard-printing .standard-print-document { display: block !important; width: 100%; margin: 0; padding: 0; }
@@ -2764,7 +2779,7 @@ body:not(.home-v2) .lesson-hero.toefl-writing-hero {
   body.standard-printing .standard-print-header > p { margin: 0 0 2mm; color: #396f6d; font-size: 9pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
   body.standard-printing .standard-print-header h1 { margin: 0 0 2mm; color: #17131a; font-size: 22pt; line-height: 1.1; }
   body.standard-printing .standard-print-header > strong { display: inline-block; margin-bottom: 5mm; color: #5b2374; font-size: 10pt; }
-  body.standard-printing .standard-print-header > div { display: flex; justify-content: space-between; gap: 10mm; font-size: 9.5pt; }
+  body.standard-printing .standard-print-header > .print-student-line { display: flex; justify-content: space-between; gap: 10mm; font-size: 9.5pt; }
   body.standard-printing .standard-print-content { display: grid; gap: 8mm; }
   body.standard-printing .standard-print-content * { animation: none !important; box-shadow: none !important; text-shadow: none !important; }
   body.standard-printing .standard-print-content > section { display: block !important; margin: 0; padding: 0 0 7mm; border: 0; border-bottom: 1px solid #d5d1d7; border-radius: 0; background: white !important; box-shadow: none !important; break-inside: auto; }
@@ -2931,8 +2946,8 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
   body.toefl-printing .toefl-print-header { display: block; margin-bottom: 12mm; padding-bottom: 5mm; border-bottom: 2px solid #2a8f8c; }
   body.toefl-printing .toefl-print-header p { margin: 0 0 2mm; color: #396f6d; font-size: 9pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
   body.toefl-printing .toefl-print-header h1 { margin: 0 0 5mm; font-size: 22pt; }
-  body.toefl-printing .toefl-print-header div { display: flex; justify-content: space-between; gap: 10mm; margin-bottom: 4mm; font-size: 10pt; }
-  body.toefl-printing .toefl-print-header strong { display: inline-block; padding: 2mm 3mm; border: 1px solid #5b2374; border-radius: 4px; color: #5b2374; font-size: 9pt; }
+  body.toefl-printing .toefl-print-header > .print-student-line { display: flex; justify-content: space-between; gap: 10mm; margin-bottom: 4mm; font-size: 10pt; }
+  body.toefl-printing .toefl-print-header > strong { display: inline-block; padding: 2mm 3mm; border: 1px solid #5b2374; border-radius: 4px; color: #5b2374; font-size: 9pt; }
 
   body.toefl-printing [data-toefl-test-content] { display: block !important; }
   body.toefl-printing .toefl-task-section { margin: 0 0 10mm; break-before: page; }
@@ -3072,8 +3087,8 @@ body:not(.home-v2) .toefl-response-area { min-height: 310px; background: white; 
   body.toefl-writing-printing .toefl-print-header { margin-bottom: 10mm; padding-bottom: 4mm; border-bottom: 2px solid #2a8f8c; }
   body.toefl-writing-printing .toefl-print-header p { margin: 0; font-size: 9pt; }
   body.toefl-writing-printing .toefl-print-header h1 { margin: 2mm 0 4mm; }
-  body.toefl-writing-printing .toefl-print-header div { display: flex; justify-content: space-between; }
-  body.toefl-writing-printing .toefl-print-header strong { display: inline-block; margin-top: 3mm; color: #5b2374; }
+  body.toefl-writing-printing .toefl-print-header > .print-student-line { display: flex; justify-content: space-between; }
+  body.toefl-writing-printing .toefl-print-header > strong { display: inline-block; margin-top: 3mm; color: #5b2374; }
   body.toefl-writing-printing .writing-task-section { margin: 0; break-before: page; }
   body.toefl-writing-printing #build-sentence { break-before: auto; }
   body.toefl-writing-printing .build-sentence-list { gap: 2.5mm; }

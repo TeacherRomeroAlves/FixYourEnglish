@@ -35,6 +35,8 @@ for (const required of [
 ]) assert(source.includes(required), required);
 
 const readingSource = fs.readFileSync('toefl.js', 'utf8');
+const readingHtml = fs.readFileSync('toefl-reading.html', 'utf8');
+const writingHtml = fs.readFileSync('toefl-writing.html', 'utf8');
 for (const required of [
   'createReadingPrintMarkers',
   'marker.textContent = selected ? "● Student answer: " : "○ "',
@@ -42,6 +44,13 @@ for (const required of [
   'const printMarkers = createReadingPrintMarkers(controls, includeStudentAnswers)',
   'printMarkers.forEach((marker) => marker.remove())'
 ]) assert(readingSource.includes(required), required);
+
+for (const html of [readingHtml, writingHtml]) {
+  assert(html.includes('class="print-brand"'));
+  assert(html.includes('assets/logo-romero.png'));
+  assert(html.includes('assets/logo-lais.png'));
+  assert(html.includes('Created by <strong>Teacher Romero Alves</strong> and <strong>Teacher Lais Queiroz</strong>'));
+}
 
 assert(source.includes("item.querySelector('[data-build-bank]').children"));
 assert(source.includes("writingTests[selectedTest].sentences[index][0]"));

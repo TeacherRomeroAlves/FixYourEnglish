@@ -1277,13 +1277,17 @@ const printStandardDocument = ({ title, subtitle, sections }) => {
   documentSheet.className = "standard-print-document";
   documentSheet.innerHTML = `
     <header class="standard-print-header">
+      <div class="print-brand">
+        <div class="print-brand-logos"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></div>
+        <span>Created by <strong>Teacher Romero Alves</strong> and <strong>Teacher Lais Queiroz</strong></span>
+      </div>
       <p>Improve Your English</p>
       <h1>${title}</h1>
       ${subtitle ? `<strong>${subtitle}</strong>` : ""}
-      <div><span>Name: ____________________________________</span><span>Date: ____________________</span></div>
+      <div class="print-student-line"><span>Name: ____________________________________</span><span>Date: ____________________</span></div>
     </header>
     <main class="standard-print-content"></main>
-    <footer>Created by Teacher Romero Alves and Teacher Lais Queiroz</footer>
+    <footer>Improve Your English</footer>
   `;
   const content = documentSheet.querySelector(".standard-print-content");
   sections.filter(Boolean).forEach((section) => content.append(cloneForStandardPrint(section)));

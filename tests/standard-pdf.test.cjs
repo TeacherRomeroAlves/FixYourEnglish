@@ -34,6 +34,18 @@ for (const rule of [
   "@page { size: A4; margin: 14mm; }"
 ]) assert(styles.includes(rule), rule);
 
+for (const required of [
+  'class="print-brand"',
+  'assets/logo-romero.png',
+  'assets/logo-lais.png',
+  'Created by <strong>Teacher Romero Alves</strong> and <strong>Teacher Lais Queiroz</strong>',
+  'class="print-student-line"'
+]) assert(script.includes(required), required);
+
+assert(styles.includes('body.standard-printing .print-brand'));
+assert(styles.includes('body.toefl-printing .print-brand'));
+assert(styles.includes('body.toefl-writing-printing .print-brand'));
+
 for (const page of ["simple-present.html", "present-continuous.html", "simple-past.html", "future.html", "verb-to-be.html"]) {
   assert(fs.readFileSync(path.join(base, page), "utf8").includes("data-save-pdf"), page);
 }
