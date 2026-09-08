@@ -416,6 +416,75 @@ const situationTopics = {
       ["Check in independently","The host sent instructions, but you need a few details.",["Confirm that you found the lockbox","Ask for the access code and Wi-Fi password","Check one important house rule"],"I found the lockbox, What is the access code?, Could you confirm...?"],
       ["Report apartment problems","The apartment is not as expected when you arrive.",["Explain that the hot water is not working","Say the bedroom has not been cleaned properly","Ask when someone can come to help"],"There seems to be..., It has not been..., Could someone take a look?"],
       ["Prepare to check out","You are leaving early tomorrow morning.",["Ask for the check-out time and instructions","Ask where to leave the keys","Thank the host and mention one thing you enjoyed"],"What time is check-out?, Where should I leave...?, Thank you for..." ]]
+  },
+  bar: {
+    eyebrow:"An evening out", title:"GOING TO A BAR", intro:"Order drinks and snacks, ask about ingredients and specials, and close your tab politely.",
+    vocabulary:[
+      ["The drinks menu", "The list of alcoholic and non-alcoholic drinks available."], ["What do you have on tap?", "Ask which draft beers are available."],
+      ["A mocktail", "A mixed drink made without alcohol."], ["A round of drinks", "One drink for each person in a group."],
+      ["I'll have...", "A natural way to order your choice."], ["Could I see the snack menu?", "Ask to look at the food choices."],
+      ["What is tonight's special?", "Ask about a discounted or featured item."], ["No ice, please.", "Ask for a drink without ice."],
+      ["Could we start a tab?", "Ask to pay for several orders together at the end."], ["I'll pay as I go.", "Say that you want to pay after each order."],
+      ["Could we have the check?", "Ask for the final bill."], ["Is service included?", "Ask whether the service charge is already in the total."]
+    ],
+    dialogues:[
+      {title:"Ordering the first round", bank:["drinks menu", "on tap", "I'll have", "mocktail", "No ice"], lines:[
+        ["Bartender","Good evening. Here is the {{drinks menu}}."],["Guest","Thanks. What do you have {{on tap}}?"],["Bartender","We have a local lager and a pale ale."],
+        ["Guest","{{I'll have}} the lager, please."],["Friend","And I would like a fruit {{mocktail}}. {{No ice}}, please."]]},
+      {title:"Snacks and the bill", bank:["snack menu", "tonight's special", "start a tab", "check", "service included"], lines:[
+        ["Guest","Could I see the {{snack menu}}?"],["Bartender","Certainly. Our nachos are {{tonight's special}}."],["Guest","Great. Could we {{start a tab}}?"],
+        ["Bartender","Of course."],["Guest","We are ready to leave now. Could we have the {{check}}? Is {{service included}}?"]]}
+    ],
+    missions:[
+      ["Order for two","You and a friend want drinks and something small to eat.",["Ask what is available on tap","Order one mocktail without ice","Ask for the snack menu"],"What do you have on tap?, I'll have..., Could I see...?"],
+      ["Ask about your drink","You need more information before ordering.",["Ask what is in the house mocktail","Explain that you do not drink alcohol","Ask about tonight's special"],"What is in...?, I don't drink..., What is tonight's special?"],
+      ["Close the tab","Your group is ready to leave the bar.",["Ask for the check","Ask whether service is included","Say how you would like to pay"],"Could we have the check?, Is service included?, I'll pay by..." ]]
+  },
+  "city-tour": {
+    eyebrow:"A day in New York", title:"TOURING THE CITY CENTER", intro:"Ask about landmarks, understand tour instructions, and plan a five-stop visit through Manhattan.",
+    vocabulary:[
+      ["A sightseeing tour", "A trip to visit the most interesting places in a city."], ["A landmark", "A famous or easily recognized building or place."],
+      ["A guided tour", "A visit led by someone who explains the places you see."], ["The meeting point", "The place where a tour group gathers."],
+      ["How long is the tour?", "Ask about the total duration of a tour."], ["Is admission included?", "Ask whether entrance tickets are part of the price."],
+      ["Where is our next stop?", "Ask which place the group will visit next."], ["How much free time do we have?", "Ask how long you may explore independently."],
+      ["Could you take a picture of us?", "Politely ask someone to photograph your group."], ["The observation deck", "A high place designed for viewing the city."],
+      ["It is a short walk from here.", "Say that a place is nearby on foot."], ["We need to be back by...", "State the time when everyone must return."]
+    ],
+    dialogues:[
+      {title:"Meeting the tour guide", bank:["sightseeing tour", "meeting point", "How long", "admission included", "guided tour"], lines:[
+        ["Traveler","Is this the {{meeting point}} for the Manhattan {{sightseeing tour}}?"],["Guide","Yes. Welcome to our {{guided tour}}."],
+        ["Traveler","{{How long}} is the tour?"],["Guide","About five hours."],["Traveler","Is museum {{admission included}}?"]]},
+      {title:"Exploring a stop", bank:["next stop", "free time", "short walk", "take a picture", "back by"], lines:[
+        ["Traveler","Where is our {{next stop}}?"],["Guide","Bryant Park. It is a {{short walk}} from here."],["Traveler","How much {{free time}} do we have?"],
+        ["Guide","Thirty minutes. We need to be {{back by}} 2:15."],["Traveler","Before we go, could you {{take a picture}} of us?"]]}
+    ],
+    missions:[
+      ["Join the tour","You are meeting a guide near Times Square.",["Confirm the meeting point","Ask how long the tour lasts","Ask whether admission is included"],"Is this the meeting point?, How long...?, Is admission included?"],
+      ["Explore independently","The group has stopped near Central Park.",["Ask how much free time you have","Ask where the next stop is","Confirm when you must return"],"How much free time...?, Where is...?, We need to be back by...?"],
+      ["Ask for local advice","You want a memorable view of New York.",["Ask which observation deck the guide recommends","Ask how to get there","Ask someone to take your picture"],"Which... do you recommend?, How do I get to...?, Could you take...?" ]]
+  },
+  "public-transit": {
+    eyebrow:"Moving around town", title:"TAKING PUBLIC TRANSPORTATION", intro:"Use buses and subways, understand schedules, recover from mistakes, and ask where to get off.",
+    vocabulary:[
+      ["A bus stop", "A marked place where passengers wait for a bus."], ["A subway station", "A place where passengers enter and leave an underground train system."],
+      ["Which line should I take?", "Ask which bus or subway route reaches your destination."], ["Does this bus go to...?", "Check whether a bus serves a particular place."],
+      ["Where should I get off?", "Ask at which stop you must leave."], ["I took the wrong bus.", "Explain that you boarded an incorrect route."],
+      ["Do I need to transfer?", "Ask whether you must change to another bus or train."], ["The next stop", "The station or bus stop immediately ahead."],
+      ["A timetable", "A list showing scheduled departure and arrival times."], ["A subway map", "A diagram showing train lines and stations."],
+      ["A transit card", "A reusable card used to pay public-transport fares."], ["Is this seat available?", "Politely ask whether anyone is using a seat."]
+    ],
+    dialogues:[
+      {title:"Catching the right bus", bank:["bus stop", "go to", "get off", "wrong bus", "transfer"], lines:[
+        ["Traveler","Is this the {{bus stop}} for route 24?"],["Local","Yes, but where are you going?"],["Traveler","Does this bus {{go to}} City Hall?"],
+        ["Local","No. If you board it, you will take the {{wrong bus}}."],["Traveler","Which route should I take, and where should I {{get off}}? Do I need to {{transfer}}?"]]},
+      {title:"Navigating the subway", bank:["subway station", "line", "timetable", "next stop", "transit card"], lines:[
+        ["Traveler","Is there a {{subway station}} near here?"],["Agent","Yes, across the street."],["Traveler","Which {{line}} should I take to the museum?"],
+        ["Agent","Take the blue line. Check the {{timetable}} on the screen."],["Traveler","Can I use this {{transit card}}?"],["Agent","Yes. The museum is the third stop, not the {{next stop}}."]]}
+    ],
+    missions:[
+      ["Ask for bus help","You are unsure whether the approaching bus goes downtown.",["Confirm the bus number","Ask whether it goes downtown","Ask where you should get off"],"Is this bus...?, Does this bus go to...?, Where should I get off?"],
+      ["Correct a mistake","You realize that you took the wrong bus.",["Explain what happened","Tell the driver your destination","Ask where you can transfer"],"I took the wrong bus, I need to go to..., Where can I transfer?"],
+      ["Plan a subway journey","You need to reach the airport using the subway.",["Ask which line to take","Ask whether you need to transfer","Ask how to buy or reload a transit card"],"Which line...?, Do I need to transfer?, How can I...?" ]]
   }
 };
 
@@ -482,6 +551,9 @@ const challengeWords = {
   visa: ["passport", "application form", "embassy", "appointment", "decision"],
   exchange: ["currency", "rate board", "banknotes", "identification", "transaction"],
   airbnb: ["host", "guest", "apartment", "booking", "cleaning fee"]
+  ,bar: ["bartender", "glass", "snacks", "receipt", "table"]
+  ,"city-tour": ["tour guide", "camera", "ticket", "map", "souvenir"]
+  ,"public-transit": ["platform", "fare", "driver", "route", "ticket machine"]
 };
 
 Object.entries(situationTopics).forEach(([key, topicData]) => {
@@ -650,6 +722,53 @@ const specialActivities = {
     type:"roulette", title:"Messages from your Airbnb host", note:"12 host questions and comments", intro:"Receive a random message you might hear during check-in, a problem, local recommendations, or check-out. Respond naturally as the guest.",
     screenLabel:"Your host says", buttonLabel:"Get a Host Message", responsePrompt:"Respond naturally as the guest in complete sentences.",
     questions:["Did you find the apartment easily?","The key is inside the lockbox beside the entrance.","Please let me know when you have completed self check-in.","Would you like recommendations for restaurants nearby?","The quiet hours begin at ten in the evening.","Is everything in the apartment working correctly?","Can you describe the problem with the shower?","I can send someone to inspect the air conditioner this afternoon.","Would tomorrow morning be a convenient time for the repair?","Please take the garbage to the bins behind the building.","Check-out is at eleven. Will you need extra time?","Please leave the keys in the lockbox when you depart."]
+  },
+  bar: {
+    type:"menu", title:"Explore the bar menu", note:"Interactive bar menu", intro:"Read the descriptions, select drinks and bar snacks, and review your fictional tab.", brand:"THE TRAVELER'S BAR", menuTitle:"DRINKS & BITES",
+    categories:[
+      {name:"Non-alcoholic", items:[["Citrus Cooler",7,"Orange, lime, mint, and sparkling water."],["Berry Mocktail",8,"Mixed berries, lemon, and soda."],["Ginger Lemonade",6,"Fresh lemon, ginger syrup, and still water."]] },
+      {name:"Drinks", items:[["Local Lager",8,"A light draft beer with a crisp finish."],["Pale Ale",9,"A hoppy draft beer with citrus notes."],["House Red Wine",11,"A medium-bodied red wine served by the glass."]] },
+      {name:"Bar snacks", items:[["Loaded Nachos",13,"Corn chips, cheese, beans, salsa, and sour cream."],["Crispy Onion Rings",9,"Battered onion rings with barbecue sauce."],["Olives & Flatbread",10,"Marinated olives with warm herb flatbread."]] }
+    ]
+  },
+  "city-tour": {
+    type:"itinerary", title:"Build a New York City itinerary", note:"5 interactive stops", intro:"Open each stop in order and follow a realistic one-day route through central Manhattan.",
+    stops:[
+      {time:"9:00", name:"Times Square", icon:"&#127917;", area:"Midtown", detail:"Meet beside the red steps, notice the famous billboards, and practice asking where the tour begins.", travel:"Start here"},
+      {time:"10:00", name:"Bryant Park & Library", icon:"&#128218;", area:"Midtown", detail:"Walk through Bryant Park and see the New York Public Library's main building.", travel:"10-minute walk"},
+      {time:"11:15", name:"Grand Central Terminal", icon:"&#128646;", area:"East Midtown", detail:"Explore the Main Concourse, find the information booth, and look at the ceiling mural.", travel:"10-minute walk"},
+      {time:"1:30", name:"Rockefeller Center", icon:"&#127963;", area:"Midtown", detail:"Stop for lunch nearby, see the plaza, and ask about observation-deck tickets.", travel:"15-minute walk"},
+      {time:"3:30", name:"Central Park South", icon:"&#127795;", area:"Uptown edge", detail:"Finish with a walk near the Pond and ask a local to take a group photo.", travel:"15 minutes by subway"}
+    ]
+  },
+  "public-transit": {
+    type:"transit-board", title:"Choose the right Vienna train", note:"Station timetable challenge", intro:"Choose where you are, read your destination, and select the departure with the correct line, direction, and time. Open the authentic Vienna map when you need a closer look.",
+    stations:[
+      {name:"Stephansplatz", goal:"You want to go to Praterstern.", services:[
+        {time:"10:04",line:"U1",direction:"Leopoldau",platform:"1",correct:true},{time:"10:06",line:"U1",direction:"Reumannplatz",platform:"2"},
+        {time:"10:08",line:"U3",direction:"Ottakring",platform:"3"},{time:"10:10",line:"U3",direction:"Simmering",platform:"4"}
+      ]},
+      {name:"Karlsplatz", goal:"You want to go to Schönbrunn.", services:[
+        {time:"10:03",line:"U1",direction:"Leopoldau",platform:"1"},{time:"10:05",line:"U1",direction:"Reumannplatz",platform:"2"},
+        {time:"10:07",line:"U2",direction:"Aspernstraße",platform:"3"},{time:"10:09",line:"U4",direction:"Hütteldorf",platform:"4",correct:true},{time:"10:11",line:"U4",direction:"Heiligenstadt",platform:"5"}
+      ]},
+      {name:"Praterstern", goal:"You want to go to Donauinsel.", services:[
+        {time:"10:02",line:"U1",direction:"Leopoldau",platform:"1",correct:true},{time:"10:04",line:"U1",direction:"Reumannplatz",platform:"2"},
+        {time:"10:06",line:"U2",direction:"Aspernstraße",platform:"3"},{time:"10:08",line:"U2",direction:"Karlsplatz",platform:"4"}
+      ]},
+      {name:"Schottenring", goal:"You want to go to Schwedenplatz.", services:[
+        {time:"10:01",line:"U2",direction:"Aspernstraße",platform:"1"},{time:"10:04",line:"U2",direction:"Karlsplatz",platform:"2"},
+        {time:"10:06",line:"U4",direction:"Hütteldorf",platform:"3",correct:true},{time:"10:09",line:"U4",direction:"Heiligenstadt",platform:"4"}
+      ]},
+      {name:"Landstraße", goal:"You want to go to Simmering.", services:[
+        {time:"10:03",line:"U3",direction:"Ottakring",platform:"1"},{time:"10:05",line:"U3",direction:"Simmering",platform:"2",correct:true},
+        {time:"10:07",line:"U4",direction:"Hütteldorf",platform:"3"},{time:"10:10",line:"U4",direction:"Heiligenstadt",platform:"4"}
+      ]},
+      {name:"Westbahnhof", goal:"You want to go to Ottakring.", services:[
+        {time:"10:02",line:"U3",direction:"Ottakring",platform:"1",correct:true},{time:"10:05",line:"U3",direction:"Simmering",platform:"2"},
+        {time:"10:07",line:"U6",direction:"Floridsdorf",platform:"3"},{time:"10:09",line:"U6",direction:"Siebenhirten",platform:"4"}
+      ]}
+    ]
   }
 };
 
@@ -973,6 +1092,42 @@ if (practiceRoot) {
     showGroup(groups[0]);
   };
 
+  const renderItinerary = () => {
+    let activeStop = 0;
+    specialStage.innerHTML = `<div class="city-itinerary"><div class="itinerary-route" data-itinerary-route></div><article class="itinerary-detail" data-itinerary-detail></article></div>`;
+    const route = specialStage.querySelector("[data-itinerary-route]");
+    const detail = specialStage.querySelector("[data-itinerary-detail]");
+    const showStop = (index) => {
+      activeStop = index;
+      const stop = special.stops[index];
+      route.innerHTML = special.stops.map((item, itemIndex) => `<button type="button" class="${itemIndex === activeStop ? "is-active" : ""} ${itemIndex < activeStop ? "is-visited" : ""}" data-itinerary-stop="${itemIndex}"><span>${itemIndex + 1}</span><b>${item.time}</b><strong>${item.name}</strong></button>`).join("");
+      detail.innerHTML = `<span class="itinerary-stop-icon" aria-hidden="true">${stop.icon}</span><div><p class="special-screen-label">Stop ${index + 1} of ${special.stops.length} &bull; ${stop.area}</p><h3>${stop.name}</h3><p>${stop.detail}</p><div class="itinerary-travel"><span aria-hidden="true">&#10140;</span><strong>${stop.travel}</strong></div>${index < special.stops.length - 1 ? `<div class="activity-actions"><button class="activity-button" type="button" data-next-stop>Next Stop</button></div>` : ""}</div>`;
+      route.querySelectorAll("[data-itinerary-stop]").forEach((button) => button.addEventListener("click", () => showStop(Number(button.dataset.itineraryStop))));
+      detail.querySelector("[data-next-stop]")?.addEventListener("click", () => showStop(index + 1));
+      specialFeedback.innerHTML = index === special.stops.length - 1 ? "<strong>Tour complete!</strong> Explain which stop you would most like to visit and why." : `<strong>${stop.name} selected.</strong> Read the plan aloud, then continue to the next stop.`;
+    };
+    showStop(0);
+  };
+
+  const renderTransitBoard = () => {
+    specialStage.innerHTML = `<div class="transit-station"><div class="transit-board"><div class="transit-board-heading"><span>WHERE ARE YOU?</span><b>WIEN</b></div><div class="transit-destinations">${special.stations.map((station, index) => `<button type="button" class="${index === 0 ? "is-active" : ""}" data-transit-station="${index}"><strong>${station.name}</strong><span>View departures</span></button>`).join("")}</div><div class="departure-display" data-departure-display></div></div><a class="vienna-map-preview" href="assets/vienna-subway-map.pdf" target="_blank" rel="noreferrer" aria-label="Open the full Vienna subway map in a new tab"><span class="map-zoom-badge">&#128269; Click to zoom</span><img src="assets/vienna-subway-map-preview.png" alt="Vienna subway and regional transit map"><strong>Open the authentic Vienna transit map</strong><small>PDF opens in a new tab so you can zoom in.</small></a></div>`;
+    const departureDisplay = specialStage.querySelector("[data-departure-display]");
+    const showStation = (index) => {
+      const station = special.stations[index];
+      specialStage.querySelectorAll("[data-transit-station]").forEach((button) => button.classList.toggle("is-active", Number(button.dataset.transitStation) === index));
+      departureDisplay.innerHTML = `<p class="special-screen-label">You are at ${station.name}</p><div class="vienna-travel-goal"><span aria-hidden="true">&#128205;</span><strong>${station.goal}</strong><small>Select the correct departure.</small></div><div class="vienna-board-columns"><span>TIME</span><span>LINE</span><span>DIRECTION</span><span>PLATFORM</span></div><div class="departure-times vienna-departure-times">${station.services.map((service, serviceIndex) => `<button type="button" data-service="${serviceIndex}"><span>${service.time}</span><strong class="vienna-line vienna-line-${service.line.toLowerCase()}">${service.line}</strong><span>${service.direction}</span><b>${service.platform}</b></button>`).join("")}</div>`;
+      departureDisplay.querySelectorAll("[data-service]").forEach((button) => button.addEventListener("click", () => {
+        const service = station.services[Number(button.dataset.service)];
+        departureDisplay.querySelectorAll("[data-service]").forEach((item) => item.classList.remove("is-correct", "is-wrong"));
+        button.classList.add(service.correct ? "is-correct" : "is-wrong");
+        specialFeedback.innerHTML = service.correct ? `<strong>Correct!</strong> Take the ${service.line} toward ${service.direction} at ${service.time} from platform ${service.platform}.` : `<strong>Not this train.</strong> The ${service.line} is going toward ${service.direction}. Check the map and try again.`;
+      }));
+      specialFeedback.innerHTML = `<strong>${station.name} selected.</strong> Read the destination, then choose the correct line, direction, and departure time.`;
+    };
+    specialStage.querySelectorAll("[data-transit-station]").forEach((button) => button.addEventListener("click", () => showStation(Number(button.dataset.transitStation))));
+    showStation(0);
+  };
+
   const renderProducts = () => {
     specialStage.innerHTML = `<div class="product-showcase-grid">${special.products.map((product, index) => `<button type="button" data-product-index="${index}"><span class="product-showcase-icon" aria-hidden="true">${product.icon}</span><strong>${product.name}</strong><small>View details</small></button>`).join("")}</div><article class="product-detail-panel" data-product-detail><div class="product-detail-placeholder"><span aria-hidden="true">&#128070;</span><p>Select one of the six products to see its information.</p></div></article>`;
     const detailPanel = specialStage.querySelector("[data-product-detail]");
@@ -1017,6 +1172,8 @@ if (practiceRoot) {
   if (special.type === "menu") renderMenu();
   if (special.type === "ticket") renderTicket();
   if (special.type === "routes") renderRoutes();
+  if (special.type === "itinerary") renderItinerary();
+  if (special.type === "transit-board") renderTransitBoard();
   if (special.type === "products") renderProducts();
   if (special.type === "decision") renderDecision();
   if (special.type === "exchange") renderExchange();

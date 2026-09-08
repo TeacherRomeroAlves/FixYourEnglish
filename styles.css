@@ -1375,6 +1375,9 @@ a {
 .topic-visa { background: #e4d3f3; }
 .topic-exchange { background: #f5df91; }
 .topic-airbnb { background: #bfe7db; }
+.topic-bar { background: #d9c2ea; }
+.topic-city-tour { background: #bfe2dd; }
+.topic-public-transit { background: #f4cf72; }
 .vocabulary-lab,
 .situation-dialogues,
 .speaking-mission-lab { margin-bottom: 24px; }
@@ -1584,6 +1587,70 @@ a {
 .route-result h3 { margin: 0 0 8px; }
 .route-result p { margin: 0 0 15px; line-height: 1.7; }
 
+.city-itinerary { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(0, 1.25fr); gap: 18px; }
+.itinerary-route { display: grid; gap: 8px; padding: 18px; border-radius: 22px; background: #193c49; }
+.itinerary-route button { display: grid; grid-template-columns: 34px 54px 1fr; align-items: center; gap: 10px; width: 100%; padding: 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 14px; background: rgba(255,255,255,.07); color: white; text-align: left; cursor: pointer; }
+.itinerary-route button > span { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #f5d568; color: #241334; font-weight: 800; }
+.itinerary-route button b { color: #8ce0d8; }
+.itinerary-route button.is-active { border-color: #f5d568; background: rgba(245,213,104,.18); transform: translateX(5px); }
+.itinerary-route button.is-visited > span { background: #8ce0d8; }
+.itinerary-detail { display: grid; grid-template-columns: auto 1fr; gap: 18px; min-height: 330px; padding: 30px; border: 1px solid rgba(55,34,76,.1); border-radius: 24px; background: linear-gradient(145deg, #fff8dd, #fff); }
+.itinerary-stop-icon { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 20px; background: #f5d568; font-size: 2.2rem; }
+.itinerary-detail h3 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; }
+.itinerary-detail p:not(.special-screen-label) { color: var(--text-soft); line-height: 1.65; }
+.itinerary-travel { display: flex; align-items: center; gap: 10px; margin: 22px 0; color: var(--teal-dark); }
+
+.transit-station { display: grid; grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr); gap: 18px; }
+.transit-board { overflow: hidden; border-radius: 22px; background: #172f3d; color: white; box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.transit-board-heading { display: flex; justify-content: space-between; padding: 16px 20px; background: #0f202a; color: #f5d568; font-weight: 800; letter-spacing: .1em; }
+.transit-destinations { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; padding: 12px; }
+.transit-destinations button { padding: 12px; border: 1px solid rgba(255,255,255,.15); border-radius: 12px; background: rgba(255,255,255,.07); color: white; text-align: left; cursor: pointer; }
+.transit-destinations button strong, .transit-destinations button span { display: block; }
+.transit-destinations button span { margin-top: 4px; color: #9ccfd0; font-size: .76rem; }
+.transit-destinations button.is-active { border-color: #f5d568; background: #f5d568; color: #241334; }
+.transit-destinations button.is-active span { color: #594914; }
+.departure-display { padding: 0 18px 20px; }
+.departure-display .special-screen-label { color: #8ce0d8; }
+.departure-times { display: grid; gap: 6px; }
+.departure-times p { display: grid; grid-template-columns: 60px 1fr auto; gap: 10px; margin: 0; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.departure-times p > span { color: #f5d568; font-weight: 800; }
+.departure-times p > b { color: #8ce0d8; font-size: .72rem; }
+.platform-label { margin: 16px 0 0; }
+.vienna-board-columns, .vienna-departure-times button { display: grid; grid-template-columns: 54px 48px minmax(95px, 1fr) auto; align-items: center; gap: 9px; }
+.vienna-board-columns { padding: 8px 0; border-top: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); color: #8ce0d8; font-size: .64rem; font-weight: 800; letter-spacing: .08em; }
+.vienna-departure-times button { width: 100%; margin: 0; padding: 9px 0; border: 0; border-bottom: 1px solid rgba(255,255,255,.12); background: transparent; color: white; font: inherit; text-align: left; cursor: pointer; transition: background .18s ease, padding .18s ease; }
+.vienna-departure-times button:hover, .vienna-departure-times button:focus-visible { padding-right: 7px; padding-left: 7px; background: rgba(255,255,255,.1); outline: none; }
+.vienna-departure-times button.is-correct { padding-right: 7px; padding-left: 7px; background: rgba(73,190,149,.28); }
+.vienna-departure-times button.is-wrong { background: rgba(244,126,126,.18); }
+.vienna-departure-times button > span:nth-child(3) { color: #fff; font-size: .8rem; }
+.vienna-departure-times button > b { color: #8ce0d8; font-size: .75rem; text-align: center; }
+.vienna-travel-goal { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 8px 0 17px; padding: 13px; border-radius: 13px; background: #f5d568; color: #241334; }
+.vienna-travel-goal > span { grid-row: span 2; font-size: 1.4rem; }
+.vienna-travel-goal > small { color: #67531a; font-weight: 700; }
+.vienna-line { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 5px; background: #e51c2a; color: white; }
+.vienna-line-u2 { background: #9557a5; }
+.vienna-line-u3 { background: #ef7d00; }
+.vienna-line-u4 { background: #009c58; }
+.vienna-line-cat { width: 42px; background: #75b843; }
+.vienna-map-preview { position: relative; display: flex; min-width: 0; padding: 15px; border: 1px solid rgba(55,34,76,.12); border-radius: 22px; background: #fffdf8; color: #241334; flex-direction: column; text-decoration: none; box-shadow: 0 14px 34px rgba(55,34,76,.1); transition: transform .2s ease, box-shadow .2s ease; }
+.vienna-map-preview:hover, .vienna-map-preview:focus-visible { box-shadow: 0 20px 42px rgba(55,34,76,.16); transform: translateY(-4px); outline: 3px solid rgba(22,142,139,.24); }
+.vienna-map-preview img { display: block; width: 100%; aspect-ratio: 842 / 596; border: 1px solid #e3dfe2; border-radius: 13px; object-fit: cover; }
+.vienna-map-preview > strong { margin: 13px 3px 3px; font-size: 1.05rem; }
+.vienna-map-preview > small { margin: 0 3px 4px; color: var(--text-soft); }
+.map-zoom-badge { position: absolute; z-index: 2; top: 27px; right: 27px; padding: 8px 11px; border-radius: 999px; background: #241334; color: white; font-size: .72rem; font-weight: 800; box-shadow: 0 6px 18px rgba(36,19,52,.2); }
+.subway-map-panel { padding: 24px; border: 1px solid rgba(55,34,76,.1); border-radius: 22px; background: #fffdf8; }
+.subway-route { display: flex; align-items: flex-start; overflow-x: auto; padding: 28px 4px 34px; }
+.subway-stop { position: relative; flex: 1 0 95px; text-align: center; }
+.subway-stop::before { content: ""; position: absolute; z-index: 0; top: 15px; left: 0; width: 100%; height: 7px; background: #259b9a; }
+.subway-stop:first-child::before { left: 50%; width: 50%; }
+.subway-stop:last-child::before { width: 50%; }
+.subway-stop span { position: relative; z-index: 1; display: grid; place-items: center; width: 36px; height: 36px; margin: 0 auto 10px; border: 5px solid #259b9a; border-radius: 50%; background: white; color: #241334; font-size: .7rem; font-weight: 800; }
+.subway-stop.is-destination span { border-color: #6d2f89; background: #f5d568; }
+.subway-stop strong { display: block; font-size: .78rem; }
+.transit-instruction { display: flex; gap: 14px; margin-top: 18px; padding: 18px; border-radius: 16px; background: #e8f4f0; }
+.transit-instruction > span { font-size: 2rem; }
+.transit-instruction h3, .transit-instruction p { margin: 0 0 8px; }
+
 .product-showcase-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(165px, auto)); gap: 14px; }
 .product-showcase-grid > button { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 7px; min-width: 0; padding: 20px 14px; border: 2px solid rgba(91,35,116,.12); border-radius: 22px; background: linear-gradient(145deg, #fffdf8, #f4edf7); color: #342043; font: inherit; cursor: pointer; box-shadow: 0 12px 28px rgba(55,34,76,.07); transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease; }
 .product-showcase-grid > button:hover, .product-showcase-grid > button:focus-visible { border-color: #168e8b; box-shadow: 0 18px 35px rgba(55,34,76,.13); transform: translateY(-4px); outline: none; }
@@ -1630,6 +1697,7 @@ a {
   .route-sidebar .special-screen-label { flex-basis: 100%; }
   .route-sidebar > button { width: auto; margin: 0; }
   .exchange-desk { grid-template-columns: 1fr; }
+  .city-itinerary, .transit-station { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 900px) {
@@ -1653,6 +1721,11 @@ a {
   .roulette-dial { width: 150px; margin: auto; }
   .roulette-question { min-height: 110px; }
   .special-primary-button { min-width: 0; width: 100%; }
+  .itinerary-detail { grid-template-columns: 1fr; padding: 22px; }
+  .itinerary-route button.is-active { transform: none; }
+  .transit-destinations { grid-template-columns: 1fr 1fr; }
+  .vienna-board-columns, .vienna-departure-times button { grid-template-columns: 48px 42px minmax(80px, 1fr) auto; gap: 6px; }
+  .vienna-departure-times button > b { font-size: .62rem; }
   .kiosk-screen { min-height: 390px; padding: 22px 17px; }
   .kiosk-options, .kiosk-summary { grid-template-columns: 1fr; }
   .menu-brand { align-items: flex-start; flex-direction: column; }
