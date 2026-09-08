@@ -2752,6 +2752,7 @@ body:not(.home-v2) .lesson-hero.toefl-writing-hero {
 .toefl-export-panel p:not(.panel-kicker) { margin: 4px 0 0; color: #64546f; line-height: 1.5; }
 .toefl-export-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .toefl-print-header, .standard-print-document { display: none; }
+.toefl-print-response { display: none; }
 
 @page { size: A4; margin: 14mm; }
 
@@ -2957,8 +2958,12 @@ body:not(.home-v2) .toefl-exercise { margin-top: 18px; }
   body.toefl-printing .toefl-question[hidden] { display: grid !important; }
   body.toefl-printing .toefl-question { padding: 3mm 0; border: 0; border-top: 1px solid #d5d1d7; border-radius: 0; background: white; break-inside: avoid; }
   body.toefl-printing .toefl-question label { padding: 1.5mm 2mm; border: 0 !important; background: transparent !important; color: #19151d !important; font-size: 9.5pt; }
-  body.toefl-printing .toefl-question input { appearance: none; width: 3.5mm; height: 3.5mm; margin: 1mm 0 0; border: 1px solid #19151d; border-radius: 50%; }
-  body.toefl-printing .toefl-question input:checked::after { display: block; width: 1.8mm; height: 1.8mm; margin: 0.65mm; border-radius: 50%; background: #19151d; content: ""; }
+  body.toefl-printing .toefl-question input { display: none !important; }
+  body.toefl-printing .toefl-print-response { display: inline; }
+  body.toefl-printing .toefl-print-choice-marker { margin-right: 1mm; color: #5d5360; font-weight: 400; }
+  body.toefl-printing .toefl-print-choice-marker.is-selected { color: #5b2374; font-weight: 700; }
+  body.toefl-printing .toefl-letter-gap { display: none !important; }
+  body.toefl-printing .toefl-print-text-response { display: inline-block; min-width: 12mm; padding: 0 1mm 0.5mm; border-bottom: 1px solid #19151d; color: #5b2374; font-weight: 700; text-align: center; }
   body.toefl-printing .is-print-hidden-answer { border-color: transparent !important; background: transparent !important; color: #19151d !important; font-weight: inherit !important; }
 }
 

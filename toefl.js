@@ -287,6 +287,23 @@ pauseTimerButton?.addEventListener("click", () => {
 
 let restoreAfterPrint = null;
 
+const createReadingPrintMarkers = (controls, includeStudentAnswers) => controls.map((control) => {
+  const marker = document.createElement("span");
+  marker.className = "toefl-print-response";
+  if (control.type === "radio" || control.type === "checkbox") {
+    const selected = includeStudentAnswers && control.checked;
+    marker.classList.add("toefl-print-choice-marker");
+    marker.classList.toggle("is-selected", selected);
+    marker.textContent = selected ? "● Student answer: " : "○ ";
+  } else {
+    marker.classList.add("toefl-print-text-response");
+    const response = includeStudentAnswers ? control.value.trim() : "";
+    marker.textContent = response || "________";
+  }
+  control.insertAdjacentElement("afterend", marker);
+  return marker;
+});
+
 const finishPrint = () => {
   if (!restoreAfterPrint) return;
   restoreAfterPrint();
@@ -315,6 +332,8 @@ const printSelectedTest = (includeStudentAnswers) => {
     });
   }
 
+  const printMarkers = createReadingPrintMarkers(controls, includeStudentAnswers);
+
   testContent.forEach((element) => { element.hidden = false; });
   testExercises.forEach((exercise) => {
     exercise.hidden = exercise.dataset.toeflTest !== selectedTest;
@@ -331,6 +350,7 @@ const printSelectedTest = (includeStudentAnswers) => {
       control.value = value;
       control.checked = checked;
     });
+    printMarkers.forEach((marker) => marker.remove());
     document.querySelectorAll(".is-print-hidden-answer").forEach((element) => element.classList.remove("is-print-hidden-answer"));
     document.body.classList.remove("toefl-printing");
     delete document.body.dataset.toeflPrintMode;

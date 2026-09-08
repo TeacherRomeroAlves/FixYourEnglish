@@ -34,9 +34,20 @@ for (const required of [
   "delete document.body.dataset.writingPrintMode"
 ]) assert(source.includes(required), required);
 
+const readingSource = fs.readFileSync('toefl.js', 'utf8');
+for (const required of [
+  'createReadingPrintMarkers',
+  'marker.textContent = selected ? "● Student answer: " : "○ "',
+  'const response = includeStudentAnswers ? control.value.trim() : ""',
+  'const printMarkers = createReadingPrintMarkers(controls, includeStudentAnswers)',
+  'printMarkers.forEach((marker) => marker.remove())'
+]) assert(readingSource.includes(required), required);
+
 assert(source.includes("item.querySelector('[data-build-bank]').children"));
 assert(source.includes("writingTests[selectedTest].sentences[index][0]"));
 assert(css.includes('body.toefl-writing-printing[data-writing-print-mode="answers"] .build-bank'));
 assert(css.includes('body.toefl-writing-printing .build-print-summary'));
 assert(css.includes('body.toefl-printing .toefl-question { padding: 3mm 0; border: 0;'));
+assert(css.includes('body.toefl-printing .toefl-print-choice-marker.is-selected'));
+assert(css.includes('body.toefl-printing .toefl-print-text-response'));
 console.log('PASS: all 12 mock tests export prompts; sentence exports include responses and unused blocks; answered and blank PDF modes restore cleanly; compact Reading PDF rules are present.');
