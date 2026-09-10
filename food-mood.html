@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guess food vocabulary before all five tomato lives disappear.">
+  <title>Food Mood | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="food-mood.css">
+  <script src="food-mood-engine.js" defer></script>
+  <script src="food-mood.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell">
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero food-mood-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">A fresh vocabulary arcade</p>
+      <h1>FOOD MOOD</h1>
+      <p class="hero-copy">Discover the food before your tomatoes disappear. Every mistake and every clue costs one life, so choose carefully.</p>
+      <div class="routine-row" aria-label="Game features"><span class="routine-chip">5 tomato lives</span><span class="routine-chip">4 clues</span><span class="routine-chip">Food vocabulary</span><span class="routine-chip">Endless rounds</span></div>
+    </section>
+
+    <section class="lesson-card food-mood-game" data-food-mood>
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Kitchen challenge</p><h2>Can you save the recipe?</h2></div><p class="panel-note">One food per round</p></div>
+      <div class="speaking-instructions-card food-mood-instructions">
+        <p class="reading-instructions-title">How to play</p>
+        <ol class="reading-instructions-list">
+          <li>Choose letters to discover the hidden food.</li>
+          <li>A wrong letter costs one tomato. Each clue also costs one tomato.</li>
+          <li>After the word is revealed, decide whether it is countable or uncountable in the example sentence.</li>
+          <li>Win or lose, choose <strong>Next Food</strong> to keep practicing.</li>
+        </ol>
+      </div>
+
+      <div class="food-start" data-food-start-panel>
+        <div class="food-start-dish" aria-hidden="true"><span>&#127858;</span><i>?</i></div>
+        <h3>Your mystery dish is ready.</h3>
+        <p>Every round brings a random food and a fresh set of five tomatoes.</p>
+        <button class="activity-button reading-primary-button" type="button" data-food-start>Start Game</button>
+      </div>
+
+      <div class="food-round" data-food-round hidden>
+        <div class="food-statusbar">
+          <div><span>Tomatoes</span><strong class="tomato-lives" data-food-lives aria-label="Five lives"></strong></div>
+          <button class="food-skip-button" type="button" data-food-new>New Food</button>
+        </div>
+        <div class="food-counter-scene">
+          <div class="food-word-wrap"><p>What food is hiding?</p><div class="food-word" data-food-word aria-label="Hidden food word"></div></div>
+          <div class="food-clue-panel">
+            <p class="special-screen-label">Clue counter</p>
+            <div class="food-clue-buttons">
+              <button type="button" data-food-clue="category"><span>Category</span><small>Costs 1 tomato</small></button>
+              <button type="button" data-food-clue="definition"><span>Definition</span><small>Costs 1 tomato</small></button>
+              <button type="button" data-food-clue="letter"><span>Random letter</span><small>Costs 1 tomato</small></button>
+              <button type="button" data-food-clue="example"><span>Example</span><small>Costs 1 tomato</small></button>
+            </div>
+            <div class="food-clue-results" data-food-clues><p>No clues opened yet.</p></div>
+          </div>
+        </div>
+        <div class="food-keyboard" data-food-keyboard aria-label="Letter keyboard"></div>
+        <p class="activity-feedback food-feedback" data-food-feedback aria-live="polite">Choose your first letter.</p>
+
+        <div class="food-countability" data-food-countability hidden>
+          <p class="prompt-label">One final bite</p>
+          <h3>Countable or uncountable?</h3>
+          <p data-food-context></p>
+          <div class="food-count-buttons"><button type="button" data-count-answer="countable">Countable</button><button type="button" data-count-answer="uncountable">Uncountable</button></div>
+          <p class="food-count-feedback" data-count-feedback aria-live="polite"></p>
+          <button class="activity-button" type="button" data-food-next hidden>Next Food</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p>Please enable JavaScript to play Food Mood.</p></noscript>
+</body>
+</html>
