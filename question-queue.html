@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Listen to hidden English questions and practice answering aloud.">
+  <title>Question Queue | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="question-queue.css">
+  <script src="question-queue-data.js" defer></script>
+  <script src="question-queue.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell" data-question-queue>
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero queue-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos">
+          <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a>
+          <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a>
+        </div>
+      </div>
+      <p class="eyebrow">Listen. Think. Speak.</p>
+      <h1>QUESTION QUEUE</h1>
+      <p class="hero-copy">Meet your conversation partner, choose what to practice, and answer a queue of questions you cannot see until you have listened twice.</p>
+      <div class="routine-row" aria-label="Activity features"><span class="routine-chip">3 levels</span><span class="routine-chip">9 grammar topics</span><span class="routine-chip">36 themes</span><span class="routine-chip">432 questions</span></div>
+    </section>
+
+    <section class="lesson-card queue-setup" data-queue-setup>
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Choose your partner</p><h2>Who would you like to talk to?</h2></div><p class="panel-note">Different levels, different questions</p></div>
+      <div class="queue-character-grid" data-queue-levels></div>
+
+      <div class="queue-topic-section">
+        <div class="panel-heading lesson-heading"><div><p class="panel-kicker">Choose your focus</p><h2>What would you like to practice?</h2></div></div>
+        <div class="queue-topic-grid" data-queue-topics></div>
+      </div>
+      <div class="queue-setup-action"><button class="activity-button reading-primary-button" type="button" data-queue-continue disabled>Meet Your Partner</button></div>
+    </section>
+
+    <section class="lesson-card queue-room" data-queue-room hidden>
+      <div class="queue-room-header">
+        <div class="queue-active-character" data-active-character></div>
+        <div><p class="panel-kicker">Conversation room</p><h2 data-room-title>Choose a theme</h2><p data-room-description></p></div>
+        <button class="queue-change-button" type="button" data-change-selection>Change level or grammar</button>
+      </div>
+      <p class="browser-language-note"><strong>Listening tip:</strong> Set your browser language to English for a more natural voice.</p>
+      <div class="queue-theme-grid" data-queue-themes></div>
+
+      <div class="queue-player" data-queue-player hidden>
+        <div class="queue-player-topline"><div><span>Question</span><strong data-queue-progress>1 of 4</strong></div><div class="queue-number-nav" data-queue-numbers aria-label="Question navigation"></div></div>
+        <article class="queue-question-stage">
+          <div class="queue-speaker-character" data-speaker-character></div>
+          <div class="queue-speech-card">
+            <p class="special-screen-label" data-question-theme>Conversation question</p>
+            <div class="queue-hidden-question" data-hidden-question><span aria-hidden="true">&#128266;</span><strong>Listen to discover the question.</strong></div>
+            <p class="queue-revealed-question" data-revealed-question hidden></p>
+            <div class="queue-listen-meter" aria-label="Listening progress"><span data-listen-dot="1"></span><span data-listen-dot="2"></span><small data-listen-status>Listen 0 of 2</small></div>
+            <div class="activity-actions queue-audio-actions">
+              <button class="activity-button" type="button" data-listen-question>Listen to the Question</button>
+              <button class="activity-button secondary-button" type="button" data-reveal-question disabled>Reveal Question</button>
+            </div>
+          </div>
+        </article>
+        <p class="activity-feedback queue-feedback" data-queue-feedback aria-live="polite">Listen carefully before answering.</p>
+        <div class="queue-next-actions"><button class="activity-button secondary-button" type="button" data-queue-previous>Previous</button><button class="activity-button reading-primary-button" type="button" data-queue-next>Next Question</button></div>
+      </div>
+    </section>
+  </main>
+  <noscript><p>Please enable JavaScript to use Question Queue.</p></noscript>
+</body>
+</html>

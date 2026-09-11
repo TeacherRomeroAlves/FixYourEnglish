@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practice WH questions by identifying a mystery celebrity with a partner.">
+  <title>Who-lette | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="who-lette.css">
+  <script src="who-lette-data.js" defer></script>
+  <script src="who-lette.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell" data-who-lette>
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero who-lette-hero">
+      <div class="hero-signature">
+        <p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p>
+        <div class="logo-signature" aria-label="Teacher logos"><a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a><a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a></div>
+      </div>
+      <p class="eyebrow">A celebrity question game for two</p>
+      <h1>WHO-LETTE</h1>
+      <p class="hero-copy">One player knows the celebrity. The other asks up to six questions and gets one final chance to discover who it is.</p>
+      <div class="routine-row"><span class="routine-chip">24 celebrities</span><span class="routine-chip">6 questions</span><span class="routine-chip">1 final guess</span></div>
+    </section>
+
+    <section class="lesson-card wholet-intro" data-intro>
+      <div class="panel-heading lesson-heading"><div><p class="panel-kicker">How to play</p><h2>Two players. One mystery person.</h2></div></div>
+      <div class="wholet-rules"><article><b>1</b><h3>Spin</h3><p>Player B looks away while Player A discovers the celebrity.</p></article><article><b>2</b><h3>Ask</h3><p>Hide the profile. Player B asks up to six questions using the starters.</p></article><article><b>3</b><h3>Guess</h3><p>Type one final answer. The round ends whether it is right or wrong.</p></article></div>
+      <button class="activity-button wholet-primary" type="button" data-start>Start Who-lette</button>
+    </section>
+
+    <section class="lesson-card wholet-game" data-game hidden>
+      <div class="wholet-status"><div><span>Round</span><strong data-round>1</strong></div><div><span>Questions used</span><strong><i data-used>0</i> / 6</strong></div></div>
+
+      <section class="wholet-spin-stage" data-spin-stage>
+        <div class="wholet-card-shuffler" data-card-shuffler><div class="wholet-flip-card" data-flip-card><span data-shuffle-face>&#128104;</span><strong>WHO?</strong></div><i></i><i></i></div>
+        <div><p class="panel-kicker">Mystery card shuffle</p><h2>Who will you meet?</h2><p>The cards will flip quickly and choose a celebrity at random.</p><button class="activity-button wholet-primary" type="button" data-spin>Shuffle the Cards</button></div>
+      </section>
+
+      <section class="wholet-question-stage" data-question-stage hidden>
+        <div class="wholet-mystery-banner"><span data-public-avatar></span><div><p class="panel-kicker">Mystery celebrity</p><h2>Ask before you guess</h2><p>Only the person emoji is visible. Use the subject pronoun <strong data-pronoun>he</strong> for this person.</p></div></div>
+        <div class="wholet-information-actions"><p>Player B should look away while Player A checks the private information.</p><button class="activity-button wholet-primary" type="button" data-show-profile>Celebrity Information</button></div>
+        <article class="wholet-profile wholet-inline-profile" data-profile hidden><span class="wholet-profile-avatar" data-profile-avatar></span><p class="panel-kicker">Player A only</p><h2 data-profile-name></h2><p class="wholet-field" data-profile-field></p><ul data-profile-facts></ul><button class="activity-button secondary-button" type="button" data-hide-profile>Hide Celebrity Information</button></article>
+        <div class="wholet-starters" aria-label="Question starters"><span>Who</span><span>What</span><span>Where</span><span>When</span><span>Why</span><span>Which</span><span>How</span><span>Is / Was</span><span>Does / Did</span><span>Can / Could</span></div>
+        <div class="wholet-notebook">
+          <div class="wholet-notebook-heading"><div><p class="panel-kicker">Question notebook</p><h2>Record the conversation</h2></div><button class="wholet-example-button" type="button" data-example>Trade one question for an example</button></div>
+          <p class="wholet-example" data-example-output aria-live="polite"></p>
+          <div class="wholet-question-list" data-question-list></div>
+        </div>
+        <div class="wholet-guess-card"><div><p class="panel-kicker">One final chance</p><h2>Who is the celebrity?</h2><p>Your first submitted guess ends the round.</p></div><div class="wholet-guess-controls"><input type="text" data-guess autocomplete="off" placeholder="Type the full name"><button class="activity-button wholet-primary" type="button" data-submit-guess>Submit Final Guess</button></div></div>
+      </section>
+
+      <section class="wholet-result" data-result hidden><span data-result-icon></span><p class="panel-kicker">Mystery revealed</p><h2 data-result-title></h2><p data-result-copy></p><div class="wholet-answer"><span data-result-avatar></span><strong data-result-name></strong><small data-result-field></small></div><button class="activity-button wholet-primary" type="button" data-new-round>Spin Another Celebrity</button></section>
+    </section>
+  </main>
+</body>
+</html>

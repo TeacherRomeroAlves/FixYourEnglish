@@ -462,6 +462,19 @@ a {
 .memory-card-visual span:nth-child(3) { transform: translateY(-4px) rotate(8deg); background: #ffd764; font-size: 1.5rem; }
 .games-grid > .game-card { grid-column: span 4; min-height: 390px; }
 .games-grid > .game-card-food-mood { grid-column: span 4; min-height: 390px; }
+.games-grid > .game-card-question-queue { grid-column: span 6; min-height: 390px; background: radial-gradient(circle at 78% 20%, rgba(140,224,216,.22), transparent 24%), linear-gradient(125deg, #24213f, #173f49); color: white; }
+.game-card-question-queue p { color: rgba(255,255,255,.72); }
+.question-queue-card-visual { position: absolute; top: 34px; right: 38px; display: flex; align-items: center; gap: 13px; }
+.question-queue-card-visual > span { display: grid; width: 106px; height: 126px; place-items: center; border: 5px double rgba(245,213,104,.75); border-radius: 22px; background: #5b2374; color: #f5d568; font-size: 4.8rem; font-weight: 800; box-shadow: 14px 14px 0 rgba(22,142,139,.62); transform: rotate(-4deg); }
+.question-queue-card-visual > div { display: flex; gap: 5px; }
+.question-queue-card-visual i { display: block; width: 12px; height: 12px; border-radius: 50%; background: #8ce0d8; }
+.question-queue-card-visual i:nth-child(2) { background: #f5d568; }
+.question-queue-card-visual > b { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: white; font-size: 1.35rem; }
+.games-grid > .game-card-who-lette { grid-column: span 6; min-height: 390px; background: radial-gradient(circle at 75% 18%, rgba(255,255,255,.18), transparent 23%), linear-gradient(125deg, #e74668, #ee7c52); color: white; }
+.game-card-who-lette p { color: rgba(255,255,255,.82); }
+.who-lette-card-visual { position: absolute; top: 36px; right: 38px; display: flex; align-items: center; gap: 8px; }
+.who-lette-card-visual span { display: grid; width: 78px; height: 96px; place-items: center; border: 3px solid rgba(255,255,255,.72); border-radius: 42px 42px 22px 22px; background: #fff8dc; font-size: 3rem; box-shadow: 0 12px 24px rgba(85,28,34,.18); }
+.who-lette-card-visual span:nth-child(2) { width: 112px; height: 112px; border-radius: 50%; background: #522166; color: #f5d568; font-size: 1.25rem; font-weight: 800; transform: rotate(-8deg); }
 .game-visual { position: absolute; top: 26px; right: 30px; display: flex; align-items: baseline; color: rgba(255,255,255,.2); font-weight: 800; }
 .game-visual span { font-size: clamp(5rem, 9vw, 9rem); line-height: 1; }
 .game-visual small { margin: 0 8px; color: white; font-size: 1.2rem; }
