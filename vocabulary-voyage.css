@@ -50,7 +50,8 @@
 .voyage-clues span { color: #6c356f; font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .voyage-clues p { margin: 0; color: #4e414c; }
 .voyage-guess { max-width: 760px; margin: 28px auto 0; }
-.voyage-guess label { display: block; margin-bottom: 7px; color: #321545; font-weight: 800; }
+.voyage-guess label { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 7px; color: #321545; font-weight: 800; }
+.voyage-guess label small { color: #a63859; font-size: .78rem; }
 .voyage-guess > div { display: flex; gap: 10px; }
 .voyage-guess input { flex: 1; min-width: 0; padding: 15px 18px; border: 2px solid #d3c4d4; border-radius: 13px; font: 700 1.15rem/1 Outfit, sans-serif; text-transform: lowercase; }
 .voyage-guess input:focus { border-color: #16796f; outline: 3px solid rgba(22,121,111,.13); }

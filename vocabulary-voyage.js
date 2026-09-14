@@ -10,6 +10,7 @@
   const clues = $("[data-voyage-clues]");
   const feedback = $("[data-voyage-feedback]");
   let game;
+  const formatDollars = value => `$${value.toLocaleString("en-US")}`;
 
   const flagCode = flag => [...flag].map(character => String.fromCharCode(character.codePointAt(0) - 0x1F1E6 + 65)).join("").toLowerCase();
   const flagImage = (stop, className = "") => `<img class="${className}" src="https://flagcdn.com/${flagCode(stop.flag)}.svg" alt="Flag of ${stop.destination}" loading="lazy">`;
@@ -22,10 +23,14 @@
     $("[data-voyage-mask]").innerHTML = game.mask().map(letter => `<span class="${letter === "_" ? "" : "is-revealed"}">${letter}</span>`).join("");
   };
 
+  const renderBudget = () => {
+    $("[data-voyage-progress]").textContent = `Stop ${game.stopIndex + 1} of 7 · ${formatDollars(game.total)} left`;
+    $("[data-voyage-total]").textContent = formatDollars(game.total);
+  };
+
   const renderStop = () => {
     const stop = game.current;
-    $("[data-voyage-progress]").textContent = `Stop ${game.stopIndex + 1} of 7`;
-    $("[data-voyage-total]").textContent = game.total.toLocaleString("en-US");
+    renderBudget();
     $("[data-voyage-flag]").innerHTML = `${flagImage(stop, "voyage-country-flag")}<small>${stop.destination}</small>`;
     $("[data-voyage-country]").textContent = stop.destination;
     $("[data-voyage-language]").textContent = stop.language;
@@ -62,11 +67,11 @@
   document.querySelectorAll("[data-clue]").forEach(button => button.addEventListener("click", () => {
     const type = button.dataset.clue;
     if (!game.clue(type)) return;
-    $("[data-voyage-total]").textContent = game.total.toLocaleString("en-US");
-    if (game.over) { showFinish("points"); return; }
+    renderBudget();
+    if (game.over) { showFinish("budget"); return; }
     if (type === "letter") {
       renderMask();
-      feedback.textContent = "One letter has been stamped onto your boarding pass.";
+      feedback.textContent = "One letter has been stamped onto your boarding pass for $15.";
       if (game.mask().filter(letter => letter === "_").length <= 2) button.disabled = true;
       return;
     }
@@ -80,10 +85,10 @@
     event.preventDefault();
     if (!answer.value.trim()) { feedback.textContent = "Type a word before checking your passport."; return; }
     const outcome = game.guess(answer.value);
-    $("[data-voyage-total]").textContent = game.total.toLocaleString("en-US");
+    renderBudget();
     if (!outcome.correct) {
-      if (outcome.gameOver) { showFinish("points"); return; }
-      feedback.innerHTML = `<strong>Not this word yet.</strong> Five points were deducted. Try another spelling or unlock a clue.`;
+      if (outcome.gameOver) { showFinish("budget"); return; }
+      feedback.innerHTML = `<strong>Not this word yet.</strong> $10 was deducted from your travel budget. Try another spelling or buy a clue.`;
       answer.select();
       return;
     }
@@ -98,7 +103,7 @@
     $("[data-arrival-summary]").textContent = `Passport stamp collected. ${outcome.result.meaning}`;
     $("[data-voyage-next]").textContent = game.completed.length === 7 ? "Complete My Voyage" : "Fly to the Next Stop";
     $("[data-voyage-arrival]").hidden = false;
-    feedback.textContent = "Correct! Your passport has received a new stamp.";
+    feedback.textContent = "Correct! Your passport has received a new stamp, and no dollars were deducted.";
     renderRoute();
   });
 
@@ -107,10 +112,10 @@
     finish.hidden = false;
     const countries = game.completed.map(stop => stop.destination);
     const complete = reason === "complete";
-    $("[data-voyage-finish-kicker]").textContent = complete ? "Journey complete" : reason === "points" ? "Travel budget exhausted" : "Voyage paused";
+    $("[data-voyage-finish-kicker]").textContent = complete ? "Journey complete" : reason === "budget" ? "Travel budget exhausted" : "Voyage paused";
     $("[data-voyage-finish-title]").textContent = complete ? "You traveled through seven words!" : `You collected ${countries.length} passport stamp${countries.length === 1 ? "" : "s"}.`;
-    $("[data-voyage-final-copy]").textContent = countries.length ? `Your English passport includes words connected to ${countries.join(", ")}.` : "This trip ended before the first word was discovered. Start another voyage whenever you are ready.";
-    $("[data-voyage-final-score]").textContent = game.total;
+    $("[data-voyage-final-copy]").textContent = countries.length ? `You visited ${countries.join(", ")} and finished the trip with ${formatDollars(game.total)} left.` : `This trip ended before the first word was discovered. You still had ${formatDollars(game.total)} available.`;
+    $("[data-voyage-final-score]").textContent = formatDollars(game.total);
     $("[data-voyage-final-stamps]").innerHTML = game.completed.map(stop => `<span><b>${flagImage(stop, "stamp-country-flag")}</b><small>${stop.destination}</small></span>`).join("");
     finish.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -123,7 +128,7 @@
   const shareText = () => {
     const route = game.completed.length ? game.completed.map(stop => stop.destination).join(" · ") : "My passport is still waiting for its first stamp.";
     const headline = game.completed.length === 7 ? "🌍 VOCABULARY VOYAGE COMPLETE! ✈️" : "🧳 MY VOCABULARY VOYAGE SO FAR ✈️";
-    return `${headline}\n\nI discovered ${game.completed.length} of 7 traveling English words and finished with ${game.total}/700 points!\n\nMy route: ${route}\n\nCan you complete the voyage too?\n${new URL("vocabulary-voyage.html", window.location.href).href}`;
+    return `${headline}\n\nI traveled to ${game.completed.length} of 7 countries and finished my Vocabulary Voyage with ${formatDollars(game.total)} left from my $700 budget! 💵🌍\n\nMy route: ${route}\n\nCan you complete the voyage and save more dollars?\n${new URL("vocabulary-voyage.html", window.location.href).href}`;
   };
 
   $("[data-voyage-share]").addEventListener("click", async () => {

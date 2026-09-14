@@ -97,7 +97,7 @@
     }
 
     clue(type, random = Math.random) {
-      const costs = { meaning: 10, context: 10, original: 15, letter: 10 };
+      const costs = { meaning: 20, context: 15, original: 10, letter: 15 };
       if (!costs[type]) return null;
       if (type !== "letter" && this.clues.has(type)) return null;
       if (type === "letter") {
@@ -117,7 +117,7 @@
         this.completed.push(result);
         return { correct: true, result };
       }
-      this.total = Math.max(0, this.total - 5);
+      this.total = Math.max(0, this.total - 10);
       if (this.total === 0) this.over = true;
       return { correct: false, gameOver: this.over };
     }

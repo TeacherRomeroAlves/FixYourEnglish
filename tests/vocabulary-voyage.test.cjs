@@ -21,13 +21,13 @@ const tripCounts = game.stops.reduce((counts, item) => counts.set(item.destinati
 assert.ok([...tripCounts.values()].every(count => count <= 2), "A trip may visit one destination at most twice");
 assert.equal(game.mask().length, game.current.word.length);
 assert.equal(game.clue("meaning"), "meaning");
-assert.equal(game.total, 690);
+assert.equal(game.total, 680);
 assert.equal(game.clue("meaning"), null);
 assert.equal(game.clue("letter", () => 0), "letter");
-assert.equal(game.total, 680);
+assert.equal(game.total, 665);
 assert.equal(game.guess("definitelywrong").correct, false);
 assert.equal(game.guess(game.current.word.toUpperCase()).correct, true);
-assert.equal(game.total, 675);
+assert.equal(game.total, 655);
 assert.equal(game.next(), true);
 assert.equal(game.stopIndex, 1);
 game.stop();
@@ -43,6 +43,14 @@ assert.equal(letterLimitGame.mask().filter(letter => letter === "_").length, 2);
 assert.equal(letterLimitGame.clue("letter", () => 0), null);
 assert.equal(letterLimitGame.total, scoreAtLimit);
 
+const costGame = new VoyageGame(() => 0.3);
+assert.equal(costGame.clue("context"), "context");
+assert.equal(costGame.total, 685, "An English example should cost $15");
+assert.equal(costGame.clue("original"), "original");
+assert.equal(costGame.total, 675, "The original meaning should cost $10");
+assert.equal(costGame.guess("wrongword").correct, false);
+assert.equal(costGame.total, 665, "An incorrect guess should cost $10");
+
 const whiskyGame = new VoyageGame(() => 0);
 whiskyGame.stops[0] = words.find(item => item.word === "whisky");
 assert.equal(whiskyGame.guess("whiskey").correct, true);
@@ -55,6 +63,11 @@ assert.match(html, /data-voyage-share/);
 assert.match(html, /data-voyage-stop/);
 assert.doesNotMatch(html, /data-voyage-round/);
 assert.match(html, /data-clue="meaning"/);
+assert.match(html, /Current meaning<\/strong><small>Costs \$20/);
+assert.match(html, /Use it in English<\/strong><small>Costs \$15/);
+assert.match(html, /Original meaning<\/strong><small>Costs \$10/);
+assert.match(html, /Reveal a letter<\/strong><small>Costs \$15 each/);
+assert.match(html, /Incorrect guess: −\$10/);
 assert.match(home, /href="vocabulary-voyage\.html"/);
 assert.match(script, /flagcdn\.com/);
 assert.match(script, /stamp-country-flag/);
@@ -67,4 +80,4 @@ for (let seed = 1; seed <= 200; seed += 1) {
   assert.ok([...counts.values()].every(count => count <= 2));
 }
 
-console.log("PASS: 50-word bank, balanced 7-stop voyages, 700-point scoring, letter reveals, guesses, passport progression, SVG flags, sharing, and homepage link.");
+console.log("PASS: 50-word bank, balanced 7-country voyages, $700 budgeting, paid clues, guesses, passport progression, SVG flags, sharing, and homepage link.");

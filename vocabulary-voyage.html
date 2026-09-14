@@ -23,13 +23,13 @@
       </div>
       <p class="eyebrow">Seven words · Seven destinations</p>
       <h1>VOCABULARY<br>VOYAGE</h1>
-      <p class="hero-copy">Some English words have traveled a very long way. Guess each passenger, collect its passport stamp, and complete your journey around the world.</p>
-      <div class="routine-row"><span class="routine-chip">50 possible words</span><span class="routine-chip">7 stops per voyage</span><span class="routine-chip">Clues cost points</span></div>
+      <p class="hero-copy">You have $700 to visit seven countries. Discover each traveling English word, protect your budget, and collect a passport stamp at every stop.</p>
+      <div class="routine-row"><span class="routine-chip">$700 travel budget</span><span class="routine-chip">7 countries</span><span class="routine-chip">Clues cost dollars</span></div>
     </section>
 
     <section class="voyage-start lesson-card" data-voyage-start>
       <div class="voyage-passport-cover"><span>🌍</span><small>IMPROVE YOUR ENGLISH</small><strong>WORD<br>PASSPORT</strong><b>VOCABULARY VOYAGE</b></div>
-      <div><p class="panel-kicker">Before departure</p><h2>Can you recognize English's traveling words?</h2><p>You will see the word's length, destination flag, and source language. Ask for clues only when you need them: every clue reduces the points available at that stop.</p><button class="activity-button voyage-primary" type="button" data-voyage-begin>Start the Voyage</button></div>
+      <div><p class="panel-kicker">Before departure</p><h2>How far can $700 take you?</h2><p>Visit seven countries by discovering a traveling English word at every stop. Clues can help, but each one costs part of your travel budget.</p><button class="activity-button voyage-primary" type="button" data-voyage-begin>Start with $700</button></div>
     </section>
 
     <section class="voyage-game" data-voyage-game hidden>
@@ -41,23 +41,23 @@
 
       <article class="voyage-ticket lesson-card">
         <div class="ticket-edge" aria-hidden="true"></div>
-        <header class="voyage-destination"><div class="voyage-flag" data-voyage-flag></div><div><p>Now arriving in</p><h2 data-voyage-country></h2><span>Source language: <strong data-voyage-language></strong></span></div><div class="voyage-score"><span>Points remaining</span><strong data-voyage-total>700</strong></div></header>
+        <header class="voyage-destination"><div class="voyage-flag" data-voyage-flag></div><div><p>Now arriving in</p><h2 data-voyage-country></h2><span>Source language: <strong data-voyage-language></strong></span></div><div class="voyage-score"><span>Dollars remaining</span><strong data-voyage-total>$700</strong></div></header>
         <div class="voyage-mystery"><p>What is this word?</p><div class="letter-board" data-voyage-mask aria-label="Hidden word"></div><small data-voyage-letter-count></small></div>
         <div class="voyage-clue-grid">
-          <button type="button" data-clue="meaning"><span>01</span><strong>Current meaning</strong><small>−10 points</small></button>
-          <button type="button" data-clue="context"><span>02</span><strong>Use it in English</strong><small>−10 points</small></button>
-          <button type="button" data-clue="original"><span>03</span><strong>Original meaning</strong><small>−15 points</small></button>
-          <button type="button" data-clue="letter"><span>04</span><strong>Reveal a letter</strong><small>−10 points each</small></button>
+          <button type="button" data-clue="meaning"><span>01</span><strong>Current meaning</strong><small>Costs $20</small></button>
+          <button type="button" data-clue="context"><span>02</span><strong>Use it in English</strong><small>Costs $15</small></button>
+          <button type="button" data-clue="original"><span>03</span><strong>Original meaning</strong><small>Costs $10</small></button>
+          <button type="button" data-clue="letter"><span>04</span><strong>Reveal a letter</strong><small>Costs $15 each</small></button>
         </div>
         <div class="voyage-clues" data-voyage-clues aria-live="polite"></div>
-        <form class="voyage-guess" data-voyage-form><label for="voyage-answer">Your answer</label><div><input id="voyage-answer" data-voyage-answer type="text" autocomplete="off" spellcheck="false" placeholder="Type the word"><button class="activity-button voyage-primary" type="submit">Check Passport</button></div></form>
+        <form class="voyage-guess" data-voyage-form><label for="voyage-answer">Your answer <small>Incorrect guess: −$10</small></label><div><input id="voyage-answer" data-voyage-answer type="text" autocomplete="off" spellcheck="false" placeholder="Type the word"><button class="activity-button voyage-primary" type="submit">Check Passport · $10 if Wrong</button></div></form>
         <p class="activity-feedback voyage-feedback" data-voyage-feedback role="status" aria-live="polite">Look at the flag and language, then make your first guess or request a clue.</p>
         <div class="voyage-arrival" data-voyage-arrival hidden><div class="passport-stamp"><span data-arrival-flag></span><strong>WORD<br>DISCOVERED</strong><small data-arrival-country></small></div><div><p class="panel-kicker">Passport approved</p><h3 data-arrival-word></h3><p data-arrival-summary></p><button class="activity-button voyage-primary" type="button" data-voyage-next>Fly to the Next Stop</button></div></div>
       </article>
     </section>
 
     <section class="voyage-finish lesson-card" data-voyage-finish hidden>
-      <div class="finish-globe">🌎</div><p class="panel-kicker" data-voyage-finish-kicker>Journey complete</p><h2 data-voyage-finish-title>You traveled through seven words!</h2><p data-voyage-final-copy></p><div class="final-stamps" data-voyage-final-stamps></div><div class="final-score"><span>Final score</span><strong data-voyage-final-score></strong><small>out of 700</small></div><div class="activity-actions"><button class="activity-button voyage-primary" type="button" data-voyage-share>Share My Voyage</button><button class="activity-button secondary-button" type="button" data-voyage-restart>Begin a New Voyage</button></div><p class="activity-feedback" data-voyage-share-feedback aria-live="polite"></p>
+      <div class="finish-globe">🌎</div><p class="panel-kicker" data-voyage-finish-kicker>Journey complete</p><h2 data-voyage-finish-title>You traveled through seven words!</h2><p data-voyage-final-copy></p><div class="final-stamps" data-voyage-final-stamps></div><div class="final-score"><span>Dollars left</span><strong data-voyage-final-score></strong><small>from your $700 budget</small></div><div class="activity-actions"><button class="activity-button voyage-primary" type="button" data-voyage-share>Share My Voyage</button><button class="activity-button secondary-button" type="button" data-voyage-restart>Begin a New Voyage</button></div><p class="activity-feedback" data-voyage-share-feedback aria-live="polite"></p>
     </section>
   </main>
 </body>
