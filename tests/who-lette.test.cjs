@@ -27,8 +27,8 @@ assert(script.includes('$("[data-profile]").hidden = true'), "Player A should be
 assert(script.includes("state.exampleUsed = true"), "Only one question may be traded for an example");
 assert(script.includes("aliases.some"), "Final guesses should accept defined aliases");
 assert(home.includes('href="who-lette.html"'), "The homepage should link to Who-lette");
-assert(homeStyles.includes(".games-grid > .game-card-question-queue { grid-column: span 6;"), "Question Queue should occupy half of the desktop game row");
-assert(homeStyles.includes(".games-grid > .game-card-who-lette { grid-column: span 6;"), "Who-lette should sit beside Question Queue on desktop");
+assert(homeStyles.includes(".games-grid > .game-card-question-queue { grid-column: span 3;"), "Question Queue should occupy one quarter of the desktop game row");
+assert(homeStyles.includes(".games-grid > .game-card-who-lette { grid-column: span 3;"), "Who-lette should occupy one quarter of the desktop game row");
 assert(styles.includes("body:not(.home-v2) .lesson-card.wholet-result h2"), "The result title should override the global dark lesson heading color");
 assert(styles.includes("body:not(.home-v2) .lesson-card .wholet-mystery-banner h2"), "The mystery banner title should override the global dark lesson heading color");
 

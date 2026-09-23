@@ -37,8 +37,8 @@ assert(game.includes("finishRound(false)"));
 assert(styles.includes(".tomato-lives span.is-lost"));
 assert(styles.includes(".food-start[hidden]"));
 assert(home.includes('href="food-mood.html"'));
-assert.equal((home.match(/class="game-card /g) || []).length, 11, "The homepage should contain eleven game cards");
+assert.equal((home.match(/class="game-card /g) || []).length, 12, "The homepage should contain twelve game cards");
 const homeStyles = fs.readFileSync(path.join(root, "styles.css"), "utf8");
-assert(homeStyles.includes(".games-grid > .game-card { grid-column: span 4;"), "Desktop games should form a three-column grid");
+assert(homeStyles.includes(".games-grid > .game-card { grid-column: span 3;"), "Desktop games should form a four-column grid");
 
 console.log(`PASS: Food Mood has ${engine.words.length} contextual foods, five tomato lives, four paid clues, letter guessing, and countability follow-up.`);

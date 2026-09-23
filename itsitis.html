@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete three stories from IT'SITIS's weekend using IT'S, IT, and IS.">
+  <title>IT'SITIS | Improve Your English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="itsitis.css">
+  <script src="itsitis-data.js" defer></script>
+  <script src="itsitis.js" defer></script>
+</head>
+<body>
+  <main class="page-shell lesson-shell itsitis-shell">
+    <a class="back-link" href="index.html#games">Back to Games</a>
+    <section class="hero lesson-hero itsitis-hero">
+      <div class="hero-signature"><p class="credit-line">Created by <a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer">Teacher Romero Alves</a> and <a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer">Teacher Lais Queiroz</a></p><div class="logo-signature" aria-label="Teacher logos"><a href="https://www.instagram.com/teacherromeroalves/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-romero.png" alt="Teacher Romero Alves logo"></a><a href="https://www.instagram.com/teacherlaisqueiroz/" target="_blank" rel="noreferrer" class="logo-badge"><img src="assets/logo-lais.png" alt="Teacher Lais Queiroz logo"></a></div></div>
+      <p class="eyebrow">Three days. Three stories. One unusual monster.</p>
+      <h1>IT'SITIS</h1>
+      <p class="hero-copy">Discover what happened during IT'SITIS's weekend while mastering three easily confused forms.</p>
+      <div class="routine-row"><span class="routine-chip">IT'S</span><span class="routine-chip">IT</span><span class="routine-chip">IS</span><span class="routine-chip">Friday to Sunday</span></div>
+    </section>
+
+    <section class="lesson-card itsitis-game" data-itsitis>
+      <div class="itsitis-intro" data-intro>
+        <div class="itsitis-crop itsitis-intro-portrait" style="--scene-image:url('assets/itsitis-extra-01.png')" role="img" aria-label="IT'SITIS waving hello"></div>
+        <div class="itsitis-speech"><p class="panel-kicker">Meet your storyteller</p><h2>Hello! My name is IT'SITIS.</h2><p>I'm going to show you pictures of situations I have experienced. Can you discover what happened during the last three days of my life?</p><button class="activity-button reading-primary-button" type="button" data-start>Start the weekend</button></div>
+      </div>
+
+      <div class="itsitis-round" data-round hidden>
+        <div class="itsitis-daybar"><div><small data-day-number>Day 1</small><strong data-day>Friday</strong></div><div class="itsitis-week"><span data-day-dot="0">F</span><span data-day-dot="1">S</span><span data-day-dot="2">S</span></div></div>
+        <div class="itsitis-story-grid">
+          <div class="itsitis-picture-wrap"><div class="itsitis-crop" data-scene role="img"></div><p data-scene-title></p></div>
+          <div class="itsitis-story">
+            <p class="panel-kicker">Complete the story</p><h2>What happened to IT'SITIS?</h2>
+            <p class="itsitis-help">Click a block to send it to the next gap, or drag it. Click a filled gap to return the block.</p>
+            <div class="itsitis-bank" data-bank aria-label="Word bank"></div>
+            <div class="itsitis-paragraph" data-paragraph></div>
+            <div class="activity-actions"><button class="activity-button" type="button" data-check>Check the story</button><button class="activity-button secondary-button" type="button" data-clear>Clear</button><button class="activity-button reading-primary-button" type="button" data-next hidden>Continue to the next day</button></div>
+            <p class="activity-feedback itsitis-feedback" data-feedback role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="itsitis-finish" data-finish hidden>
+        <div class="itsitis-crop itsitis-finish-portrait" style="--scene-image:url('assets/itsitis-extra-01.png')" role="img" aria-label="IT'SITIS waving goodbye"></div>
+        <p class="panel-kicker">Weekend complete</p><h2>That was IT'SITIS's weekend!</h2><p>You discovered all three stories. What an unusual weekend!</p>
+        <div class="activity-actions"><button class="activity-button reading-primary-button" type="button" data-share>Share the weekend</button><button class="activity-button secondary-button" type="button" data-restart>Play another weekend</button></div><p class="activity-feedback" data-share-feedback role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

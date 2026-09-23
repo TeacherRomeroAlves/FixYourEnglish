@@ -1,0 +1,35 @@
+.itsitis-hero { overflow: hidden; background: radial-gradient(circle at 86% 32%, rgba(246,215,118,.32), transparent 24%), linear-gradient(125deg, #123f3d, #096c5f 62%, #2ca386); }
+.itsitis-hero::after { content: "IT'S IT IS"; position: absolute; right: 5%; bottom: 6%; color: rgba(255,255,255,.09); font-size: clamp(2.5rem, 8vw, 7rem); font-weight: 800; letter-spacing: -.08em; }
+.itsitis-game { padding: clamp(22px, 5vw, 52px); }
+.itsitis-intro[hidden], .itsitis-round[hidden], .itsitis-finish[hidden], .itsitis-game [hidden] { display: none !important; }
+.itsitis-intro { display: grid; grid-template-columns: minmax(260px, .75fr) 1.25fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.itsitis-crop { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 28px; background-image: var(--scene-image); background-position: center; background-size: cover; background-repeat: no-repeat; box-shadow: 0 20px 45px rgba(21,57,51,.18); }
+.itsitis-speech { position: relative; padding: clamp(24px, 4vw, 44px); border-radius: 28px; background: #fff5d9; }
+.itsitis-speech::before { content: ""; position: absolute; left: -20px; top: 45%; border: 12px solid transparent; border-right-color: #fff5d9; }
+.itsitis-speech h2, .itsitis-finish h2, .itsitis-story h2 { margin: 5px 0 12px; color: #241334; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.045em; }
+.itsitis-speech > p:not(.panel-kicker), .itsitis-finish > p:not(.panel-kicker) { color: #655b67; font-size: 1.12rem; line-height: 1.65; }
+.itsitis-daybar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; padding: 16px 20px; border-radius: 18px; background: #163f3d; color: #fff; }
+.itsitis-daybar small { display: block; color: #f2ce68; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.itsitis-daybar strong { font-size: 1.55rem; }
+.itsitis-week { display: flex; gap: 8px; }
+.itsitis-week span { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255,255,255,.38); border-radius: 50%; font-weight: 800; }
+.itsitis-week span.is-current { background: #f2ce68; border-color: #f2ce68; color: #241334; }
+.itsitis-week span.is-done { background: #66cbb0; border-color: #66cbb0; color: #123f3d; }
+.itsitis-story-grid { display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr); gap: clamp(26px, 5vw, 58px); align-items: start; }
+.itsitis-picture-wrap p { margin: 14px 0 0; color: #116d65; font-size: 1.1rem; font-weight: 800; text-align: center; }
+.itsitis-help { color: #6d6270; line-height: 1.5; }
+.itsitis-bank { display: grid; grid-template-columns: repeat(3, minmax(72px, 1fr)); gap: 10px; margin: 22px 0; padding: 14px; border-radius: 20px; background: linear-gradient(145deg, #d9f2e9, #fff1c8); }
+.itsitis-token { min-height: 52px; border: 2px solid #fff; border-radius: 14px; background: #fff; color: #55236a; font: 800 1.08rem/1 "Outfit", sans-serif; box-shadow: 0 5px 12px rgba(36,19,52,.12); cursor: grab; transition: transform .18s, opacity .18s; }
+.itsitis-token:hover, .itsitis-token:focus-visible { transform: translateY(-2px); outline: 3px solid #188b7f; outline-offset: 2px; }
+.itsitis-token.is-used { visibility: hidden; pointer-events: none; }
+.itsitis-paragraph { padding: clamp(20px, 4vw, 32px); border: 1px solid #e5d7c7; border-radius: 22px; background: #fffaf0; color: #35283d; font-size: clamp(1.08rem, 2vw, 1.24rem); line-height: 2.15; }
+.itsitis-gap { display: inline-flex; min-width: 66px; min-height: 40px; align-items: center; justify-content: center; margin: 0 4px; padding: 5px 10px; border: 2px dashed #ad8bb5; border-radius: 10px; background: #fff; color: #5b2374; font: 800 1rem/1 "Outfit", sans-serif; vertical-align: middle; cursor: pointer; }
+.itsitis-gap:empty::before { content: "?"; color: #b49caf; }
+.itsitis-gap.is-wrong { border-color: #c64b57; background: #fff0ef; }
+.itsitis-gap.is-correct { border-color: #168b72; background: #e3f6ed; }
+.itsitis-round.is-complete .itsitis-gap { cursor: default; }
+.itsitis-feedback { min-height: 30px; }
+.itsitis-finish { max-width: 760px; margin-inline: auto; text-align: center; }
+.itsitis-finish-portrait { width: min(100%, 280px); margin: 0 auto 26px; }
+.itsitis-finish .activity-actions { justify-content: center; }
+@media (max-width: 780px) { .itsitis-intro, .itsitis-story-grid { grid-template-columns: 1fr; }.itsitis-intro-portrait { max-width: 420px; margin-inline: auto; }.itsitis-speech::before { display: none; }.itsitis-daybar { align-items: flex-start; }.itsitis-paragraph { line-height: 2.35; } }
