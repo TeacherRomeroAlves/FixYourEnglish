@@ -1,4 +1,30 @@
 const situationTopics = {
+  "theme-park": {
+    eyebrow:"A day of adventure", title:"AT A THEME PARK", intro:"Ask about tickets, attractions, wait times, and services at a theme park.",
+    vocabulary:[
+      ["A theme park", "A place with attractions and entertainment built around a theme."], ["A ticket", "A pass that lets you enter the park."],
+      ["A ride", "An attraction you travel on, such as a roller coaster."], ["A roller coaster", "A fast ride that travels along a track."],
+      ["The entrance", "The place where visitors go into the park."], ["A park map", "A guide showing the park's attractions and services."],
+      ["How long is the wait?", "Ask how much time you will spend waiting."], ["Where is the line?", "Ask where to join the people waiting."],
+      ["What time does the park close?", "Ask when visitors must leave."], ["Is there a height requirement?", "Ask whether riders must be a certain height."],
+      ["A parade", "A show that moves along a route through the park."], ["A locker", "A secure place to leave your belongings."]
+    ],
+    dialogues:[
+      {title:"Planning a day at Disney World", bank:["ticket", "entrance", "park map", "parade", "park close"], lines:[
+        ["Visitor","Hello! Does this {{ticket}} include entry to Magic Kingdom at Walt Disney World?"],["Employee","Yes, it does. Please use the {{entrance}} ahead."],
+        ["Visitor","Thank you. May I have a {{park map}}? Where can I see the {{parade}}?"],["Employee","The route is marked on the map."],
+        ["Visitor","Great. What time does the {{park close}} today?"],["Employee","Please check today's hours in the park app or at the entrance."]]},
+      {title:"Choosing an attraction", bank:["roller coaster", "How long is the wait", "height requirement", "Where is the line", "locker"], lines:[
+        ["Visitor","Is this the {{roller coaster}} at Disney World?"],["Employee","Yes, it is."],
+        ["Visitor","{{How long is the wait}}? Is there a {{height requirement}}?"],["Employee","The current wait and minimum height are shown on the sign."],
+        ["Visitor","Thanks. {{Where is the line}}? Is there a {{locker}} nearby?"],["Employee","The line starts to your left, and the lockers are across from the entrance."]]}
+    ],
+    missions:[
+      ["Plan your visit","You are arriving at a theme park with a friend.",["Ask where the entrance is","Ask for a park map","Ask what time the park closes"],"Where is...?, May I have...?, What time...?"],
+      ["Ask about a ride","You want to try a roller coaster with a child.",["Ask how long the wait is","Ask about the height requirement","Ask where the line starts"],"How long is the wait?, Is there...?, Where is...?"],
+      ["Find a show","You want to watch a parade before leaving.",["Ask when the parade begins","Ask where you can watch it","Ask where to find a locker"],"What time...?, Where can I...?, Is there a locker...?"]
+    ]
+  },
   "fast-food": {
     eyebrow: "At the counter",
     title: "ORDERING FAST FOOD",
@@ -50,7 +76,7 @@ const situationTopics = {
     missions:[
       ["Check in smoothly","You have just arrived after a long flight.",["Say you have a reservation under your name","Ask whether breakfast is included","Ask what time check-out is"],"I have a reservation..., under the name..., Is... included?"],
       ["Ask for a quieter room","Your room faces a noisy street and you need to sleep.",["Explain the noise problem","Politely request a quieter room","Ask whether changing rooms costs extra"],"Could you help me...?, Could I change...?, Is there an extra charge?"],
-      ["Prepare for an early tour","Your tour bus leaves at 6:15 tomorrow morning.",["Request a wake-up call for 5:30","Ask where breakfast is served","Ask the receptionist to call a taxi"],"I'd like a wake-up call..., Where is...?, Could you call...?" ]]
+      ["Prepare for an early tour","You need to leave the hotel early tomorrow morning.",["Request a wake-up call for 5:30","Ask what time breakfast begins","Ask the receptionist to call a taxi"],"I'd like a wake-up call..., What time...?, Could you call...?" ]]
   },
   clothes: {
     eyebrow:"At a clothing store", title:"BUYING CLOTHES", intro:"Find the right size, use the fitting room, and ask about prices and returns.",
@@ -174,7 +200,7 @@ const situationTopics = {
         ["Traveler","It is beautiful, but that's {{a little expensive}}. Could you {{lower the price}}?"],["Seller","I can sell it for thirty-five."],["Traveler","Is that your {{best price}}?"]]},
       {title:"Buying two scarves", bank:["I'll take two", "discount", "do thirty", "a deal", "think about it"], lines:[
         ["Traveler","These scarves are lovely. {{I'll take two}}. Can you give me a {{discount}}?"],["Seller","I can make them thirty-six dollars together."],
-        ["Traveler","Could you {{do thirty}} for them?"],["Seller","I can do thirty-two."],["Traveler","That's {{a deal}}."],["Seller","Wonderful. I thought you might {{think about it}}."]]}
+        ["Traveler","Could you {{do thirty}} for them?"],["Seller","I can do thirty-two."],["Traveler","I need to {{think about it}} for a moment. All right, that's {{a deal}}."],["Seller","Great, thank you!"]]}
     ],
     missions:[
       ["Buy a handmade souvenir","You found a handmade wooden box that costs fifty dollars.",["Ask whether it is handmade","Say the price is a little expensive","Ask for the seller's best price"],"Is this handmade?, That's a little expensive, What is your best price?"],
@@ -201,7 +227,7 @@ const situationTopics = {
     ],
     missions:[
       ["Reserve and arrive","You are having dinner with a friend at a popular restaurant.",["Say you have a reservation under your name","Ask for a quiet table","Request the menu"],"I have a reservation..., Could we have...?, May we see the menu?"],
-      ["Order a complete meal","You want an appetizer, a main course, and a beverage.",["Ask what the server recommends","Order one appetizer to share","Explain one ingredient you do not eat"],"What do you recommend?, We'd like..., I don't eat..."],
+      ["Order a meal","You and a friend are ready to order.",["Ask what the server recommends","Order an appetizer to share","Say which ingredient you do not eat"],"What do you recommend?, We'd like..., I don't eat..."],
       ["Solve a problem politely","Your main course is cold and you still need to pay.",["Explain that the food is cold","Ask whether it can be reheated","Request the bill after the problem is solved"],"Excuse me..., Could you...?, Could we have the bill?" ]]
   },
   "rental-car": {
@@ -455,7 +481,7 @@ const situationTopics = {
     dialogues:[
       {title:"Catching the right bus", bank:["bus stop", "go to", "get off", "wrong bus", "transfer"], lines:[
         ["Traveler","Is this the {{bus stop}} for route 24?"],["Local","Yes, but where are you going?"],["Traveler","Does this bus {{go to}} City Hall?"],
-        ["Local","No. If you board it, you will take the {{wrong bus}}."],["Traveler","Which route should I take, and where should I {{get off}}? Do I need to {{transfer}}?"]]},
+        ["Local","No, that's the {{wrong bus}}. Take route 12 instead."],["Traveler","Where should I {{get off}}? Do I need to {{transfer}}?"],["Local","No transfer. Get off at the third stop."]]},
       {title:"Navigating the subway", bank:["subway station", "line", "timetable", "next stop", "transit card"], lines:[
         ["Traveler","Is there a {{subway station}} near here?"],["Agent","Yes, across the street."],["Traveler","Which {{line}} should I take to the museum?"],
         ["Agent","Take the blue line. Check the {{timetable}} on the screen."],["Traveler","Can I use this {{transit card}}?"],["Agent","Yes. The museum is the third stop, not the {{next stop}}."]]}
@@ -507,6 +533,7 @@ Object.entries(supplementalVocabulary).forEach(([key, additions]) => {
 });
 
 const challengeWords = {
+  "theme-park": ["ride", "entrance", "locker", "parade", "ticket"],
   "fast-food": ["menu", "cashier", "tray", "receipt", "mustard"],
   hotel: ["lobby", "receptionist", "suitcase", "elevator", "passport"],
   clothes: ["size", "price tag", "cashier", "receipt", "fitting room"],
@@ -542,6 +569,14 @@ Object.entries(situationTopics).forEach(([key, topicData]) => {
 });
 
 const specialActivities = {
+  "theme-park": {
+    type:"products", title:"Explore the park passes", note:"Choose a pass", intro:"Select a pass to see its price, benefits, and payment options. These passes and prices are fictional examples for English practice, not Disney offers.",
+    products:[
+      {icon:"&#127903;", name:"One-day pass", price:"$100 per person", facts:[["Admission","One day of park entry"],["Includes","Access to rides and shows"],["Locker","Available for an extra fee"],["Payment","Cash, card, or mobile payment"]], offer:"Ideal for a short visit"},
+      {icon:"&#127914;", name:"Three-day pass", price:"$240 per person", facts:[["Admission","Three days of park entry"],["Includes","Access to rides and shows"],["Locker","One locker rental included"],["Payment","Cash, card, or mobile payment"]], offer:"More time to explore"},
+      {icon:"&#127905;", name:"Weekly pass", price:"$450 per person", facts:[["Admission","Seven days of park entry"],["Includes","Access to rides and shows"],["Locker","Locker use included each day"],["Payment","Cash, card, or mobile payment"]], offer:"A full week of adventures"}
+    ]
+  },
   "fast-food": {
     type: "menu", title: "Build an order from the overhead menu", note: "Interactive menu", intro: "Choose items from the fictional menu. Your order and total will appear on the customer display.",
     categories: [
@@ -744,6 +779,30 @@ const specialActivities = {
   }
 };
 
+const warmupQuestions = {
+  "theme-park": ["Do you like theme parks?", "What is your favorite ride?"],
+  "fast-food": ["Do you like fast food?", "What is your favorite fast food?"],
+  hotel: ["Have you ever stayed in a hotel?", "What do you look for in a hotel?"],
+  clothes: ["Do you like shopping for clothes?", "What clothes do you like to wear when you travel?"],
+  immigration: ["Have you ever traveled to another country?", "What documents do you take when you travel abroad?"],
+  pharmacy: ["Do you usually visit a pharmacy when you travel?", "What do you buy at a pharmacy?"],
+  supermarket: ["Do you like shopping at supermarkets?", "What do you usually buy for breakfast?"],
+  "airport-check-in": ["Have you ever traveled by plane?", "Do you prefer a window seat or an aisle seat?"],
+  souvenir: ["Do you buy souvenirs when you travel?", "What souvenirs do you like?"],
+  restaurant: ["Do you like eating at restaurants?", "What is your favorite dish to order?"],
+  "rental-car": ["Have you ever rented a car?", "Do you like driving when you travel?"],
+  taxi: ["Do you ever take a taxi or use a ride app?", "Do you like talking to drivers?"],
+  electronics: ["Do you use a laptop or a tablet?", "What do you look for in a new phone?"],
+  "phone-food": ["Do you ever order food by phone?", "What food do you like to order?"],
+  doctor: ["Have you ever visited a doctor while traveling?", "What do you do when you feel sick?"],
+  visa: ["Have you ever applied for a visa?", "Which country would you like to visit?"],
+  exchange: ["Have you ever exchanged money for a trip?", "Do you usually pay with cash or a card?"],
+  airbnb: ["Have you ever stayed in an Airbnb?", "What is important to you when choosing a place to stay?"],
+  bar: ["Do you ever go to a bar with friends?", "What do you like to drink?"],
+  "city-tour": ["Have you ever gone on a city tour?", "What places would you like to see in New York?"],
+  "public-transit": ["Do you use public transportation?", "What kind of transportation do you usually use?"]
+};
+
 const practiceRoot = document.querySelector("[data-situation-practice]");
 
 if (practiceRoot) {
@@ -763,6 +822,12 @@ if (practiceRoot) {
   title.textContent = topic.title;
   eyebrow.textContent = topic.eyebrow;
   intro.textContent = topic.intro;
+  const warmupList = practiceRoot.querySelector("[data-warmup-questions]");
+  warmupQuestions[topicKey].forEach((question) => {
+    const item = document.createElement("li");
+    item.textContent = question;
+    warmupList.append(item);
+  });
 
   const speakExpression = (expression, button) => {
     if (!("speechSynthesis" in window)) {
@@ -1102,7 +1167,7 @@ if (practiceRoot) {
   };
 
   const renderProducts = () => {
-    specialStage.innerHTML = `<div class="product-showcase-grid">${special.products.map((product, index) => `<button type="button" data-product-index="${index}"><span class="product-showcase-icon" aria-hidden="true">${product.icon}</span><strong>${product.name}</strong><small>View details</small></button>`).join("")}</div><article class="product-detail-panel" data-product-detail><div class="product-detail-placeholder"><span aria-hidden="true">&#128070;</span><p>Select one of the six products to see its information.</p></div></article>`;
+    specialStage.innerHTML = `<div class="product-showcase-grid">${special.products.map((product, index) => `<button type="button" data-product-index="${index}"><span class="product-showcase-icon" aria-hidden="true">${product.icon}</span><strong>${product.name}</strong><small>View details</small></button>`).join("")}</div><article class="product-detail-panel" data-product-detail><div class="product-detail-placeholder"><span aria-hidden="true">&#128070;</span><p>Select an option to see its information.</p></div></article>`;
     const detailPanel = specialStage.querySelector("[data-product-detail]");
     specialStage.querySelectorAll("[data-product-index]").forEach((button) => button.addEventListener("click", () => {
       const product = special.products[Number(button.dataset.productIndex)];

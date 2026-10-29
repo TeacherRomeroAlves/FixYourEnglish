@@ -52,6 +52,11 @@ const hub = fs.readFileSync(path.join(root, "situational-english.html"), "utf8")
 assert(home.includes('<h2 id="situational-title">Travel English</h2>'));
 ["bar", "city-tour", "public-transit"].forEach((key) => assert(hub.includes(`topic=${key}`)));
 assert(!hub.includes("topic=directions"));
-assert(hub.includes("20 practical topics"));
+assert(hub.includes("21 practical topics"));
+assert(hub.includes("topic=theme-park"));
+assert.equal(context.travelData.situationTopics["theme-park"].vocabulary.length, 12);
+assert.equal(context.travelData.situationTopics["theme-park"].dialogues.length, 2);
+assert.equal(context.travelData.situationTopics["theme-park"].missions.length, 3);
+assert.equal(context.travelData.specialActivities["theme-park"].products.length, 3);
 
-console.log("PASS: Travel English has 20 topics; public transportation includes the Vienna timetable and ticket machine.");
+console.log("PASS: Travel English has 21 topics, including theme-park ticket practice and public transportation.");
