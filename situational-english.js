@@ -94,27 +94,6 @@ const situationTopics = {
       ["Show your travel plans","The officer needs more information before admitting you.",["Say you are traveling with a friend","Mention your return ticket","Explain that you will visit two cities"],"I'm traveling with..., Here is my return ticket, We plan to..."],
       ["Answer customs questions","You are entering the country with normal personal luggage.",["Say you have nothing to declare","Explain that the gifts in your bag are for family","Answer politely and confidently"],"I have nothing to declare, These are gifts for..., Certainly." ]]
   },
-  directions: {
-    eyebrow:"Around the city", title:"DIRECTIONS & TRANSPORTATION", intro:"Ask where places are, understand basic directions, and choose the right ticket.",
-    vocabulary:[
-      ["How do I get to...?", "Ask for directions to a place."], ["Is it within walking distance?", "Ask whether a place is close enough to walk to."],
-      ["Go straight ahead.", "Continue forward without turning."], ["Turn left / right.", "Change direction to the left or right."],
-      ["It's across from...", "It is on the opposite side of the street from another place."], ["Which line should I take?", "Ask which subway or bus route you need."],
-      ["A one-way ticket", "A ticket for traveling to a destination without returning."], ["Where do I get off?", "Ask at which stop you should leave the bus or train."]
-    ],
-    dialogues:[
-      {title:"Finding the restroom in the shopping center", bank:["How do I get to", "Go straight ahead", "information desk", "Turn right", "across from"], lines:[
-        ["Shopper","Excuse me. {{How do I get to}} the restroom?"],["Employee","{{Go straight ahead}} and walk past the {{information desk}}."],
-        ["Shopper","What should I do after that?"],["Employee","{{Turn right}} at the shoe store. The restrooms are {{across from}} the elevators."],["Shopper","Thank you for your help!"]]},
-      {title:"Taking the subway", bank:["Which line", "one-way ticket", "get off", "Take", "right"], lines:[
-        ["Traveler","{{Which line}} should I take to Central Station?"],["Agent","{{Take}} the green line."],["Traveler","Where do I {{get off}}?"],["Agent","At Park Street, then turn {{right}}."],
-        ["Traveler","Thanks. I'd like a {{one-way ticket}}, please."]]}
-    ],
-    missions:[
-      ["Find a landmark","You are lost and need to reach the history museum.",["Ask how to get to the museum","Ask whether it is within walking distance","Repeat the directions to confirm them"],"How do I get to...?, Is it within walking distance?, So I...?"],
-      ["Use the subway","You need to travel from the airport to Central Station.",["Ask which line to take","Ask where to get off","Buy a one-way ticket"],"Which line should I take?, Where do I get off?, I'd like..."],
-      ["Help another traveler","Someone asks you where the pharmacy is.",["Tell them to go straight for one block","Tell them to turn right at the cafe","Say the pharmacy is across from the hotel"],"Go straight ahead, turn right, It's across from..." ]]
-  },
   pharmacy: {
     eyebrow:"Getting health essentials", title:"AT THE PHARMACY", intro:"Describe simple symptoms, understand basic advice, and ask how to use medicine.",
     vocabulary:[
@@ -505,11 +484,6 @@ const supplementalVocabulary = {
     ["A passport", "An official document used to identify you when traveling internationally."], ["A visa", "Official permission to enter or stay in a country."],
     ["A border officer", "The official who checks travelers entering a country."], ["Customs", "The area where goods entering a country may be inspected."]
   ],
-  directions: [
-    ["A map", "A visual guide showing streets, places, or rooms."], ["A platform", "The area where passengers wait for a train."],
-    ["A ticket", "A document or digital pass that allows you to travel."], ["An escalator", "Moving stairs used inside stations, stores, and shopping centers."],
-    ["The restroom", "A public toilet inside a store, station, or shopping center."], ["The information desk", "A counter where visitors can ask for directions and assistance."]
-  ],
   pharmacy: [
     ["A pharmacist", "A healthcare professional who prepares and advises about medicine."], ["A prescription", "A doctor's written authorization for medicine."],
     ["Medicine", "A substance used to treat or prevent illness."], ["The dosage", "The amount of medicine to take at one time."]
@@ -537,7 +511,6 @@ const challengeWords = {
   hotel: ["lobby", "receptionist", "suitcase", "elevator", "passport"],
   clothes: ["size", "price tag", "cashier", "receipt", "fitting room"],
   immigration: ["passport", "visa", "border officer", "customs", "ticket"],
-  directions: ["food court", "escalator", "map", "platform", "ticket"],
   pharmacy: ["pharmacist", "prescription", "medicine", "dosage", "receipt"],
   supermarket: ["shopping basket", "checkout", "barcode", "receipt", "aisle"],
   "airport-check-in": ["ticket", "suitcase", "check-in counter", "baggage tag", "passport"],
@@ -600,22 +573,6 @@ const specialActivities = {
   immigration: {
     type:"roulette", title:"Immigration interview roulette", note:"12 interview questions", intro:"Click the button to receive a random border-control question. Answer aloud immediately, as in a real interview.",
     questions:["May I see your passport?","What is the purpose of your visit?","How long are you planning to stay?","Where will you be staying?","Are you traveling alone?","Who are you traveling with?","Do you have a return ticket?","What places are you planning to visit?","What do you do for a living?","How much money are you bringing for this trip?","Have you visited this country before?","Do you have anything to declare?"]
-  },
-  directions: {
-    type:"ticket", title:"Buy a subway ticket", note:"Interactive ticket totem", intro:"Read your destination, select the correct fare area, choose a ticket, apply any citizen-card discount, and pay at the touchscreen.",
-    areas:[
-      {name:"Downtown", price:2.5, destinations:["Central Museum","Harbor Square","City Hall"]},
-      {name:"Outer Suburbs", price:4, destinations:["International Airport","Lakeview Park","North Terminal"]},
-      {name:"Neighboring Cities", price:7.5, destinations:["Greenfield","Oakridge","Seaside City"]}
-    ],
-    ticketTypes:[
-      {name:"One-way", multiplier:1, description:"One journey"},
-      {name:"Round-trip", multiplier:1.8, description:"Travel there and back"},
-      {name:"Daily", multiplier:3, description:"Unlimited travel today"},
-      {name:"Weekly", multiplier:12, description:"Unlimited travel for 7 days"}
-    ],
-    discount:0.15,
-    payments:["Credit card","Cash","Cellphone payment"]
   },
   pharmacy: {
     type:"products", title:"Explore the pharmacy shelves", note:"6 pharmacy products", intro:"Select a product to read its price, format, stock status, and offer. This is language practice only; ask a pharmacist for medical guidance.",
@@ -742,7 +699,22 @@ const specialActivities = {
     ]
   },
   "public-transit": {
-    type:"transit-board", title:"Choose the right Vienna train", note:"Station timetable challenge", intro:"Choose where you are, read your destination, and select the departure with the correct line, direction, and time. Open the authentic Vienna map when you need a closer look.",
+    type:"transit-board", title:"Plan your Vienna subway journey", note:"Timetable and ticket practice", intro:"First choose the correct Vienna train. Then use the ticket machine to select a fare area, ticket type, discount, and payment method.",
+    ticket:{
+      areas:[
+        {name:"Downtown", price:2.5, destinations:["Central Museum","Harbor Square","City Hall"]},
+        {name:"Outer Suburbs", price:4, destinations:["International Airport","Lakeview Park","North Terminal"]},
+        {name:"Neighboring Cities", price:7.5, destinations:["Greenfield","Oakridge","Seaside City"]}
+      ],
+      ticketTypes:[
+        {name:"One-way", multiplier:1, description:"One journey"},
+        {name:"Round-trip", multiplier:1.8, description:"Travel there and back"},
+        {name:"Daily", multiplier:3, description:"Unlimited travel today"},
+        {name:"Weekly", multiplier:12, description:"Unlimited travel for 7 days"}
+      ],
+      discount:0.15,
+      payments:["Credit card","Cash","Cellphone payment"]
+    },
     stations:[
       {name:"Stephansplatz", goal:"You want to go to Praterstern.", services:[
         {time:"10:04",line:"U1",direction:"Leopoldau",platform:"1",correct:true},{time:"10:06",line:"U1",direction:"Reumannplatz",platform:"2"},
@@ -1005,8 +977,8 @@ if (practiceRoot) {
     specialStage.querySelector("[data-clear-order]").addEventListener("click", () => { order.length = 0; updateOrder(); });
   };
 
-  const renderTicket = () => {
-    const allDestinations = special.areas.flatMap((area) => area.destinations.map((destination) => ({destination, area})));
+  const renderTicket = (stage = specialStage, ticket = special) => {
+    const allDestinations = ticket.areas.flatMap((area) => area.destinations.map((destination) => ({destination, area})));
     let journey = allDestinations[Math.floor(Math.random() * allDestinations.length)];
     let selectedType = null;
     let hasCitizenCard = false;
@@ -1015,13 +987,13 @@ if (practiceRoot) {
     const money = (amount) => `$${amount.toFixed(2)}`;
     const getTotal = () => {
       const subtotal = journey.area.price * selectedType.multiplier;
-      return {subtotal, discount:hasCitizenCard ? subtotal * special.discount : 0, total:subtotal - (hasCitizenCard ? subtotal * special.discount : 0)};
+      return {subtotal, discount:hasCitizenCard ? subtotal * ticket.discount : 0, total:subtotal - (hasCitizenCard ? subtotal * ticket.discount : 0)};
     };
-    specialStage.innerHTML = `<div class="ticket-machine"><div class="ticket-machine-top"><span class="ticket-network-mark">M</span><div><strong>METRO TICKETS</strong><small>English / EN</small></div><span data-ticket-clock>OPEN</span></div><div class="ticket-machine-screen" data-ticket-screen></div></div>`;
-    const screen = specialStage.querySelector("[data-ticket-screen]");
+    stage.innerHTML = `<div class="ticket-machine"><div class="ticket-machine-top"><span class="ticket-network-mark">M</span><div><strong>METRO TICKETS</strong><small>English / EN</small></div><span data-ticket-clock>OPEN</span></div><div class="ticket-machine-screen" data-ticket-screen></div></div>`;
+    const screen = stage.querySelector("[data-ticket-screen]");
     const progress = (active) => `<div class="ticket-progress">${["Area","Ticket","Discount","Payment","Review"].map((label, index) => `<span class="${index <= active ? "is-active" : ""}"><b>${index + 1}</b>${label}</span>`).join("")}</div>`;
     const showArea = () => {
-      screen.innerHTML = `${progress(0)}<div class="ticket-destination"><p class="special-screen-label">Your destination</p><h3>${journey.destination}</h3><p>Which fare area is this destination in?</p></div><div class="fare-area-grid">${special.areas.map((area) => `<button type="button" data-area="${area.name}"><strong>${area.name}</strong><span>One-way from ${money(area.price)}</span><small>${area.destinations.join(" • ")}</small></button>`).join("")}</div><button class="ticket-new-destination" type="button" data-new-destination>Choose another destination</button>`;
+      screen.innerHTML = `${progress(0)}<div class="ticket-destination"><p class="special-screen-label">Your destination</p><h3>${journey.destination}</h3><p>Which fare area is this destination in?</p></div><div class="fare-area-grid">${ticket.areas.map((area) => `<button type="button" data-area="${area.name}"><strong>${area.name}</strong><span>One-way from ${money(area.price)}</span><small>${area.destinations.join(" • ")}</small></button>`).join("")}</div><button class="ticket-new-destination" type="button" data-new-destination>Choose another destination</button>`;
       screen.querySelectorAll("[data-area]").forEach((button) => button.addEventListener("click", () => {
         if (button.dataset.area !== journey.area.name) {
           button.classList.add("is-wrong");
@@ -1039,8 +1011,8 @@ if (practiceRoot) {
       });
     };
     const showTicketType = () => {
-      screen.innerHTML = `${progress(1)}<p class="special-screen-label">Destination: ${journey.destination} • ${journey.area.name}</p><h3 class="ticket-screen-title">Select a ticket type</h3><div class="ticket-type-grid">${special.ticketTypes.map((type, index) => `<button type="button" data-ticket-type="${index}"><strong>${type.name}</strong><span>${type.description}</span><b>${money(journey.area.price * type.multiplier)}</b></button>`).join("")}</div><button class="ticket-back-button" type="button" data-ticket-back>Back to areas</button>`;
-      screen.querySelectorAll("[data-ticket-type]").forEach((button) => button.addEventListener("click", () => { selectedType = special.ticketTypes[Number(button.dataset.ticketType)]; showDiscount(); }));
+      screen.innerHTML = `${progress(1)}<p class="special-screen-label">Destination: ${journey.destination} • ${journey.area.name}</p><h3 class="ticket-screen-title">Select a ticket type</h3><div class="ticket-type-grid">${ticket.ticketTypes.map((type, index) => `<button type="button" data-ticket-type="${index}"><strong>${type.name}</strong><span>${type.description}</span><b>${money(journey.area.price * type.multiplier)}</b></button>`).join("")}</div><button class="ticket-back-button" type="button" data-ticket-back>Back to areas</button>`;
+      screen.querySelectorAll("[data-ticket-type]").forEach((button) => button.addEventListener("click", () => { selectedType = ticket.ticketTypes[Number(button.dataset.ticketType)]; showDiscount(); }));
       screen.querySelector("[data-ticket-back]").addEventListener("click", showArea);
     };
     const showDiscount = () => {
@@ -1049,7 +1021,7 @@ if (practiceRoot) {
     };
     const showPayment = () => {
       const amounts = getTotal();
-      screen.innerHTML = `${progress(3)}<p class="special-screen-label">Amount due: ${money(amounts.total)}</p><h3 class="ticket-screen-title">How would you like to pay?</h3><div class="payment-method-grid">${special.payments.map((payment) => `<button type="button" data-payment="${payment}"><span aria-hidden="true">${payment === "Cash" ? "&#128181;" : payment === "Cellphone payment" ? "&#128241;" : "&#128179;"}</span><strong>${payment}</strong></button>`).join("")}</div>`;
+      screen.innerHTML = `${progress(3)}<p class="special-screen-label">Amount due: ${money(amounts.total)}</p><h3 class="ticket-screen-title">How would you like to pay?</h3><div class="payment-method-grid">${ticket.payments.map((payment) => `<button type="button" data-payment="${payment}"><span aria-hidden="true">${payment === "Cash" ? "&#128181;" : payment === "Cellphone payment" ? "&#128241;" : "&#128179;"}</span><strong>${payment}</strong></button>`).join("")}</div>`;
       screen.querySelectorAll("[data-payment]").forEach((button) => button.addEventListener("click", () => { selectedPayment = button.dataset.payment; showReview(); }));
     };
     const showReview = () => {
@@ -1110,7 +1082,7 @@ if (practiceRoot) {
   };
 
   const renderTransitBoard = () => {
-    specialStage.innerHTML = `<div class="transit-station"><div class="transit-board"><div class="transit-board-heading"><span>WHERE ARE YOU?</span><b>WIEN</b></div><div class="transit-destinations">${special.stations.map((station, index) => `<button type="button" class="${index === 0 ? "is-active" : ""}" data-transit-station="${index}"><strong>${station.name}</strong><span>View departures</span></button>`).join("")}</div><div class="departure-display" data-departure-display></div></div><a class="vienna-map-preview" href="assets/vienna-subway-map.pdf" target="_blank" rel="noreferrer" aria-label="Open the full Vienna subway map in a new tab"><span class="map-zoom-badge">&#128269; Click to zoom</span><img src="assets/vienna-subway-map-preview.png" alt="Vienna subway and regional transit map"><strong>Open the authentic Vienna transit map</strong><small>PDF opens in a new tab so you can zoom in.</small></a></div>`;
+    specialStage.innerHTML = `<div class="transit-station"><div class="transit-board"><div class="transit-board-heading"><span>WHERE ARE YOU?</span><b>WIEN</b></div><div class="transit-destinations">${special.stations.map((station, index) => `<button type="button" class="${index === 0 ? "is-active" : ""}" data-transit-station="${index}"><strong>${station.name}</strong><span>View departures</span></button>`).join("")}</div><div class="departure-display" data-departure-display></div></div><a class="vienna-map-preview" href="assets/vienna-subway-map.pdf" target="_blank" rel="noreferrer" aria-label="Open the full Vienna subway map in a new tab"><span class="map-zoom-badge">&#128269; Click to zoom</span><img src="assets/vienna-subway-map-preview.png" alt="Vienna subway and regional transit map"><strong>Open the authentic Vienna transit map</strong><small>PDF opens in a new tab so you can zoom in.</small></a></div><section class="transit-ticket-practice"><div class="transit-ticket-heading"><p class="special-screen-label">Part 2: Buy your ticket</p><h3>Use the Metro ticket machine</h3><p>Choose a fare area, ticket type, discount, and payment method.</p></div><div data-transit-ticket-machine></div></section>`;
     const departureDisplay = specialStage.querySelector("[data-departure-display]");
     const showStation = (index) => {
       const station = special.stations[index];
@@ -1126,6 +1098,7 @@ if (practiceRoot) {
     };
     specialStage.querySelectorAll("[data-transit-station]").forEach((button) => button.addEventListener("click", () => showStation(Number(button.dataset.transitStation))));
     showStation(0);
+    renderTicket(specialStage.querySelector("[data-transit-ticket-machine]"), special.ticket);
   };
 
   const renderProducts = () => {

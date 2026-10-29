@@ -37,6 +37,13 @@ viennaStations.forEach((station) => {
 assert(viennaStations.some((station) => new Set(station.services.map((service) => service.line)).size >= 3));
 assert(source.includes('href="assets/vienna-subway-map.pdf"'));
 assert(!source.includes("Simplified subway map"));
+assert(!context.travelData.situationTopics.directions, "Directions & Transportation should no longer be a separate lesson");
+assert(!context.travelData.specialActivities.directions, "The old directions activity should be moved to public transportation");
+const transitTicket = context.travelData.specialActivities["public-transit"].ticket;
+assert(transitTicket, "Public transportation should include the ticket-machine activity");
+assert.equal(transitTicket.areas.length, 3);
+assert.equal(transitTicket.ticketTypes.length, 4);
+assert.equal(transitTicket.payments.length, 3);
 assert(fs.existsSync(path.join(root, "assets", "vienna-subway-map.pdf")));
 assert(fs.existsSync(path.join(root, "assets", "vienna-subway-map-preview.png")));
 
@@ -44,5 +51,7 @@ const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const hub = fs.readFileSync(path.join(root, "situational-english.html"), "utf8");
 assert(home.includes('<h2 id="situational-title">Travel English</h2>'));
 ["bar", "city-tour", "public-transit"].forEach((key) => assert(hub.includes(`topic=${key}`)));
+assert(!hub.includes("topic=directions"));
+assert(hub.includes("20 practical topics"));
 
-console.log("PASS: Travel English has 21 topics; the new bar, NYC tour, and public-transit lessons include complete practice flows and requested simulations.");
+console.log("PASS: Travel English has 20 topics; public transportation includes the Vienna timetable and ticket machine.");
